@@ -30,6 +30,7 @@ public class Opskrift  extends AppCompatActivity implements View.OnClickListener
         ingredienser = new ListView(this);
 
         alternativ = new Button(this);
+        alternativ.setText("Alternativ");
     }
 
     @Override
