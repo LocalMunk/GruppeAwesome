@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
 
         if (v == knap) {
-            Intent i = new Intent(this, OpskriftListe.class);
+            Intent i = new Intent(this, Opskrift.class);
             startActivity(i);
         }
 

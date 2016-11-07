@@ -16,6 +16,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".OpskriftListe"></activity>
+        <activity android:name=".Opskrift"></activity>
     </application>
 
 </manifest>

@@ -1,5 +1,6 @@
 package com.example.martindalby.gruppeawesome;
 
+import android.content.Intent;
 import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -61,6 +62,7 @@ public class OpskriftListe extends AppCompatActivity implements AdapterView.OnIt
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+        Intent i = new Intent(this, Opskrift.class);
+        startActivity(i);
     }
 }
