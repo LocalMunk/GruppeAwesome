@@ -1,5 +1,6 @@
 package com.example.martindalby.gruppeawesome;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -44,6 +45,11 @@ public class Kostplan_frag extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
+
+        if( v == snack) {
+            Intent i = new Intent(getActivity(), Opskrift.class);
+            startActivity(i);
+        }
 
     }
 }
