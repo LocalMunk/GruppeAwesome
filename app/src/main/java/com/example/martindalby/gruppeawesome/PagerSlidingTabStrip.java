@@ -74,11 +74,11 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
     private Paint rectPaint;
     private Paint dividerPaint;
 
-    private int indicatorColor = 0xFFFFFFFF;//0xFF666666; // 0xFFFFFFFF;//DR
+    private int indicatorColor = 0x33691E;//0xFF666666; // 0xFFFFFFFF;//DR
     private int underlineColor = 0xFFFFFFFF; // 0xFFCCCCCC; //0x1A000000;
     private int dividerColor = 0xFFCCCCCC; // 0x1A000000;
 
-    private boolean shouldExpand = false;
+    private boolean shouldExpand = true;
     private boolean textAllCaps = true;
 
     private int scrollOffset = 100;//52;
@@ -89,7 +89,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
     private int dividerWidth = 1;
 
     private int tabTextSize = 20;//tekst size på skrift i faner
-    private int tabTextColor = 0xFF666666;
+    private int tabTextColor = 0x033691E;
     private Typeface tabTypeface = null;
     private int tabTypefaceStyle = Typeface.BOLD;
 
@@ -122,7 +122,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 
         scrollOffset = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, scrollOffset, dm);
         indicatorHeight = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, indicatorHeight, dm);
-        underlineHeight = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, underlineHeight, dm);
+        underlineHeight = ( int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, underlineHeight, dm);
         dividerPadding = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dividerPadding, dm);
         tabPadding = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, tabPadding, dm);
         dividerWidth = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dividerWidth, dm);

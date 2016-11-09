@@ -21,16 +21,6 @@
         android:id="@+id/listeImg" />
 
     <TextView
-        android:text="Overskrift"
-        android:textSize="30dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/listeImg"
-        android:layout_toEndOf="@+id/listeImg"
-        android:id="@+id/overskriftTV" />
-
-    <TextView
         android:text="beskrivelse"
         android:textSize="18dp"
         android:layout_width="wrap_content"
@@ -38,4 +28,14 @@
         android:id="@+id/beskrivelseTV"
         android:layout_below="@+id/overskriftTV"
         android:layout_toRightOf="@+id/listeImg" />
+
+    <TextView
+        android:text="Overskrift"
+        android:textSize="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/overskriftTV"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/listeImg"
+        android:layout_toEndOf="@+id/listeImg" />
 </RelativeLayout>
