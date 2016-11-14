@@ -1,39 +1,37 @@
 package com.example.martindalby.gruppeawesome;
 
 import android.content.Intent;
-import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 public class OpskriftListe extends AppCompatActivity implements AdapterView.OnItemClickListener{
 
-    private TestData[] data;
+    private TestData data = new TestData();
+    private TestData[] mad;
+
     private ListView listView;
+    private String typeText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        typeText = getIntent().getStringExtra("type");
+
         //Data
-        this.data = new TestData[]{
-                new TestData("Pizza", "Denne ret smager godt"),
-                new TestData("Æggemad", "En lækker mad med æd... og brød"),
-                new TestData("Fisk", "Det er godt med fisk"),
-                new TestData("Æg", "Lidt af det gode"),
-                new TestData("Burger", "kød og kød og kød og kød..."),
-                new TestData("Salat", "Jk det er salat... med kød istedet for salat #Prot"),
-        };
+
 
         //Adapter der opretter hele listen
         ArrayAdapter adapter = new ArrayAdapter(this, R.layout.activity_opskrift_liste,
-                R.id.overskriftTV, data) {
+                R.id.overskriftTV, mad) {
 
             @Override
             public View getView (int position, View cachedView, ViewGroup parent) {
@@ -55,8 +53,6 @@ public class OpskriftListe extends AppCompatActivity implements AdapterView.OnIt
         ListView listView = new ListView(this);
         listView.setOnItemClickListener(this);
         listView.setAdapter(adapter);
-
-
         setContentView(listView);
     }
 
@@ -65,4 +61,35 @@ public class OpskriftListe extends AppCompatActivity implements AdapterView.OnIt
         Intent i = new Intent(this, Opskrift.class);
         startActivity(i);
     }
+
+    public class KostPlanAdapter extends BaseAdapter{
+
+        @Override
+        public int getCount() {
+            int i;
+            if(typeText=="Morgenmad") i = data.getMorgenmad().length;
+            else if (typeText=="Frokost") i = data.getFrokost().length;
+            else if (typeText=="Aftensmad") i = data.getAften().length;
+            else i = data.getSnack().length; //snack
+            return i;
+        }
+
+        @Override
+        public Object getItem(int position) {return null;} //bruges ikke
+        @Override
+        public long getItemId(int position) {return 0;} //bruges ikke
+
+        @Override
+        public View getView(int position, View view, ViewGroup parent) {
+            view = getLayoutInflater().inflate(R.layout.activity_opskrift_liste, null);
+
+            TextView overskrift = (TextView) view.findViewById(R.id.overskriftTV);
+            overskrift.setText(data.getAftensmad().toString());
+
+
+
+            return view;
+        }
+    }
+
 }

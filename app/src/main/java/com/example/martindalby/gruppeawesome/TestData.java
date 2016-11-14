@@ -1,9 +1,6 @@
 package com.example.martindalby.gruppeawesome;
 
 
-import android.media.Image;
-import android.widget.ImageView;
-
 public class TestData {
 
     //her er data
@@ -11,8 +8,9 @@ public class TestData {
 
     private String [] morgenmad = {"Havregrød", "Omelet", "Cornflakes"};
     private String [] frokost =   {"Rugbrød", "Rugbrød med pålæg", "Chili con carne"};
-    private String [] Aften =     {"Lasagne", "Pizza", "Durum"};
-
+    private String [] aften =     {"Lasagne", "Pizza", "Durum"};
+    private String [] snack =     {"Lasagne", "Pizza", "Durum"};
+    private TestData[] aftensmad;
     private String text;
     private String overskrift;
     private String beskrivelse;
@@ -20,13 +18,40 @@ public class TestData {
 
     public  TestData(){
 
-        ;
+        aftensmad = new TestData[]{
+                new TestData("Pizza", "Denne ret smager godt"),
+                new TestData("Æggemad", "En lækker aftensmad med æg... og brød"),
+                new TestData("Fisk", "Det er godt med fisk"),
+                new TestData("Æg", "Lidt af det gode"),
+                new TestData("Burger", "kød og kød og kød og kød..."),
+                new TestData("Salat", "Jk det er salat... med kød istedet for salat #Prot"),
+        };
     }
 
     public TestData(String overskrift, /*Image opskIcon,*/ String beskrivelse) {
         this.overskrift = overskrift;
  //       this.opskIcon = opskIcon;
         this.beskrivelse = beskrivelse;
+    }
+
+    public TestData[] getAftensmad() {
+        return aftensmad;
+    }
+
+    public String[] getMorgenmad() {
+        return morgenmad;
+    }
+
+    public String[] getFrokost() {
+        return frokost;
+    }
+
+    public String[] getAften() {
+        return aften;
+    }
+
+    public String[] getSnack() {
+        return snack;
     }
 
     public String[] getFisk() {
