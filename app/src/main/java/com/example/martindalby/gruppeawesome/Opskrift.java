@@ -57,7 +57,9 @@ public class Opskrift  extends AppCompatActivity implements View.OnClickListener
     public void onClick(View v) {
         if (v == alternativ) {
             Intent i = new Intent(this, OpskriftListe.class);
+            i.putExtra("type", typeText);
             startActivity(i);
+            finish();
         }
     }
 }

@@ -1,6 +1,5 @@
 package com.example.martindalby.gruppeawesome;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -12,14 +11,10 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TableLayout;
 import android.widget.TextView;
-import android.widget.BaseAdapter;
 
 import junit.framework.Test;
-
-import java.util.List;
 
 /**
  * Created by frederik on 07-11-2016.
@@ -29,75 +24,54 @@ public class Workout_frag extends Fragment implements OnItemClickListener {
 
     private ImageView graf;
     private Button work1, work2;
-    private TestData  testdata;
+    private TestData data;
+
 
     private TextView virk;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rod = inflater.inflate(R.layout.workout_knapper, container, false);
-        int[] i ={R.drawable.pizzalistepic,R.drawable.grafbb};
-        testdata = new TestData();
+
+        data = new TestData();
         graf = (ImageView) rod.findViewById(R.id.grafWorkout);
 
 
         //  data = {"Workout A: Ben ryg og biceps", "Workout A: Bryst skulder triceps og mave", "Workout B: Ben ryg og biceps", "Workout B: Bryst skulder triceps og mave"};
 
-        WorkoutAdapter adapter = new WorkoutAdapter(getActivity(),testdata.getdata());
-      //  ArrayAdapter adapter = new ArrayAdapter(getActivity(), R.layout.workout_liste, R.id.WorkoutOverskrift, testdata.getFisk()) {
+        ArrayAdapter adapter = new ArrayAdapter(getActivity(), R.layout.workout_liste, R.id.WorkoutOverskrift, data.getFisk()) {
 
+            @Override
+            public View getView(int position, View cachedView, ViewGroup parent) {
 
+                View view = super.getView(position, cachedView, parent);
 
-        ListView workoutlist = (ListView) rod.findViewById(R.id.workoutList);
-        workoutlist.setOnItemClickListener(this);
-        workoutlist.setAdapter(adapter);
-        return rod;
+                TextView beskrivelse = (TextView) view.findViewById(R.id.beskrivelseTV);
+                beskrivelse.setText("Jeg kan ikke vælge beskrivelsen her? (hvordan vælge billde " +
+                        "spcifik til hvert objekt");
 
-    }
+                ImageView billede = (ImageView) view.findViewById(R.id.listeImg);
+                billede.setImageResource(R.drawable.pizzalistepic);
 
-    public class WorkoutAdapter extends BaseAdapter{
-        Context context;
-        int listimg[];
-        TestData [] data;
-        LayoutInflater inflter;
-        
-        public WorkoutAdapter(Context applicationContext, TestData[] datax){
-
-                this.context = applicationContext;
-                this.data = data;
-              //  this.listimg = ListImg;
-                inflter  = (LayoutInflater.from(applicationContext));
-
-
+                return view;
             }
 
-        @Override
-        public int getCount() {
-           return testdata.getdata().length;
-            
-        }
 
-        @Override
-        public Object getItem(int position) {
-            return null;
-        }
+            //Programatisk layout
+//        TableLayout tl = new TableLayout(getActivity());
+//
+//        virk = new TextView(getActivity());
+//        virk.setText("Hej det her er nice");
+//        virk.setTextSize(30);
+//
+//        tl.addView(virk);
+//
+//        return tl;
+        };
 
-        @Override
-        public long getItemId(int position) {
-            return 0;
-        }
 
-        @Override
-        public View getView(int position, View view, ViewGroup viewGroup) {
 
-            view = inflter.inflate(R.layout.workout_liste,null);
-            TextView  workoutoverskrift = (TextView) view.findViewById(R.id.WorkoutOverskrift);
-            ImageView icon = (ImageView) view.findViewById(R.id.workoutImg);
-            System.out.println(workoutoverskrift.getId());
-            workoutoverskrift .setText(testdata.getdata()[position].getOverskrift());
-
-            return view;
-        }
+        return rod;
     }
 
     @Override
