@@ -38,7 +38,7 @@ public class Opskrift  extends AppCompatActivity implements View.OnClickListener
         tl.addView(retNavn);
 
         alternativ = new Button(this);
-        alternativ.setText("Alternativ");
+        alternativ.setText("Alternativ ");
         tl.addView(alternativ);
 
         retBillede = new ImageView(this);
