@@ -78,7 +78,6 @@ public class Workout_frag extends Fragment implements AdapterView.OnItemClickLis
         @Override
         public int getCount() {
             return testdata.getAftensmad().length;
-
         }
 //banan
         @Override
@@ -93,13 +92,13 @@ public class Workout_frag extends Fragment implements AdapterView.OnItemClickLis
 
         @Override
         public View getView(int position, View view, ViewGroup viewGroup) {
-
             view = inflter.inflate(R.layout.workout_liste, null);
-            TextView workoutoverskrift = (TextView) view.findViewById(R.id.WorkoutOverskrift);
-            ImageView icon = (ImageView) view.findViewById(R.id.workoutImg);
-            System.out.println(workoutoverskrift.getId());
-            workoutoverskrift.setText(testdata.getAftensmad()[position].getOverskrift());
 
+            TextView workoutoverskrift = (TextView) view.findViewById(R.id.WorkoutOverskrift);
+            workoutoverskrift.setText(testdata.getAftensmad()[position].getOverskrift());
+            System.out.println(workoutoverskrift.getId());
+
+            ImageView icon = (ImageView) view.findViewById(R.id.workoutImg);
             return view;
         }
 
