@@ -16,7 +16,7 @@ public class OpskriftListe extends AppCompatActivity implements AdapterView.OnIt
 
     private TestData data = new TestData();
     private TestData[] mad;
-
+    private KostPlanAdapter adapter;
     private ListView listView;
     private String typeText;
 
@@ -25,36 +25,15 @@ public class OpskriftListe extends AppCompatActivity implements AdapterView.OnIt
         super.onCreate(savedInstanceState);
 
         typeText = getIntent().getStringExtra("type");
-
-        //Data
-
-
-        //Adapter der opretter hele listen
-        ArrayAdapter adapter = new ArrayAdapter(this, R.layout.activity_opskrift_liste,
-                R.id.overskriftTV, mad) {
-
-            @Override
-            public View getView (int position, View cachedView, ViewGroup parent) {
-
-                View view = super.getView(position, cachedView,parent);
-
-                TextView beskrivelse = (TextView) view.findViewById(R.id.beskrivelseTV);
-                beskrivelse.setText("Jeg kan ikke vælge beskrivelsen her? (hvordan vælge billde " +
-                        "spcifik til hvert objekt");
-
-                ImageView billede = (ImageView) view.findViewById(R.id.listeImg);
-                billede.setImageResource(R.drawable.pizzalistepic);
-
-                return view;
-            }
-
-        };
+        adapter = new KostPlanAdapter();
 
         ListView listView = new ListView(this);
         listView.setOnItemClickListener(this);
         listView.setAdapter(adapter);
         setContentView(listView);
     }
+
+
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -73,7 +52,6 @@ public class OpskriftListe extends AppCompatActivity implements AdapterView.OnIt
             else i = data.getSnack().length; //snack
             return i;
         }
-
         @Override
         public Object getItem(int position) {return null;} //bruges ikke
         @Override
@@ -84,12 +62,17 @@ public class OpskriftListe extends AppCompatActivity implements AdapterView.OnIt
             view = getLayoutInflater().inflate(R.layout.activity_opskrift_liste, null);
 
             TextView overskrift = (TextView) view.findViewById(R.id.overskriftTV);
-            overskrift.setText(data.getAftensmad().toString());
+            overskrift.setText(data.getAftensmad()[position].getOverskrift());
 
+            TextView beskrivelse = (TextView) view.findViewById(R.id.beskrivelseTV);
+            beskrivelse.setText(data.getAftensmad()[position].getBeskrivelse());
 
+            ImageView icon = (ImageView) view.findViewById(R.id.listeImg);
+            icon.setImageResource(R.drawable.pizzalistepic);
 
             return view;
         }
+
     }
 
 }
