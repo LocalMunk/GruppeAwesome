@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TableLayout;
@@ -27,16 +28,30 @@ public class Workout_frag extends Fragment implements View.OnClickListener{
 
         graf = (ImageView) rod.findViewById(R.id.grafWorkout);
 
-        work1 = (Button) rod.findViewById(R.id.work1);
-        work1.setText("Workout A");
-
-        work2 = (Button) rod.findViewById(R.id.work2);
-        work2.setText("Workout B");
-
-        work1.setOnClickListener(this);
-        work2.setOnClickListener(this);
-
         return rod;
+
+        String[] data = {"Workout A: Ben ryg og biceps", "Workout A: Bryst skulder triceps og mave", "Workout B: Ben ryg og biceps", "Workout B: Bryst skulder triceps og mave"};
+
+        ArrayAdapter adapter = new ArrayAdapter(this, ,
+                , data) {
+
+            @Override
+            public View getView (int position, View cachedView, ViewGroup parent) {
+
+                View view = super.getView(position, cachedView,parent);
+
+                TextView beskrivelse = (TextView) view.findViewById(R.id.beskrivelseTV);
+                beskrivelse.setText("Jeg kan ikke vælge beskrivelsen her? (hvordan vælge billde " +
+                        "spcifik til hvert objekt");
+
+                ImageView billede = (ImageView) view.findViewById(R.id.listeImg);
+                billede.setImageResource(R.drawable.pizzalistepic);
+
+                return view;
+            }
+
+        };
+
 
         //Programatisk layout
 //        TableLayout tl = new TableLayout(getActivity());
