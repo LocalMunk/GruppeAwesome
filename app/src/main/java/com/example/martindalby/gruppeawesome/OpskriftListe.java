@@ -14,7 +14,6 @@ import android.widget.TextView;
 public class OpskriftListe extends AppCompatActivity implements AdapterView.OnItemClickListener{
 
     private TestData data = new TestData();
-    private TestData[] mad;
     private KostPlanAdapter adapter;
     private ListView listView;
     private String typeText;
