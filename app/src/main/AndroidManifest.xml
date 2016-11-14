@@ -17,6 +17,7 @@
         </activity>
         <activity android:name=".OpskriftListe"></activity>
         <activity android:name=".Opskrift"></activity>
+        <activity android:name=".Ovelse"></activity>
     </application>
 
 </manifest>

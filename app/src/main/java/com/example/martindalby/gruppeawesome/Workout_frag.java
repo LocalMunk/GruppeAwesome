@@ -70,6 +70,7 @@ public class Workout_frag extends Fragment implements OnItemClickListener {
         };
 
 
+
         return rod;
     }
 
