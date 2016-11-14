@@ -32,7 +32,7 @@ public class Workout_frag extends Fragment implements View.OnClickListener{
 
         String[] data = {"Workout A: Ben ryg og biceps", "Workout A: Bryst skulder triceps og mave", "Workout B: Ben ryg og biceps", "Workout B: Bryst skulder triceps og mave"};
 
-        ArrayAdapter adapter = new ArrayAdapter(this, ,
+        ArrayAdapter adapter = new ArrayAdapter(this, R.id.activity_opskrift_liste,
                 , data) {
 
             @Override
