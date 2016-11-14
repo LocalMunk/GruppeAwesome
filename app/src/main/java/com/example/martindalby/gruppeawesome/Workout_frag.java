@@ -11,6 +11,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
@@ -50,8 +51,7 @@ public class Workout_frag extends Fragment implements OnItemClickListener {
                 beskrivelse.setText("Jeg kan ikke vælge beskrivelsen her? (hvordan vælge billde " +
                         "spcifik til hvert objekt");
 
-                ImageView billede = (ImageView) view.findViewById(R.id.listeImg);
-                billede.setImageResource(R.drawable.pizzalistepic);
+
 
                 return view;
             }
@@ -69,7 +69,9 @@ public class Workout_frag extends Fragment implements OnItemClickListener {
 //        return tl;
         };
 
-
+        ListView workoutlist = new ListView(getActivity());
+        workoutlist.setOnItemClickListener(this);
+        workoutlist.setAdapter(adapter);
         return rod;
     }
 
