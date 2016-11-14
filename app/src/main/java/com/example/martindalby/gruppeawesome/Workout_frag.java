@@ -5,40 +5,46 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
+import junit.framework.Test;
+
 /**
  * Created by frederik on 07-11-2016.
  */
 
-public class Workout_frag extends Fragment implements View.OnClickListener{
+public class Workout_frag extends Fragment implements OnItemClickListener {
 
     private ImageView graf;
     private Button work1, work2;
+    private TestData data;
+
 
     private TextView virk;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rod = inflater.inflate(R.layout.workout_knapper, container,false);
+        View rod = inflater.inflate(R.layout.workout_knapper, container, false);
 
+        data = new TestData();
         graf = (ImageView) rod.findViewById(R.id.grafWorkout);
 
-        return rod;
 
-        String[] data = {"Workout A: Ben ryg og biceps", "Workout A: Bryst skulder triceps og mave", "Workout B: Ben ryg og biceps", "Workout B: Bryst skulder triceps og mave"};
+        //  data = {"Workout A: Ben ryg og biceps", "Workout A: Bryst skulder triceps og mave", "Workout B: Ben ryg og biceps", "Workout B: Bryst skulder triceps og mave"};
 
-        ArrayAdapter adapter = new ArrayAdapter(this, R.id.activity_opskrift_liste,
-                , data) {
+        ArrayAdapter adapter = new ArrayAdapter(getActivity(), R.layout.workout_liste, R.id.WorkoutOverskrift, data.getFisk()) {
 
             @Override
-            public View getView (int position, View cachedView, ViewGroup parent) {
+            public View getView(int position, View cachedView, ViewGroup parent) {
 
-                View view = super.getView(position, cachedView,parent);
+                View view = super.getView(position, cachedView, parent);
 
                 TextView beskrivelse = (TextView) view.findViewById(R.id.beskrivelseTV);
                 beskrivelse.setText("Jeg kan ikke vælge beskrivelsen her? (hvordan vælge billde " +
@@ -50,10 +56,8 @@ public class Workout_frag extends Fragment implements View.OnClickListener{
                 return view;
             }
 
-        };
 
-
-        //Programatisk layout
+            //Programatisk layout
 //        TableLayout tl = new TableLayout(getActivity());
 //
 //        virk = new TextView(getActivity());
@@ -63,13 +67,14 @@ public class Workout_frag extends Fragment implements View.OnClickListener{
 //        tl.addView(virk);
 //
 //        return tl;
+        };
+
+
+        return rod;
     }
 
-
     @Override
-    public void onClick(View v) {
-
-
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
     }
 }

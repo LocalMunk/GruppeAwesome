@@ -12,15 +12,11 @@
         android:id="@+id/grafWorkout"
         android:layout_weight="0.24" />
 
-    <Button
+    <ListView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/work1"
-        android:text="knap" />
+        android:layout_height="match_parent"
+        android:layout_weight="0.24" />
 
-    <Button
-        android:text="knap"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/work2" />
+
+
 </LinearLayout>

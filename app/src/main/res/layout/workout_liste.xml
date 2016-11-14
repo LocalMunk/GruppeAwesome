@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:text="Workoutbeskrivelse"
+        android:textSize="18dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/beskrivelseTV"
+        android:layout_below="@+id/overskriftTV"
+        android:layout_toRightOf="@+id/listeImg" />
+
+    <TextView
+        android:text="Overskrift"
+        android:textSize="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/WorkoutOverskrift"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/listeImg"
+        android:layout_toEndOf="@+id/listeImg" />
+
+    <ImageButton
+        android:id="@+id/WorkoutImgButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+
+
+
+</LinearLayout>
