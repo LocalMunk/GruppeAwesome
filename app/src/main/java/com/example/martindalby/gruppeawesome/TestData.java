@@ -1,6 +1,8 @@
 package com.example.martindalby.gruppeawesome;
 
 
+import junit.framework.Test;
+
 public class TestData {
 
     //her er data
@@ -11,6 +13,7 @@ public class TestData {
     private String [] aften =     {"Lasagne", "Pizza", "Durum"};
     private String [] snack =     {"Lasagne", "Pizza", "Durum"};
     private TestData[] aftensmad;
+    private TestData[] data;
     private String text;
     private String overskrift;
     private String beskrivelse;
@@ -54,8 +57,8 @@ public class TestData {
         return snack;
     }
 
-    public String[] getFisk() {
-        return fisk;
+    public TestData[] getdata() {
+        return data;
     }
 
     public String getOverskrift() {
