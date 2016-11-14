@@ -80,7 +80,7 @@ public class Workout_frag extends Fragment implements AdapterView.OnItemClickLis
             return testdata.getAftensmad().length;
 
         }
-
+//banan
         @Override
         public Object getItem(int position) {
             return null;
