@@ -9,6 +9,10 @@ public class TestData {
     //her er data
     private String [] fisk = {"Kage","Snickers"};
 
+    private String [] morgenmad = {"Havregrød", "Omelet", "Cornflakes"};
+    private String [] frokost =   {"Rugbrød", "Rugbrød med pålæg", "Chili con carne"};
+    private String [] Aften =     {"Lasagne", "Pizza", "Durum"};
+
     private String text;
     private String overskrift;
     private String beskrivelse;
