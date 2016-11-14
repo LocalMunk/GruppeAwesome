@@ -1,19 +1,17 @@
 package com.example.martindalby.gruppeawesome;
 
 
-import junit.framework.Test;
-
 public class TestData {
 
     //her er data
-    private String [] fisk = {"Kage","Snickers"};
+
 
     private String [] morgenmad = {"Havregrød", "Omelet", "Cornflakes"};
     private String [] frokost =   {"Rugbrød", "Rugbrød med pålæg", "Chili con carne"};
     private String [] aften =     {"Lasagne", "Pizza", "Durum"};
     private String [] snack =     {"Snickers", "Gulerod", "sand"};
-    private TestData[] aftensmad;
-    private TestData[] data;
+    private TestDataWorkout[] aftensmad;
+    private TestDataWorkout[] data;
     private String text;
     private String overskrift;
     private String beskrivelse;
@@ -21,13 +19,13 @@ public class TestData {
 
     public  TestData(){
 
-        aftensmad = new TestData[]{
-                new TestData("Pizza", "Denne ret smager godt"),
-                new TestData("Æggemad", "En lækker aftensmad med æg... og brød"),
-                new TestData("Fisk", "Det er godt med fisk"),
-                new TestData("Æg", "Lidt af det gode"),
-                new TestData("Burger", "kød og kød og kød og kød..."),
-                new TestData("Salat", "Jk det er salat... med kød istedet for salat #Prot"),
+        aftensmad = new TestDataWorkout[]{
+                new TestDataWorkout("Pizza", "Denne ret smager godt"),
+                new TestDataWorkout("Æggemad", "En lækker aftensmad med æg... og brød"),
+                new TestDataWorkout("Fisk", "Det er godt med fisk"),
+                new TestDataWorkout("Æg", "Lidt af det gode"),
+                new TestDataWorkout("Burger", "kød og kød og kød og kød..."),
+                new TestDataWorkout("Salat", "Jk det er salat... med kød istedet for salat #Prot"),
         };
     }
 
@@ -37,7 +35,7 @@ public class TestData {
         this.beskrivelse = beskrivelse;
     }
 
-    public TestData[] getAftensmad() {
+    public TestDataWorkout[] getAftensmad() {
         return aftensmad;
     }
 
@@ -57,7 +55,7 @@ public class TestData {
         return snack;
     }
 
-    public TestData[] getdata() {
+    public TestDataWorkout[] getdata() {
         return data;
     }
 
