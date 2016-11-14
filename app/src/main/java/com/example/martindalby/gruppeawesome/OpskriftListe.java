@@ -38,6 +38,7 @@ public class OpskriftListe extends AppCompatActivity implements AdapterView.OnIt
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Intent i = new Intent(this, Opskrift.class);
+        i.putExtra("type", typeText);
         startActivity(i);
     }
 
@@ -48,7 +49,7 @@ public class OpskriftListe extends AppCompatActivity implements AdapterView.OnIt
             int i;
             if(typeText=="Morgenmad") i = data.getMorgenmad().length;
             else if (typeText=="Frokost") i = data.getFrokost().length;
-            else if (typeText=="Aftensmad") i = data.getAften().length;
+            else if (typeText=="Aftensmad") i = data.getAftensmad().length;
             else i = data.getSnack().length; //snack
             return i;
         }
