@@ -22,6 +22,7 @@ public class Opskrift  extends AppCompatActivity implements View.OnClickListener
     ImageView retBillede;
     ListView ingredienser;
     Button alternativ;
+    String typeText;
 
 
     public void onCreate(Bundle savedInstanceState){
@@ -29,8 +30,11 @@ public class Opskrift  extends AppCompatActivity implements View.OnClickListener
 
         TableLayout tl = new TableLayout(this);
 
+        typeText = getIntent().getStringExtra("type");
+
         retNavn = new TextView(this);
-        retNavn.setText("Æggekage");
+        retNavn.setText("Æggekage " + typeText);
+        retNavn.setTextSize(20);
         tl.addView(retNavn);
 
         alternativ = new Button(this);
