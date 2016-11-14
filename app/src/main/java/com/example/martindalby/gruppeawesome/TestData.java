@@ -11,7 +11,7 @@ public class TestData {
     private String [] morgenmad = {"Havregrød", "Omelet", "Cornflakes"};
     private String [] frokost =   {"Rugbrød", "Rugbrød med pålæg", "Chili con carne"};
     private String [] aften =     {"Lasagne", "Pizza", "Durum"};
-    private String [] snack =     {"Lasagne", "Pizza", "Durum"};
+    private String [] snack =     {"Snickers", "Gulerod", "sand"};
     private TestData[] aftensmad;
     private TestData[] data;
     private String text;

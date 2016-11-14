@@ -25,6 +25,7 @@ public class OpskriftListe extends AppCompatActivity implements AdapterView.OnIt
         super.onCreate(savedInstanceState);
 
         typeText = getIntent().getStringExtra("type");
+        System.out.println("TyperTe4xt fået fra intent: " + typeText);
         adapter = new KostPlanAdapter();
 
         ListView listView = new ListView(this);
@@ -43,14 +44,22 @@ public class OpskriftListe extends AppCompatActivity implements AdapterView.OnIt
     }
 
     public class KostPlanAdapter extends BaseAdapter{
-
+        //Her afgøres længde på liste ud fra hvilken knap man trykker paa
         @Override
         public int getCount() {
-            int i;
-            if(typeText=="Morgenmad") i = data.getMorgenmad().length;
-            else if (typeText=="Frokost") i = data.getFrokost().length;
-            else if (typeText=="Aftensmad") i = data.getAftensmad().length;
-            else i = data.getSnack().length; //snack
+            int i =0;
+            if(typeText.equals("Morgenmad")) {
+                i = data.getMorgenmad().length;
+                System.out.println("Morgenmad længdre: " + i);
+            }else if (typeText.equals("Frokost")) {
+                i = data.getFrokost().length;
+                System.out.println("Frokost længdre: " + i);
+            }else if (typeText.equals("Aftensmad")) {
+                i = data.getAftensmad().length;
+                System.out.println("Aftensmad længdre: " + i);
+            }else if (typeText.equals("Snack")){
+                i = data.getSnack().length; //snack
+            }
             return i;
         }
         @Override
