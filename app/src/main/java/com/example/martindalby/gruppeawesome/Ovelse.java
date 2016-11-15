@@ -17,10 +17,12 @@ public class Ovelse extends AppCompatActivity implements View.OnClickListener {
     NumberPicker number;
     Button videre;
     int maxSet, currentSet;
-    TextView feed1, feed2, feed3;
+    TextView[] feed;
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ovelse);
+        currentSet = 1;
+        maxSet = 3;
         number = (NumberPicker) findViewById(R.id.number);
         number.setMinValue(1);
         number.setMaxValue(30);
@@ -28,11 +30,11 @@ public class Ovelse extends AppCompatActivity implements View.OnClickListener {
         number.setOnClickListener(this);
         videre = (Button) findViewById(R.id.viderebutton);
         videre.setOnClickListener(this);
-        feed1 = (TextView) findViewById(R.id.Feedbackset1);
-        feed2 = (TextView) findViewById(R.id.Feedbackset2);
-        feed3 = (TextView) findViewById(R.id.Feedbackset3);
-        currentSet = 1;
-        maxSet = 3;
+        feed = new TextView[maxSet];
+        feed[0] = (TextView) findViewById(R.id.Feedbackset1);
+        feed[1] = (TextView) findViewById(R.id.Feedbackset2);
+        feed[2] = (TextView) findViewById(R.id.Feedbackset3);
+
 
 
 
@@ -43,14 +45,7 @@ public class Ovelse extends AppCompatActivity implements View.OnClickListener {
         if(v == videre){
             System.out.println("button pressed");
             if(currentSet <= maxSet){
-                switch(currentSet){
-                    case 1: feed1.setText("Set 1: " + number.getValue() + " gentagelser");
-                        break;
-                    case 2: feed2.setText("Set 2: " + number.getValue() + " gentagelser");
-                        break;
-                    case 3: feed3.setText("Set 3: " + number.getValue() + " gentagelser");
-                        break;
-                }
+                feed[currentSet-1].setText("sæt " + currentSet + ": " + number.getValue() + " gentagelser.");
                 currentSet++;
             }
         }
