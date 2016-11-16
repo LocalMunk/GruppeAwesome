@@ -1,27 +1,94 @@
 package com.example.martindalby.gruppeawesome;
 
-import android.content.Intent;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.LinearLayout;
 
 public class MainActivity extends AppCompatActivity /*implements View.OnClickListener*/ {
 
-//    private Button knap;
-    private ViewPager viewPager;
+    private TabLayout tabLayout;
+    private ViewPager viewPager2;
+    private ViewPagerAdapter2 adapter2;
+
+
+    //private ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main2);
 
+        tabLayout = (TabLayout) findViewById(R.id.tab_layout);
+        viewPager2 = (ViewPager) findViewById(R.id.viewPager2);
+
+        adapter2 = new ViewPagerAdapter2(getSupportFragmentManager());
+        viewPager2.setAdapter(adapter2);
+
+        final TabLayout.Tab workout=tabLayout.newTab().setText("Workouts");
+        final TabLayout.Tab kostplan=tabLayout.newTab().setText("Kostplan");
+
+
+        tabLayout.addTab(workout, 0);
+        tabLayout.addTab(kostplan, 1);
+
+        tabLayout.setTabTextColors(ContextCompat.getColorStateList(this, R.color.tab_selector));
+        tabLayout.setSelectedTabIndicatorColor(ContextCompat.getColor(this, R.color.indicate));
+
+        viewPager2.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+
+        viewPager2.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                switch (position) {
+                    case 0:
+                        workout.setIcon(R.drawable.grafbb);
+                        kostplan.setIcon(R.drawable.grafbb);
+                        break;
+                    case 1:
+                        workout.setIcon(R.drawable.pizzalistepic);
+                        kostplan.setIcon(R.drawable.pizzalistepic);
+                        break;
+                }
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
+        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+
+                viewPager2.setCurrentItem(tab.getPosition());
+
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+
+        /*
         viewPager = new ViewPager(this);
         viewPager.setId(R.id.viewPager);
         viewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager()));
@@ -40,6 +107,7 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
         setTitle("Body Book");
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        */
     }
 
 //    @Override hvad bliver der gjort her?
