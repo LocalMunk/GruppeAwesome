@@ -25,7 +25,6 @@ public class Opskrift  extends AppCompatActivity implements View.OnClickListener
     String typeText;
     Toolbar toolbar;
 
-
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_opskrift);
@@ -54,39 +53,6 @@ public class Opskrift  extends AppCompatActivity implements View.OnClickListener
                 "med kylling, nogle med oksekød og så lige nogle med fisk.");
 
         alternativ.setOnClickListener(this);
-
-        /*
-        TableLayout tl = new TableLayout(this);
-
-
-
-        toolbar = new Toolbar(this);
-        toolbar.setTitle(typeText);
-        toolbar.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-        toolbar.setTitleTextColor(getResources().getColor(R.color.indicate));
-        tl.addView(toolbar);
-
-        retNavn = new TextView(this);
-        retNavn.setText("Æggekage " + typeText);
-        retNavn.setTextSize(20);
-        tl.addView(retNavn);
-
-
-
-        alternativ = new Button(this);
-        alternativ.setText("Alternativ ");
-        tl.addView(alternativ);
-
-        retBillede = new ImageView(this);
-        retBillede.setImageResource(R.drawable.pizzalistepic);
-        tl.addView(retBillede);
-
-        ingredienser = new ListView(this);
-        tl.addView(ingredienser);
-
-        alternativ.setOnClickListener(this);
-*/
-
     }
 
     @Override
