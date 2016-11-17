@@ -17,7 +17,6 @@ import android.widget.TextView;
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.appindexing.Thing;
-import com.google.android.gms.common.api.GoogleApiClient;
 
 /**
  * Created by Martin Dalby on 17-11-2016.
@@ -28,11 +27,6 @@ public class WorkoutList extends AppCompatActivity implements AdapterView.OnItem
     TestDataOvelser data;
     WorkoutListAdapter adapter;
     ListView listView;
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
-    private GoogleApiClient client;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,9 +38,6 @@ public class WorkoutList extends AppCompatActivity implements AdapterView.OnItem
         listView.setOnItemClickListener(this);
         listView.setAdapter(adapter);
         System.out.println("1 check");
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
