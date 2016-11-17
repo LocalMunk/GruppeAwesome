@@ -18,27 +18,27 @@
             android:layout_marginLeft="12dp"
             android:layout_marginStart="12dp"
             android:layout_marginTop="12dp"
-            android:id="@+id/textView4" />
+            android:id="@+id/ovelsenameview" />
 
         <TextView
             android:text="TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/textView4"
-            android:layout_alignLeft="@+id/textView4"
-            android:layout_alignStart="@+id/textView4"
+            android:layout_below="@+id/ovelsenameview"
+            android:layout_alignLeft="@+id/ovelsenameview"
+            android:layout_alignStart="@+id/ovelsenameview"
             android:layout_marginTop="24dp"
-            android:id="@+id/textView5" />
+            android:id="@+id/setsview" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:srcCompat="@android:drawable/ic_media_play"
-            android:layout_below="@+id/textView4"
+            android:layout_below="@+id/ovelsenameview"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
             android:layout_marginRight="23dp"
             android:layout_marginEnd="23dp"
-            android:id="@+id/imageView2" />
+            android:id="@+id/ovelsebutton" />
     </RelativeLayout>
 </LinearLayout>

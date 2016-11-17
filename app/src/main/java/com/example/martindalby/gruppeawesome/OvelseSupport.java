@@ -19,7 +19,7 @@ public class OvelseSupport {
     }
 
     public void setData(int dataset, int reps){
-        int x = dataset+1
+        int x = dataset+1;
         data[dataset] = "Sæt " + x + ": " + reps + " gentagelser";
     }
 }
