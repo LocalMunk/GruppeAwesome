@@ -19,9 +19,8 @@ import android.widget.ListView;
 
 public class Opskrift  extends AppCompatActivity implements View.OnClickListener{
 
-    TextView retNavn, fremGang;
+    TextView retNavn, fremGang, ingredienser;
     ImageView retBillede;
-    ListView ingredienser;
     Button alternativ;
     String typeText;
     Toolbar toolbar;
@@ -29,10 +28,37 @@ public class Opskrift  extends AppCompatActivity implements View.OnClickListener
 
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-
-        TableLayout tl = new TableLayout(this);
+        setContentView(R.layout.activity_opskrift);
 
         typeText = getIntent().getStringExtra("type");
+
+        toolbar = (Toolbar) findViewById(R.id.toolBar);
+        toolbar.setTitle(typeText);
+
+        retNavn = (TextView) findViewById(R.id.retNavn);
+        retNavn.setText("Type: " + typeText);
+
+        retBillede = (ImageView) findViewById(R.id.retImg);
+        retBillede.setImageResource(R.drawable.morgenmad);
+
+        ingredienser = (TextView) findViewById(R.id.retIngrediens);
+        ingredienser.setText("1 stk. ost \n2 bajer \n100g kød \n\n200g prot");
+
+        alternativ = (Button) findViewById(R.id.alternativ);
+        alternativ.setText("Alternativ");
+
+        fremGang = (TextView) findViewById(R.id.fremMaa);
+        fremGang.setText("Selvom det er nemt, så går vi ikke på kompromis med smag eller sundhed i " +
+                "vores hverdagsmad. Her i dette tema har vi samlet en masse opskrifter på sund og " +
+                "nem aftensmad til dig - det er fx aftensmad på 20 min, retter med svinekød, dem " +
+                "med kylling, nogle med oksekød og så lige nogle med fisk.");
+
+        alternativ.setOnClickListener(this);
+
+        /*
+        TableLayout tl = new TableLayout(this);
+
+
 
         toolbar = new Toolbar(this);
         toolbar.setTitle(typeText);
@@ -59,8 +85,8 @@ public class Opskrift  extends AppCompatActivity implements View.OnClickListener
         tl.addView(ingredienser);
 
         alternativ.setOnClickListener(this);
+*/
 
-        setContentView(tl);
     }
 
     @Override
