@@ -18,15 +18,15 @@
             android:layout_marginLeft="12dp"
             android:layout_marginStart="12dp"
             android:layout_marginTop="12dp"
-            android:id="@+id/ovelsenameview" />
+            android:id="@+id/exercisename" />
 
         <TextView
             android:text="TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/ovelsenameview"
-            android:layout_alignLeft="@+id/ovelsenameview"
-            android:layout_alignStart="@+id/ovelsenameview"
+            android:layout_below="@+id/exercisename"
+            android:layout_alignLeft="@+id/exercisename"
+            android:layout_alignStart="@+id/exercisename"
             android:layout_marginTop="24dp"
             android:id="@+id/setsview" />
 
@@ -34,7 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:srcCompat="@android:drawable/ic_media_play"
-            android:layout_below="@+id/ovelsenameview"
+            android:layout_below="@+id/exercisename"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
             android:layout_marginRight="23dp"

@@ -32,12 +32,13 @@ public class WorkoutList extends AppCompatActivity implements AdapterView.OnItem
         listView = (ListView) findViewById(R.id.Ovelselistview);
         listView.setOnItemClickListener(this);
         listView.setAdapter(adapter);
+        System.out.println("1 check");
     }
 
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Intent i = new Intent(this, Ovelse.class);
         i.putExtra(data.getOvelser()[position].getOverskrift(), data.getOvelser()[position].getsets());
-//        startActivity(i);
+        startActivity(i);
     }
 
     public class WorkoutListAdapter extends BaseAdapter {
@@ -49,13 +50,14 @@ public class WorkoutList extends AppCompatActivity implements AdapterView.OnItem
             this.context = applicationContext;
             //  this.listimg = ListImg;
             inflter = (LayoutInflater.from(applicationContext));
+            System.out.println("check 2");
 
 
         }
         //Her afgøres længde på liste ud fra hvilken knap man trykker paa
         @Override
         public int getCount() {
-            return 0;
+            return data.getOvelser().length;
         }
         @Override
         public Object getItem(int position) {return null;} //bruges ikke
@@ -64,16 +66,15 @@ public class WorkoutList extends AppCompatActivity implements AdapterView.OnItem
 
         @Override
         public View getView(int position, View view, ViewGroup parent) {
-            view = inflter .inflate(R.layout.ovelse_list, null);
+            view = inflter.inflate(R.layout.workoutlist_list, null);
 
-            TextView text = (TextView) view.findViewById(R.id.ovelsenameview);
-            text.setText(data.getOvelser()[position].getOverskrift());
+            TextView exerciseName = (TextView) view.findViewById(R.id.exercisename);
+            exerciseName.setText(data.getOvelser()[position].getOverskrift());
 
-            TextView sets = (TextView) view.findViewById(R.id.setsview);
+            TextView sets = (TextView) findViewById(R.id.setsview);
             sets.setText(data.getOvelser()[position].getsets() + " sets");
 
-
-            ImageView img = (ImageView) view.findViewById(R.id.ovelsebutton);
+            ImageView img = (ImageView) findViewById(R.id.ovelsebutton);
             return view;
         }
 

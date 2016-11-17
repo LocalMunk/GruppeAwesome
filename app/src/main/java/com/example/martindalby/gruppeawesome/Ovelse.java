@@ -42,11 +42,6 @@ public class Ovelse extends AppCompatActivity implements View.OnClickListener {
         list = (ListView) findViewById(R.id.listview);
         listadapt = new OvelseAdapter(this);
         list.setAdapter(listadapt);
-
-
-
-
-
     }
 
     @Override
