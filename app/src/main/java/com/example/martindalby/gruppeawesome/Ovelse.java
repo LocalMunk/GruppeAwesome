@@ -25,13 +25,17 @@ public class Ovelse extends AppCompatActivity implements View.OnClickListener {
     Button videre;
     int currentSet;
     ListView list;
+    TextView ExerciseName;
     OvelseAdapter listadapt;
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ovelse);
         currentSet = 1;
-        String[] suppdata = {"Sæt 1: ingen data","Sæt 2: ingen data","Sæt 3: ingen data"};
-        support = new OvelseSupport(suppdata,3);
+        String[] suppdata = new String[getIntent().getIntExtra("sets", 4)];
+        for(int i = 0; i < getIntent().getIntExtra("sets", 4); i++){
+            suppdata[i] = "Sæt " + (i+1) + ": ";
+        }
+        support = new OvelseSupport(suppdata,getIntent().getIntExtra("sets", 4));
         number = (NumberPicker) findViewById(R.id.number);
         number.setMinValue(1);
         number.setMaxValue(30);
@@ -42,6 +46,10 @@ public class Ovelse extends AppCompatActivity implements View.OnClickListener {
         list = (ListView) findViewById(R.id.listview);
         listadapt = new OvelseAdapter(this);
         list.setAdapter(listadapt);
+        ExerciseName = (TextView) findViewById(R.id.ExerciseName);
+        ExerciseName.setTextSize(20);
+        ExerciseName.setText(getIntent().getStringExtra("title"));
+
     }
 
     @Override
