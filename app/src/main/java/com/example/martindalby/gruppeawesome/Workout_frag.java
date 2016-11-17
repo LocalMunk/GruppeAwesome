@@ -49,11 +49,9 @@ public class Workout_frag extends Fragment implements AdapterView.OnItemClickLis
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            String testdata = String.valueOf(parent.getItemAtPosition(position));
-            if(position == 0){
-                Intent i = new Intent(parent.getContext(),OpskriftListe.class);
+        Intent i = new Intent(getActivity(),WorkoutList.class);
+        startActivity(i);
 
-            }
 
 
     }

@@ -27,10 +27,5 @@
         android:layout_below="@+id/overskriftTV"
         android:layout_toRightOf="@+id/listeImg" />
 
-    <ImageButton
-        android:id="@+id/WorkoutImgButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
 
 </LinearLayout>

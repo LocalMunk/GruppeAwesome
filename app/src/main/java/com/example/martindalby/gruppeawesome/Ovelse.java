@@ -55,7 +55,6 @@ public class Ovelse extends AppCompatActivity implements View.OnClickListener {
             System.out.println("button pressed");
             support.setData(currentSet - 1, number.getValue());
             currentSet++;
-//            list.getAdapter().notifyDataSetChanged();
             list.invalidateViews();
             list.refreshDrawableState();
 

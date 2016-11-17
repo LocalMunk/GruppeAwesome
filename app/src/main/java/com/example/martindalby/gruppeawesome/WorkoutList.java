@@ -21,13 +21,15 @@ public class WorkoutList extends AppCompatActivity implements AdapterView.OnItem
 
     TestDataOvelser data;
     WorkoutListAdapter adapter;
+    ListView listView;
+
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workoutlist);
         data = new TestDataOvelser();
         adapter = new WorkoutListAdapter(this);
 
-        ListView listView = (ListView) findViewById(R.id.Ovelselistview);
+        listView = (ListView) findViewById(R.id.Ovelselistview);
         listView.setOnItemClickListener(this);
         listView.setAdapter(adapter);
     }

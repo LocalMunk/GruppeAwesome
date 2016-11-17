@@ -40,11 +40,6 @@ public class TestDataOvelser {
         return workouts;
     }
 
-
-    public TestDataOvelser[] getdata() {
-        return data;
-    }
-
     public String getOverskrift() {
         return overskrift;
     }
