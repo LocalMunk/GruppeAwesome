@@ -26,7 +26,7 @@ public class OpskriftListe extends AppCompatActivity implements AdapterView.OnIt
         System.out.println("TyperTe4xt fået fra intent: " + typeText);
         adapter = new KostPlanAdapter();
 
-        ListView listView = new ListView(this);
+        listView = new ListView(this);
         listView.setOnItemClickListener(this);
         listView.setAdapter(adapter);
         setContentView(listView);

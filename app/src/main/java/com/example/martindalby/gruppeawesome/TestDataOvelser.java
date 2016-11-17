@@ -30,9 +30,8 @@ public class TestDataOvelser {
         };
     }
 
-    public TestDataOvelser(String overskrift, /*Image opskIcon,*/ int sets) {
+    public TestDataOvelser(String overskrift, int sets) {
         this.overskrift = overskrift;
-        //       this.opskIcon = opskIcon;
         this.sets = sets;
     }
 
