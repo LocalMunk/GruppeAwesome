@@ -22,10 +22,10 @@ public class TestDataWorkout {
     public TestDataWorkout(){
 
         workouts = new TestDataWorkout[]{
-                new TestDataWorkout("Workout A", "Træk-A:Ben,Ryk og biceps"),
-                new TestDataWorkout("Workout A", "Træk-A: Bryst,Skulder,Triceps & Mave "),
-                new TestDataWorkout("Workout B", "Træk-B. Ben,Ryk og biceps"),
-                new TestDataWorkout("Workout B","Træk-B. Ben,Ryk og biceps")
+                new TestDataWorkout("Workout A", "Træk-A: Ben,Ryg og Biceps"),
+                new TestDataWorkout("Workout A", "Træk-A: Bryst,Skulder,Triceps & Mave"),
+                new TestDataWorkout("Workout B", "Træk-B. Ben,Ryg og Biceps"),
+                new TestDataWorkout("Workout B", "Træk-B. Bryst,Skulder,Triceps & Mave")
 
         };
     }
