@@ -30,9 +30,14 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
         adapter2 = new ViewPagerAdapter2(getSupportFragmentManager());
         viewPager2.setAdapter(adapter2);
 
-        final TabLayout.Tab workout=tabLayout.newTab().setText("Workouts");
-        final TabLayout.Tab kostplan=tabLayout.newTab().setText("Kostplan");
+        final TabLayout.Tab workout=tabLayout.newTab();
+        final TabLayout.Tab kostplan=tabLayout.newTab();
 
+        //workout.setText("Workouts");
+        //kostplan.setText("Kostplan");
+
+        workout.setIcon(R.drawable.exerciseiconwhite);
+        kostplan.setIcon(R.drawable.foodicongrey);
 
         tabLayout.addTab(workout, 0);
         tabLayout.addTab(kostplan, 1);
@@ -52,12 +57,12 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
             public void onPageSelected(int position) {
                 switch (position) {
                     case 0:
-                        workout.setIcon(R.drawable.grafbb);
-                        kostplan.setIcon(R.drawable.grafbb);
+                        workout.setIcon(R.drawable.exerciseiconwhite);
+                        kostplan.setIcon(R.drawable.foodicongrey);
                         break;
                     case 1:
-                        workout.setIcon(R.drawable.pizzalistepic);
-                        kostplan.setIcon(R.drawable.pizzalistepic);
+                        workout.setIcon(R.drawable.exerciseicongrey);
+                        kostplan.setIcon(R.drawable.foodiconwhite);
                         break;
                 }
 
