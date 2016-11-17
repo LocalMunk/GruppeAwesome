@@ -93,26 +93,6 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
             }
         });
 
-        /*
-        viewPager = new ViewPager(this);
-        viewPager.setId(R.id.viewPager);
-        viewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager()));
-        viewPager.setPageTransformer(false,new ZoomOutPageTransformer());
-
-        PagerSlidingTabStrip slideStrip = new PagerSlidingTabStrip(this);
-        slideStrip.setViewPager(viewPager);
-
-        LinearLayout ll = new LinearLayout(this);
-        ll.setOrientation(LinearLayout.VERTICAL);
-        ll.addView(slideStrip);
-        ll.addView(viewPager);
-        ((LinearLayout.LayoutParams) viewPager.getLayoutParams()).weight = 1;
-        setContentView(ll);
-
-        setTitle("Body Book");
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        */
     }
 
 //    @Override hvad bliver der gjort her?
