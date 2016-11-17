@@ -11,10 +11,7 @@ public class TestDataWorkout {
     //her er data
 
 
-    private String [] morgenmad = {"Havregrød", "Omelet", "Cornflakes"};
-    private String [] frokost =   {"Rugbrød", "Rugbrød med pålæg", "Chili con carne"};
-    private String [] aften =     {"Lasagne", "Pizza", "Durum"};
-    private String [] snack =     {"Snickers", "Gulerod", "sand"};
+
     private TestDataWorkout[] workouts;
     private TestDataWorkout[] data;
     private String text;
@@ -25,9 +22,10 @@ public class TestDataWorkout {
     public TestDataWorkout(){
 
         workouts = new TestDataWorkout[]{
-                new TestDataWorkout("Workout A", "TrækA:Ben,Ryk og biceps"),
-                new TestDataWorkout("Workout A", "Snickers marathon"),
-                new TestDataWorkout("Workout B", "Æde en lagkage på 10mims"),
+                new TestDataWorkout("Workout A", "Træk-A:Ben,Ryk og biceps"),
+                new TestDataWorkout("Workout A", "Træk-A: Bryst,Skulder,Triceps & Mave "),
+                new TestDataWorkout("Workout B", "Træk-B. Ben,Ryk og biceps"),
+                new TestDataWorkout("Workout B","Træk-B. Ben,Ryk og biceps")
 
         };
     }
