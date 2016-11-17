@@ -11,7 +11,6 @@ public class TestDataMad {
     private TestDataMad[] frokost;
     private TestDataMad[] morgenmad;
     private TestDataMad[] snack;
-    private TestDataMad[] data;
     private String text;
     private String overskrift;
     private String beskrivelse;
@@ -25,7 +24,7 @@ public class TestDataMad {
                 new TestDataMad("Fisk", "Det er godt med fisk", R.drawable.pizzalistepic),
                 new TestDataMad("Æg", "Lidt af det gode", R.drawable.pizzalistepic),
                 new TestDataMad("Burger", "kød og kød og kød og kød...", R.drawable.pizzalistepic),
-                new TestDataMad("Salat", "Jk det er salat... med kød istedet for salat #Prot", R.drawable.pizzalistepic),
+                new TestDataMad("Salat", "Jk det er salat... med kød istedet for salat #Prot", R.drawable.pizzalistepic)
         };
         frokost = new TestDataMad[]{
                 new TestDataMad("Prot mad", "En god mad med masser af prot", R.drawable.pizzalistepic),
@@ -35,9 +34,9 @@ public class TestDataMad {
         };
         morgenmad = new TestDataMad[]{
                 new TestDataMad("Gode gryd", "God skål gryn med masser af prot! og ost", R.drawable.morgenmad),
-                new TestDataMad("Lækker æg!", "Æg er godt om morgenen! og sundt!", R.drawable.pizzalistepic),
-                new TestDataMad("Bajer juice", "Altid dejlig med en morgen bajr at starte dagen på!", R.drawable.pizzalistepic),
-                new TestDataMad("Sund mad", "Vil du være sund? spis det her", R.drawable.pizzalistepic)
+                new TestDataMad("Lækker æg!", "Æg er godt om morgenen! og sundt!", R.drawable.morgenmad),
+                new TestDataMad("Bajer juice", "Altid dejlig med en morgen bajr at starte dagen på!", R.drawable.morgenmad),
+                new TestDataMad("Sund mad", "Vil du være sund? spis det her", R.drawable.morgenmad)
         };
         snack = new TestDataMad[] {
                 new TestDataMad("Snickers self", "kan du lide sukker? spis snickers", R.drawable.morgenmad),
@@ -70,14 +69,8 @@ public class TestDataMad {
         return snack;
     }
 
-    public TestDataMad[] getdata() {return data;}
-
     public String getOverskrift() {
         return overskrift;
-    }
-
-    public void setOverskrift(String overskrift) {
-        this.overskrift = overskrift;
     }
 
     public String getBeskrivelse() {

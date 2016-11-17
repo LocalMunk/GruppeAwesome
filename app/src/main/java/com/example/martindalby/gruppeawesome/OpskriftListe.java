@@ -15,6 +15,7 @@ import android.widget.TextView;
 public class OpskriftListe extends AppCompatActivity implements AdapterView.OnItemClickListener{
 
     private TestDataMad data = new TestDataMad();
+    private OpskriftSupport os = new OpskriftSupport();
     private KostPlanAdapter adapter;
     private ListView listView;
     private String typeText;
@@ -45,20 +46,7 @@ public class OpskriftListe extends AppCompatActivity implements AdapterView.OnIt
         //Her afgøres længde på liste ud fra hvilken knap man trykker paa
         @Override
         public int getCount() {
-            int i =0;
-            if(typeText.equals("Morgenmad")) {
-                i = data.getMorgenmad().length;
-                System.out.println("Morgenmad længdre: " + i);
-            }else if (typeText.equals("Frokost")) {
-                i = data.getFrokost().length;
-                System.out.println("Frokost længdre: " + i);
-            }else if (typeText.equals("Aftensmad")) {
-                i = data.getAftensmad().length;
-                System.out.println("Aftensmad længdre: " + i);
-            }else if (typeText.equals("Snack")){
-                i = data.getSnack().length; //snack
-            }
-            return i;
+            return os.maaltidLaengde(data, typeText);
         }
         @Override
         public Object getItem(int position) {return null;} //bruges ikke
@@ -69,14 +57,7 @@ public class OpskriftListe extends AppCompatActivity implements AdapterView.OnIt
         public View getView(int position, View view, ViewGroup parent) {
             view = getLayoutInflater().inflate(R.layout.activity_opskrift_liste, null);
 
-            TextView overskrift = (TextView) view.findViewById(R.id.overskriftTV);
-            overskrift.setText(data.getAftensmad()[position].getOverskrift());
-
-            TextView beskrivelse = (TextView) view.findViewById(R.id.beskrivelseTV);
-            beskrivelse.setText(data.getAftensmad()[position].getBeskrivelse());
-
-            ImageView icon = (ImageView) view.findViewById(R.id.listeImg);
-            icon.setImageResource(R.drawable.pizzalistepic);
+            os.alternativListe(typeText, view, data, position);
 
             return view;
         }
