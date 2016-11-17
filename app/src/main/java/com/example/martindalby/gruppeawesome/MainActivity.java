@@ -8,10 +8,12 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity /*implements View.OnClickListener*/ {
 
+    private Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager viewPager2;
     private ViewPagerAdapter2 adapter2;
@@ -24,11 +26,13 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
+        toolbar = (Toolbar) findViewById(R.id.toolBar);
         tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         viewPager2 = (ViewPager) findViewById(R.id.viewPager2);
 
         adapter2 = new ViewPagerAdapter2(getSupportFragmentManager());
         viewPager2.setAdapter(adapter2);
+        setSupportActionBar(toolbar);
 
         final TabLayout.Tab workout=tabLayout.newTab();
         final TabLayout.Tab kostplan=tabLayout.newTab();
@@ -77,19 +81,15 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-
                 viewPager2.setCurrentItem(tab.getPosition());
-
             }
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
-
             }
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
-
             }
         });
 
