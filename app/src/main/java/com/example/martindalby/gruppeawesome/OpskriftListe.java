@@ -3,6 +3,7 @@ package com.example.martindalby.gruppeawesome;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -13,7 +14,7 @@ import android.widget.TextView;
 
 public class OpskriftListe extends AppCompatActivity implements AdapterView.OnItemClickListener{
 
-    private TestData data = new TestData();
+    private TestDataMad data = new TestDataMad();
     private KostPlanAdapter adapter;
     private ListView listView;
     private String typeText;
@@ -31,7 +32,6 @@ public class OpskriftListe extends AppCompatActivity implements AdapterView.OnIt
         listView.setAdapter(adapter);
         setContentView(listView);
     }
-
 
 
     @Override

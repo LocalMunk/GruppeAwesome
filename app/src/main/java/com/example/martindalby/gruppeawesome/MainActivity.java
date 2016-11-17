@@ -33,8 +33,8 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
         adapter2 = new ViewPagerAdapter2(getSupportFragmentManager());
         viewPager2.setAdapter(adapter2);
         setSupportActionBar(toolbar);
-
-        final TabLayout.Tab workout=tabLayout.newTab();
+        final TabLayout.Tab workout=tabLayout
+.newTab();
         final TabLayout.Tab kostplan=tabLayout.newTab();
 
         //workout.setText("Workouts");
@@ -42,6 +42,8 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
 
         workout.setIcon(R.drawable.exerciseiconwhite);
         kostplan.setIcon(R.drawable.foodicongrey);
+        //starter ikke med at sætte title til workouts??
+        toolbar.setTitle("Workouts");
 
         tabLayout.addTab(workout, 0);
         tabLayout.addTab(kostplan, 1);
@@ -63,10 +65,12 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
                     case 0:
                         workout.setIcon(R.drawable.exerciseiconwhite);
                         kostplan.setIcon(R.drawable.foodicongrey);
+                        toolbar.setTitle("Workouts");
                         break;
                     case 1:
                         workout.setIcon(R.drawable.exerciseicongrey);
                         kostplan.setIcon(R.drawable.foodiconwhite);
+                        toolbar.setTitle("Kostplan");
                         break;
                 }
 
