@@ -37,7 +37,7 @@ public class WorkoutList extends AppCompatActivity implements AdapterView.OnItem
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Intent i = new Intent(this, Ovelse.class);
         i.putExtra(data.getOvelser()[position].getOverskrift(), data.getOvelser()[position].getsets());
-        startActivity(i);
+//        startActivity(i);
     }
 
     public class WorkoutListAdapter extends BaseAdapter {
