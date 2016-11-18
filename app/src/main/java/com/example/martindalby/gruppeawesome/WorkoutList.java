@@ -41,8 +41,9 @@ public class WorkoutList extends AppCompatActivity implements AdapterView.OnItem
 
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Intent i = new Intent(this, Ovelse.class);
-        i.putExtra("title",ovelser[position]);
-        i.putExtra("sets",setsArray[position]);
+        i.putExtra("titles",ovelser);
+        i.putExtra("sets",setsArray);
+        i.putExtra("pos", position);
         startActivity(i);
     }
 

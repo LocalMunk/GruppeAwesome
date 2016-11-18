@@ -1,6 +1,7 @@
 package com.example.martindalby.gruppeawesome;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -25,10 +26,10 @@ public class Ovelse extends AppCompatActivity implements View.OnClickListener {
 
     NumberPicker number, weightPicker;
     OvelseSupport support;
-    Button videre;
+    Button videre, skip;
     int currentSet;
     ListView list;
-    TextView ExerciseName, setsText, weightText;
+    TextView ExerciseName;
     OvelseAdapter listadapt;
     GraphView graph;
 
@@ -40,7 +41,7 @@ public class Ovelse extends AppCompatActivity implements View.OnClickListener {
         for(int i = 0; i < getIntent().getIntExtra("sets", 4); i++){
             suppdata[i] = "Sæt " + (i+1) + ": ";
         }
-        support = new OvelseSupport(suppdata,getIntent().getIntExtra("sets", 4));
+        support = new OvelseSupport(suppdata,getIntent().getIntArrayExtra("sets")[getIntent().getIntExtra("pos",0)]);
 
         weightPicker = (NumberPicker) findViewById(R.id.weightPicker);
         weightPicker.setMinValue(50);
@@ -53,21 +54,20 @@ public class Ovelse extends AppCompatActivity implements View.OnClickListener {
         number.setValue(10);
         number.setOnClickListener(this);
 
-        setsText = (TextView) findViewById(R.id.textReps);
-        weightText = (TextView) findViewById(R.id.textWeights);
-        setsText.setText("Vælg gentagelser:");
-        weightText.setText("Vælg vægt:");
-
-        videre = (Button) findViewById(R.id.viderebutton);
+        videre = (Button) findViewById(R.id.doneButton);
         videre.setOnClickListener(this);
 
-        list = (ListView) findViewById(R.id.listview);
+        skip = (Button) findViewById(R.id.skipbutton);
+        skip.setOnClickListener(this);
+        skip.setText("Næste Øvelse");
+
+        list = (ListView) findViewById(R.id.list);
         listadapt = new OvelseAdapter(this);
         list.setAdapter(listadapt);
 
         ExerciseName = (TextView) findViewById(R.id.ExerciseName);
         ExerciseName.setTextSize(20);
-        ExerciseName.setText(getIntent().getStringExtra("title"));
+        ExerciseName.setText(getIntent().getStringArrayExtra("titles")[getIntent().getIntExtra("pos",0)]);
 
         graph = (GraphView) findViewById(R.id.graph);
         LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[] {
@@ -90,6 +90,14 @@ public class Ovelse extends AppCompatActivity implements View.OnClickListener {
             list.invalidateViews();
             list.refreshDrawableState();
 
+        }
+        if(v == skip){
+            Intent i = new Intent(this, Ovelse.class);
+            i.putExtra("titles",getIntent().getStringArrayExtra("titles"));
+            i.putExtra("sets",getIntent().getIntArrayExtra("sets"));
+            i.putExtra("pos", getIntent().getIntExtra("pos",0)+1);
+            startActivity(i);
+            finish();
         }
     }
 

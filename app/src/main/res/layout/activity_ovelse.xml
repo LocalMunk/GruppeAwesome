@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,79 +7,88 @@
 
     <com.jjoe64.graphview.GraphView
         android:layout_width="match_parent"
-        android:layout_height="186dp"
+        android:layout_height="250dp"
         app:srcCompat="@drawable/grafbb"
-        android:id="@+id/graph" />
+        android:id="@+id/graph" /><![CDATA[
+
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.08">
+
+
+
+
+
+
+    ]]>
 
     <TextView
         android:text="TextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/ExerciseName" />
+        android:id="@+id/ExerciseName"
+        android:layout_below="@+id/graph"/>
 
-    <RelativeLayout
+    <ListView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="0.08">
+        android:layout_height="100dp"
+        android:layout_below="@+id/ExerciseName"
+        android:layout_alignParentLeft="true"
+        android:id="@+id/list"
+        android:layout_alignParentStart="true" />
 
-        <ListView
-            android:layout_width="match_parent"
-            android:layout_height="94dp"
-            android:id="@+id/listview"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="18dp" />
+    <NumberPicker
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/repsPicker"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
-        <NumberPicker
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/repsPicker"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:id="@+id/weightPicker"
-            android:layout_toRightOf="@+id/viderebutton"
-            android:layout_toEndOf="@+id/viderebutton" />
+    <NumberPicker
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/weightPicker"
+        android:layout_alignBaseline="@+id/repsPicker"
+        android:layout_alignBottom="@+id/repsPicker"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
-        <NumberPicker
-            android:layout_width="83dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/repsPicker"
-            android:layout_marginTop="56dp"
-            android:layout_below="@+id/listview"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_toLeftOf="@+id/viderebutton"
-            android:layout_toStartOf="@+id/viderebutton" />
+    <TextView
+        android:text="Gentagelser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView"
+        android:layout_below="@+id/list"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
 
-        <Button
-            android:text="Videre"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/viderebutton"
-            android:layout_alignBaseline="@+id/repsPicker"
-            android:layout_alignBottom="@+id/repsPicker"
-            android:layout_centerHorizontal="true" />
+    <TextView
+        android:text="Vægt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textView"
+        android:layout_alignLeft="@+id/weightPicker"
+        android:layout_alignStart="@+id/weightPicker"
+        android:id="@+id/textView4" />
 
-        <TextView
-            android:text="TextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/textReps"
-            android:layout_alignLeft="@+id/weightPicker"
-            android:layout_alignStart="@+id/weightPicker"
-            android:id="@+id/textWeights" />
+    <Button
+        android:text="Skip øvelse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/skipbutton"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="11dp" />
 
-        <TextView
-            android:text="TextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="33dp"
-            android:id="@+id/textReps"
-            android:layout_below="@+id/listview"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+    <Button
+        android:text="Færdig"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/doneButton"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="70dp" />
 
-    </RelativeLayout>
-
-</LinearLayout>
+</RelativeLayout>
