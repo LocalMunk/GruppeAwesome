@@ -13,6 +13,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.series.DataPoint;
+import com.jjoe64.graphview.series.LineGraphSeries;
 
 
 /**
@@ -39,27 +41,43 @@ public class Ovelse extends AppCompatActivity implements View.OnClickListener {
             suppdata[i] = "Sæt " + (i+1) + ": ";
         }
         support = new OvelseSupport(suppdata,getIntent().getIntExtra("sets", 4));
+
         weightPicker = (NumberPicker) findViewById(R.id.weightPicker);
         weightPicker.setMinValue(50);
         weightPicker.setMaxValue(400);
         weightPicker.setValue(100);
+
         number = (NumberPicker) findViewById(R.id.repsPicker);
         number.setMinValue(1);
         number.setMaxValue(30);
         number.setValue(10);
         number.setOnClickListener(this);
+
         setsText = (TextView) findViewById(R.id.textReps);
         weightText = (TextView) findViewById(R.id.textWeights);
         setsText.setText("Vælg gentagelser:");
         weightText.setText("Vælg vægt:");
+
         videre = (Button) findViewById(R.id.viderebutton);
         videre.setOnClickListener(this);
+
         list = (ListView) findViewById(R.id.listview);
         listadapt = new OvelseAdapter(this);
         list.setAdapter(listadapt);
+
         ExerciseName = (TextView) findViewById(R.id.ExerciseName);
         ExerciseName.setTextSize(20);
         ExerciseName.setText(getIntent().getStringExtra("title"));
+
+        graph = (GraphView) findViewById(R.id.graph);
+        LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[] {
+                new DataPoint(0, 1),
+                new DataPoint(1, 5),
+                new DataPoint(2, 3),
+                new DataPoint(3, 2),
+                new DataPoint(4, 6)
+        });
+        graph.addSeries(series);
 
     }
 

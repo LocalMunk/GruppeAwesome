@@ -1,5 +1,8 @@
 package com.example.martindalby.gruppeawesome;
 
+import com.jjoe64.graphview.series.DataPointInterface;
+import com.jjoe64.graphview.series.LineGraphSeries;
+
 import java.util.ArrayList;
 
 /**
@@ -9,22 +12,22 @@ import java.util.ArrayList;
 public class Graf {
 
 
-    public ArrayList<DataPoint> list;
+    public LineGraphSeries<DataPoint> series;
 
-    public Graf(ArrayList<DataPoint> list){
-        this.list = list;
+    public Graf(LineGraphSeries<DataPoint> series){
+        this.series = series;
     }
 
     public void addDataPoint(int x,int y){
+
         DataPoint z = new DataPoint(x,y);
-        list.add(z);
     }
 
-    public ArrayList<DataPoint> getList(){
-        return list;
+    public LineGraphSeries<DataPoint> getList(){
+        return series;
     }
 
-    public class DataPoint{
+    public class DataPoint implements DataPointInterface {
         int x, y;
 
         public DataPoint(int x, int y){
@@ -36,6 +39,16 @@ public class Graf {
 
         public DataPoint getDataPoint(){
             return this;
+        }
+
+        @Override
+        public double getX() {
+            return 0;
+        }
+
+        @Override
+        public double getY() {
+            return 0;
         }
     }
 }
