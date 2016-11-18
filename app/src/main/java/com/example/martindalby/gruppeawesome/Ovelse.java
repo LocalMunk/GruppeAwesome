@@ -56,6 +56,7 @@ public class Ovelse extends AppCompatActivity implements View.OnClickListener {
 
         videre = (Button) findViewById(R.id.doneButton);
         videre.setOnClickListener(this);
+        videre.setText("Færdiggør Sæt");
 
         skip = (Button) findViewById(R.id.skipbutton);
         skip.setOnClickListener(this);
