@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +25,7 @@ public class WorkoutList extends AppCompatActivity implements AdapterView.OnItem
     int[] setsArray;
     WorkoutListAdapter adapter;
     ListView listView;
+    Toolbar toolbar;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +39,10 @@ public class WorkoutList extends AppCompatActivity implements AdapterView.OnItem
         listView.setOnItemClickListener(this);
         listView.setAdapter(adapter);
         System.out.println("1 check");
+
+        toolbar = (Toolbar) findViewById(R.id.toolBar);
+        toolbar.setTitle(getIntent().getStringExtra("title"));
+
     }
 
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
