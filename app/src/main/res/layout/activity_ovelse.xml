@@ -22,26 +22,6 @@
         android:layout_height="match_parent"
         android:layout_weight="0.08">
 
-        <NumberPicker
-            android:layout_width="83dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/number"
-            android:layout_marginTop="106dp"
-            android:layout_below="@+id/listView"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
-
-        <Button
-            android:text="Videre"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/viderebutton"
-            android:layout_below="@+id/number"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="35dp" />
-
         <ListView
             android:layout_width="match_parent"
             android:layout_height="94dp"
@@ -50,6 +30,55 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_marginTop="18dp" />
+
+        <NumberPicker
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/repsPicker"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:id="@+id/weightPicker"
+            android:layout_toRightOf="@+id/viderebutton"
+            android:layout_toEndOf="@+id/viderebutton" />
+
+        <NumberPicker
+            android:layout_width="83dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/repsPicker"
+            android:layout_marginTop="56dp"
+            android:layout_below="@+id/listview"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_toLeftOf="@+id/viderebutton"
+            android:layout_toStartOf="@+id/viderebutton" />
+
+        <Button
+            android:text="Videre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/viderebutton"
+            android:layout_alignBaseline="@+id/repsPicker"
+            android:layout_alignBottom="@+id/repsPicker"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/textReps"
+            android:layout_alignLeft="@+id/weightPicker"
+            android:layout_alignStart="@+id/weightPicker"
+            android:id="@+id/textWeights" />
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="33dp"
+            android:id="@+id/textReps"
+            android:layout_below="@+id/listview"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
     </RelativeLayout>
 

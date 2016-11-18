@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.NumberPicker;
 import android.view.View;
@@ -20,12 +19,12 @@ import android.widget.TextView;
 
 public class Ovelse extends AppCompatActivity implements View.OnClickListener {
 
-    NumberPicker number;
+    NumberPicker number, weightPicker;
     OvelseSupport support;
     Button videre;
     int currentSet;
     ListView list;
-    TextView ExerciseName;
+    TextView ExerciseName, setsText, weightText;
     OvelseAdapter listadapt;
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -36,11 +35,19 @@ public class Ovelse extends AppCompatActivity implements View.OnClickListener {
             suppdata[i] = "Sæt " + (i+1) + ": ";
         }
         support = new OvelseSupport(suppdata,getIntent().getIntExtra("sets", 4));
-        number = (NumberPicker) findViewById(R.id.number);
+        weightPicker = (NumberPicker) findViewById(R.id.weightPicker);
+        weightPicker.setMinValue(50);
+        weightPicker.setMaxValue(400);
+        weightPicker.setValue(100);
+        number = (NumberPicker) findViewById(R.id.repsPicker);
         number.setMinValue(1);
         number.setMaxValue(30);
         number.setValue(10);
         number.setOnClickListener(this);
+        setsText = (TextView) findViewById(R.id.textReps);
+        weightText = (TextView) findViewById(R.id.textWeights);
+        setsText.setText("Vælg gentagelser:");
+        weightText.setText("Vælg vægt:");
         videre = (Button) findViewById(R.id.viderebutton);
         videre.setOnClickListener(this);
         list = (ListView) findViewById(R.id.listview);
@@ -56,7 +63,7 @@ public class Ovelse extends AppCompatActivity implements View.OnClickListener {
     public void onClick(View v) {
         if(v == videre){
             System.out.println("button pressed");
-            support.setData(currentSet - 1, number.getValue());
+            support.setData(currentSet - 1, number.getValue(), weightPicker.getValue());
             currentSet++;
             list.invalidateViews();
             list.refreshDrawableState();

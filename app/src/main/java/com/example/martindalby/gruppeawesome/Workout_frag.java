@@ -22,7 +22,9 @@ public class Workout_frag extends Fragment implements AdapterView.OnItemClickLis
 
     private ImageView graf;
     private Button work1, work2;
-    private TestDataWorkout testdata;
+    private TestDataWorkout wdata;
+    private TestDataOvelser odata;
+
 
     private TextView virk;
 
@@ -30,10 +32,11 @@ public class Workout_frag extends Fragment implements AdapterView.OnItemClickLis
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rod = inflater.inflate(R.layout.workout_knapper, container, false);
         int[] i = {R.drawable.pizzalistepic, R.drawable.grafbb};
-        testdata = new TestDataWorkout();
+        wdata = new TestDataWorkout();
+        odata = new TestDataOvelser();
         graf = (ImageView) rod.findViewById(R.id.grafWorkout);
 
-        WorkoutAdapter adapter = new WorkoutAdapter(getActivity(), testdata.getdata());
+        WorkoutAdapter adapter = new WorkoutAdapter(getActivity(), wdata.getWorkouts());
 
         ListView workoutlist = (ListView) rod.findViewById(R.id.workoutList);
         workoutlist.setOnItemClickListener(this);
@@ -45,6 +48,7 @@ public class Workout_frag extends Fragment implements AdapterView.OnItemClickLis
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Intent i = new Intent(getActivity(), WorkoutList.class);
+        i.putExtra("workout", position);
         startActivity(i);
 
     }
@@ -66,7 +70,7 @@ public class Workout_frag extends Fragment implements AdapterView.OnItemClickLis
 
         @Override
         public int getCount() {
-            return testdata.getWorkouts().length;
+            return wdata.getWorkouts().length;
         }
         @Override
         public Object getItem(int position) {
@@ -82,10 +86,10 @@ public class Workout_frag extends Fragment implements AdapterView.OnItemClickLis
 
 
             TextView workoutoverskrift = (TextView) view.findViewById(R.id.WorkoutOverskrift);
-            workoutoverskrift.setText(testdata.getWorkouts()[position].getOverskrift());
+            workoutoverskrift.setText(wdata.getWorkouts()[position].getOverskrift());
 
             TextView workoutbeskrivelser = ( TextView) view.findViewById(R.id.WorkoutBeskrivelse);
-            workoutbeskrivelser.setText(testdata.getWorkouts()[position].getBeskrivelse());
+            workoutbeskrivelser.setText(wdata.getWorkouts()[position].getBeskrivelse());
 
             System.out.println(workoutoverskrift.getId());
 

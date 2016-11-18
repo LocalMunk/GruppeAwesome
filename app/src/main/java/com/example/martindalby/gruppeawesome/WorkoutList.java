@@ -19,16 +19,20 @@ import android.widget.TextView;
 
 public class WorkoutList extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
-    TestDataOvelser data;
+    TestDataWorkout wdata;
+    String[] ovelser;
+    int[] setsArray;
     WorkoutListAdapter adapter;
     ListView listView;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workoutlist);
-        data = new TestDataOvelser();
+        wdata = new TestDataWorkout();
         adapter = new WorkoutListAdapter(this);
-
+        int i = getIntent().getIntExtra("workout", 0);
+        ovelser = wdata.getOdataOverskrift(i);
+        setsArray = wdata.getOdataSets(i);
         listView = (ListView) findViewById(R.id.Ovelselistview);
         listView.setOnItemClickListener(this);
         listView.setAdapter(adapter);
@@ -37,8 +41,8 @@ public class WorkoutList extends AppCompatActivity implements AdapterView.OnItem
 
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Intent i = new Intent(this, Ovelse.class);
-        i.putExtra("title",data.getOvelser()[position].getOverskrift());
-        i.putExtra("sets",data.getOvelser()[position].getsets());
+        i.putExtra("title",ovelser[position]);
+        i.putExtra("sets",setsArray[position]);
         startActivity(i);
     }
 
@@ -59,7 +63,7 @@ public class WorkoutList extends AppCompatActivity implements AdapterView.OnItem
         //Her afgøres længde på liste ud fra hvilken knap man trykker paa
         @Override
         public int getCount() {
-            return data.getOvelser().length;
+            return ovelser.length;
         }
 
         @Override
@@ -77,10 +81,10 @@ public class WorkoutList extends AppCompatActivity implements AdapterView.OnItem
             view = inflter.inflate(R.layout.workoutlist_list, null);
 
             TextView exerciseName = (TextView) view.findViewById(R.id.exercisename);
-            exerciseName.setText(data.getOvelser()[position].getOverskrift());
+            exerciseName.setText(ovelser[position]);
 
             TextView sets = (TextView) view.findViewById(R.id.setsview);
-            sets.setText(data.getOvelser()[position].getsets() + " sets");
+            sets.setText(setsArray[position] + " sets");
 
             ImageView img = (ImageView) view.findViewById(R.id.ovelsebutton);
             return view;

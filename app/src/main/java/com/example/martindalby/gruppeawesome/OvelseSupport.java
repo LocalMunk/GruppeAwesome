@@ -18,8 +18,8 @@ public class OvelseSupport {
         return data[x];
     }
 
-    public void setData(int dataset, int reps){
+    public void setData(int dataset, int reps, int weight){
         int x = dataset+1;
-        data[dataset] = "Sæt " + x + ": " + reps + " gentagelser";
+        data[dataset] = "Sæt " + x + ": " + reps + " gentagelser, vægt: " + weight;
     }
 }
