@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 public class Graf {
 
+
     public ArrayList<DataPoint> list;
 
     public Graf(ArrayList<DataPoint> list){

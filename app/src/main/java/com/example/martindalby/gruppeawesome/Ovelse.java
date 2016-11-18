@@ -12,6 +12,8 @@ import android.widget.NumberPicker;
 import android.view.View;
 import android.widget.TextView;
 
+import com.jjoe64.graphview.GraphView;
+
 
 /**
  * Created by Martin Dalby on 14-11-2016.
@@ -26,6 +28,8 @@ public class Ovelse extends AppCompatActivity implements View.OnClickListener {
     ListView list;
     TextView ExerciseName, setsText, weightText;
     OvelseAdapter listadapt;
+    GraphView graph;
+
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ovelse);
