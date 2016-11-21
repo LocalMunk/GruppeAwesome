@@ -43,7 +43,7 @@ public class WorkoutList extends AppCompatActivity implements AdapterView.OnItem
 
         toolbar = (Toolbar) findViewById(R.id.toolBar);
         toolbar.setTitle(getIntent().getStringExtra("title"));
-        toolbar.setNavigationIcon(R.drawable.treedots);
+        toolbar.setNavigationIcon(R.drawable.icaddwhite);
 
     }
 
