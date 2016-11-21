@@ -3,19 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="1">
+    android:weightSum="2">
+
+
+
 
     <com.jjoe64.graphview.GraphView
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="0dp"
+        android:layout_weight="1  "
         app:srcCompat="@drawable/grafbb"
         android:id="@+id/graph"></com.jjoe64.graphview.GraphView>
 
     <ListView
         android:id="@+id/workoutList"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="0.24" />
+        android:layout_height="0dp"
+        android:layout_weight="1  " />
 
 
 </LinearLayout>

@@ -1,31 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:weightSum="1"
+    android:background="@drawable/backgroud_border"
+    android:layout_marginTop="5dp"
+    android:layout_marginLeft="15dp"
+    android:layout_marginRight="15dp"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp"
 
-<ImageView
-    android:id="@+id/workoutImg"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content" />
 
-    <TextView
-        android:text="WorkoutOverskrift"
-        android:textSize="30dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/WorkoutOverskrift"
-        android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/listeImg"
-        android:layout_toEndOf="@+id/listeImg" />
+    >
+
+
 
     <TextView
-        android:text="Workoutbeskrivelse"
-        android:textSize="18dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/WorkoutBeskrivelse"
-        android:layout_below="@+id/overskriftTV"
-        android:layout_toRightOf="@+id/listeImg" />
+            android:text="WorkoutOverskrift"
+            android:textSize="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/WorkoutOverskrift"
+            android:layout_marginTop="10dp"
+             />
+
+        <TextView
+            android:text="Workoutbeskrivelse"
+            android:textSize="18dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/WorkoutBeskrivelse"
+            android:layout_marginLeft="34dp"
+            android:layout_marginStart="34dp"
+
+             />
+
+
 
 
 </LinearLayout>

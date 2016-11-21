@@ -122,7 +122,7 @@ public class Workout_frag extends Fragment implements AdapterView.OnItemClickLis
 
             System.out.println(workoutoverskrift.getId());
 
-            ImageView icon = (ImageView) view.findViewById(R.id.workoutImg);
+
             return view;
         }
 

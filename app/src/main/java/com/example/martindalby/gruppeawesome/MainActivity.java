@@ -9,6 +9,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity /*implements View.OnClickListener*/ {
@@ -26,7 +27,9 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
+
         toolbar = (Toolbar) findViewById(R.id.toolBar);
+
         tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         viewPager2 = (ViewPager) findViewById(R.id.viewPager2);
 
@@ -58,6 +61,9 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
             }
+
+
+
 
             @Override
             public void onPageSelected(int position) {
@@ -145,5 +151,25 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
         public int getCount() {
             return 2;
         }
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+
+    {    if(item.getItemId() == R.id.action_plus){
+
+
+
+
+    }
+        return true;
     }
 }
