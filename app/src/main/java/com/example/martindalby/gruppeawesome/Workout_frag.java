@@ -20,6 +20,9 @@ import com.jjoe64.graphview.ValueDependentColor;
 import com.jjoe64.graphview.series.BarGraphSeries;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
+import com.jjoe64.graphview.GridLabelRenderer;
+
+import static android.R.attr.x;
 
 /**
  * Created by frederik on 07-11-2016.
@@ -46,11 +49,16 @@ public class Workout_frag extends Fragment implements AdapterView.OnItemClickLis
                 new DataPoint(1, 5),
                 new DataPoint(2, 3),
                 new DataPoint(3, 2),
-                new DataPoint(4, 6)
+                new DataPoint(4,6)
         });
         graph.addSeries(series);
         // styling
-        series.setSpacing(50);
+
+        series.setSpacing(10);
+        series.setDataWidth(0.5);
+        graph.getGridLabelRenderer().setHorizontalAxisTitle("Uge");
+        graph.getGridLabelRenderer().setVerticalAxisTitle("Træningsdage");
+
         // draw values on top
         series.setDrawValuesOnTop(true);
         series.setValuesOnTopColor(Color.RED);
