@@ -14,6 +14,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Button;
 /**
  * Created by Martin Dalby on 17-11-2016.
  */
@@ -26,6 +27,7 @@ public class WorkoutList extends AppCompatActivity implements AdapterView.OnItem
     TestDataWorkout wdata;
     ListView listView;
     Toolbar toolbar;
+    Button add;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
