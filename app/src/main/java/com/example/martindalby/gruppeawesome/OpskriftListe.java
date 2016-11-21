@@ -75,5 +75,4 @@ public class OpskriftListe extends AppCompatActivity implements AdapterView.OnIt
         }
 
     }
-
 }
