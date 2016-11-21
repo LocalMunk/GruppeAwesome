@@ -93,12 +93,17 @@ public class Ovelse extends AppCompatActivity implements View.OnClickListener {
 
         }
         if(v == skip){
-            Intent i = new Intent(this, Ovelse.class);
-            i.putExtra("titles",getIntent().getStringArrayExtra("titles"));
-            i.putExtra("sets",getIntent().getIntArrayExtra("sets"));
-            i.putExtra("pos", getIntent().getIntExtra("pos",0)+1);
-            startActivity(i);
-            finish();
+            if(getIntent().getIntExtra("pos",0) < getIntent().getStringArrayExtra("titles").length -1) {
+                Intent i = new Intent(this, Ovelse.class);
+                i.putExtra("titles", getIntent().getStringArrayExtra("titles"));
+                i.putExtra("sets", getIntent().getIntArrayExtra("sets"));
+                i.putExtra("pos", getIntent().getIntExtra("pos", 0) + 1);
+                startActivity(i);
+                finish();
+            }
+            else{
+                finish();
+            }
         }
     }
 
