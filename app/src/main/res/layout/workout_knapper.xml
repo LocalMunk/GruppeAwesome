@@ -5,12 +5,11 @@
     android:layout_height="match_parent"
     android:weightSum="1">
 
-    <ImageView
+    <com.jjoe64.graphview.GraphView
         android:layout_width="match_parent"
-        android:layout_height="220dp"
+        android:layout_height="250dp"
         app:srcCompat="@drawable/grafbb"
-        android:id="@+id/grafWorkout"
-        android:layout_weight="0.24" />
+        android:id="@+id/graph"></com.jjoe64.graphview.GraphView>
 
     <ListView
         android:id="@+id/workoutList"

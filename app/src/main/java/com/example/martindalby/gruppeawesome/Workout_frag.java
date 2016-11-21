@@ -2,6 +2,7 @@ package com.example.martindalby.gruppeawesome;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -14,13 +15,18 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.BaseAdapter;
 
+import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.ValueDependentColor;
+import com.jjoe64.graphview.series.DataPoint;
+import com.jjoe64.graphview.series.LineGraphSeries;
+
 /**
  * Created by frederik on 07-11-2016.
  */
 
 public class Workout_frag extends Fragment implements AdapterView.OnItemClickListener {
 
-    private ImageView graf;
+    GraphView graph;
     private Button work1, work2;
     private TestDataWorkout wdata;
     private TestDataOvelser odata;
@@ -34,7 +40,17 @@ public class Workout_frag extends Fragment implements AdapterView.OnItemClickLis
         int[] i = {R.drawable.pizzalistepic, R.drawable.grafbb};
         wdata = new TestDataWorkout();
         odata = new TestDataOvelser();
-        graf = (ImageView) rod.findViewById(R.id.grafWorkout);
+
+        graph = (GraphView) rod.findViewById(R.id.graph);
+        LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[] {
+                new DataPoint(0, 1),
+                new DataPoint(1, 5),
+                new DataPoint(2, 3),
+                new DataPoint(3, 2),
+                new DataPoint(4, 6)
+        });
+        graph.addSeries(series);
+
 
         WorkoutAdapter adapter = new WorkoutAdapter(getActivity(), wdata.getWorkouts());
 

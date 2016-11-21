@@ -9,19 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="250dp"
         app:srcCompat="@drawable/grafbb"
-        android:id="@+id/graph" /><![CDATA[
-
-
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="0.08">
-
-
-
-
-
-
-    ]]>
+        android:id="@+id/graph"></com.jjoe64.graphview.GraphView>
 
     <TextView
         android:text="TextView"
