@@ -1,4 +1,6 @@
 package com.example.martindalby.gruppeawesome;
+import android.os.Parcelable;
+
 import junit.framework.Test;
 
 /**
@@ -17,6 +19,11 @@ public class TestDataWorkout {
     private String overskrift;
     private String beskrivelse;
     private int[] ExerciseIDs;
+
+
+    public void describeContents() {
+
+    }
 
     public TestDataWorkout(){
 

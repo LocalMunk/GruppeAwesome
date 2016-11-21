@@ -20,10 +20,10 @@ import android.widget.TextView;
 
 public class WorkoutList extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
-    TestDataWorkout wdata;
     String[] ovelser;
     int[] setsArray;
     WorkoutListAdapter adapter;
+    TestDataWorkout wdata;
     ListView listView;
     Toolbar toolbar;
 

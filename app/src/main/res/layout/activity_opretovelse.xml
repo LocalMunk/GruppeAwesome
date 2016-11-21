@@ -22,7 +22,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="63dp"
-        android:id="@+id/opret-getnavn"
+        android:id="@+id/opretgetnavn"
         android:layout_below="@+id/toolbar2"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
@@ -32,20 +32,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="40dp"
-        android:id="@+id/opretovelse-navn"
-        android:layout_alignBottom="@+id/opret-getnavn"
-        android:layout_alignLeft="@+id/opret-getnavn"
-        android:layout_alignStart="@+id/opret-getnavn" />
+        android:id="@+id/opretovelsenavn"
+        android:layout_alignBottom="@+id/opretgetnavn"
+        android:layout_alignLeft="@+id/opretgetnavn"
+        android:layout_alignStart="@+id/opretgetnavn" />
 
     <TextView
         android:text="sets"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/opret-getnavn"
-        android:layout_alignLeft="@+id/opret-getnavn"
-        android:layout_alignStart="@+id/opret-getnavn"
+        android:layout_below="@+id/opretgetnavn"
+        android:layout_alignLeft="@+id/opretgetnavn"
+        android:layout_alignStart="@+id/opretgetnavn"
         android:layout_marginTop="53dp"
-        android:id="@+id/opretovelse-sets" />
+        android:id="@+id/opretovelsesets" />
 
     <Button
         android:text="Opret Øvelse"
@@ -54,7 +54,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="26dp"
-        android:id="@+id/opretovelse-done" />
+        android:id="@+id/opretovelsedone" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -62,8 +62,8 @@
         android:inputType="textPersonName"
         android:text="sets"
         android:ems="10"
-        android:id="@+id/opret-getsets"
-        android:layout_below="@+id/opretovelse-sets"
-        android:layout_alignLeft="@+id/opretovelse-sets"
-        android:layout_alignStart="@+id/opretovelse-sets" />
+        android:id="@+id/opretgetsets"
+        android:layout_below="@+id/opretovelsesets"
+        android:layout_alignLeft="@+id/opretovelsesets"
+        android:layout_alignStart="@+id/opretovelsesets" />
 </RelativeLayout>

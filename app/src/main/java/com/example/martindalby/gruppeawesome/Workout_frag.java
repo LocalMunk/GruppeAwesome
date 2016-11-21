@@ -28,8 +28,7 @@ public class Workout_frag extends Fragment implements AdapterView.OnItemClickLis
 
     GraphView graph;
     private Button work1, work2;
-    private TestDataWorkout wdata;
-    private TestDataOvelser odata;
+    private static TestDataWorkout wdata;
 
 
     private TextView virk;
@@ -39,7 +38,6 @@ public class Workout_frag extends Fragment implements AdapterView.OnItemClickLis
         View rod = inflater.inflate(R.layout.workout_knapper, container, false);
         int[] i = {R.drawable.pizzalistepic, R.drawable.grafbb};
         wdata = new TestDataWorkout();
-        odata = new TestDataOvelser();
 
         graph = (GraphView) rod.findViewById(R.id.graph);
         LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[] {

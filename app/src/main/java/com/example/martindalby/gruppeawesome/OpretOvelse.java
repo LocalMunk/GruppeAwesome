@@ -19,9 +19,9 @@ public class OpretOvelse extends AppCompatActivity implements View.OnClickListen
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_opretovelse);
-        navn = (EditText) findViewById(R.id.opret_getnavn);
-        sets = (EditText) findViewById(R.id.opret_getsets);
-        done = (Button) findViewById(R.id.opretovelse_done);
+        navn = (EditText) findViewById(R.id.opretgetnavn);
+        sets = (EditText) findViewById(R.id.opretgetsets);
+        done = (Button) findViewById(R.id.opretovelsedone);
         done.setOnClickListener(this);
     }
 
@@ -29,5 +29,6 @@ public class OpretOvelse extends AppCompatActivity implements View.OnClickListen
         if(v == done){
 
         }
+
     }
 }
