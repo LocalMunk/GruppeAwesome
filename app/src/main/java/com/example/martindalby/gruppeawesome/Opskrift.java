@@ -1,16 +1,12 @@
 package com.example.martindalby.gruppeawesome;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TableLayout;
 import android.widget.TextView;
-import android.widget.ListView;
 
 
 /**
@@ -19,10 +15,10 @@ import android.widget.ListView;
 
 public class Opskrift  extends AppCompatActivity implements View.OnClickListener{
 
-    TextView retNavn, fremGang, ingredienser;
+    TextView retNavn, fremGang, ingrediensTV;
     ImageView retBillede;
     Button alternativ;
-    String typeText;
+    String typeText, overskrift, beskrivelse, ingred;
     Toolbar toolbar;
 
     public void onCreate(Bundle savedInstanceState){
@@ -30,27 +26,27 @@ public class Opskrift  extends AppCompatActivity implements View.OnClickListener
         setContentView(R.layout.activity_opskrift);
 
         typeText = getIntent().getStringExtra("type");
+        overskrift = getIntent().getStringExtra("overskrift");
+        beskrivelse = getIntent().getStringExtra("beskrivelse");
+        ingred = getIntent().getStringExtra("ingrediens");
 
         toolbar = (Toolbar) findViewById(R.id.toolBar);
         toolbar.setTitle(typeText);
 
         retNavn = (TextView) findViewById(R.id.retNavn);
-        retNavn.setText("Type: " + typeText);
+        retNavn.setText(overskrift + " Type: " + typeText);
 
         retBillede = (ImageView) findViewById(R.id.retImg);
         retBillede.setImageResource(R.drawable.morgenmad);
 
-        ingredienser = (TextView) findViewById(R.id.retIngrediens);
-        ingredienser.setText("1 stk. ost \n2 bajer \n100g kød \n\n200g prot");
+        ingrediensTV = (TextView) findViewById(R.id.retIngrediens);
+        ingrediensTV.setText(ingred);
 
         alternativ = (Button) findViewById(R.id.alternativ);
         alternativ.setText("Alternativ");
 
         fremGang = (TextView) findViewById(R.id.fremMaa);
-        fremGang.setText("Selvom det er nemt, så går vi ikke på kompromis med smag eller sundhed i " +
-                "vores hverdagsmad. Her i dette tema har vi samlet en masse opskrifter på sund og " +
-                "nem aftensmad til dig - det er fx aftensmad på 20 min, retter med svinekød, dem " +
-                "med kylling, nogle med oksekød og så lige nogle med fisk.");
+        fremGang.setText(beskrivelse);
 
         alternativ.setOnClickListener(this);
     }

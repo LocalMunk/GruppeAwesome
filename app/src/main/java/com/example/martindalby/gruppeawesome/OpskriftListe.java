@@ -12,13 +12,16 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import junit.framework.Test;
+
 public class OpskriftListe extends AppCompatActivity implements AdapterView.OnItemClickListener{
 
     private TestDataMad data = new TestDataMad();
+    private TestDataMad randomRet;
     private OpskriftSupport os = new OpskriftSupport();
     private KostPlanAdapter adapter;
     private ListView listView;
-    private String typeText;
+    private String typeText, send1, send2, send3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,20 +35,22 @@ public class OpskriftListe extends AppCompatActivity implements AdapterView.OnIt
         listView.setOnItemClickListener(this);
         listView.setAdapter(adapter);
         setContentView(listView);
+        randomRet = os.randomRet(typeText, data);
+        send1 = randomRet.getOverskrift();
+        send2 = randomRet.getBeskrivelse();
+        send3 = randomRet.getIngredienser();
         test();
     }
 
     public void test() {
         Intent i = new Intent(this, Opskrift.class);
+        i.putExtra("overskrift", send1)
+                .putExtra("beskrivelse", send2)
+                .putExtra("ingrediens", send3)
+                .putExtra("type", typeText);
         startActivity(i);
     }
 
-    public TestDataMad randomRet (String type) {
-
-
-
-        return null;
-    }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

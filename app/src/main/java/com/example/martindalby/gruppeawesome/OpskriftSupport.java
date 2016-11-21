@@ -58,4 +58,28 @@ public class OpskriftSupport {
         }
         return i;
     }
+
+    public TestDataMad randomRet (String type, TestDataMad data) {
+        TestDataMad mad = null;
+        int i = maaltidLaengde(data, type);
+
+        if (type.equals("Morgenmad")) {
+            mad = data.getMorgenmad()[(int) Math.floor(Math.random() * i)];
+            System.out.println("længde på array: " + (int) Math.floor(Math.random() * i));
+        }
+        else if (type.equals("Frokost")) {
+            mad = data.getFrokost()[(int) Math.floor(Math.random() * i)];
+            System.out.println("længde på array: " + (int) Math.floor(Math.random() * i));
+        }
+        else if (type.equals("Aftensmad")) {
+            mad = data.getAftensmad()[(int) Math.floor(Math.random() * i)];
+            System.out.println("længde på array: " + (int) Math.floor(Math.random() * i));
+        }
+        else {
+            mad = data.getSnack()[(int) Math.floor(Math.random() * i)];
+            System.out.println("længde på array: " + (int) Math.floor(Math.random() * i));
+        }
+        System.out.println("random mad " + mad.getOverskrift());
+        return mad;
+    }
 }
