@@ -47,7 +47,7 @@ public class Kostplan_frag extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
 
         if (v == morgen) {
-            Intent i = new Intent(getActivity(), Opskrift.class);
+            Intent i = new Intent(getActivity(), OpskriftListe.class);
             i.putExtra("type", morgen.getText().toString());
             startActivity(i);
         }

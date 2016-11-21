@@ -32,8 +32,20 @@ public class OpskriftListe extends AppCompatActivity implements AdapterView.OnIt
         listView.setOnItemClickListener(this);
         listView.setAdapter(adapter);
         setContentView(listView);
+        test();
     }
 
+    public void test() {
+        Intent i = new Intent(this, Opskrift.class);
+        startActivity(i);
+    }
+
+    public TestDataMad randomRet (String type) {
+
+
+
+        return null;
+    }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
