@@ -9,9 +9,9 @@ import android.support.v4.app.FragmentStatePagerAdapter;
  * Created by frederik on 16-11-2016.
  */
 
-public class ViewPagerAdapter2 extends FragmentStatePagerAdapter {
+public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
-    public ViewPagerAdapter2(FragmentManager fm) {
+    public ViewPagerAdapter(FragmentManager fm) {
         super(fm);
     }
 

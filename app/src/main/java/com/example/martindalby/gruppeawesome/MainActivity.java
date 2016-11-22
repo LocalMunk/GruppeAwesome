@@ -16,8 +16,8 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
 
     private Toolbar toolbar;
     private TabLayout tabLayout;
-    private ViewPager viewPager2;
-    private ViewPagerAdapter2 adapter2;
+    private ViewPager viewPager;
+    private ViewPagerAdapter adapter;
 
 
     //private ViewPager viewPager;
@@ -31,10 +31,10 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
         toolbar = (Toolbar) findViewById(R.id.toolBar);
 
         tabLayout = (TabLayout) findViewById(R.id.tab_layout);
-        viewPager2 = (ViewPager) findViewById(R.id.viewPager2);
+        viewPager = (ViewPager) findViewById(R.id.viewPager2);
 
-        adapter2 = new ViewPagerAdapter2(getSupportFragmentManager());
-        viewPager2.setAdapter(adapter2);
+        adapter = new com.example.martindalby.gruppeawesome.ViewPagerAdapter(getSupportFragmentManager());
+        viewPager.setAdapter(adapter);
         setSupportActionBar(toolbar);
         final TabLayout.Tab workout=tabLayout
 .newTab();
@@ -54,9 +54,9 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
         tabLayout.setTabTextColors(ContextCompat.getColorStateList(this, R.color.tab_selector));
         tabLayout.setSelectedTabIndicatorColor(ContextCompat.getColor(this, R.color.indicate));
 
-        viewPager2.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 
-        viewPager2.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                viewPager2.setCurrentItem(tab.getPosition());
+                viewPager.setCurrentItem(tab.getPosition());
             }
 
             @Override
