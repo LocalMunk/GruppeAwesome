@@ -26,7 +26,7 @@ public class Ovelse extends AppCompatActivity implements View.OnClickListener {
 
     NumberPicker number, weightPicker;
     OvelseSupport support;
-    Button videre, skip;
+    Button videre;
     int currentSet;
     ListView list;
     TextView ExerciseName;
@@ -56,11 +56,7 @@ public class Ovelse extends AppCompatActivity implements View.OnClickListener {
 
         videre = (Button) findViewById(R.id.doneButton);
         videre.setOnClickListener(this);
-        videre.setText("Færdiggør Sæt");
-
-        skip = (Button) findViewById(R.id.skipbutton);
-        skip.setOnClickListener(this);
-        skip.setText("Næste Øvelse");
+        videre.setText("Videre");
 
         list = (ListView) findViewById(R.id.list);
         listadapt = new OvelseAdapter(this);
@@ -85,15 +81,14 @@ public class Ovelse extends AppCompatActivity implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         if(v == videre){
-            System.out.println("button pressed");
-            support.setData(currentSet - 1, number.getValue(), weightPicker.getValue());
-            currentSet++;
-            list.invalidateViews();
-            list.refreshDrawableState();
-
-        }
-        if(v == skip){
-            if(getIntent().getIntExtra("pos",0) < getIntent().getStringArrayExtra("titles").length -1) {
+            if(currentSet <= support.maxSet) {
+                System.out.println("button pressed");
+                support.setData(currentSet - 1, number.getValue(), weightPicker.getValue());
+                currentSet++;
+                list.invalidateViews();
+                list.refreshDrawableState();
+            }
+            else if(getIntent().getIntExtra("pos",0) < getIntent().getStringArrayExtra("titles").length -1) {
                 Intent i = new Intent(this, Ovelse.class);
                 i.putExtra("titles", getIntent().getStringArrayExtra("titles"));
                 i.putExtra("sets", getIntent().getIntArrayExtra("sets"));

@@ -11,13 +11,6 @@
         android:layout_width="match_parent"
         >
 
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@android:drawable/ic_input_add"
-            android:id="@+id/imageButton2"
-            android:layout_weight="1" />
-
         <include
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
