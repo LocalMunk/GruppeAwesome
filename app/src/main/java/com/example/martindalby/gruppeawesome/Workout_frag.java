@@ -31,11 +31,7 @@ import static android.R.attr.x;
 public class Workout_frag extends Fragment implements AdapterView.OnItemClickListener {
 
     GraphView graph;
-    private Button work1, work2;
     private static TestDataWorkout wdata;
-
-
-    private TextView virk;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

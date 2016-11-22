@@ -37,18 +37,12 @@ public class Graf {
             this.x=x;this.y=y;
         }
 
-        public DataPoint getDataPoint(){
-            return this;
-        }
-
-        @Override
         public double getX() {
-            return 0;
+            return x;
         }
 
-        @Override
         public double getY() {
-            return 0;
+            return y;
         }
     }
 }

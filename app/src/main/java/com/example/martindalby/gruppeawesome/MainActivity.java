@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
         tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         viewPager = (ViewPager) findViewById(R.id.viewPager2);
 
-        adapter = new com.example.martindalby.gruppeawesome.ViewPagerAdapter(getSupportFragmentManager());
+        adapter = new ViewPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
         setSupportActionBar(toolbar);
         final TabLayout.Tab workout=tabLayout
