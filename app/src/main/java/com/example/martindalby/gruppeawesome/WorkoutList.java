@@ -26,7 +26,6 @@ public class WorkoutList extends AppCompatActivity implements AdapterView.OnItem
     TestDataWorkout wdata;
     ListView listView;
     Toolbar toolbar;
-    Button add;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
