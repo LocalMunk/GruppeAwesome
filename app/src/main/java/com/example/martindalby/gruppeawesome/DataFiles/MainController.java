@@ -12,4 +12,10 @@ public class MainController {
         int[] out = {Træningsplan.traeningsGennemsnit, Træningsplan.traeningsMål, Træningsplan.traeningerDenneUge};
         return out;
     }
+
+    void setTreTal(int a, int b, int c){
+        Træningsplan.traeningsGennemsnit = a;
+        Træningsplan.traeningsMål = b;
+        Træningsplan.traeningerDenneUge = c;
+    }
 }
