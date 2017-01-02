@@ -39,7 +39,7 @@ public class OpskriftListe extends AppCompatActivity implements AdapterView.OnIt
         send1 = randomRet.getOverskrift();
         send2 = randomRet.getBeskrivelse();
         send3 = randomRet.getIngredienser();
-        test();
+        //test();
     }
 
     public void test() {
