@@ -5,4 +5,10 @@ package com.example.martindalby.gruppeawesome.DataFiles;
  */
 
 public class OvelseData {
+
+    String navn;
+
+    OvelseData(){
+
+    }
 }
