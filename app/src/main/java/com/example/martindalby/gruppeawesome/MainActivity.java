@@ -12,6 +12,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import com.crashlytics.android.Crashlytics;
+import com.example.martindalby.gruppeawesome.DataFiles.MainController;
+
 import io.fabric.sdk.android.Fabric;
 
 public class MainActivity extends AppCompatActivity /*implements View.OnClickListener*/ {
@@ -20,6 +22,7 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private ViewPagerAdapter adapter;
+    MainController datafiles;
 
 
     //private ViewPager viewPager;
