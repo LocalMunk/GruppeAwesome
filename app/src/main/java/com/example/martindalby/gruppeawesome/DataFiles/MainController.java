@@ -7,4 +7,9 @@ package com.example.martindalby.gruppeawesome.DataFiles;
 public class MainController {
     TraeningsPlanData Træningsplan;
     KostplanData Kostplan;
+
+    int[] getTreTal(){
+        int[] out = {Træningsplan.traeningsGennemsnit, Træningsplan.traeningsMål, Træningsplan.traeningerDenneUge};
+        return out;
+    }
 }
