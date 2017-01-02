@@ -56,7 +56,7 @@ public class WorkoutList extends AppCompatActivity implements AdapterView.OnItem
         i.putExtra("titles",ovelser);
         i.putExtra("sets",setsArray);
         i.putExtra("pos", position);
-        i.putExtra("dataobjekt", datafiles);
+        //i.putExtra("dataobjekt", datafiles);
         startActivity(i);
     }
 

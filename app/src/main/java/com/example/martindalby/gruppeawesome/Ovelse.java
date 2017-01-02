@@ -79,6 +79,7 @@ public class Ovelse extends AppCompatActivity implements View.OnClickListener {
         });
         graph.addSeries(series);
 
+
     }
 
     @Override

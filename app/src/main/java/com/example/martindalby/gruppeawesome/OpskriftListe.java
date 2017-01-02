@@ -52,7 +52,8 @@ public class OpskriftListe extends AppCompatActivity implements AdapterView.OnIt
                 .putExtra("beskrivelse", send2)
                 .putExtra("ingrediens", send3)
                 .putExtra("type", typeText)
-                .putExtra("dataobjekt", datafiles);
+    //            .putExtra("dataobjekt", datafiles)
+                ;
         startActivity(i);
     }
 
