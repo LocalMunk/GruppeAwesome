@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
         Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_main2);
 
+        datafiles = new MainController();
 
         toolbar = (Toolbar) findViewById(R.id.toolBar);
 

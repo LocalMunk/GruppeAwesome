@@ -5,21 +5,36 @@
     android:layout_height="match_parent"
     android:weightSum="2">
 
+    <TextView
+        android:text="GnsWorkout"
+        android:textSize="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/GnsWorkout"
+        android:layout_marginTop="10dp"
+        />
 
+    <TextView
+        android:text="WorkoutGoal"
+        android:textSize="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/WorkoutGoal"
+        android:layout_marginTop="10dp"
+        />
 
-
-    <com.jjoe64.graphview.GraphView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1  "
-        app:srcCompat="@drawable/grafbb"
-        android:id="@+id/graph"></com.jjoe64.graphview.GraphView>
-
+    <TextView
+        android:text="AntalWorkouts"
+        android:textSize="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/AntalWorkouts"
+        android:layout_marginTop="10dp"
+        />
     <ListView
         android:id="@+id/workoutList"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1  " />
+        android:layout_height="match_parent" />
 
 
 </LinearLayout>

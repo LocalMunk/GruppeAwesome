@@ -22,6 +22,8 @@ import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 import com.jjoe64.graphview.GridLabelRenderer;
 
+import org.w3c.dom.Text;
+
 import static android.R.attr.x;
 
 /**
@@ -30,8 +32,10 @@ import static android.R.attr.x;
 
 public class Workout_frag extends Fragment implements AdapterView.OnItemClickListener {
 
-    GraphView graph;
     private static TestDataWorkout wdata;
+    TextView GnsWorkout;
+    TextView workoutgoal;
+    TextView antalworkouts;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -39,28 +43,16 @@ public class Workout_frag extends Fragment implements AdapterView.OnItemClickLis
         int[] i = {R.drawable.pizzalistepic, R.drawable.grafbb};
         wdata = new TestDataWorkout();
 
-        graph = (GraphView) rod.findViewById(R.id.graph);
-        BarGraphSeries<DataPoint> series = new BarGraphSeries<>(new DataPoint[] {
-                new DataPoint(0, 1),
-                new DataPoint(1, 5),
-                new DataPoint(2, 3),
-                new DataPoint(3, 2),
-                new DataPoint(4,6)
-        });
-        graph.addSeries(series);
-        // styling
-
-        series.setSpacing(10);
-        series.setDataWidth(0.5);
-        graph.getGridLabelRenderer().setHorizontalAxisTitle("Uge");
-        graph.getGridLabelRenderer().setVerticalAxisTitle("Træningsdage");
-
-        // draw values on top
-        series.setDrawValuesOnTop(true);
-        series.setValuesOnTopColor(Color.RED);
-
-
         WorkoutAdapter adapter = new WorkoutAdapter(getActivity(), wdata.getWorkouts());
+
+        GnsWorkout = (TextView) rod.findViewById(R.id.GnsWorkout);
+        GnsWorkout.setText("Ugentlig antal træninger: " + "4,33");
+
+        workoutgoal = (TextView) rod.findViewById(R.id.WorkoutGoal);
+        workoutgoal.setText("Træningsmål denne uge: " + "4");
+
+        antalworkouts = (TextView) rod.findViewById(R.id.AntalWorkouts);
+        antalworkouts.setText("Træningsdage denne uge: " + "1");
 
         ListView workoutlist = (ListView) rod.findViewById(R.id.workoutList);
         workoutlist.setOnItemClickListener(this);
@@ -110,13 +102,15 @@ public class Workout_frag extends Fragment implements AdapterView.OnItemClickLis
             view = inflter.inflate(R.layout.workout_liste, null);
 
 
-            TextView workoutoverskrift = (TextView) view.findViewById(R.id.WorkoutOverskrift);
-            workoutoverskrift.setText(wdata.getWorkouts()[position].getOverskrift());
 
-            TextView workoutbeskrivelser = ( TextView) view.findViewById(R.id.WorkoutBeskrivelse);
-            workoutbeskrivelser.setText(wdata.getWorkouts()[position].getBeskrivelse());
 
-            System.out.println(workoutoverskrift.getId());
+                TextView workoutoverskrift = (TextView) view.findViewById(R.id.WorkoutOverskrift);
+                workoutoverskrift.setText(wdata.getWorkouts()[position].getOverskrift());
+
+                TextView workoutbeskrivelser = (TextView) view.findViewById(R.id.WorkoutBeskrivelse);
+                workoutbeskrivelser.setText(wdata.getWorkouts()[position].getBeskrivelse());
+
+                System.out.println(workoutoverskrift.getId());
 
 
             return view;
