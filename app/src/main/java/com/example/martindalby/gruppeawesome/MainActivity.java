@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
     MainController datafiles;
 
 
-    //private ViewPager viewPager;
+    //private ViewPager viewPagers;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
