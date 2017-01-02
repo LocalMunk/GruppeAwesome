@@ -149,6 +149,7 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
             Bundle b = new Bundle();
             b.putInt("position", position);
             f.setArguments(b);
+            getIntent().putExtra("dataobjekt", datafiles);
 
             return f;
         }

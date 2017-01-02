@@ -7,7 +7,7 @@
 
     <TextView
         android:text="GnsWorkout"
-        android:textSize="40dp"
+        android:textSize="25dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/GnsWorkout"
@@ -16,7 +16,7 @@
 
     <TextView
         android:text="WorkoutGoal"
-        android:textSize="40dp"
+        android:textSize="25dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/WorkoutGoal"
@@ -25,7 +25,7 @@
 
     <TextView
         android:text="AntalWorkouts"
-        android:textSize="40dp"
+        android:textSize="25dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/AntalWorkouts"

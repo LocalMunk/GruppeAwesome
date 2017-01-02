@@ -15,6 +15,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.BaseAdapter;
 
+import com.example.martindalby.gruppeawesome.DataFiles.MainController;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.ValueDependentColor;
 import com.jjoe64.graphview.series.BarGraphSeries;
@@ -36,6 +37,7 @@ public class Workout_frag extends Fragment implements AdapterView.OnItemClickLis
     TextView GnsWorkout;
     TextView workoutgoal;
     TextView antalworkouts;
+    MainController datafiles;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -43,16 +45,22 @@ public class Workout_frag extends Fragment implements AdapterView.OnItemClickLis
         int[] i = {R.drawable.pizzalistepic, R.drawable.grafbb};
         wdata = new TestDataWorkout();
 
+        datafiles = (MainController) getActivity().getIntent().getSerializableExtra("dataobjekt");
+
         WorkoutAdapter adapter = new WorkoutAdapter(getActivity(), wdata.getWorkouts());
 
+        datafiles.setTreTal(4,3,2);
+
+        int[] toptal = datafiles.getTreTal();
+
         GnsWorkout = (TextView) rod.findViewById(R.id.GnsWorkout);
-        GnsWorkout.setText("Ugentlig antal træninger: " + "4,33");
+        GnsWorkout.setText("Ugentlig antal træninger: " + toptal[0]);
 
         workoutgoal = (TextView) rod.findViewById(R.id.WorkoutGoal);
-        workoutgoal.setText("Træningsmål denne uge: " + "4");
+        workoutgoal.setText("Træningsmål denne uge: " + toptal[1]);
 
         antalworkouts = (TextView) rod.findViewById(R.id.AntalWorkouts);
-        antalworkouts.setText("Træningsdage denne uge: " + "1");
+        antalworkouts.setText("Træningsdage denne uge: " + toptal[2]);
 
         ListView workoutlist = (ListView) rod.findViewById(R.id.workoutList);
         workoutlist.setOnItemClickListener(this);
