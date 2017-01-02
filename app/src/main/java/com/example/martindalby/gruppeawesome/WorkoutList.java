@@ -14,6 +14,9 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Button;
+
+import com.example.martindalby.gruppeawesome.DataFiles.MainController;
+
 /**
  * Created by Martin Dalby on 17-11-2016.
  */
@@ -26,10 +29,12 @@ public class WorkoutList extends AppCompatActivity implements AdapterView.OnItem
     TestDataWorkout wdata;
     ListView listView;
     Toolbar toolbar;
+    MainController datafiles;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workoutlist);
+        datafiles =(MainController) getIntent().getSerializableExtra("dataobjekt");
         wdata = new TestDataWorkout();
         adapter = new WorkoutListAdapter(this);
         int i = getIntent().getIntExtra("workout", 0);
@@ -51,6 +56,7 @@ public class WorkoutList extends AppCompatActivity implements AdapterView.OnItem
         i.putExtra("titles",ovelser);
         i.putExtra("sets",setsArray);
         i.putExtra("pos", position);
+        i.putExtra("dataobjekt", datafiles);
         startActivity(i);
     }
 

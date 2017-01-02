@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.martindalby.gruppeawesome.DataFiles.MainController;
+
 /**
  * Created by Martin Dalby on 07-11-2016.
  */
@@ -19,10 +21,12 @@ public class Opskrift  extends AppCompatActivity implements View.OnClickListener
     Button alternativ;
     String typeText, overskrift, beskrivelse, ingred;
     Toolbar toolbar;
+    MainController datafiles;
 
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_opskrift);
+        datafiles = (MainController) getIntent().getSerializableExtra("dataobjekt");
 
         typeText = getIntent().getStringExtra("type");
         overskrift = getIntent().getStringExtra("overskrift");

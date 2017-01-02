@@ -12,6 +12,8 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.martindalby.gruppeawesome.DataFiles.MainController;
+
 import junit.framework.Test;
 
 public class OpskriftListe extends AppCompatActivity implements AdapterView.OnItemClickListener{
@@ -22,10 +24,12 @@ public class OpskriftListe extends AppCompatActivity implements AdapterView.OnIt
     private KostPlanAdapter adapter;
     private ListView listView;
     private String typeText, send1, send2, send3;
+    MainController datafiles;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        datafiles = (MainController) getIntent().getSerializableExtra("dataobjekt");
 
         typeText = getIntent().getStringExtra("type");
         System.out.println("TyperTe4xt fået fra intent: " + typeText);
@@ -47,7 +51,8 @@ public class OpskriftListe extends AppCompatActivity implements AdapterView.OnIt
         i.putExtra("overskrift", send1)
                 .putExtra("beskrivelse", send2)
                 .putExtra("ingrediens", send3)
-                .putExtra("type", typeText);
+                .putExtra("type", typeText)
+                .putExtra("dataobjekt", datafiles);
         startActivity(i);
     }
 

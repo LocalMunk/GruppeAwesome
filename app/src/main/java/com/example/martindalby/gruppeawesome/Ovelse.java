@@ -13,6 +13,7 @@ import android.widget.NumberPicker;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.martindalby.gruppeawesome.DataFiles.MainController;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
@@ -32,10 +33,12 @@ public class Ovelse extends AppCompatActivity implements View.OnClickListener {
     TextView ExerciseName;
     OvelseAdapter listadapt;
     GraphView graph;
+    MainController datafiles;
 
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ovelse);
+        datafiles = (MainController) getIntent().getSerializableExtra("dataobjekt");
         currentSet = 1;
         String[] suppdata = new String[getIntent().getIntExtra("sets", 4)];
         for(int i = 0; i < getIntent().getIntExtra("sets", 4); i++){
@@ -93,6 +96,7 @@ public class Ovelse extends AppCompatActivity implements View.OnClickListener {
                 i.putExtra("titles", getIntent().getStringArrayExtra("titles"));
                 i.putExtra("sets", getIntent().getIntArrayExtra("sets"));
                 i.putExtra("pos", getIntent().getIntExtra("pos", 0) + 1);
+                i.putExtra("dataobjekt", datafiles);
                 startActivity(i);
                 finish();
             }
