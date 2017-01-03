@@ -40,28 +40,29 @@ public class OpskriftListe extends AppCompatActivity implements AdapterView.OnIt
         listView.setAdapter(adapter);
         listView.setBackgroundResource(R.drawable.bg);
         setContentView(listView);
-        randomRet = os.randomRet(typeText, data);
-        send1 = randomRet.getOverskrift();
-        send2 = randomRet.getBeskrivelse();
-        send3 = randomRet.getIngredienser();
-        //test();
     }
 
-    public void test() {
-        Intent i = new Intent(this, Opskrift.class);
-        i.putExtra("overskrift", send1)
-                .putExtra("beskrivelse", send2)
-                .putExtra("ingrediens", send3)
-                .putExtra("type", typeText)
-                ;
-        startActivity(i);
-    }
 
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Intent i = new Intent(this, Opskrift.class);
-        i.putExtra("type", typeText);
+
+        if(typeText.equals("Morgenmad")) randomRet = data.getMorgenmad()[position];
+        else if(typeText.equals("Frokost")) randomRet = data.getFrokost()[position];
+        else if(typeText.equals("Aftensmad")) randomRet = data.getAftensmad()[position];
+        else if(typeText.equals("Snack")) randomRet = data.getSnack()[position];
+        else randomRet = os.randomRet(typeText, data);
+
+        send1 = randomRet.getOverskrift();
+        send2 = randomRet.getBeskrivelse();
+        send3 = randomRet.getIngredienser();
+
+        i.putExtra("type", typeText)
+                .putExtra("overskrift", send1)
+                .putExtra("beskrivelse", send2)
+                .putExtra("ingrediens", send3)
+                .putExtra("type", typeText);
         startActivity(i);
     }
 
