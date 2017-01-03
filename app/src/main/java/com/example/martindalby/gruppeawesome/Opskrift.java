@@ -14,7 +14,7 @@ import com.example.martindalby.gruppeawesome.DataFiles.MainController;
  * Created by Martin Dalby on 07-11-2016.
  */
 
-public class Opskrift  extends AppCompatActivity implements View.OnClickListener{
+public class Opskrift extends AppCompatActivity implements View.OnClickListener{
 
     TextView retNavn, fremGang, ingrediensTV;
     ImageView retBillede;

@@ -38,6 +38,7 @@ public class OpskriftListe extends AppCompatActivity implements AdapterView.OnIt
         listView = new ListView(this);
         listView.setOnItemClickListener(this);
         listView.setAdapter(adapter);
+        listView.setBackgroundResource(R.drawable.bg);
         setContentView(listView);
         randomRet = os.randomRet(typeText, data);
         send1 = randomRet.getOverskrift();
