@@ -20,16 +20,6 @@
             android:layout_marginTop="12dp"
             android:id="@+id/exercisename" />
 
-        <TextView
-            android:text="TextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/exercisename"
-            android:layout_alignLeft="@+id/exercisename"
-            android:layout_alignStart="@+id/exercisename"
-            android:layout_marginTop="24dp"
-            android:id="@+id/setsview" />
-
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

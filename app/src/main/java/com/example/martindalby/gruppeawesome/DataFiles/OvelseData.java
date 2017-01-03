@@ -7,6 +7,8 @@ package com.example.martindalby.gruppeawesome.DataFiles;
 public class OvelseData {
 
     String navn;
+    boolean done;
+    Graf graf;
 
     OvelseData(){
 

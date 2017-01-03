@@ -1,5 +1,7 @@
 package com.example.martindalby.gruppeawesome.DataFiles;
 
+import com.example.martindalby.gruppeawesome.DAL.DatabaseController;
+
 import java.io.Serializable;
 
 /**
@@ -10,6 +12,7 @@ public class MainController implements Serializable{
     TraeningsPlanData Træningsplan;
     KostplanData Kostplan;
     private static MainController instans;
+    DatabaseController databaseControl;
 
     public MainController(){
         Træningsplan = new TraeningsPlanData();

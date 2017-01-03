@@ -96,9 +96,6 @@ public class WorkoutList extends AppCompatActivity implements AdapterView.OnItem
             TextView exerciseName = (TextView) view.findViewById(R.id.exercisename);
             exerciseName.setText(ovelser[position]);
 
-            TextView sets = (TextView) view.findViewById(R.id.setsview);
-            sets.setText(setsArray[position] + " sets");
-
             ImageView img = (ImageView) view.findViewById(R.id.ovelsebutton);
             return view;
         }
