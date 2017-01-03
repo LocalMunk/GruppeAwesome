@@ -14,7 +14,7 @@ public class MainController implements Serializable{
     private static MainController instans;
     DatabaseController databaseControl;
 
-    public MainController(){
+    private MainController(){
         Træningsplan = new TraeningsPlanData();
         Kostplan = new KostplanData();
     }
