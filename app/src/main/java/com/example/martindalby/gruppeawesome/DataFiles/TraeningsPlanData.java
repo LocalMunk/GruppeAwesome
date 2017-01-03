@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class TraeningsPlanData {
     ArrayList<WorkoutData> workouts;
-    int traeningsGennemsnit, traeningsMål, traeningerDenneUge;
+    double traeningsGennemsnit, traeningsMål, traeningerDenneUge;
 
     public TraeningsPlanData(ArrayList<WorkoutData> workouts){
         this.workouts = workouts;

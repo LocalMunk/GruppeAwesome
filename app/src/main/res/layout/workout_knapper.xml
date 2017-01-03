@@ -6,32 +6,81 @@
     android:weightSum="2"
     android:background="@drawable/bg">
 
-    <TextView
-        android:text="GnsWorkout"
-        android:textSize="25dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/GnsWorkout"
-        android:layout_marginTop="10dp"
-        />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="170dp">
 
-    <TextView
-        android:text="WorkoutGoal"
-        android:textSize="25dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/WorkoutGoal"
-        android:layout_marginTop="10dp"
-        />
+        <TextView
+            android:text="WorkoutGoal"
+            android:textSize="15dp"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:id="@+id/WorkoutGoal"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="12dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginBottom="25dp"
+            android:textColor="@color/whiteDark"/>
 
-    <TextView
-        android:text="AntalWorkouts"
-        android:textSize="25dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/AntalWorkouts"
-        android:layout_marginTop="10dp"
-        />
+        <TextView
+            android:text="GnsWorkout"
+            android:textSize="15dp"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="25dp"
+            android:id="@+id/GnsWorkout"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:textColor="@color/whiteDark"/>
+
+        <TextView
+            android:text="AntalWorkouts"
+            android:textSize="15dp"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:id="@+id/AntalWorkouts"
+            android:layout_marginRight="11dp"
+            android:layout_marginEnd="11dp"
+            android:layout_marginBottom="25dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:textColor="@color/whiteDark"/>
+
+        <TextView
+            android:text="0"
+            android:textSize="40dp"
+            android:layout_marginLeft="40dp"
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:id="@+id/TalGoal"
+            android:layout_above="@+id/WorkoutGoal"
+             />
+
+        <TextView
+            android:text="0"
+            android:textSize="40dp"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:id="@+id/TalGns"
+            android:layout_marginLeft="10dp"
+            android:layout_above="@+id/GnsWorkout"
+            android:layout_alignLeft="@+id/GnsWorkout"
+            android:layout_alignStart="@+id/GnsWorkout" />
+
+        <TextView
+            android:text="0"
+            android:textSize="40dp"
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:id="@+id/TalAntal"
+            android:layout_marginLeft="25dp"
+            android:layout_above="@+id/AntalWorkouts"
+            android:layout_alignRight="@+id/AntalWorkouts"/>
+    </RelativeLayout>
+
     <ListView
         android:id="@+id/workoutList"
         android:layout_width="match_parent"

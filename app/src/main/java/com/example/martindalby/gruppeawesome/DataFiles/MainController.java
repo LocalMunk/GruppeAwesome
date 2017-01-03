@@ -26,8 +26,8 @@ public class MainController implements Serializable{
             return instans;
     }
 
-    public int[] getTreTal(){
-        int[] out = {Træningsplan.traeningsGennemsnit, Træningsplan.traeningsMål, Træningsplan.traeningerDenneUge};
+    public double[] getTreTal(){
+        double[] out = {Træningsplan.traeningsGennemsnit, Træningsplan.traeningsMål, Træningsplan.traeningerDenneUge};
         return out;
     }
 
@@ -40,7 +40,7 @@ public class MainController implements Serializable{
     }
 
 
-    public void setTreTal(int a, int b, int c){
+    public void setTreTal(double a, double b, double c){
         Træningsplan.traeningsGennemsnit = a;
         Træningsplan.traeningsMål = b;
         Træningsplan.traeningerDenneUge = c;

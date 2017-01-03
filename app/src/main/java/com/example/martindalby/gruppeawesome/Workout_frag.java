@@ -34,9 +34,9 @@ import static android.R.attr.x;
 public class Workout_frag extends Fragment implements AdapterView.OnItemClickListener {
 
     private static TestDataWorkout wdata;
-    TextView GnsWorkout;
-    TextView workoutgoal;
-    TextView antalworkouts;
+    TextView GnsWorkout, talgns;
+    TextView workoutgoal, talgoal;
+    TextView antalworkouts, talantal;
     MainController datafiles;
 
     @Override
@@ -49,18 +49,27 @@ public class Workout_frag extends Fragment implements AdapterView.OnItemClickLis
 
         WorkoutAdapter adapter = new WorkoutAdapter(getActivity(), wdata.getWorkouts());
 
-        datafiles.setTreTal(4,3,2);
+        datafiles.setTreTal(4.33, 3, 3);
 
-        int[] toptal = datafiles.getTreTal();
+        double[] toptal = datafiles.getTreTal();
+
+        talgns = (TextView) rod.findViewById(R.id.TalGns);
+        talgns.setText("" + toptal[0]);
 
         GnsWorkout = (TextView) rod.findViewById(R.id.GnsWorkout);
-        GnsWorkout.setText("Ugentlig antal træninger: " + toptal[0]);
+        GnsWorkout.setText("Gns. per uge");
+
+        talgoal = (TextView) rod.findViewById(R.id.TalGoal);
+        talgoal.setText("" + (int) toptal[1]);
 
         workoutgoal = (TextView) rod.findViewById(R.id.WorkoutGoal);
-        workoutgoal.setText("Træningsmål denne uge: " + toptal[1]);
+        workoutgoal.setText("Træningsmål denne uge");
+
+        talantal = (TextView) rod.findViewById(R.id.TalAntal);
+        talantal.setText("" + (int) toptal[2]);
 
         antalworkouts = (TextView) rod.findViewById(R.id.AntalWorkouts);
-        antalworkouts.setText("Træningsdage denne uge: " + toptal[2]);
+        antalworkouts.setText("Træninger denne uge");
 
         ListView workoutlist = (ListView) rod.findViewById(R.id.workoutList);
         workoutlist.setOnItemClickListener(this);
