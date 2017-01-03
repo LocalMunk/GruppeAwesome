@@ -15,7 +15,7 @@ public class MainController implements Serializable{
     DatabaseController databaseControl;
 
     private MainController(){
-        Træningsplan = new TraeningsPlanData();
+        Træningsplan = new TraeningsPlanData(null);
         Kostplan = new KostplanData();
     }
 

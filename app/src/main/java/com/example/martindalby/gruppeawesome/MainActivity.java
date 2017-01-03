@@ -12,6 +12,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import com.crashlytics.android.Crashlytics;
+import com.example.martindalby.gruppeawesome.DAL.DBHandler;
+import com.example.martindalby.gruppeawesome.DAL.DatabaseController;
 import com.example.martindalby.gruppeawesome.DataFiles.MainController;
 
 import io.fabric.sdk.android.Fabric;
@@ -22,8 +24,8 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private ViewPagerAdapter adapter;
-    MainController datafiles;
-
+    private MainController datafiles;
+    private DatabaseController DBCon;
 
     //private ViewPager viewPagers;
 
@@ -32,6 +34,10 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
         super.onCreate(savedInstanceState);
         Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_main2);
+
+        //Databasen laves
+        DBCon = new DatabaseController();
+        DBCon.createDBHAndler(this);
 
         datafiles = MainController.getInstans();
 
@@ -175,8 +181,14 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
 
 
 
-
     }
         return true;
+    }
+
+    public void DBTestData () {
+
+        //datafiles.getTræningsplan().
+
+        //DBCon.getDBH().addOvelse();
     }
 }

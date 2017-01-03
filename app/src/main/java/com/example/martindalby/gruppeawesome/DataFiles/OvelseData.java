@@ -7,14 +7,13 @@ package com.example.martindalby.gruppeawesome.DataFiles;
 public class OvelseData {
 
     private String navn;
-    private boolean done;
+    private int done;
     private Graf graf;
     private int sets, id;
 
-    public OvelseData(String navn, boolean done, Graf graf, int sets, int id) {
+    public OvelseData(int id, String navn, int done, int sets) {
         this.navn = navn;
         this.done = done;
-        this.graf = graf;
         this.sets = sets;
         this.id = id;
     }
@@ -27,11 +26,11 @@ public class OvelseData {
         this.navn = navn;
     }
 
-    public boolean isDone() {
+    public int isDone() {
         return done;
     }
 
-    public void setDone(boolean done) {
+    public void setDone(int done) {
         this.done = done;
     }
 
