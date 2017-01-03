@@ -29,7 +29,7 @@ public class OpskriftListe extends AppCompatActivity implements AdapterView.OnIt
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        datafiles = (MainController) getIntent().getSerializableExtra("dataobjekt");
+        datafiles = MainController.getInstans();
 
         typeText = getIntent().getStringExtra("type");
         System.out.println("TyperTe4xt fået fra intent: " + typeText);
@@ -52,7 +52,6 @@ public class OpskriftListe extends AppCompatActivity implements AdapterView.OnIt
                 .putExtra("beskrivelse", send2)
                 .putExtra("ingrediens", send3)
                 .putExtra("type", typeText)
-    //            .putExtra("dataobjekt", datafiles)
                 ;
         startActivity(i);
     }

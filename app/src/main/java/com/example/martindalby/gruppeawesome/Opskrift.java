@@ -26,7 +26,7 @@ public class Opskrift  extends AppCompatActivity implements View.OnClickListener
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_opskrift);
-        datafiles = (MainController) getIntent().getSerializableExtra("dataobjekt");
+        datafiles = MainController.getInstans();
 
         typeText = getIntent().getStringExtra("type");
         overskrift = getIntent().getStringExtra("overskrift");

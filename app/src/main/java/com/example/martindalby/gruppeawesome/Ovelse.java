@@ -38,7 +38,7 @@ public class Ovelse extends AppCompatActivity implements View.OnClickListener {
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ovelse);
-        datafiles = (MainController) getIntent().getSerializableExtra("dataobjekt");
+        datafiles = MainController.getInstans();
         currentSet = 1;
         String[] suppdata = new String[getIntent().getIntExtra("sets", 4)];
         for(int i = 0; i < getIntent().getIntExtra("sets", 4); i++){

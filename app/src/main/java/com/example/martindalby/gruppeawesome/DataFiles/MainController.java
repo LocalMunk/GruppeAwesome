@@ -9,10 +9,18 @@ import java.io.Serializable;
 public class MainController implements Serializable{
     TraeningsPlanData Træningsplan;
     KostplanData Kostplan;
+    private static MainController instans;
 
     public MainController(){
         Træningsplan = new TraeningsPlanData();
         Kostplan = new KostplanData();
+    }
+
+    public static MainController getInstans(){
+        if(instans == null){
+            instans = new MainController();
+        }
+            return instans;
     }
 
     public int[] getTreTal(){

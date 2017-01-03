@@ -34,7 +34,7 @@ public class WorkoutList extends AppCompatActivity implements AdapterView.OnItem
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workoutlist);
-        datafiles =(MainController) getIntent().getSerializableExtra("dataobjekt");
+        datafiles = MainController.getInstans();
         wdata = new TestDataWorkout();
         adapter = new WorkoutListAdapter(this);
         int i = getIntent().getIntExtra("workout", 0);
@@ -56,7 +56,6 @@ public class WorkoutList extends AppCompatActivity implements AdapterView.OnItem
         i.putExtra("titles",ovelser);
         i.putExtra("sets",setsArray);
         i.putExtra("pos", position);
-        //i.putExtra("dataobjekt", datafiles);
         startActivity(i);
     }
 

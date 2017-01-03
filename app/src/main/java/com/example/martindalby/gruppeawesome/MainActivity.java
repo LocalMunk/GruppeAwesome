@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
         Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_main2);
 
-        datafiles = new MainController();
+        datafiles = MainController.getInstans();
 
         toolbar = (Toolbar) findViewById(R.id.toolBar);
 
@@ -149,7 +149,6 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
             Bundle b = new Bundle();
             b.putInt("position", position);
             f.setArguments(b);
-            getIntent().putExtra("dataobjekt", datafiles);
 
             return f;
         }
