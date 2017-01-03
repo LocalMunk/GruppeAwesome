@@ -9,4 +9,16 @@ import java.util.ArrayList;
 public class WorkoutData {
     ArrayList<OvelseData> ovelser;
 
+    public WorkoutData(ArrayList<OvelseData> ovelser){
+        this.ovelser = ovelser;
+    }
+
+    public OvelseData getOvelse(int i){
+        return ovelser.get(i);
+    }
+
+    public void addOvelse(OvelseData od){
+        ovelser.add(od);
+    }
+
 }

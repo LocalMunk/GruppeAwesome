@@ -9,4 +9,16 @@ import java.util.ArrayList;
 public class TraeningsPlanData {
     ArrayList<WorkoutData> workouts;
     int traeningsGennemsnit, traeningsMål, traeningerDenneUge;
+
+    public TraeningsPlanData(ArrayList<WorkoutData> workouts){
+        this.workouts = workouts;
+    }
+
+    public WorkoutData getWorkout(int i){
+        return workouts.get(i);
+    }
+
+    public void addWorkout(WorkoutData wd){
+        workouts.add(wd);
+    }
 }
