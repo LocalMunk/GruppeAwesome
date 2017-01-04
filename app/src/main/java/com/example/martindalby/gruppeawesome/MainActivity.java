@@ -1,5 +1,6 @@
 package com.example.martindalby.gruppeawesome;
 
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -24,7 +25,6 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
     private ViewPager viewPager;
     private ViewPagerAdapter adapter;
     private MainController datafiles;
-    private DatabaseController DBCon;
 
     //private ViewPager viewPagers;
 
@@ -174,6 +174,8 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
     public boolean onOptionsItemSelected(MenuItem item)
 
     {    if(item.getItemId() == R.id.action_plus){
+        Intent i = new Intent(this, OpretOvelse.class);
+        startActivity(i);
 
 
 

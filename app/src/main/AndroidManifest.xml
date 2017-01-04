@@ -17,6 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".OpskriftListe"></activity>
+        <activity android:name=".OpretOvelse"></activity>
         <activity android:name=".Opskrift"></activity>
         <activity android:name=".Ovelse"></activity>
         <activity android:name=".WorkoutList"></activity><!-- ATTENTION: This was auto-generated to add Google Play services to your project for

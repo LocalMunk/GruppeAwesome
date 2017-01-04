@@ -7,6 +7,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.martindalby.gruppeawesome.DataFiles.MainController;
+import com.example.martindalby.gruppeawesome.DataFiles.OvelseData;
+
 /**
  * Created by Martin Dalby on 21-11-2016.
  */
@@ -15,19 +18,24 @@ public class OpretOvelse extends AppCompatActivity implements View.OnClickListen
 
     EditText navn, sets;
     Button done;
+    MainController datafiles;
 
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_opretovelse);
+        datafiles = MainController.getInstans();
         navn = (EditText) findViewById(R.id.opretgetnavn);
+        navn.setText("Navn");
         sets = (EditText) findViewById(R.id.opretgetsets);
+        sets.setText("sets");
         done = (Button) findViewById(R.id.opretovelsedone);
         done.setOnClickListener(this);
     }
 
     public void onClick(View v){
         if(v == done){
-
+            OvelseData out = new OvelseData(0, navn.getText().toString(), 0, Integer.parseInt(sets.getText().toString()));
+            finish();
         }
 
     }
