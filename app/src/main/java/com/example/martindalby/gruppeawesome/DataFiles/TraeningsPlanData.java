@@ -14,6 +14,10 @@ public class TraeningsPlanData {
         this.workouts = workouts;
     }
 
+    public ArrayList<WorkoutData> getWorkouts(){
+        return workouts;
+    }
+
     public WorkoutData getWorkout(int i){
         return workouts.get(i);
     }

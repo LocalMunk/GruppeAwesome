@@ -80,7 +80,7 @@ public class WorkoutList extends AppCompatActivity implements AdapterView.OnItem
         //Her afgøres længde på liste ud fra hvilken knap man trykker paa
         @Override
         public int getCount() {
-            return ovelser.length;
+            return workoutData.getOvelser().size();
         }
 
         @Override
@@ -98,7 +98,7 @@ public class WorkoutList extends AppCompatActivity implements AdapterView.OnItem
             view = inflter.inflate(R.layout.workoutlist_list, null);
 
             TextView exerciseName = (TextView) view.findViewById(R.id.exercisename);
-            exerciseName.setText(ovelser[position]);
+            exerciseName.setText(workoutData.getOvelser().get(position).getNavn());
 
             ImageView img = (ImageView) view.findViewById(R.id.ovelsebutton);
             return view;

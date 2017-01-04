@@ -47,7 +47,7 @@ public class Ovelse extends AppCompatActivity implements View.OnClickListener {
         for(int i = 0; i < ovelseData.getSets(); i++){
             suppdata[i] = "Sæt " + (i+1) + ": ";
         }
-        support = new OvelseSupport(suppdata,getIntent().getIntArrayExtra("sets")[getIntent().getIntExtra("pos",0)]);
+        support = new OvelseSupport(suppdata,ovelseData.getSets());
 
 
         weightPicker = (NumberPicker) findViewById(R.id.weightPicker);
@@ -96,12 +96,10 @@ public class Ovelse extends AppCompatActivity implements View.OnClickListener {
                 list.invalidateViews();
                 list.refreshDrawableState();
             }
-            else if(getIntent().getIntExtra("pos",0) < getIntent().getStringArrayExtra("titles").length -1) {
+            else if(getIntent().getIntExtra("pos",0) < datafiles.getTræningsplan().getWorkout(getIntent().getIntExtra("pos", 0)).getOvelser().size() -1) {
                 Intent i = new Intent(this, Ovelse.class);
-                i.putExtra("titles", getIntent().getStringArrayExtra("titles"));
-                i.putExtra("sets", getIntent().getIntArrayExtra("sets"));
                 i.putExtra("pos", getIntent().getIntExtra("pos", 0) + 1);
-                i.putExtra("dataobjekt", datafiles);
+                i.putExtra("workout", getIntent().getIntExtra("workout", 0));
                 startActivity(i);
                 finish();
             }

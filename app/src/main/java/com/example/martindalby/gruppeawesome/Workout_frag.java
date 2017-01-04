@@ -106,7 +106,7 @@ public class Workout_frag extends Fragment implements AdapterView.OnItemClickLis
 
         @Override
         public int getCount() {
-            return wdata.getWorkouts().length;
+            return traeningsPlanData.getWorkouts().size();
         }
         @Override
         public Object getItem(int position) {
@@ -124,10 +124,10 @@ public class Workout_frag extends Fragment implements AdapterView.OnItemClickLis
 
 
                 TextView workoutoverskrift = (TextView) view.findViewById(R.id.WorkoutOverskrift);
-                workoutoverskrift.setText(wdata.getWorkouts()[position].getOverskrift());
+                workoutoverskrift.setText(traeningsPlanData.getWorkout(position).getWorkoutname());
 
                 TextView workoutbeskrivelser = (TextView) view.findViewById(R.id.WorkoutBeskrivelse);
-                workoutbeskrivelser.setText(wdata.getWorkouts()[position].getBeskrivelse());
+                workoutbeskrivelser.setText("sup");
 
                 System.out.println(workoutoverskrift.getId());
 
@@ -138,5 +138,4 @@ public class Workout_frag extends Fragment implements AdapterView.OnItemClickLis
 
 
     }
-
 }
