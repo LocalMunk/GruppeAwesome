@@ -22,18 +22,21 @@ public class DatabaseController {
 
     private DatabaseReference mDatabase;
 
-
     private Firebase mRef;
+
 
     public DatabaseController() {
 
-        mDatabase = FirebaseDatabase.getInstance().getReference();
+        System.out.println("DATABASE BLIVER OPRETTET!!!!!!!!!!!!!!!!!");
 
-        mRef = new Firebase("https://firefred-e8090.firebaseio.com/kostplan");
+        //mDatabase = FirebaseDatabase.getInstance().getReference();
 
-        mDatabase.child("kostplan").addValueEventListener(new com.google.firebase.database.ValueEventListener() {
+        mRef = new Firebase("https://boodybook-a85b7.firebaseio.com/kostplan");
+
+        //henter data fra db
+        mRef.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(com.google.firebase.database.DataSnapshot dataSnapshot) {
+            public void onDataChange(DataSnapshot dataSnapshot) {
 
                 Map<String, String> map = dataSnapshot.getValue(Map.class);
 
@@ -45,16 +48,15 @@ public class DatabaseController {
                 Log.v("E_VALUE", "a2 : " + a2);
                 Log.v("E_VALUE", "a3 : " + a3);
 
-                OpskriftData opskrift = dataSnapshot.getValue(OpskriftData.class);
-
+                //OpskriftData opskrift = dataSnapshot.getValue(OpskriftData.class);
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(FirebaseError firebaseError) {
 
             }
-        });
 
+        });
 
 
     }
