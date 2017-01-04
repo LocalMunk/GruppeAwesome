@@ -13,7 +13,6 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Button;
 
 import com.example.martindalby.gruppeawesome.DataFiles.MainController;
 import com.example.martindalby.gruppeawesome.DataFiles.WorkoutData;
@@ -102,10 +101,10 @@ public class WorkoutList extends AppCompatActivity implements AdapterView.OnItem
 
             ImageView img = (ImageView) view.findViewById(R.id.ovelsebutton);
             if(workoutData.getOvelser().get(position).isDone() != 1){
-                img.setImageResource(R.drawable.flueben);
+                img.setImageResource(R.drawable.fluebengraa);
             }
             else{
-                img.setImageResource(R.drawable.pizzalistepic);
+                img.setImageResource(R.drawable.fluebenhvid);
             }
             return view;
         }
