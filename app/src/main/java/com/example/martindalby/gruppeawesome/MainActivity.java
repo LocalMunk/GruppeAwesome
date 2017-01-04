@@ -12,7 +12,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import com.crashlytics.android.Crashlytics;
-import com.example.martindalby.gruppeawesome.DAL.DBHandler;
 import com.example.martindalby.gruppeawesome.DAL.DatabaseController;
 import com.example.martindalby.gruppeawesome.DataFiles.MainController;
 
@@ -35,9 +34,6 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
         Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_main2);
 
-        //Databasen laves
-        DBCon = new DatabaseController();
-        DBCon.createDBHAndler(this);
 
         datafiles = MainController.getInstans();
         datafiles.testDataGenerator();

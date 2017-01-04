@@ -8,17 +8,9 @@ import android.content.Context;
 
 public class DatabaseController {
 
-    private DBHandler DBH;
-
     public DatabaseController() {
     }
 
-    public void createDBHAndler (Context con) {
-        DBHandler DBH = new DBHandler(con);
-    }
 
-    public DBHandler getDBH() {
-        return DBH;
-    }
 
 }
