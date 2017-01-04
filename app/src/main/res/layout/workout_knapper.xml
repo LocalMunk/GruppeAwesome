@@ -8,7 +8,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="170dp">
+        android:layout_height="170dp"
+        >
 
         <TextView
             android:text="WorkoutGoal"
@@ -22,7 +23,7 @@
             android:layout_marginLeft="12dp"
             android:layout_marginStart="12dp"
             android:layout_marginBottom="25dp"
-            android:textColor="@color/whiteDark"/>
+            />
 
         <TextView
             android:text="GnsWorkout"
@@ -33,7 +34,7 @@
             android:id="@+id/GnsWorkout"
             android:layout_centerHorizontal="true"
             android:layout_alignParentBottom="true"
-            android:textColor="@color/whiteDark"/>
+            />
 
         <TextView
             android:text="AntalWorkouts"
@@ -47,7 +48,7 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:textColor="@color/whiteDark"/>
+            />
 
         <TextView
             android:text="0"
@@ -57,6 +58,7 @@
             android:layout_height="50dp"
             android:id="@+id/TalGoal"
             android:layout_above="@+id/WorkoutGoal"
+
              />
 
         <TextView
@@ -68,7 +70,8 @@
             android:layout_marginLeft="10dp"
             android:layout_above="@+id/GnsWorkout"
             android:layout_alignLeft="@+id/GnsWorkout"
-            android:layout_alignStart="@+id/GnsWorkout" />
+            android:layout_alignStart="@+id/GnsWorkout"
+            />
 
         <TextView
             android:text="0"
@@ -78,13 +81,15 @@
             android:id="@+id/TalAntal"
             android:layout_marginLeft="25dp"
             android:layout_above="@+id/AntalWorkouts"
-            android:layout_alignRight="@+id/AntalWorkouts"/>
+            android:layout_alignRight="@+id/AntalWorkouts"
+            />
     </RelativeLayout>
 
     <ListView
         android:id="@+id/workoutList"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:textColor="@color/whiteDark"/>
 
 
 </LinearLayout>
