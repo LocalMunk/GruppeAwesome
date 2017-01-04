@@ -18,6 +18,7 @@ public class MainController implements Serializable{
     private MainController(){
         Træningsplan = new TraeningsPlanData(new ArrayList<WorkoutData>());
         Kostplan = new KostplanData(new ArrayList<OpskriftData>(),new ArrayList<OpskriftData>(),new ArrayList<OpskriftData>(),new ArrayList<OpskriftData>());
+        databaseControl = new DatabaseController();
     }
 
     public static MainController getInstans(){
