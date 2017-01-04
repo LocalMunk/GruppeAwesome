@@ -35,4 +35,21 @@ public class KostplanData {
         if(i == 2) aften.add(od);
         if(i == 3) snacks.add(od);
     }
+
+    public ArrayList<OpskriftData> getAften() {
+        return aften;
+    }
+
+    public ArrayList<OpskriftData> getFrokost() {
+        return frokost;
+    }
+
+    public ArrayList<OpskriftData> getMorgen() {
+        return morgen;
+    }
+
+    public ArrayList<OpskriftData> getSnacks() {
+        return snacks;
+    }
+
 }
