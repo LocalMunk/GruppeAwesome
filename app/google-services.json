@@ -1,0 +1,99 @@
+{
+  "project_info": {
+    "project_number": "773767772077",
+    "firebase_url": "https://boodybook-a85b7.firebaseio.com",
+    "project_id": "boodybook-a85b7",
+    "storage_bucket": "boodybook-a85b7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:773767772077:android:c5593a6b96de734a",
+        "android_client_info": {
+          "package_name": "com.example.martindalby.gruppeawsome"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "773767772077-bdcsvlu1rr4eui4d7j8bj4kld9rtbkeo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.martindalby.gruppeawsome",
+            "certificate_hash": "1EBED5F8ED80F4DC34410A34DB42E924F32F9878"
+          }
+        },
+        {
+          "client_id": "773767772077-u2khc2p0h5d760qiitjrvs9iau5us7ag.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyADu7LZHr7pzA5oE_6wJ95vyUKwVH0SHsE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "773767772077-u2khc2p0h5d760qiitjrvs9iau5us7ag.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:773767772077:android:c7ee4cf513d284e3",
+        "android_client_info": {
+          "package_name": "com.example.martindalby.gruppeawesome"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "773767772077-n6gmqegcebr72hs5251799pogpkfbh0c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.martindalby.gruppeawesome",
+            "certificate_hash": "1EBED5F8ED80F4DC34410A34DB42E924F32F9878"
+          }
+        },
+        {
+          "client_id": "773767772077-u2khc2p0h5d760qiitjrvs9iau5us7ag.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyADu7LZHr7pzA5oE_6wJ95vyUKwVH0SHsE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "773767772077-u2khc2p0h5d760qiitjrvs9iau5us7ag.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
