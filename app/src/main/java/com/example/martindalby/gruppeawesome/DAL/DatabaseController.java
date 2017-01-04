@@ -47,7 +47,6 @@ public class DatabaseController {
 
                 OpskriftData opskrift = dataSnapshot.getValue(OpskriftData.class);
 
-
             }
 
             @Override
