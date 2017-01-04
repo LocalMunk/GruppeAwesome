@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.martindalby.gruppeawesome.DataFiles.MainController;
+import com.example.martindalby.gruppeawesome.DataFiles.OvelseData;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
@@ -34,17 +35,20 @@ public class Ovelse extends AppCompatActivity implements View.OnClickListener {
     OvelseAdapter listadapt;
     GraphView graph;
     MainController datafiles;
+    OvelseData ovelseData;
 
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ovelse);
         datafiles = MainController.getInstans();
+        ovelseData = datafiles.getTræningsplan().getWorkout(getIntent().getIntExtra("workout", 0)).getOvelser().get(getIntent().getIntExtra("pos", 0));
         currentSet = 1;
-        String[] suppdata = new String[getIntent().getIntExtra("sets", 4)];
-        for(int i = 0; i < getIntent().getIntExtra("sets", 4); i++){
+        String[] suppdata = new String[ovelseData.getSets()];
+        for(int i = 0; i < ovelseData.getSets(); i++){
             suppdata[i] = "Sæt " + (i+1) + ": ";
         }
         support = new OvelseSupport(suppdata,getIntent().getIntArrayExtra("sets")[getIntent().getIntExtra("pos",0)]);
+
 
         weightPicker = (NumberPicker) findViewById(R.id.weightPicker);
         weightPicker.setMinValue(50);
@@ -67,7 +71,7 @@ public class Ovelse extends AppCompatActivity implements View.OnClickListener {
 
         ExerciseName = (TextView) findViewById(R.id.ExerciseName);
         ExerciseName.setTextSize(20);
-        ExerciseName.setText(getIntent().getStringArrayExtra("titles")[getIntent().getIntExtra("pos",0)]);
+        ExerciseName.setText(ovelseData.getNavn());
 
         graph = (GraphView) findViewById(R.id.graph);
         LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[] {

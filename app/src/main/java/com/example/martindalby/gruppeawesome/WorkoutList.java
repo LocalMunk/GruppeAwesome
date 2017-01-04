@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Button;
 
 import com.example.martindalby.gruppeawesome.DataFiles.MainController;
+import com.example.martindalby.gruppeawesome.DataFiles.WorkoutData;
 
 /**
  * Created by Martin Dalby on 17-11-2016.
@@ -30,11 +31,13 @@ public class WorkoutList extends AppCompatActivity implements AdapterView.OnItem
     ListView listView;
     Toolbar toolbar;
     MainController datafiles;
+    WorkoutData workoutData;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workoutlist);
         datafiles = MainController.getInstans();
+        workoutData = datafiles.getTræningsplan().getWorkout(getIntent().getIntExtra("workout", 0));
         wdata = new TestDataWorkout();
         adapter = new WorkoutListAdapter(this);
         int i = getIntent().getIntExtra("workout", 0);
@@ -56,6 +59,7 @@ public class WorkoutList extends AppCompatActivity implements AdapterView.OnItem
         i.putExtra("titles",ovelser);
         i.putExtra("sets",setsArray);
         i.putExtra("pos", position);
+        i.putExtra("workout", getIntent().getIntExtra("workout", 0));
         startActivity(i);
     }
 

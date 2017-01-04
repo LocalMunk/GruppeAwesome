@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.BaseAdapter;
 
 import com.example.martindalby.gruppeawesome.DataFiles.MainController;
+import com.example.martindalby.gruppeawesome.DataFiles.TraeningsPlanData;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.ValueDependentColor;
 import com.jjoe64.graphview.series.BarGraphSeries;
@@ -38,6 +39,7 @@ public class Workout_frag extends Fragment implements AdapterView.OnItemClickLis
     TextView workoutgoal, talgoal;
     TextView antalworkouts, talantal;
     MainController datafiles;
+    TraeningsPlanData traeningsPlanData;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -46,7 +48,7 @@ public class Workout_frag extends Fragment implements AdapterView.OnItemClickLis
         wdata = new TestDataWorkout();
 
         datafiles = MainController.getInstans();
-
+        traeningsPlanData = datafiles.getTræningsplan();
         WorkoutAdapter adapter = new WorkoutAdapter(getActivity(), wdata.getWorkouts());
 
         datafiles.setTreTal(4.33, 3, 3);

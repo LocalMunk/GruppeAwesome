@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
         DBCon.createDBHAndler(this);
 
         datafiles = MainController.getInstans();
-
+        datafiles.testDataGenerator();
         toolbar = (Toolbar) findViewById(R.id.toolBar);
 
         tabLayout = (TabLayout) findViewById(R.id.tab_layout);
