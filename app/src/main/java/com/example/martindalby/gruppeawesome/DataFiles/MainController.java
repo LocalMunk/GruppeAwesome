@@ -50,14 +50,14 @@ public class MainController implements Serializable{
     public void testDataGenerator(){
         if(Træningsplan.getWorkouts().size() == 0) {
             ArrayList<OvelseData> z = new ArrayList<OvelseData>();
-            z.add(new OvelseData(0, "Lunges", 3, 3));
-            z.add(new OvelseData(1, "Squats", 3, 3));
-            z.add(new OvelseData(2, "Barbell Rows", 3, 3));
-            z.add(new OvelseData(3, "Pullups", 3, 3));
-            z.add(new OvelseData(4, "Preacher Curls", 3, 3));
-            z.add(new OvelseData(5, "Hammer Curl", 3, 3));
-            z.add(new OvelseData(6, "Calf Press", 3, 3));
-            z.add(new OvelseData(7, "Pullups", 3, 3));
+            z.add(new OvelseData(0, "Lunges", 0, 3));
+            z.add(new OvelseData(1, "Squats", 0, 3));
+            z.add(new OvelseData(2, "Barbell Rows", 0, 3));
+            z.add(new OvelseData(3, "Pullups", 0, 3));
+            z.add(new OvelseData(4, "Preacher Curls", 0, 3));
+            z.add(new OvelseData(5, "Hammer Curl", 0, 3));
+            z.add(new OvelseData(6, "Calf Press", 0, 3));
+            z.add(new OvelseData(7, "Pullups", 0, 3));
             Træningsplan.addWorkout(new WorkoutData(0, "Workout A", z));
             Træningsplan.addWorkout(new WorkoutData(1, "Workout B", z));
             Træningsplan.addWorkout(new WorkoutData(2, "Workout C", z));

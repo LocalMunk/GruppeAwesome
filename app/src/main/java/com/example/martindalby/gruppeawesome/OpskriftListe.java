@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.martindalby.gruppeawesome.DataFiles.KostplanData;
 import com.example.martindalby.gruppeawesome.DataFiles.MainController;
 
 import junit.framework.Test;
@@ -25,12 +26,13 @@ public class OpskriftListe extends AppCompatActivity implements AdapterView.OnIt
     private ListView listView;
     private String typeText, send1, send2, send3;
     MainController datafiles;
+    KostplanData kostplanData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         datafiles = MainController.getInstans();
-
+        kostplanData = datafiles.getKostplan();
         typeText = getIntent().getStringExtra("type");
         System.out.println("TyperTe4xt fået fra intent: " + typeText);
         adapter = new KostPlanAdapter();

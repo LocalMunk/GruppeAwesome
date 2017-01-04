@@ -96,11 +96,12 @@ public class Ovelse extends AppCompatActivity implements View.OnClickListener {
                 list.invalidateViews();
                 list.refreshDrawableState();
             }
-            else if(getIntent().getIntExtra("pos",0) < datafiles.getTræningsplan().getWorkout(getIntent().getIntExtra("pos", 0)).getOvelser().size() -1) {
+            else if(getIntent().getIntExtra("pos",0) < datafiles.getTræningsplan().getWorkout(getIntent().getIntExtra("workout", 0)).getOvelser().size() -1) {
                 Intent i = new Intent(this, Ovelse.class);
                 i.putExtra("pos", getIntent().getIntExtra("pos", 0) + 1);
                 i.putExtra("workout", getIntent().getIntExtra("workout", 0));
                 startActivity(i);
+                ovelseData.setDone(1);
                 finish();
             }
             else{
