@@ -27,6 +27,8 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="238dp"
+        android:layout_marginLeft="9dp"
+        android:layout_marginRight="9dp"
         app:srcCompat="@drawable/morgenmad"
         android:id="@+id/retImg"
         android:layout_weight="0.04" />
@@ -41,7 +43,7 @@
 
         <Button
             android:text="Button"
-            android:background="@color/colorPrimaryDark"
+            android:background="@color/colorPrimaryLight"
             android:textColor="@color/indicate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
