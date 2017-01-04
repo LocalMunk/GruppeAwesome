@@ -101,6 +101,12 @@ public class WorkoutList extends AppCompatActivity implements AdapterView.OnItem
             exerciseName.setText(workoutData.getOvelser().get(position).getNavn());
 
             ImageView img = (ImageView) view.findViewById(R.id.ovelsebutton);
+            if(workoutData.getOvelser().get(position).isDone() != 1){
+                img.setImageResource(R.drawable.flueben);
+            }
+            else{
+                img.setImageResource(R.drawable.pizzalistepic);
+            }
             return view;
         }
 
