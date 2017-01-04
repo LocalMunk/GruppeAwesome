@@ -10,6 +10,7 @@
 
         <TextView
             android:text="TextView"
+            android:textSize="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
@@ -24,11 +25,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:srcCompat="@android:drawable/ic_media_play"
-            android:layout_below="@+id/exercisename"
+            android:layout_marginRight="26dp"
+            android:layout_marginEnd="26dp"
+            android:id="@+id/ovelsebutton"
+            android:layout_alignTop="@+id/exercisename"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginRight="23dp"
-            android:layout_marginEnd="23dp"
-            android:id="@+id/ovelsebutton" />
+            android:layout_marginTop="12dp" />
     </RelativeLayout>
 </LinearLayout>

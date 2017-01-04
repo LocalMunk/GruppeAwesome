@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.martindalby.gruppeawesome.DataFiles.MainController;
+import com.example.martindalby.gruppeawesome.DataFiles.OpskriftData;
 
 /**
  * Created by Martin Dalby on 07-11-2016.
@@ -22,12 +23,13 @@ public class Opskrift extends AppCompatActivity implements View.OnClickListener{
     String typeText, overskrift, beskrivelse, ingred;
     Toolbar toolbar;
     MainController datafiles;
+    OpskriftData opskriftData;
 
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_opskrift);
         datafiles = MainController.getInstans();
-
+        opskriftData = datafiles.getKostplan().getOpskrift(getIntent().getIntExtra("typeint", 0), 1);
         typeText = getIntent().getStringExtra("type");
         overskrift = getIntent().getStringExtra("overskrift");
         beskrivelse = getIntent().getStringExtra("beskrivelse");
@@ -37,19 +39,19 @@ public class Opskrift extends AppCompatActivity implements View.OnClickListener{
         toolbar.setTitle(typeText);
 
         retNavn = (TextView) findViewById(R.id.retNavn);
-        retNavn.setText(overskrift + " Type: " + typeText);
+        retNavn.setText(opskriftData.getNavn() + " Type: " + typeText);
 
         retBillede = (ImageView) findViewById(R.id.retImg);
         retBillede.setImageResource(R.drawable.morgenmad);
 
         ingrediensTV = (TextView) findViewById(R.id.retIngrediens);
-        ingrediensTV.setText(ingred);
+        ingrediensTV.setText(opskriftData.getIngrediens());
 
         alternativ = (Button) findViewById(R.id.alternativ);
         alternativ.setText("Alternativ");
 
         fremGang = (TextView) findViewById(R.id.fremMaa);
-        fremGang.setText(beskrivelse);
+        fremGang.setText(opskriftData.getFremgangsmåde());
 
         alternativ.setOnClickListener(this);
     }

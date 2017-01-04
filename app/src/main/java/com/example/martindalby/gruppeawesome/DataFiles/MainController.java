@@ -62,66 +62,110 @@ public class MainController implements Serializable{
             Træningsplan.addWorkout(new WorkoutData(1, "Workout B", z));
             Træningsplan.addWorkout(new WorkoutData(2, "Workout C", z));
 
-            Kostplan.setOpskrift(0, new OpskriftData("Kylling", "1 stk. ost \\n2 æg \\n100g kylling \\n\\n200g prot", "Lad en tykbundet gryde blive varm. Tilsæt ris, løg og hvidvin. Bring det i kog og kog det ved jævn varme i ca. 2 min. Tilsæt vand og bouillonterning og lad retten koge ved svag varme i ca. 20 min. - rør af og til. Tilsæt squash og æble og vend det godt sammen. Lad risottoen koge ved svag varme i yderligere ca. 5 min. - rør af og til.\n" +
+            Kostplan.setOpskrift(0, new OpskriftData("Kylling", "1 stk. ost \n 2 æg \n 100g kylling \n \n 200g prot", "Lad en tykbundet gryde blive varm. Tilsæt ris, løg og hvidvin. Bring det i kog og kog det ved jævn varme i ca. 2 min. Tilsæt vand og bouillonterning og lad retten koge ved svag varme i ca. 20 min. - rør af og til. Tilsæt squash og æble og vend det godt sammen. Lad risottoen koge ved svag varme i yderligere ca. 5 min. - rør af og til.\n" +
                     "\n" +
                     "Tilsæt hytteost, jordskokker, persille, limesaft og salt. Varm risottoen igennem og smag til.\n" +
                     "\n" +
-                    "Lad imens olien blive godt varm i en pande. Steg kylling og gulerødder i ca. 3 min. ved kraftig varme. Skru ned til jævn varme og steg i yderligere ca. 7 min. under omrøring. Anret kylling på risottoen sammen med serrano skinke. Pynt med persille.", ""));
-            Kostplan.setOpskrift(0, new OpskriftData("Ostemad", "1 stk. ost \\n2 æg \\n100g kylling \\n\\n200g prot", "Lad en tykbundet gryde blive varm. Tilsæt ris, løg og hvidvin. Bring det i kog og kog det ved jævn varme i ca. 2 min. Tilsæt vand og bouillonterning og lad retten koge ved svag varme i ca. 20 min. - rør af og til. Tilsæt squash og æble og vend det godt sammen. Lad risottoen koge ved svag varme i yderligere ca. 5 min. - rør af og til.\n" +
+                    "Lad imens olien blive godt varm i en pande. Steg kylling og gulerødder i ca. 3 min. ved kraftig varme. Skru ned til jævn varme og steg i yderligere ca. 7 min. under omrøring. Anret kylling på risottoen sammen med serrano skinke. Pynt med persille.", "", "", 0));
+            Kostplan.setOpskrift(0, new OpskriftData("Ostemad", "1 stk. ost \n" +
+                    " 2 æg \n" +
+                    " 100g kylling \n" +
+                    " \n" +
+                    " 200g prot", "Lad en tykbundet gryde blive varm. Tilsæt ris, løg og hvidvin. Bring det i kog og kog det ved jævn varme i ca. 2 min. Tilsæt vand og bouillonterning og lad retten koge ved svag varme i ca. 20 min. - rør af og til. Tilsæt squash og æble og vend det godt sammen. Lad risottoen koge ved svag varme i yderligere ca. 5 min. - rør af og til.\n" +
                     "\n" +
                     "Tilsæt hytteost, jordskokker, persille, limesaft og salt. Varm risottoen igennem og smag til.\n" +
                     "\n" +
-                    "Lad imens olien blive godt varm i en pande. Steg kylling og gulerødder i ca. 3 min. ved kraftig varme. Skru ned til jævn varme og steg i yderligere ca. 7 min. under omrøring. Anret kylling på risottoen sammen med serrano skinke. Pynt med persille.", ""));
-            Kostplan.setOpskrift(1, new OpskriftData("Fisk", "1 stk. ost \\n2 æg \\n100g kylling \\n\\n200g prot", "Lad en tykbundet gryde blive varm. Tilsæt ris, løg og hvidvin. Bring det i kog og kog det ved jævn varme i ca. 2 min. Tilsæt vand og bouillonterning og lad retten koge ved svag varme i ca. 20 min. - rør af og til. Tilsæt squash og æble og vend det godt sammen. Lad risottoen koge ved svag varme i yderligere ca. 5 min. - rør af og til.\n" +
+                    "Lad imens olien blive godt varm i en pande. Steg kylling og gulerødder i ca. 3 min. ved kraftig varme. Skru ned til jævn varme og steg i yderligere ca. 7 min. under omrøring. Anret kylling på risottoen sammen med serrano skinke. Pynt med persille.", "", "", 0));
+            Kostplan.setOpskrift(1, new OpskriftData("Fisk", "1 stk. ost \n" +
+                    " 2 æg \n" +
+                    " 100g kylling \n" +
+                    " \n" +
+                    " 200g prot", "Lad en tykbundet gryde blive varm. Tilsæt ris, løg og hvidvin. Bring det i kog og kog det ved jævn varme i ca. 2 min. Tilsæt vand og bouillonterning og lad retten koge ved svag varme i ca. 20 min. - rør af og til. Tilsæt squash og æble og vend det godt sammen. Lad risottoen koge ved svag varme i yderligere ca. 5 min. - rør af og til.\n" +
                     "\n" +
                     "Tilsæt hytteost, jordskokker, persille, limesaft og salt. Varm risottoen igennem og smag til.\n" +
                     "\n" +
-                    "Lad imens olien blive godt varm i en pande. Steg kylling og gulerødder i ca. 3 min. ved kraftig varme. Skru ned til jævn varme og steg i yderligere ca. 7 min. under omrøring. Anret kylling på risottoen sammen med serrano skinke. Pynt med persille.", ""));
-            Kostplan.setOpskrift(1, new OpskriftData("Æg", "1 stk. ost \\n2 æg \\n100g kylling \\n\\n200g prot", "Lad en tykbundet gryde blive varm. Tilsæt ris, løg og hvidvin. Bring det i kog og kog det ved jævn varme i ca. 2 min. Tilsæt vand og bouillonterning og lad retten koge ved svag varme i ca. 20 min. - rør af og til. Tilsæt squash og æble og vend det godt sammen. Lad risottoen koge ved svag varme i yderligere ca. 5 min. - rør af og til.\n" +
+                    "Lad imens olien blive godt varm i en pande. Steg kylling og gulerødder i ca. 3 min. ved kraftig varme. Skru ned til jævn varme og steg i yderligere ca. 7 min. under omrøring. Anret kylling på risottoen sammen med serrano skinke. Pynt med persille.", "", "", 1));
+            Kostplan.setOpskrift(1, new OpskriftData("Æg", "1 stk. ost \n" +
+                    " 2 æg \n" +
+                    " 100g kylling \n" +
+                    " \n" +
+                    " 200g prot", "Lad en tykbundet gryde blive varm. Tilsæt ris, løg og hvidvin. Bring det i kog og kog det ved jævn varme i ca. 2 min. Tilsæt vand og bouillonterning og lad retten koge ved svag varme i ca. 20 min. - rør af og til. Tilsæt squash og æble og vend det godt sammen. Lad risottoen koge ved svag varme i yderligere ca. 5 min. - rør af og til.\n" +
                     "\n" +
                     "Tilsæt hytteost, jordskokker, persille, limesaft og salt. Varm risottoen igennem og smag til.\n" +
                     "\n" +
-                    "Lad imens olien blive godt varm i en pande. Steg kylling og gulerødder i ca. 3 min. ved kraftig varme. Skru ned til jævn varme og steg i yderligere ca. 7 min. under omrøring. Anret kylling på risottoen sammen med serrano skinke. Pynt med persille.", ""));
-            Kostplan.setOpskrift(2, new OpskriftData("Salat", "1 stk. ost \\n2 æg \\n100g kylling \\n\\n200g prot", "Lad en tykbundet gryde blive varm. Tilsæt ris, løg og hvidvin. Bring det i kog og kog det ved jævn varme i ca. 2 min. Tilsæt vand og bouillonterning og lad retten koge ved svag varme i ca. 20 min. - rør af og til. Tilsæt squash og æble og vend det godt sammen. Lad risottoen koge ved svag varme i yderligere ca. 5 min. - rør af og til.\n" +
+                    "Lad imens olien blive godt varm i en pande. Steg kylling og gulerødder i ca. 3 min. ved kraftig varme. Skru ned til jævn varme og steg i yderligere ca. 7 min. under omrøring. Anret kylling på risottoen sammen med serrano skinke. Pynt med persille.", "", "", 1));
+            Kostplan.setOpskrift(2, new OpskriftData("Salat", "1 stk. ost \n" +
+                    " 2 æg \n" +
+                    " 100g kylling \n" +
+                    " \n" +
+                    " 200g prot", "Lad en tykbundet gryde blive varm. Tilsæt ris, løg og hvidvin. Bring det i kog og kog det ved jævn varme i ca. 2 min. Tilsæt vand og bouillonterning og lad retten koge ved svag varme i ca. 20 min. - rør af og til. Tilsæt squash og æble og vend det godt sammen. Lad risottoen koge ved svag varme i yderligere ca. 5 min. - rør af og til.\n" +
                     "\n" +
                     "Tilsæt hytteost, jordskokker, persille, limesaft og salt. Varm risottoen igennem og smag til.\n" +
                     "\n" +
-                    "Lad imens olien blive godt varm i en pande. Steg kylling og gulerødder i ca. 3 min. ved kraftig varme. Skru ned til jævn varme og steg i yderligere ca. 7 min. under omrøring. Anret kylling på risottoen sammen med serrano skinke. Pynt med persille.", ""));
-            Kostplan.setOpskrift(2, new OpskriftData("God Gryde", "1 stk. ost \\n2 æg \\n100g kylling \\n\\n200g prot", "Lad en tykbundet gryde blive varm. Tilsæt ris, løg og hvidvin. Bring det i kog og kog det ved jævn varme i ca. 2 min. Tilsæt vand og bouillonterning og lad retten koge ved svag varme i ca. 20 min. - rør af og til. Tilsæt squash og æble og vend det godt sammen. Lad risottoen koge ved svag varme i yderligere ca. 5 min. - rør af og til.\n" +
+                    "Lad imens olien blive godt varm i en pande. Steg kylling og gulerødder i ca. 3 min. ved kraftig varme. Skru ned til jævn varme og steg i yderligere ca. 7 min. under omrøring. Anret kylling på risottoen sammen med serrano skinke. Pynt med persille.", "", "", 2));
+            Kostplan.setOpskrift(2, new OpskriftData("God Gryde", "1 stk. ost \n" +
+                    " 2 æg \n" +
+                    " 100g kylling \n" +
+                    " \n" +
+                    " 200g prot", "Lad en tykbundet gryde blive varm. Tilsæt ris, løg og hvidvin. Bring det i kog og kog det ved jævn varme i ca. 2 min. Tilsæt vand og bouillonterning og lad retten koge ved svag varme i ca. 20 min. - rør af og til. Tilsæt squash og æble og vend det godt sammen. Lad risottoen koge ved svag varme i yderligere ca. 5 min. - rør af og til.\n" +
                     "\n" +
                     "Tilsæt hytteost, jordskokker, persille, limesaft og salt. Varm risottoen igennem og smag til.\n" +
                     "\n" +
-                    "Lad imens olien blive godt varm i en pande. Steg kylling og gulerødder i ca. 3 min. ved kraftig varme. Skru ned til jævn varme og steg i yderligere ca. 7 min. under omrøring. Anret kylling på risottoen sammen med serrano skinke. Pynt med persille.", ""));
-            Kostplan.setOpskrift(3, new OpskriftData("Prot Mad", "1 stk. ost \\n2 æg \\n100g kylling \\n\\n200g prot", "Lad en tykbundet gryde blive varm. Tilsæt ris, løg og hvidvin. Bring det i kog og kog det ved jævn varme i ca. 2 min. Tilsæt vand og bouillonterning og lad retten koge ved svag varme i ca. 20 min. - rør af og til. Tilsæt squash og æble og vend det godt sammen. Lad risottoen koge ved svag varme i yderligere ca. 5 min. - rør af og til.\n" +
+                    "Lad imens olien blive godt varm i en pande. Steg kylling og gulerødder i ca. 3 min. ved kraftig varme. Skru ned til jævn varme og steg i yderligere ca. 7 min. under omrøring. Anret kylling på risottoen sammen med serrano skinke. Pynt med persille.", "", "", 2));
+            Kostplan.setOpskrift(3, new OpskriftData("Prot Mad", "1 stk. ost \n" +
+                    " 2 æg \n" +
+                    " 100g kylling \n" +
+                    " \n" +
+                    " 200g prot", "Lad en tykbundet gryde blive varm. Tilsæt ris, løg og hvidvin. Bring det i kog og kog det ved jævn varme i ca. 2 min. Tilsæt vand og bouillonterning og lad retten koge ved svag varme i ca. 20 min. - rør af og til. Tilsæt squash og æble og vend det godt sammen. Lad risottoen koge ved svag varme i yderligere ca. 5 min. - rør af og til.\n" +
                     "\n" +
                     "Tilsæt hytteost, jordskokker, persille, limesaft og salt. Varm risottoen igennem og smag til.\n" +
                     "\n" +
-                    "Lad imens olien blive godt varm i en pande. Steg kylling og gulerødder i ca. 3 min. ved kraftig varme. Skru ned til jævn varme og steg i yderligere ca. 7 min. under omrøring. Anret kylling på risottoen sammen med serrano skinke. Pynt med persille.", ""));
-            Kostplan.setOpskrift(3, new OpskriftData("Sund Mad", "1 stk. ost \\n2 æg \\n100g kylling \\n\\n200g prot", "Lad en tykbundet gryde blive varm. Tilsæt ris, løg og hvidvin. Bring det i kog og kog det ved jævn varme i ca. 2 min. Tilsæt vand og bouillonterning og lad retten koge ved svag varme i ca. 20 min. - rør af og til. Tilsæt squash og æble og vend det godt sammen. Lad risottoen koge ved svag varme i yderligere ca. 5 min. - rør af og til.\n" +
+                    "Lad imens olien blive godt varm i en pande. Steg kylling og gulerødder i ca. 3 min. ved kraftig varme. Skru ned til jævn varme og steg i yderligere ca. 7 min. under omrøring. Anret kylling på risottoen sammen med serrano skinke. Pynt med persille.", "", "",3));
+            Kostplan.setOpskrift(3, new OpskriftData("Sund Mad", "1 stk. ost \n" +
+                    " 2 æg \n" +
+                    " 100g kylling \n" +
+                    " \n" +
+                    " 200g prot", "Lad en tykbundet gryde blive varm. Tilsæt ris, løg og hvidvin. Bring det i kog og kog det ved jævn varme i ca. 2 min. Tilsæt vand og bouillonterning og lad retten koge ved svag varme i ca. 20 min. - rør af og til. Tilsæt squash og æble og vend det godt sammen. Lad risottoen koge ved svag varme i yderligere ca. 5 min. - rør af og til.\n" +
                     "\n" +
                     "Tilsæt hytteost, jordskokker, persille, limesaft og salt. Varm risottoen igennem og smag til.\n" +
                     "\n" +
-                    "Lad imens olien blive godt varm i en pande. Steg kylling og gulerødder i ca. 3 min. ved kraftig varme. Skru ned til jævn varme og steg i yderligere ca. 7 min. under omrøring. Anret kylling på risottoen sammen med serrano skinke. Pynt med persille.", ""));
-            Kostplan.setOpskrift(0, new OpskriftData("Appelsin Juice", "1 stk. ost \\n2 æg \\n100g kylling \\n\\n200g prot", "Lad en tykbundet gryde blive varm. Tilsæt ris, løg og hvidvin. Bring det i kog og kog det ved jævn varme i ca. 2 min. Tilsæt vand og bouillonterning og lad retten koge ved svag varme i ca. 20 min. - rør af og til. Tilsæt squash og æble og vend det godt sammen. Lad risottoen koge ved svag varme i yderligere ca. 5 min. - rør af og til.\n" +
+                    "Lad imens olien blive godt varm i en pande. Steg kylling og gulerødder i ca. 3 min. ved kraftig varme. Skru ned til jævn varme og steg i yderligere ca. 7 min. under omrøring. Anret kylling på risottoen sammen med serrano skinke. Pynt med persille.", "", "", 3));
+            Kostplan.setOpskrift(0, new OpskriftData("Appelsin Juice", "1 stk. ost \n" +
+                    " 2 æg \n" +
+                    " 100g kylling \n" +
+                    " \n" +
+                    " 200g prot", "Lad en tykbundet gryde blive varm. Tilsæt ris, løg og hvidvin. Bring det i kog og kog det ved jævn varme i ca. 2 min. Tilsæt vand og bouillonterning og lad retten koge ved svag varme i ca. 20 min. - rør af og til. Tilsæt squash og æble og vend det godt sammen. Lad risottoen koge ved svag varme i yderligere ca. 5 min. - rør af og til.\n" +
                     "\n" +
                     "Tilsæt hytteost, jordskokker, persille, limesaft og salt. Varm risottoen igennem og smag til.\n" +
                     "\n" +
-                    "Lad imens olien blive godt varm i en pande. Steg kylling og gulerødder i ca. 3 min. ved kraftig varme. Skru ned til jævn varme og steg i yderligere ca. 7 min. under omrøring. Anret kylling på risottoen sammen med serrano skinke. Pynt med persille.", ""));
-            Kostplan.setOpskrift(1, new OpskriftData("Burger", "1 stk. ost \\n2 æg \\n100g kylling \\n\\n200g prot", "Lad en tykbundet gryde blive varm. Tilsæt ris, løg og hvidvin. Bring det i kog og kog det ved jævn varme i ca. 2 min. Tilsæt vand og bouillonterning og lad retten koge ved svag varme i ca. 20 min. - rør af og til. Tilsæt squash og æble og vend det godt sammen. Lad risottoen koge ved svag varme i yderligere ca. 5 min. - rør af og til.\n" +
+                    "Lad imens olien blive godt varm i en pande. Steg kylling og gulerødder i ca. 3 min. ved kraftig varme. Skru ned til jævn varme og steg i yderligere ca. 7 min. under omrøring. Anret kylling på risottoen sammen med serrano skinke. Pynt med persille.", "", "", 0));
+            Kostplan.setOpskrift(1, new OpskriftData("Burger", "1 stk. ost \n" +
+                    " 2 æg \n" +
+                    " 100g kylling \n" +
+                    " \n" +
+                    " 200g prot", "Lad en tykbundet gryde blive varm. Tilsæt ris, løg og hvidvin. Bring det i kog og kog det ved jævn varme i ca. 2 min. Tilsæt vand og bouillonterning og lad retten koge ved svag varme i ca. 20 min. - rør af og til. Tilsæt squash og æble og vend det godt sammen. Lad risottoen koge ved svag varme i yderligere ca. 5 min. - rør af og til.\n" +
                     "\n" +
                     "Tilsæt hytteost, jordskokker, persille, limesaft og salt. Varm risottoen igennem og smag til.\n" +
                     "\n" +
-                    "Lad imens olien blive godt varm i en pande. Steg kylling og gulerødder i ca. 3 min. ved kraftig varme. Skru ned til jævn varme og steg i yderligere ca. 7 min. under omrøring. Anret kylling på risottoen sammen med serrano skinke. Pynt med persille.", ""));
-            Kostplan.setOpskrift(2, new OpskriftData("Gulerod", "1 stk. ost \\n2 æg \\n100g kylling \\n\\n200g prot", "Lad en tykbundet gryde blive varm. Tilsæt ris, løg og hvidvin. Bring det i kog og kog det ved jævn varme i ca. 2 min. Tilsæt vand og bouillonterning og lad retten koge ved svag varme i ca. 20 min. - rør af og til. Tilsæt squash og æble og vend det godt sammen. Lad risottoen koge ved svag varme i yderligere ca. 5 min. - rør af og til.\n" +
+                    "Lad imens olien blive godt varm i en pande. Steg kylling og gulerødder i ca. 3 min. ved kraftig varme. Skru ned til jævn varme og steg i yderligere ca. 7 min. under omrøring. Anret kylling på risottoen sammen med serrano skinke. Pynt med persille.", "", "", 1));
+            Kostplan.setOpskrift(2, new OpskriftData("Gulerod", "1 stk. ost \n" +
+                    " 2 æg \n" +
+                    " 100g kylling \n" +
+                    " \n" +
+                    " 200g prot", "Lad en tykbundet gryde blive varm. Tilsæt ris, løg og hvidvin. Bring det i kog og kog det ved jævn varme i ca. 2 min. Tilsæt vand og bouillonterning og lad retten koge ved svag varme i ca. 20 min. - rør af og til. Tilsæt squash og æble og vend det godt sammen. Lad risottoen koge ved svag varme i yderligere ca. 5 min. - rør af og til.\n" +
                     "\n" +
                     "Tilsæt hytteost, jordskokker, persille, limesaft og salt. Varm risottoen igennem og smag til.\n" +
                     "\n" +
-                    "Lad imens olien blive godt varm i en pande. Steg kylling og gulerødder i ca. 3 min. ved kraftig varme. Skru ned til jævn varme og steg i yderligere ca. 7 min. under omrøring. Anret kylling på risottoen sammen med serrano skinke. Pynt med persille.", ""));
-            Kostplan.setOpskrift(3, new OpskriftData("Peanut butter", "1 stk. ost \\n2 æg \\n100g kylling \\n\\n200g prot", "Lad en tykbundet gryde blive varm. Tilsæt ris, løg og hvidvin. Bring det i kog og kog det ved jævn varme i ca. 2 min. Tilsæt vand og bouillonterning og lad retten koge ved svag varme i ca. 20 min. - rør af og til. Tilsæt squash og æble og vend det godt sammen. Lad risottoen koge ved svag varme i yderligere ca. 5 min. - rør af og til.\n" +
+                    "Lad imens olien blive godt varm i en pande. Steg kylling og gulerødder i ca. 3 min. ved kraftig varme. Skru ned til jævn varme og steg i yderligere ca. 7 min. under omrøring. Anret kylling på risottoen sammen med serrano skinke. Pynt med persille.", "", "", 2));
+            Kostplan.setOpskrift(3, new OpskriftData("Peanut butter", "1 stk. ost \n" +
+                    " 2 æg \n" +
+                    " 100g kylling \n" +
+                    " \n" +
+                    " 200g prot", "Lad en tykbundet gryde blive varm. Tilsæt ris, løg og hvidvin. Bring det i kog og kog det ved jævn varme i ca. 2 min. Tilsæt vand og bouillonterning og lad retten koge ved svag varme i ca. 20 min. - rør af og til. Tilsæt squash og æble og vend det godt sammen. Lad risottoen koge ved svag varme i yderligere ca. 5 min. - rør af og til.\n" +
                     "\n" +
                     "Tilsæt hytteost, jordskokker, persille, limesaft og salt. Varm risottoen igennem og smag til.\n" +
                     "\n" +
-                    "Lad imens olien blive godt varm i en pande. Steg kylling og gulerødder i ca. 3 min. ved kraftig varme. Skru ned til jævn varme og steg i yderligere ca. 7 min. under omrøring. Anret kylling på risottoen sammen med serrano skinke. Pynt med persille.", ""));
+                    "Lad imens olien blive godt varm i en pande. Steg kylling og gulerødder i ca. 3 min. ved kraftig varme. Skru ned til jævn varme og steg i yderligere ca. 7 min. under omrøring. Anret kylling på risottoen sammen med serrano skinke. Pynt med persille.", "", "", 3));
         }
 
     }

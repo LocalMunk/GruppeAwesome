@@ -6,7 +6,8 @@ package com.example.martindalby.gruppeawesome.DataFiles;
 
 public class OpskriftData {
 
-    private String navn, ingrediens, fremgangsmåde, imglink;
+    private String navn, ingrediens, fremgangsmåde, imglink, id;
+    private int type;
 
     public String getNavn() {
         return navn;
@@ -40,11 +41,13 @@ public class OpskriftData {
         this.imglink = imglink;
     }
 
-    public OpskriftData(String navn, String ingrediens, String fremgangsmåde, String imglink) {
+    public OpskriftData(String navn, String ingrediens, String fremgangsmåde, String imglink, String id, int type) {
         this.navn = navn;
         this.ingrediens = ingrediens;
         this.fremgangsmåde = fremgangsmåde;
         this.imglink = imglink;
+        this.id = id;
+        this.type = type;
 
     }
 }

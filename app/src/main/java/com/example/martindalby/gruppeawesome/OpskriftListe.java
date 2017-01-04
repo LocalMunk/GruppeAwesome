@@ -70,7 +70,7 @@ public class OpskriftListe extends AppCompatActivity implements AdapterView.OnIt
                 .putExtra("overskrift", send1)
                 .putExtra("beskrivelse", send2)
                 .putExtra("ingrediens", send3)
-                .putExtra("type", typeText);
+                .putExtra("typeint", type);
         startActivity(i);
     }
 
