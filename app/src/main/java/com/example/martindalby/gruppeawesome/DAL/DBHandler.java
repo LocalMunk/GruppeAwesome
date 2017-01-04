@@ -98,14 +98,8 @@ public class DBHandler extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(KEY_WID,workout.getWorkoutid());
         values.put(Key_Wname, workout.getWorkoutname());
-        values.put(Key_Excersise1, workout.getOvelsesid());
-        values.put(Key_Excersise2, workout.getOvelsesid2());
-        values.put(Key_Excersise3, workout.getOvelsesid3());
-        values.put(Key_Excersise4, workout.getOvelsesid4());
-        values.put(Key_Excersise5, workout.getOvelsesid5());
-        values.put(Key_Excersise6, workout.getOvelsesid6());
-        values.put(Key_Excersise7, workout.getOvelsesid7());
-        values.put(Key_Excersise8, workout.getOvelsesid8());
+       //// FIXME: 04-01-2017
+
 
         // Inserting Row
         db.insert(TABLE_workout, null, values);
@@ -116,7 +110,7 @@ public class DBHandler extends SQLiteOpenHelper {
     }
 
      // Getting one Workout
-    public WorkoutData getWorkout(int id){
+    /* public WorkoutData getWorkout(int id){
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(TABLE_workout, new String[] { KEY_WID,
@@ -127,12 +121,12 @@ public class DBHandler extends SQLiteOpenHelper {
         WorkoutData contact = new WorkoutData(Integer.parseInt(cursor.getString(0)),
                 cursor.getString(1), cursor.getInt(2), cursor.getInt(3),cursor.getInt(4),cursor.getInt(5),cursor.getInt(6),cursor.getInt(7),cursor.getInt(8),cursor.getInt(9));
 // return shop
-        return contact;
+       return contact;
 
 
 
     }
-
+*/
 
     // Getting one Ovelse
     public OvelseData getOvelse(int id) {
