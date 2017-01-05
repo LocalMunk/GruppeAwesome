@@ -65,7 +65,7 @@ public class Ovelse extends AppCompatActivity implements View.OnClickListener {
         */
 
         Reps = (EditText) findViewById(R.id.reps);
-        Reps.setHint("Repititioner");
+        Reps.setHint("Repetitioner");
 
         Weight = (EditText) findViewById(R.id.weight);
         Weight.setHint("Vægt");

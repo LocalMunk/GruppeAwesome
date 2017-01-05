@@ -28,7 +28,7 @@ public class OpretOvelse extends AppCompatActivity implements View.OnClickListen
         datafiles = MainController.getInstans();
 
         navn = (EditText) findViewById(R.id.opretgetnavn);
-        navn.setHint("Navn");
+        navn.setHint("Øvelse navn");
 
         sets = (EditText) findViewById(R.id.opretgetsets);
         sets.setHint("Sets");
