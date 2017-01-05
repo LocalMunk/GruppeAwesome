@@ -51,7 +51,6 @@ public class WorkoutList extends AppCompatActivity implements AdapterView.OnItem
 
         toolbar = (Toolbar) findViewById(R.id.toolBar);
         toolbar.setTitle(getIntent().getStringExtra("title"));
-        toolbar.setNavigationIcon(R.drawable.icaddwhite);
 
     }
 
@@ -64,17 +63,18 @@ public class WorkoutList extends AppCompatActivity implements AdapterView.OnItem
         startActivity(i);
     }
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
-        getMenuInflater().inflate(R.menu.menu, menu);
+        getMenuInflater().inflate(R.menu.workoutlistmenu, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item)
 
-    {    if(item.getItemId() == R.id.action_plus){
+    {    if(item.getItemId() == R.id.ooknap){
         Intent i = new Intent(this, OpretOvelse.class);
         startActivity(i);
 

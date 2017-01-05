@@ -24,9 +24,12 @@ public class OpretOvelse extends AppCompatActivity implements View.OnClickListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_opretovelse);
         datafiles = MainController.getInstans();
+
         navn = (EditText) findViewById(R.id.opretgetnavn);
+        navn.setSelectAllOnFocus(true);
         navn.setText("Navn");
         sets = (EditText) findViewById(R.id.opretgetsets);
+        sets.setSelectAllOnFocus(true);
         sets.setText("sets");
         done = (Button) findViewById(R.id.opretovelsedone);
         done.setOnClickListener(this);

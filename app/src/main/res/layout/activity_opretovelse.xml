@@ -2,68 +2,49 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent">
 
+    <Button
+        android:text="Opret Øvelse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="107dp"
+        android:id="@+id/opretovelsedone"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+
+
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="?attr/actionBarTheme"
         android:minHeight="?attr/actionBarSize"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:background="@drawable/bg"
-        android:id="@+id/toolbar2" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text="Navn"
-        android:ems="10"
-        android:layout_marginLeft="20dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="63dp"
-        android:id="@+id/opretgetnavn"
-        android:layout_below="@+id/toolbar2"
+        android:id="@+id/toolbar2"
+        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
-    <TextView
-        android:text="Øvelsenavn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
-        android:id="@+id/opretovelsenavn"
-        android:layout_alignBottom="@+id/opretgetnavn"
-        android:layout_alignLeft="@+id/opretgetnavn"
-        android:layout_alignStart="@+id/opretgetnavn" />
-
-    <TextView
-        android:text="sets"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/opretgetnavn"
-        android:layout_alignLeft="@+id/opretgetnavn"
-        android:layout_alignStart="@+id/opretgetnavn"
-        android:layout_marginTop="53dp"
-        android:id="@+id/opretovelsesets" />
-
-    <Button
-        android:text="Opret Øvelse"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="26dp"
-        android:id="@+id/opretovelsedone" />
-
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:text="sets"
+        android:text="Øvelse Navn"
         android:ems="10"
+        android:layout_above="@+id/opretovelsedone"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="180dp"
+        android:id="@+id/opretgetnavn" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:layout_marginBottom="79dp"
+        android:text="Sets"
         android:id="@+id/opretgetsets"
-        android:layout_below="@+id/opretovelsesets"
-        android:layout_alignLeft="@+id/opretovelsesets"
-        android:layout_alignStart="@+id/opretovelsesets" />
+        android:layout_above="@+id/opretovelsedone"
+        android:layout_alignLeft="@+id/opretgetnavn"
+        android:layout_alignStart="@+id/opretgetnavn" />
+
 </RelativeLayout>
