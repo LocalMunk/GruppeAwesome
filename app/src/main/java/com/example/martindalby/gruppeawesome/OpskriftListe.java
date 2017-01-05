@@ -78,11 +78,8 @@ public class OpskriftListe extends AppCompatActivity implements AdapterView.OnIt
         //Her afgøres længde på liste ud fra hvilken knap man trykker paa
         @Override
         public int getCount() {
-            if(type == 0) return kostplanData.getMorgen().size();
-            else if(type == 1) return kostplanData.getFrokost().size();
-            else if(type == 2) return kostplanData.getAften().size();
-            else if(type == 3) return kostplanData.getSnacks().size();
-            else return 0;
+            return kostplanData.getRetter().size();
+
         }
         @Override
         public Object getItem(int position) {return null;} //bruges ikke

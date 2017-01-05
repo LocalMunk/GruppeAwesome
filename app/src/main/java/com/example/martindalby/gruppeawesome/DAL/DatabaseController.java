@@ -3,9 +3,11 @@ package com.example.martindalby.gruppeawesome.DAL;
 import android.content.Context;
 import android.util.Log;
 
+import com.example.martindalby.gruppeawesome.DataFiles.Bruger;
 import com.example.martindalby.gruppeawesome.DataFiles.KostplanData;
 import com.example.martindalby.gruppeawesome.DataFiles.MainController;
 import com.example.martindalby.gruppeawesome.DataFiles.OpskriftData;
+import com.example.martindalby.gruppeawesome.DataFiles.OvelseData;
 import com.example.martindalby.gruppeawesome.Opskrift;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
@@ -15,6 +17,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 /**
@@ -37,7 +40,7 @@ public class DatabaseController {
         mRef = new Firebase("https://boodybook-a85b7.firebaseio.com/");
 
         //push kostplantest op i firebase
-        lavTestKostplan("navn test", "ingrediens test", "fremgangsmåde test", "img test", "id test", 222);
+        //lavTestKostplan("navn test", "ingrediens test", "fremgangsmåde test", "img test", "id test", 222, 1);
 
         //push hele test kostplan op i firebase
        // pushKostPlan(kostPlanDt);
@@ -85,18 +88,25 @@ public class DatabaseController {
 
     }
 
-    public void lavTestKostplan (String navn, String ingrediens, String fremgangsmåde, String imglink, String id, int type) {
+    public void lavTestKostplan (String navn, String ingrediens, String fremgangsmåde, String imglink, String id, int type, int i) {
 
         OpskriftData opskriftData = new OpskriftData(navn, ingrediens, fremgangsmåde, imglink, id, type);
+        String j = i + "";
+        mRef.child("v0").child("kostplan").child(j).setValue(opskriftData);
 
-        mRef.child("v0").child("kostplan").child("5").setValue(opskriftData);
+    }
+
+    public void PushOvelse(int id, String navn, int done, int sets, int i) {
+
+        OvelseData ovelseData = new OvelseData(id, navn, done, sets);
+        String j = i + "";
+        mRef.child("v0").child("Ovelser").child(j).setValue(ovelseData);
 
     }
 
-    public void pushKostPlan (KostplanData kost) {
-
-        mRef.child("v1").child("kostplan").setValue(kost);
-
+    public void PushBruger(Bruger bruger){
+        mRef.child("v0").child("brugere").child(bruger.id).setValue(bruger);
     }
+
 
 }

@@ -10,14 +10,14 @@ import java.util.ArrayList;
  */
 
 public class MainController implements Serializable{
-    TraeningsPlanData Træningsplan;
-    KostplanData Kostplan;
+    public TraeningsPlanData Træningsplan;
+    public KostplanData Kostplan;
     private static MainController instans;
-    DatabaseController databaseControl;
+    public DatabaseController databaseControl;
 
     private MainController(){
         Træningsplan = new TraeningsPlanData(new ArrayList<WorkoutData>());
-        Kostplan = new KostplanData(new ArrayList<OpskriftData>(),new ArrayList<OpskriftData>(),new ArrayList<OpskriftData>(),new ArrayList<OpskriftData>());
+        Kostplan = new KostplanData(new ArrayList<OpskriftData>());
         databaseControl = new DatabaseController();
     }
 
@@ -47,6 +47,31 @@ public class MainController implements Serializable{
         Træningsplan.traeningsMål = b;
         Træningsplan.traeningerDenneUge = c;
     }
+/*
+    public void pushKostplan(){
+        int i = 0;
+        for(OpskriftData data: Kostplan.getRetter()){
+            databaseControl.lavTestKostplan(data.navn, data.ingrediens, data.fremgangsmåde, data.imglink, data.id, data.type, i);
+            i++;
+        }
+
+
+    }
+
+    public void pushOvelser(){
+        int i = 0;
+        for(WorkoutData data: Træningsplan.getWorkouts()){
+            for(OvelseData data2: data.getOvelser()){
+                databaseControl.PushOvelse(data2.getId(), data2.getNavn(), data2.isDone(), data2.getSets(), i);
+                i++;
+            }
+        }
+    }
+*/
+
+    public void pushUser(Bruger user){
+        databaseControl.PushBruger(user);
+    }
 
     public void testDataGenerator(){
         if(Træningsplan.getWorkouts().size() == 0) {
@@ -67,7 +92,7 @@ public class MainController implements Serializable{
                     "\n" +
                     "Tilsæt hytteost, jordskokker, persille, limesaft og salt. Varm risottoen igennem og smag til.\n" +
                     "\n" +
-                    "Lad imens olien blive godt varm i en pande. Steg kylling og gulerødder i ca. 3 min. ved kraftig varme. Skru ned til jævn varme og steg i yderligere ca. 7 min. under omrøring. Anret kylling på risottoen sammen med serrano skinke. Pynt med persille.", "", "", 0));
+                    "Lad imens olien blive godt varm i en pande. Steg kylling og gulerødder i ca. 3 min. ved kraftig varme. Skru ned til jævn varme og steg i yderligere ca. 7 min. under omrøring. Anret kylling på risottoen sammen med serrano skinke. Pynt med persille.", "", "1", 0));
             Kostplan.setOpskrift(0, new OpskriftData("Ostemad", "1 stk. ost \n" +
                     " 2 æg \n" +
                     " 100g kylling \n" +
@@ -76,7 +101,7 @@ public class MainController implements Serializable{
                     "\n" +
                     "Tilsæt hytteost, jordskokker, persille, limesaft og salt. Varm risottoen igennem og smag til.\n" +
                     "\n" +
-                    "Lad imens olien blive godt varm i en pande. Steg kylling og gulerødder i ca. 3 min. ved kraftig varme. Skru ned til jævn varme og steg i yderligere ca. 7 min. under omrøring. Anret kylling på risottoen sammen med serrano skinke. Pynt med persille.", "", "", 0));
+                    "Lad imens olien blive godt varm i en pande. Steg kylling og gulerødder i ca. 3 min. ved kraftig varme. Skru ned til jævn varme og steg i yderligere ca. 7 min. under omrøring. Anret kylling på risottoen sammen med serrano skinke. Pynt med persille.", "", "2", 0));
             Kostplan.setOpskrift(1, new OpskriftData("Fisk", "1 stk. ost \n" +
                     " 2 æg \n" +
                     " 100g kylling \n" +
@@ -85,7 +110,7 @@ public class MainController implements Serializable{
                     "\n" +
                     "Tilsæt hytteost, jordskokker, persille, limesaft og salt. Varm risottoen igennem og smag til.\n" +
                     "\n" +
-                    "Lad imens olien blive godt varm i en pande. Steg kylling og gulerødder i ca. 3 min. ved kraftig varme. Skru ned til jævn varme og steg i yderligere ca. 7 min. under omrøring. Anret kylling på risottoen sammen med serrano skinke. Pynt med persille.", "", "", 1));
+                    "Lad imens olien blive godt varm i en pande. Steg kylling og gulerødder i ca. 3 min. ved kraftig varme. Skru ned til jævn varme og steg i yderligere ca. 7 min. under omrøring. Anret kylling på risottoen sammen med serrano skinke. Pynt med persille.", "", "3", 1));
             Kostplan.setOpskrift(1, new OpskriftData("Æg", "1 stk. ost \n" +
                     " 2 æg \n" +
                     " 100g kylling \n" +
@@ -94,7 +119,7 @@ public class MainController implements Serializable{
                     "\n" +
                     "Tilsæt hytteost, jordskokker, persille, limesaft og salt. Varm risottoen igennem og smag til.\n" +
                     "\n" +
-                    "Lad imens olien blive godt varm i en pande. Steg kylling og gulerødder i ca. 3 min. ved kraftig varme. Skru ned til jævn varme og steg i yderligere ca. 7 min. under omrøring. Anret kylling på risottoen sammen med serrano skinke. Pynt med persille.", "", "", 1));
+                    "Lad imens olien blive godt varm i en pande. Steg kylling og gulerødder i ca. 3 min. ved kraftig varme. Skru ned til jævn varme og steg i yderligere ca. 7 min. under omrøring. Anret kylling på risottoen sammen med serrano skinke. Pynt med persille.", "", "4", 1));
             Kostplan.setOpskrift(2, new OpskriftData("Salat", "1 stk. ost \n" +
                     " 2 æg \n" +
                     " 100g kylling \n" +
@@ -103,7 +128,7 @@ public class MainController implements Serializable{
                     "\n" +
                     "Tilsæt hytteost, jordskokker, persille, limesaft og salt. Varm risottoen igennem og smag til.\n" +
                     "\n" +
-                    "Lad imens olien blive godt varm i en pande. Steg kylling og gulerødder i ca. 3 min. ved kraftig varme. Skru ned til jævn varme og steg i yderligere ca. 7 min. under omrøring. Anret kylling på risottoen sammen med serrano skinke. Pynt med persille.", "", "", 2));
+                    "Lad imens olien blive godt varm i en pande. Steg kylling og gulerødder i ca. 3 min. ved kraftig varme. Skru ned til jævn varme og steg i yderligere ca. 7 min. under omrøring. Anret kylling på risottoen sammen med serrano skinke. Pynt med persille.", "", "5", 2));
             Kostplan.setOpskrift(2, new OpskriftData("God Gryde", "1 stk. ost \n" +
                     " 2 æg \n" +
                     " 100g kylling \n" +
@@ -112,7 +137,7 @@ public class MainController implements Serializable{
                     "\n" +
                     "Tilsæt hytteost, jordskokker, persille, limesaft og salt. Varm risottoen igennem og smag til.\n" +
                     "\n" +
-                    "Lad imens olien blive godt varm i en pande. Steg kylling og gulerødder i ca. 3 min. ved kraftig varme. Skru ned til jævn varme og steg i yderligere ca. 7 min. under omrøring. Anret kylling på risottoen sammen med serrano skinke. Pynt med persille.", "", "", 2));
+                    "Lad imens olien blive godt varm i en pande. Steg kylling og gulerødder i ca. 3 min. ved kraftig varme. Skru ned til jævn varme og steg i yderligere ca. 7 min. under omrøring. Anret kylling på risottoen sammen med serrano skinke. Pynt med persille.", "", "6", 2));
             Kostplan.setOpskrift(3, new OpskriftData("Prot Mad", "1 stk. ost \n" +
                     " 2 æg \n" +
                     " 100g kylling \n" +
@@ -121,7 +146,7 @@ public class MainController implements Serializable{
                     "\n" +
                     "Tilsæt hytteost, jordskokker, persille, limesaft og salt. Varm risottoen igennem og smag til.\n" +
                     "\n" +
-                    "Lad imens olien blive godt varm i en pande. Steg kylling og gulerødder i ca. 3 min. ved kraftig varme. Skru ned til jævn varme og steg i yderligere ca. 7 min. under omrøring. Anret kylling på risottoen sammen med serrano skinke. Pynt med persille.", "", "",3));
+                    "Lad imens olien blive godt varm i en pande. Steg kylling og gulerødder i ca. 3 min. ved kraftig varme. Skru ned til jævn varme og steg i yderligere ca. 7 min. under omrøring. Anret kylling på risottoen sammen med serrano skinke. Pynt med persille.", "", "7",3));
             Kostplan.setOpskrift(3, new OpskriftData("Sund Mad", "1 stk. ost \n" +
                     " 2 æg \n" +
                     " 100g kylling \n" +
@@ -130,7 +155,7 @@ public class MainController implements Serializable{
                     "\n" +
                     "Tilsæt hytteost, jordskokker, persille, limesaft og salt. Varm risottoen igennem og smag til.\n" +
                     "\n" +
-                    "Lad imens olien blive godt varm i en pande. Steg kylling og gulerødder i ca. 3 min. ved kraftig varme. Skru ned til jævn varme og steg i yderligere ca. 7 min. under omrøring. Anret kylling på risottoen sammen med serrano skinke. Pynt med persille.", "", "", 3));
+                    "Lad imens olien blive godt varm i en pande. Steg kylling og gulerødder i ca. 3 min. ved kraftig varme. Skru ned til jævn varme og steg i yderligere ca. 7 min. under omrøring. Anret kylling på risottoen sammen med serrano skinke. Pynt med persille.", "", "8", 3));
             Kostplan.setOpskrift(0, new OpskriftData("Appelsin Juice", "1 stk. ost \n" +
                     " 2 æg \n" +
                     " 100g kylling \n" +
@@ -139,7 +164,7 @@ public class MainController implements Serializable{
                     "\n" +
                     "Tilsæt hytteost, jordskokker, persille, limesaft og salt. Varm risottoen igennem og smag til.\n" +
                     "\n" +
-                    "Lad imens olien blive godt varm i en pande. Steg kylling og gulerødder i ca. 3 min. ved kraftig varme. Skru ned til jævn varme og steg i yderligere ca. 7 min. under omrøring. Anret kylling på risottoen sammen med serrano skinke. Pynt med persille.", "", "", 0));
+                    "Lad imens olien blive godt varm i en pande. Steg kylling og gulerødder i ca. 3 min. ved kraftig varme. Skru ned til jævn varme og steg i yderligere ca. 7 min. under omrøring. Anret kylling på risottoen sammen med serrano skinke. Pynt med persille.", "", "9", 0));
             Kostplan.setOpskrift(1, new OpskriftData("Burger", "1 stk. ost \n" +
                     " 2 æg \n" +
                     " 100g kylling \n" +
@@ -148,7 +173,7 @@ public class MainController implements Serializable{
                     "\n" +
                     "Tilsæt hytteost, jordskokker, persille, limesaft og salt. Varm risottoen igennem og smag til.\n" +
                     "\n" +
-                    "Lad imens olien blive godt varm i en pande. Steg kylling og gulerødder i ca. 3 min. ved kraftig varme. Skru ned til jævn varme og steg i yderligere ca. 7 min. under omrøring. Anret kylling på risottoen sammen med serrano skinke. Pynt med persille.", "", "", 1));
+                    "Lad imens olien blive godt varm i en pande. Steg kylling og gulerødder i ca. 3 min. ved kraftig varme. Skru ned til jævn varme og steg i yderligere ca. 7 min. under omrøring. Anret kylling på risottoen sammen med serrano skinke. Pynt med persille.", "", "10", 1));
             Kostplan.setOpskrift(2, new OpskriftData("Gulerod", "1 stk. ost \n" +
                     " 2 æg \n" +
                     " 100g kylling \n" +
@@ -157,7 +182,7 @@ public class MainController implements Serializable{
                     "\n" +
                     "Tilsæt hytteost, jordskokker, persille, limesaft og salt. Varm risottoen igennem og smag til.\n" +
                     "\n" +
-                    "Lad imens olien blive godt varm i en pande. Steg kylling og gulerødder i ca. 3 min. ved kraftig varme. Skru ned til jævn varme og steg i yderligere ca. 7 min. under omrøring. Anret kylling på risottoen sammen med serrano skinke. Pynt med persille.", "", "", 2));
+                    "Lad imens olien blive godt varm i en pande. Steg kylling og gulerødder i ca. 3 min. ved kraftig varme. Skru ned til jævn varme og steg i yderligere ca. 7 min. under omrøring. Anret kylling på risottoen sammen med serrano skinke. Pynt med persille.", "", "11", 2));
             Kostplan.setOpskrift(3, new OpskriftData("Peanut butter", "1 stk. ost \n" +
                     " 2 æg \n" +
                     " 100g kylling \n" +
@@ -166,7 +191,7 @@ public class MainController implements Serializable{
                     "\n" +
                     "Tilsæt hytteost, jordskokker, persille, limesaft og salt. Varm risottoen igennem og smag til.\n" +
                     "\n" +
-                    "Lad imens olien blive godt varm i en pande. Steg kylling og gulerødder i ca. 3 min. ved kraftig varme. Skru ned til jævn varme og steg i yderligere ca. 7 min. under omrøring. Anret kylling på risottoen sammen med serrano skinke. Pynt med persille.", "", "", 3));
+                    "Lad imens olien blive godt varm i en pande. Steg kylling og gulerødder i ca. 3 min. ved kraftig varme. Skru ned til jævn varme og steg i yderligere ca. 7 min. under omrøring. Anret kylling på risottoen sammen med serrano skinke. Pynt med persille.", "", "12", 3));
         }
 
     }

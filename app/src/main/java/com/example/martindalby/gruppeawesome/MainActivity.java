@@ -13,7 +13,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import com.crashlytics.android.Crashlytics;
+import com.example.martindalby.gruppeawesome.DataFiles.Bruger;
 import com.example.martindalby.gruppeawesome.DataFiles.MainController;
+import com.example.martindalby.gruppeawesome.DataFiles.UserWorkoutData;
+import com.example.martindalby.gruppeawesome.DataFiles.WorkoutData;
+
+import java.util.ArrayList;
 
 import io.fabric.sdk.android.Fabric;
 
@@ -50,6 +55,32 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
 
         //workout.setText("Workouts");
         //kostplan.setText("Kostplan");
+
+
+        /*     LAVER EN TEST BRUGER TIL DATABASEN.
+        ArrayList<String> ovelseids = new ArrayList<String>();
+        ArrayList<String> ovelseids2 = new ArrayList<String>();
+        ArrayList<String> ovelseids3 = new ArrayList<String>();
+        ovelseids.add("0"); ovelseids.add("1"); ovelseids.add("2"); ovelseids.add("3");
+        ovelseids2.add("4");ovelseids2.add("5");ovelseids2.add("6");
+        ovelseids3.add("7");ovelseids3.add("8");ovelseids3.add("9");
+
+        UserWorkoutData wod1 = new UserWorkoutData(ovelseids, "Workout A");
+        UserWorkoutData wod2 = new UserWorkoutData(ovelseids2, "Workout B");
+        UserWorkoutData wod3 = new UserWorkoutData(ovelseids3, "Workout C");
+
+        ArrayList<UserWorkoutData> wod = new ArrayList<UserWorkoutData>();
+        wod.add(wod1);wod.add(wod2);wod.add(wod3);
+
+        ArrayList<String> retter = new ArrayList<String>();
+        retter.add("0");retter.add("1");retter.add("2");retter.add("3");
+        retter.add("4");retter.add("5");retter.add("6");retter.add("7");
+        retter.add("8");retter.add("9");retter.add("10");retter.add("11");
+
+        Bruger bob = new Bruger("Bob Nielsen testeren", wod, retter);
+        datafiles.pushUser(bob);
+        */
+
 
         workout.setIcon(R.drawable.exerciseiconwhite);
         kostplan.setIcon(R.drawable.foodicongrey);
@@ -188,4 +219,6 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
 
         //DBCon.getDBH().addOvelse();
     }
+
+
 }

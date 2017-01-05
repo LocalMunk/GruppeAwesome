@@ -28,7 +28,6 @@ public class WorkoutList extends AppCompatActivity implements AdapterView.OnItem
     String[] ovelser;
     int[] setsArray;
     WorkoutListAdapter adapter;
-    TestDataWorkout wdata;
     ListView listView;
     Toolbar toolbar;
     MainController datafiles;
@@ -39,18 +38,15 @@ public class WorkoutList extends AppCompatActivity implements AdapterView.OnItem
         setContentView(R.layout.activity_workoutlist);
         datafiles = MainController.getInstans();
         workoutData = datafiles.getTræningsplan().getWorkout(getIntent().getIntExtra("workout", 0));
-        wdata = new TestDataWorkout();
         adapter = new WorkoutListAdapter(this);
         int i = getIntent().getIntExtra("workout", 0);
-        ovelser = wdata.getOdataOverskrift(i);
-        setsArray = wdata.getOdataSets(i);
         listView = (ListView) findViewById(R.id.Ovelselistview);
         listView.setOnItemClickListener(this);
         listView.setAdapter(adapter);
         System.out.println("1 check");
 
         toolbar = (Toolbar) findViewById(R.id.toolBar);
-        toolbar.setTitle(getIntent().getStringExtra("title"));
+        toolbar.setTitle(workoutData.getWorkoutname());
 
     }
 
