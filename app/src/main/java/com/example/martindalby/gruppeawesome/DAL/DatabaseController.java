@@ -26,8 +26,7 @@ import java.util.Map;
 
 public class DatabaseController {
 
-
-   // public KostplanData kostPlanDt = MainController.getInstans().getKostplan();
+    public ArrayList<String> morgenTest;
     private Firebase mRef;
 
 
@@ -35,7 +34,7 @@ public class DatabaseController {
 
         System.out.println("DATABASE BLIVER OPRETTET!!!!!!!!!!!!!!!!!");
 
-        //mDatabase = FirebaseDatabase.getInstance().getReference();
+        morgenTest = new ArrayList<>();
 
         mRef = new Firebase("https://boodybook-a85b7.firebaseio.com/");
 
@@ -53,16 +52,23 @@ public class DatabaseController {
 
                 System.out.println("Der er " + dataSnapshot.getChildrenCount() + " børn");
 
-
+                //henter børn ned
                 for (DataSnapshot child : dataSnapshot.getChildren()) {
 
-                    System.out.println("Prøv at konvertere til OpskriftData: " + child);
+                    System.out.print("Prøv at konvertere til OpskriftData, kostplankey: " + child.getKey());
                     OpskriftData opskrift = child.getValue(OpskriftData.class);
-                    System.out.println("Prøv at hente navn:" + opskrift.getNavn());
+                    System.out.print(" - Type nr: " + opskrift.getType());
+                    System.out.print(" - Navn:" + opskrift.getNavn());
+
+                    //tilføjer navn at barn hvis type er = 0 altså morgenmad
+                    if (opskrift.getType() == 0) {
+                        morgenTest.add(opskrift.getNavn());
+                        System.out.print(" - Er tilføjet til morgen liste: " + opskrift.getNavn());
+
+                    }
+                    System.out.println();
 
                 }
-
-
 
 
 
