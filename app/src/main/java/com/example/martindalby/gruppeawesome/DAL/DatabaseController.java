@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.Log;
 
 import com.example.martindalby.gruppeawesome.DataFiles.OpskriftData;
+import com.example.martindalby.gruppeawesome.Opskrift;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
@@ -31,10 +32,10 @@ public class DatabaseController {
 
         //mDatabase = FirebaseDatabase.getInstance().getReference();
 
-        mRef = new Firebase("https://boodybook-a85b7.firebaseio.com/kostplan");
+        mRef = new Firebase("https://boodybook-a85b7.firebaseio.com/");
 
         //henter data fra db
-        mRef.addValueEventListener(new ValueEventListener() {
+        mRef.child("kostplan").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
@@ -47,6 +48,8 @@ public class DatabaseController {
                 Log.v("E_VALUE", "a1 : " + a1);
                 Log.v("E_VALUE", "a2 : " + a2);
                 Log.v("E_VALUE", "a3 : " + a3);
+
+                OpskriftData x = new OpskriftData(a1, "test", "test", "test", "test", 1);
 
                 //OpskriftData opskrift = dataSnapshot.getValue(OpskriftData.class);
             }
