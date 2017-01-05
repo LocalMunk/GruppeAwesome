@@ -3,6 +3,8 @@ package com.example.martindalby.gruppeawesome.DAL;
 import android.content.Context;
 import android.util.Log;
 
+import com.example.martindalby.gruppeawesome.DataFiles.KostplanData;
+import com.example.martindalby.gruppeawesome.DataFiles.MainController;
 import com.example.martindalby.gruppeawesome.DataFiles.OpskriftData;
 import com.example.martindalby.gruppeawesome.Opskrift;
 import com.firebase.client.DataSnapshot;
@@ -21,8 +23,8 @@ import java.util.Map;
 
 public class DatabaseController {
 
-    private DatabaseReference mDatabase;
 
+   // public KostplanData kostPlanDt = MainController.getInstans().getKostplan();
     private Firebase mRef;
 
 
@@ -34,13 +36,33 @@ public class DatabaseController {
 
         mRef = new Firebase("https://boodybook-a85b7.firebaseio.com/");
 
+        //push kostplantest op i firebase
+        lavTestKostplan("navn test", "ingrediens test", "fremgangsmåde test", "img test", "id test", 222);
+
+        //push hele test kostplan op i firebase
+       // pushKostPlan(kostPlanDt);
+
         //henter data fra db
-        mRef.child("kostplan").addValueEventListener(new ValueEventListener() {
+        mRef.child("v0").child("kostplan").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                Log.v("Måske virke?", "hente: " + dataSnapshot.getValue());
 
-                Map<String, String> map = dataSnapshot.getValue(Map.class);
+                System.out.println("Der er " + dataSnapshot.getChildrenCount() + " børn");
 
+
+                for (DataSnapshot child : dataSnapshot.getChildren()) {
+
+                    //OpskriftData opskrift = dataSnapshot.getValue(OpskriftData.class);
+                    //System.out.println("Prøv at hente navn:" + opskrift.getNavn());
+
+                }
+
+
+
+
+
+                /*
                 String a1 = map.get("a1");
                 String a2 = map.get("a2");
                 String a3 = map.get("a3");
@@ -48,8 +70,7 @@ public class DatabaseController {
                 Log.v("E_VALUE", "a1 : " + a1);
                 Log.v("E_VALUE", "a2 : " + a2);
                 Log.v("E_VALUE", "a3 : " + a3);
-
-                OpskriftData x = new OpskriftData(a1, "test", "test", "test", "test", 1);
+                */
 
                 //OpskriftData opskrift = dataSnapshot.getValue(OpskriftData.class);
             }
@@ -64,5 +85,18 @@ public class DatabaseController {
 
     }
 
+    public void lavTestKostplan (String navn, String ingrediens, String fremgangsmåde, String imglink, String id, int type) {
+
+        OpskriftData opskriftData = new OpskriftData(navn, ingrediens, fremgangsmåde, imglink, id, type);
+
+        mRef.child("v0").child("kostplan").child("5").setValue(opskriftData);
+
+    }
+
+    public void pushKostPlan (KostplanData kost) {
+
+        mRef.child("v1").child("kostplan").setValue(kost);
+
+    }
 
 }

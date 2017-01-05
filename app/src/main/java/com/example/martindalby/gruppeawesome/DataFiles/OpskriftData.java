@@ -6,8 +6,8 @@ package com.example.martindalby.gruppeawesome.DataFiles;
 
 public class OpskriftData {
 
-    private String navn, ingrediens, fremgangsmåde, imglink, id;
-    private int type;
+    public String navn, ingrediens, fremgangsmåde, imglink, id;
+    public int type;
 
     public String getNavn() {
         return navn;
@@ -39,6 +39,10 @@ public class OpskriftData {
 
     public void setImglink(String imglink) {
         this.imglink = imglink;
+    }
+
+    public OpskriftData () {
+
     }
 
     public OpskriftData(String navn, String ingrediens, String fremgangsmåde, String imglink, String id, int type) {
