@@ -43,4 +43,6 @@ public class WorkoutData {
     public void setWorkoutname(String workoutname) {
         this.workoutname = workoutname;
     }
+
+    public void addOvelse(OvelseData ovelse){ ovelser.add(ovelse);}
 }
