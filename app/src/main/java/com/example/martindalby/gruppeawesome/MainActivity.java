@@ -13,7 +13,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import com.crashlytics.android.Crashlytics;
-import com.example.martindalby.gruppeawesome.DAL.DatabaseController;
 import com.example.martindalby.gruppeawesome.DataFiles.MainController;
 
 import io.fabric.sdk.android.Fabric;
@@ -174,7 +173,7 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
     public boolean onOptionsItemSelected(MenuItem item)
 
     {    if(item.getItemId() == R.id.action_plus){
-        Intent i = new Intent(this, OpretOvelse.class);
+        Intent i = new Intent(this, OpretWorkout.class);
         startActivity(i);
 
 

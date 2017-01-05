@@ -1,11 +1,11 @@
 package com.example.martindalby.gruppeawesome;
 
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.martindalby.gruppeawesome.DataFiles.MainController;
 import com.example.martindalby.gruppeawesome.DataFiles.OvelseData;
@@ -15,42 +15,36 @@ import com.example.martindalby.gruppeawesome.DataFiles.WorkoutData;
 import java.util.ArrayList;
 
 /**
- * Created by Martin Dalby on 05-01-2017.
+ * Created by Martin Dalby on 21-11-2016.
  */
 
-public class OpretWorkout  extends AppCompatActivity implements View.OnClickListener{
+public class OpretWorkout extends AppCompatActivity implements View.OnClickListener{
 
+    EditText navn;
+    Button done;
     MainController datafiles;
-    Button create;
-    EditText name;
     TraeningsPlanData traeningsPlanData;
 
 
-
-
-    @Override
-    public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
+    public void onCreate(Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_opretworkout);
         datafiles = MainController.getInstans();
 
-        name = (EditText) findViewById(R.id.workoutname);
-        name.setHint("Workout navn");
+        navn = (EditText) findViewById(R.id.workoutname);
+        navn.setHint("Navn");
 
-        create = (Button) findViewById(R.id.createworkoutdone);
-        create.setOnClickListener(this);
+        done = (Button) findViewById(R.id.createworkoutdone);
+        done.setOnClickListener(this);
 
         traeningsPlanData = datafiles.getTræningsplan();
-
     }
 
-    @Override
-    public void onClick(View v) {
-        if(v == create && name.getText().toString().equals("") == false){
-            int i = traeningsPlanData.getWorkouts().size();
-            WorkoutData out = new WorkoutData(i, name.getText().toString(), new ArrayList<OvelseData>());
-            traeningsPlanData.addWorkout(out);
+    public void onClick(View v){
+        if(v == done){
+            traeningsPlanData.addWorkout(new WorkoutData(traeningsPlanData.getWorkouts().size(), navn.getText().toString(), new ArrayList<OvelseData>()));
+            finish();
         }
+
     }
 }
-
