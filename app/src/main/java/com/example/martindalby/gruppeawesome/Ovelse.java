@@ -13,6 +13,7 @@ import android.widget.ListView;
 import android.widget.NumberPicker;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.martindalby.gruppeawesome.DataFiles.MainController;
 import com.example.martindalby.gruppeawesome.DataFiles.OvelseData;
@@ -64,12 +65,10 @@ public class Ovelse extends AppCompatActivity implements View.OnClickListener {
         */
 
         Reps = (EditText) findViewById(R.id.reps);
-        Reps.setText("Repititioner");
-        Reps.setSelectAllOnFocus(true);
+        Reps.setHint("Repititioner");
 
         Weight = (EditText) findViewById(R.id.weight);
-        Weight.setText("Vægt");
-        Weight.setSelectAllOnFocus(true);
+        Weight.setHint("Vægt");
 
         videre = (Button) findViewById(R.id.doneButton);
         videre.setOnClickListener(this);
@@ -96,17 +95,26 @@ public class Ovelse extends AppCompatActivity implements View.OnClickListener {
 
     }
 
+    public boolean checkInput(String reps, String Weight){
+        if(reps.length() == 0 || Weight.length() == 0){
+            Toast.makeText(Ovelse.this, "Udfyld repetitioner og vægt",
+                    Toast.LENGTH_LONG).show();
+            return false;
+        }
+        return true;
+    }
+
     @Override
     public void onClick(View v) {
         if(v == videre){
-            if(currentSet <= support.maxSet) {
+            if(currentSet <= support.maxSet && checkInput(Reps.getText().toString() , Weight.getText().toString())) {
                 System.out.println("button pressed");
                 support.setData(currentSet - 1, Integer.parseInt(Reps.getText().toString()), Integer.parseInt(Weight.getText().toString()));
                 currentSet++;
                 list.invalidateViews();
                 list.refreshDrawableState();
             }
-            else if(getIntent().getIntExtra("pos",0) < datafiles.getTræningsplan().getWorkout(getIntent().getIntExtra("workout", 0)).getOvelser().size() -1) {
+            else if(currentSet > support.maxSet && getIntent().getIntExtra("pos",0) < datafiles.getTræningsplan().getWorkout(getIntent().getIntExtra("workout", 0)).getOvelser().size() -1) {
                 Intent i = new Intent(this, Ovelse.class);
                 i.putExtra("pos", getIntent().getIntExtra("pos", 0) + 1);
                 i.putExtra("workout", getIntent().getIntExtra("workout", 0));
@@ -114,9 +122,11 @@ public class Ovelse extends AppCompatActivity implements View.OnClickListener {
                 ovelseData.setDone(1);
                 finish();
             }
-            else{
+            else if(currentSet > support.maxSet){
                 finish();
             }
+
+
         }
     }
 
