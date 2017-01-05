@@ -56,8 +56,9 @@ public class DatabaseController {
 
                 for (DataSnapshot child : dataSnapshot.getChildren()) {
 
-                    //OpskriftData opskrift = dataSnapshot.getValue(OpskriftData.class);
-                    //System.out.println("Prøv at hente navn:" + opskrift.getNavn());
+                    System.out.println("Prøv at konvertere til OpskriftData: " + child);
+                    OpskriftData opskrift = child.getValue(OpskriftData.class);
+                    System.out.println("Prøv at hente navn:" + opskrift.getNavn());
 
                 }
 
