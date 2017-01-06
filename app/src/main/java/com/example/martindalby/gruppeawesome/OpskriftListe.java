@@ -3,7 +3,6 @@ package com.example.martindalby.gruppeawesome;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -14,13 +13,14 @@ import android.widget.TextView;
 
 import com.example.martindalby.gruppeawesome.DataFiles.KostplanData;
 import com.example.martindalby.gruppeawesome.DataFiles.MainController;
+import com.example.martindalby.gruppeawesome.DataFiles.OpskriftData;
 
-import junit.framework.Test;
+import java.util.ArrayList;
 
 public class OpskriftListe extends AppCompatActivity implements AdapterView.OnItemClickListener{
 
-    private TestDataMad data = new TestDataMad();
-    private TestDataMad randomRet;
+    private OpskriftData OpskriftVidere;
+
     private OpskriftSupport os = new OpskriftSupport();
     private KostPlanAdapter adapter;
     private ListView listView;
@@ -28,7 +28,7 @@ public class OpskriftListe extends AppCompatActivity implements AdapterView.OnIt
     MainController datafiles;
     KostplanData kostplanData;
     private int type;
-
+ArrayList<OpskriftData> opskrifter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +43,17 @@ public class OpskriftListe extends AppCompatActivity implements AdapterView.OnIt
         else if(typeText.equals("Aftensmad")) type = 2;
         else if(typeText.equals("Snack")) type = 3;
 
+        opskrifter = new ArrayList<OpskriftData>();
+         for( OpskriftData data:kostplanData.getRetter()){
+
+             if(data.type ==this.type){
+
+                 opskrifter.add(data);
+
+             }
+
+         }
+
         listView = new ListView(this);
         listView.setOnItemClickListener(this);
         listView.setAdapter(adapter);
@@ -56,21 +67,9 @@ public class OpskriftListe extends AppCompatActivity implements AdapterView.OnIt
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Intent i = new Intent(this, Opskrift.class);
 
-        if(type == 0) randomRet = data.getMorgenmad()[position];
-        else if(type == 1) randomRet = data.getFrokost()[position];
-        else if(type == 2) randomRet = data.getAftensmad()[position];
-        else if(type == 3) randomRet = data.getSnack()[position];
-        else randomRet = os.randomRet(typeText, data);
+        OpskriftVidere = opskrifter.get(position);
 
-        send1 = randomRet.getOverskrift();
-        send2 = randomRet.getBeskrivelse();
-        send3 = randomRet.getIngredienser();
-
-        i.putExtra("type", typeText)
-                .putExtra("overskrift", send1)
-                .putExtra("beskrivelse", send2)
-                .putExtra("ingrediens", send3)
-                .putExtra("typeint", type);
+        i.putExtra("ret", OpskriftVidere.getId());
         startActivity(i);
     }
 
@@ -78,7 +77,7 @@ public class OpskriftListe extends AppCompatActivity implements AdapterView.OnIt
         //Her afgøres længde på liste ud fra hvilken knap man trykker paa
         @Override
         public int getCount() {
-            return kostplanData.getRetter().size();
+            return opskrifter.size();
 
         }
         @Override
@@ -94,7 +93,7 @@ public class OpskriftListe extends AppCompatActivity implements AdapterView.OnIt
             TextView overskrift = (TextView) view.findViewById(R.id.overskriftTV);
             ImageView icon = (ImageView) view.findViewById(R.id.listeImg);
 
-            overskrift.setText(kostplanData.getOpskrift(type, position).getNavn());
+            overskrift.setText(opskrifter.get(position).getNavn());
             icon.setImageResource(R.drawable.pizzalistepic);
 
             return view;

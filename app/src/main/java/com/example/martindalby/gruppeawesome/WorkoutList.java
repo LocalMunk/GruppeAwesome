@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,6 +46,7 @@ public class WorkoutList extends AppCompatActivity implements AdapterView.OnItem
         listView.setAdapter(adapter);
         System.out.println("1 check");
 
+
         toolbar = (Toolbar) findViewById(R.id.toolBar);
         toolbar.setTitle(workoutData.getWorkoutname());
 
@@ -60,11 +62,18 @@ public class WorkoutList extends AppCompatActivity implements AdapterView.OnItem
     }
 
 
+
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
+
         getMenuInflater().inflate(R.menu.workoutlistmenu, menu);
+
         return true;
+
+
     }
 
     @Override

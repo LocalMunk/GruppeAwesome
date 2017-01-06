@@ -29,6 +29,7 @@ public class MainController implements Serializable{
     public static MainController getInstans(){
         if(instans == null){
             instans = new MainController();
+            instans.testDataGenerator();
         }
             return instans;
     }

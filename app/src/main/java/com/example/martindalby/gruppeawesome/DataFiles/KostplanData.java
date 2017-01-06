@@ -15,7 +15,7 @@ public class KostplanData {
         this.retter = retter;
     }
 
-    public OpskriftData getOpskrift(int i, int j){
+    public OpskriftData getOpskrift(int j){
         return retter.get(j);
     }
 

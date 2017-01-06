@@ -6,7 +6,7 @@
     <item
         android:id="@+id/ooknap"
         android:icon="@drawable/icaddwhite"
-        app:showAsAction="ifRoom"
+        app:showAsAction="always"
         android:title=""
         android:orderInCategory="1"
         android:menuCategory="secondary"

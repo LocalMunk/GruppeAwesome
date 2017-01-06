@@ -44,6 +44,11 @@ public class DatabaseController {
         //push hele test kostplan op i firebase
        // pushKostPlan(kostPlanDt);
 
+
+
+
+
+
         //henter data fra db
         mRef.child("v0").child("kostplan").addValueEventListener(new ValueEventListener() {
             @Override
