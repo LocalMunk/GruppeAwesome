@@ -16,4 +16,6 @@ public class Bruger {
         this.workouts = workouts;
         this.RetIDs = RetIDs;
     }
+
+    public Bruger(){}
 }

@@ -27,6 +27,7 @@ import java.util.Map;
 public class DatabaseController {
 
     public ArrayList<String> morgenTest;
+    public ArrayList<String> userID;
     private Firebase mRef;
 
 
@@ -34,10 +35,13 @@ public class DatabaseController {
 
         System.out.println("DATABASE BLIVER OPRETTET!!!!!!!!!!!!!!!!!");
 
+
+
         morgenTest = new ArrayList<>();
 
         mRef = new Firebase("https://boodybook-a85b7.firebaseio.com/");
 
+        getUserID();
         //push kostplantest op i firebase
         //lavTestKostplan("navn test", "ingrediens test", "fremgangsmåde test", "img test", "id test", 222, 1);
 
@@ -118,6 +122,42 @@ public class DatabaseController {
 
     public void PushBruger(Bruger bruger){
         mRef.child("v0").child("brugere").child(bruger.id).setValue(bruger);
+    }
+
+    public ArrayList<String> getUserID(){
+        System.out.println("inde i bruger metode.");
+        userID = new ArrayList<String>();
+        mRef.child("v0").child("brugere").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                System.out.println("key??? " + dataSnapshot.getKey());
+
+                System.out.println("Der er " + dataSnapshot.getChildrenCount() + " børn");
+
+                //henter børn ned
+                for (DataSnapshot child : dataSnapshot.getChildren()) {
+
+                    System.out.print("Prøv at konvertere til userID, userIDkey: " + child.getValue());
+                    Bruger bruger = child.getValue(Bruger.class);
+
+                    System.out.print(" - Bruger id: " + bruger.id);
+                    userID.add(bruger.id);
+            }
+
+                System.out.print("Antal brugere i array: " + userID.size());
+
+
+        }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+
+
+        });
+        return userID;
     }
 
 

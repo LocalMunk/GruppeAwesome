@@ -14,4 +14,6 @@ public class UserWorkoutData {
         ovelseIDs = IDs;
         this.navn = navn;
     }
+
+    public UserWorkoutData(){}
 }

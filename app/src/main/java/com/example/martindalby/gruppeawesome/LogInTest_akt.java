@@ -46,7 +46,7 @@ public class LogInTest_akt extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View v) {
-        if (v == sub && bePeakedSubCode.getText().toString().equals("") == false) {
+        /*if (v == sub && bePeakedSubCode.getText().toString().equals("") == false) {
             sharedPreferences.edit().putString("UserID", bePeakedSubCode.getText().toString()).commit();
             finish();
 
@@ -56,6 +56,10 @@ public class LogInTest_akt extends AppCompatActivity implements View.OnClickList
             datafiles.pushUser(new Bruger(createdUserID, new ArrayList<UserWorkoutData>(), new ArrayList<String>()));
             finish();
 
-        }
+        }*/
+        Intent i = new Intent(this, MainActivity.class);
+        startActivity(i);
     }
+
 }
+
