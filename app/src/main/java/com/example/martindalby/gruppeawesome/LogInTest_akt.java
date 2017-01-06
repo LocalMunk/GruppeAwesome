@@ -41,24 +41,31 @@ public class LogInTest_akt extends AppCompatActivity implements View.OnClickList
 
         sub.setOnClickListener(this);
         notsub.setOnClickListener(this);
+
+        if(!sharedPreferences.getString("UserID", "delet me").equals("delet me")){
+            Intent i = new Intent(this, MainActivity.class);
+            startActivity(i);
+
+        }
     }
 
 
     @Override
     public void onClick(View v) {
-        /*if (v == sub && bePeakedSubCode.getText().toString().equals("") == false) {
+        Intent i = new Intent(this, MainActivity.class);
+        if (v == sub && bePeakedSubCode.getText().toString().equals("") == false) {
             sharedPreferences.edit().putString("UserID", bePeakedSubCode.getText().toString()).commit();
-            finish();
+            startActivity(i);
 
         } else if (v == notsub) {
             sharedPreferences.edit().putString("UserID", datafiles.generateUserKey()).commit();
-            sharedPreferences.getString("userID", createdUserID);
+            createdUserID = sharedPreferences.getString("UserID", "fail");
             datafiles.pushUser(new Bruger(createdUserID, new ArrayList<UserWorkoutData>(), new ArrayList<String>()));
-            finish();
+            startActivity(i);
 
-        }*/
-        Intent i = new Intent(this, MainActivity.class);
-        startActivity(i);
+        }
+
+
     }
 
 }
