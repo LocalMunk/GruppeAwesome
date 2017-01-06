@@ -25,7 +25,10 @@
         android:text="Færdig"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="20dp"
         android:id="@+id/doneButton"
+        android:background="@color/colorPrimaryBtn2"
+        android:textColor="@color/indicate"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 
