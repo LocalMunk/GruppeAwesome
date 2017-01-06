@@ -30,21 +30,24 @@ public class LogInTest_akt extends AppCompatActivity implements View.OnClickList
         datafiles = MainController.getInstans();
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
+        System.out.println("Har været inde i login AKT");
+
         sub = (Button) findViewById(R.id.buttoncontinuesub);
-        sub.setText("Fortsæt");
+        sub.setText("Log in");
 
         notsub = (Button) findViewById(R.id.buttonnotsubbed);
-        notsub.setText("Fortsæt som gratis bruger");
+        notsub.setText("Fortsæt uden log in");
 
         bePeakedSubCode = (EditText) findViewById(R.id.bepeakedsubcode);
-        bePeakedSubCode.setHint("Indtast din BePeaked kode");
+        bePeakedSubCode.setHint("Indtast aktiveringsnøgle");
 
         sub.setOnClickListener(this);
         notsub.setOnClickListener(this);
 
+        //hvad er det her?
         if(!sharedPreferences.getString("UserID", "delet me").equals("delet me")){
             Intent i = new Intent(this, MainActivity.class);
-            startActivity(i);
+            //startActivity(i);
 
         }
     }
@@ -56,13 +59,14 @@ public class LogInTest_akt extends AppCompatActivity implements View.OnClickList
         if (v == sub && bePeakedSubCode.getText().toString().equals("") == false) {
             sharedPreferences.edit().putString("UserID", bePeakedSubCode.getText().toString()).commit();
             startActivity(i);
+            finish();
 
         } else if (v == notsub) {
             sharedPreferences.edit().putString("UserID", datafiles.generateUserKey()).commit();
             createdUserID = sharedPreferences.getString("UserID", "fail");
             datafiles.pushUser(new Bruger(createdUserID, new ArrayList<UserWorkoutData>(), new ArrayList<String>()));
             startActivity(i);
-
+            finish();
         }
 
 

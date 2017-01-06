@@ -24,8 +24,7 @@
             android:layout_marginBottom="83dp"
             android:id="@+id/buttonnotsubbed"
             android:layout_alignParentBottom="true"
-            android:layout_alignLeft="@+id/buttoncontinuesub"
-            android:layout_alignStart="@+id/buttoncontinuesub" />
+            android:layout_centerHorizontal="true" />
 
         <EditText
             android:layout_width="250dp"
@@ -34,6 +33,7 @@
             android:ems="10"
             android:id="@+id/bepeakedsubcode"
             android:layout_above="@+id/buttonnotsubbed"
+            android:textColorHint="@color/indicate"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="196dp" />
 
