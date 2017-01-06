@@ -3,6 +3,10 @@
     <color name="colorPrimaryLight">#66da6a</color>
     <color name="colorPrimary">#4CAF50</color>
     <color name="colorPrimaryDark">#357e38</color>
+    <color name="colorPrimaryBtn">#7ab47c</color>
+    <color name="colorPrimaryBtn1">#74be77</color>
+    <color name="colorPrimaryBtn2">#6daf70</color>
+    <color name="colorPrimaryBtn3">#81ae83</color>
     <color name="indicate">#ffffff</color>
     <color name="whiteDark">#efefef</color>
     <color name="grey">#d8d8d8</color>
