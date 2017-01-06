@@ -2,36 +2,41 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.martindalby.gruppeawesome">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
+        android:name=".DAL.GruppeAwesome"
         android:allowBackup="true"
         android:icon="@mipmap/bb"
         android:label="BodyBook"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        android:name=".DAL.GruppeAwesome">
-        <activity android:name=".MainActivity">
+        android:theme="@style/AppTheme">
+        <activity android:name=".LogInTest_akt">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".OpskriftListe"></activity>
-        <activity android:name=".LoginAktivitet"></activity>
-        <activity android:name=".OpretOvelse"></activity>
-        <activity android:name=".OpretWorkout"></activity>
-        <activity android:name=".Opskrift"></activity>
-        <activity android:name=".Ovelse"></activity>
-        <activity android:name=".WorkoutList"></activity><!-- ATTENTION: This was auto-generated to add Google Play services to your project for
-     App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->
+        <activity android:name=".MainActivity"/>
+        <activity android:name=".OpskriftListe" />
+        <activity android:name=".LoginAktivitet" />
+        <activity android:name=".OpretOvelse" />
+        <activity android:name=".OpretWorkout" />
+        <activity android:name=".Opskrift" />
+        <activity android:name=".Ovelse" />
+        <activity android:name=".WorkoutList" />
+        <!--
+ ATTENTION: This was auto-generated to add Google Play services to your project for
+     App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information.
+        -->
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="290ec3ed5b8a32226a6672062c4b8cee9288887e" />
+
     </application>
 
-    <uses-permission android:name="android.permission.INTERNET" />
 </manifest>
