@@ -59,7 +59,18 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
 .newTab();
         final TabLayout.Tab kostplan=tabLayout.newTab();
 
+        /*   Prøver at hente bruger ned fra databasen
+        if(datafiles.bruger == null){
+            datafiles.getUserFromDatabase(sharedPreferences.getString("UserID", "FAIL"));
+            System.out.println("jeg kan sku ikke helt hente brugeren til dig");
+        }
+        else{
+            System.out.println("Den er helt gal bro");
+        }
+
         datafiles.bruger.id = sharedPreferences.getString("UserID", "FAIL");
+        */
+
 
         //workout.setText("Workouts");
         //kostplan.setText("Kostplan");

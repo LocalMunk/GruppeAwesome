@@ -25,7 +25,6 @@ public class MainController implements Serializable{
         Træningsplan = new TraeningsPlanData(new ArrayList<WorkoutData>());
         Kostplan = new KostplanData(new ArrayList<OpskriftData>());
         databaseControl = new DatabaseController();
-        bruger = new Bruger();
     }
 
     public static MainController getInstans(){
@@ -79,6 +78,10 @@ public class MainController implements Serializable{
 
     public void pushUser(Bruger user){
         databaseControl.PushBruger(user);
+    }
+
+    public void getUserFromDatabase(String UserID){
+        bruger = databaseControl.getUser(UserID);
     }
 
     public String generateUserKey(){

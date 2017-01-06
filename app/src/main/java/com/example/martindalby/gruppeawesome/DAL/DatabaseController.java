@@ -28,6 +28,7 @@ public class DatabaseController {
 
     public ArrayList<String> morgenTest;
     public ArrayList<String> userID;
+    public Bruger bruger;
     private Firebase mRef;
 
 
@@ -160,5 +161,23 @@ public class DatabaseController {
         return userID;
     }
 
+
+    public Bruger getUser(String UserID){
+        System.out.println("inde i bruger metode.");
+        mRef.child("v0").child("brugere").child(UserID).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                bruger = dataSnapshot.getValue(Bruger.class);
+                System.out.println("Jeg er inde og hente brugeren til dig men måske bliver det ikke gemt");
+            }
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+
+
+        });
+        return bruger;
+    }
 
 }

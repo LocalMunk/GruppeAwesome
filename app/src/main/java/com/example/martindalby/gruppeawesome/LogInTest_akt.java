@@ -30,6 +30,11 @@ public class LogInTest_akt extends AppCompatActivity implements View.OnClickList
         datafiles = MainController.getInstans();
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
+
+        datafiles.UserID = sharedPreferences.getString("UserID", "FAIL");
+        datafiles.databaseControl.getUser(datafiles.UserID);
+        System.out.println(datafiles.bruger);
+
         System.out.println("Har været inde i login AKT");
 
         sub = (Button) findViewById(R.id.buttoncontinuesub);
@@ -43,6 +48,7 @@ public class LogInTest_akt extends AppCompatActivity implements View.OnClickList
 
         sub.setOnClickListener(this);
         notsub.setOnClickListener(this);
+
 
         //hvad er det her? får dig forbi login hvism man er logget ind
         if(sharedPreferences.getString("UserID", "delet me").equals("delet me")){
