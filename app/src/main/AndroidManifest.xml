@@ -16,7 +16,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".OpskriftListe"></activity>
+        <activity android:name=".LoginAktivitet"></activity>
         <activity android:name=".OpretOvelse"></activity>
         <activity android:name=".OpretWorkout"></activity>
         <activity android:name=".Opskrift"></activity>

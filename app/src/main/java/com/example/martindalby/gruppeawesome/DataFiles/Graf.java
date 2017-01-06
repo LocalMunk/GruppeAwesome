@@ -25,7 +25,7 @@ public class Graf {
 
     public void addDataPoint(double weight, double reps, int date){
         DataPoint z = new DataPoint(date, (int)(weight * (36/(37 - reps))));
-        if(dataPoints.size() >= 7) dataPoints.remove(0);
+        if(dataPoints.size() >= 20) dataPoints.remove(0);
         dataPoints.add(z);
     }
 

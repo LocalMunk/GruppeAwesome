@@ -1,9 +1,13 @@
 package com.example.martindalby.gruppeawesome.DataFiles;
 
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+
 import com.example.martindalby.gruppeawesome.DAL.DatabaseController;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.UUID;
 
 /**
  * Created by Martin Dalby on 02-01-2017.
@@ -14,6 +18,7 @@ public class MainController implements Serializable{
     public KostplanData Kostplan;
     private static MainController instans;
     public DatabaseController databaseControl;
+    public String UserID;
 
     private MainController(){
         Træningsplan = new TraeningsPlanData(new ArrayList<WorkoutData>());
@@ -71,6 +76,14 @@ public class MainController implements Serializable{
 
     public void pushUser(Bruger user){
         databaseControl.PushBruger(user);
+    }
+
+    public String generateUserKey(){
+        String out = "FU";
+        String uuid = UUID.randomUUID().toString();
+        out = out + uuid;
+        System.out.println("SE HER     " + out);
+        return out;
     }
 
     public void testDataGenerator(){

@@ -1,6 +1,8 @@
 package com.example.martindalby.gruppeawesome;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -29,7 +31,7 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
     private ViewPager viewPager;
     private ViewPagerAdapter adapter;
     private MainController datafiles;
-
+    public SharedPreferences sharedPreferences;
     //private ViewPager viewPagers;
 
     @Override
@@ -38,9 +40,11 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
         Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_main2);
 
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
         datafiles = MainController.getInstans();
         datafiles.testDataGenerator();
+
         toolbar = (Toolbar) findViewById(R.id.toolBar);
 
         tabLayout = (TabLayout) findViewById(R.id.tab_layout);
@@ -80,6 +84,11 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
         Bruger bob = new Bruger("Bob Nielsen testeren", wod, retter);
         datafiles.pushUser(bob);
         */
+
+
+
+
+
 
 
         workout.setIcon(R.drawable.exerciseiconwhite);
