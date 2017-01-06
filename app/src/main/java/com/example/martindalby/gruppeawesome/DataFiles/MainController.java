@@ -19,11 +19,13 @@ public class MainController implements Serializable{
     private static MainController instans;
     public DatabaseController databaseControl;
     public String UserID;
+    public Bruger bruger;
 
     private MainController(){
         Træningsplan = new TraeningsPlanData(new ArrayList<WorkoutData>());
         Kostplan = new KostplanData(new ArrayList<OpskriftData>());
         databaseControl = new DatabaseController();
+        bruger = new Bruger();
     }
 
     public static MainController getInstans(){

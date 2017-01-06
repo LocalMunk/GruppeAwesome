@@ -44,12 +44,15 @@ public class LogInTest_akt extends AppCompatActivity implements View.OnClickList
         sub.setOnClickListener(this);
         notsub.setOnClickListener(this);
 
-        //hvad er det her?
-        if(!sharedPreferences.getString("UserID", "delet me").equals("delet me")){
-            Intent i = new Intent(this, MainActivity.class);
-            //startActivity(i);
+        //hvad er det her? får dig forbi login hvism man er logget ind
+        if(sharedPreferences.getString("UserID", "delet me").equals("delet me")){
 
         }
+        else{
+            Intent i = new Intent(this, MainActivity.class);
+            startActivity(i);
+        }
+
     }
 
 
@@ -65,6 +68,7 @@ public class LogInTest_akt extends AppCompatActivity implements View.OnClickList
             sharedPreferences.edit().putString("UserID", datafiles.generateUserKey()).commit();
             createdUserID = sharedPreferences.getString("UserID", "fail");
             datafiles.pushUser(new Bruger(createdUserID, new ArrayList<UserWorkoutData>(), new ArrayList<String>()));
+            datafiles.bruger.workouts = new ArrayList<UserWorkoutData>();
             startActivity(i);
             finish();
         }

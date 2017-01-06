@@ -42,6 +42,8 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
 
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
+
+
         datafiles = MainController.getInstans();
         datafiles.testDataGenerator();
 
@@ -56,6 +58,8 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
         final TabLayout.Tab workout=tabLayout
 .newTab();
         final TabLayout.Tab kostplan=tabLayout.newTab();
+
+        datafiles.bruger.id = sharedPreferences.getString("UserID", "FAIL");
 
         //workout.setText("Workouts");
         //kostplan.setText("Kostplan");
