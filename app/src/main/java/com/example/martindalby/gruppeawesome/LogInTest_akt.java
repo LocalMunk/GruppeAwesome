@@ -56,6 +56,10 @@ public class LogInTest_akt extends AppCompatActivity implements View.OnClickList
         }
         else{
             Intent i = new Intent(this, MainActivity.class);
+
+            //Sørger for at main act bliver øverst i backstack
+            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
             startActivity(i);
         }
 
@@ -67,6 +71,10 @@ public class LogInTest_akt extends AppCompatActivity implements View.OnClickList
         Intent i = new Intent(this, MainActivity.class);
         if (v == sub && bePeakedSubCode.getText().toString().equals("") == false) {
             sharedPreferences.edit().putString("UserID", bePeakedSubCode.getText().toString()).commit();
+
+            //Sørger for at main act bliver øverst i backstack
+            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
             startActivity(i);
             finish();
 
@@ -75,6 +83,10 @@ public class LogInTest_akt extends AppCompatActivity implements View.OnClickList
             createdUserID = sharedPreferences.getString("UserID", "fail");
             datafiles.pushUser(new Bruger(createdUserID, new ArrayList<UserWorkoutData>(), new ArrayList<String>()));
             datafiles.bruger.workouts = new ArrayList<UserWorkoutData>();
+
+            //Sørger for at main act bliver øverst i backstack
+            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
             startActivity(i);
             finish();
         }
