@@ -40,9 +40,8 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
         Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_main2);
 
+        //midlertidig brugt til id reset
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-
-
 
         datafiles = MainController.getInstans();
         datafiles.testDataGenerator();
@@ -55,8 +54,8 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
         adapter = new ViewPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
         setSupportActionBar(toolbar);
-        final TabLayout.Tab workout=tabLayout
-.newTab();
+
+        final TabLayout.Tab workout=tabLayout.newTab();
         final TabLayout.Tab kostplan=tabLayout.newTab();
 
         /*   Prøver at hente bruger ned fra databasen

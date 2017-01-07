@@ -23,6 +23,7 @@ import java.util.ArrayList;
 
 public class OpretWorkout extends AppCompatActivity implements View.OnClickListener{
 
+    static int workoutNum = 0;
     EditText navn;
     Button done;
     MainController datafiles;
@@ -49,7 +50,8 @@ public class OpretWorkout extends AppCompatActivity implements View.OnClickListe
         if(v == done){
             traeningsPlanData.addWorkout(new WorkoutData(traeningsPlanData.getWorkouts().size(), navn.getText().toString(), new ArrayList<OvelseData>()));
             if (datafiles.bruger.workouts == null){
-                datafiles.bruger.workouts.add(0, new UserWorkoutData(new ArrayList<String>(), navn.getText().toString()));
+                datafiles.bruger.workouts.add(workoutNum, new UserWorkoutData(new ArrayList<String>(), navn.getText().toString()));
+                workoutNum++;
             }
             else{
                 datafiles.bruger.workouts.add(datafiles.bruger.workouts.size(), new UserWorkoutData(new ArrayList<String>(), navn.getText().toString()));

@@ -1,7 +1,9 @@
 package com.example.martindalby.gruppeawesome;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,10 +24,16 @@ public class Kostplan_frag extends Fragment implements View.OnClickListener {
     private Button morgen,frokost,aften,snack;
     MainController datafiles;
 
+
+    SharedPreferences sharedPreferences;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rod = inflater.inflate(R.layout.kostplan_maaltider, container,false);
         datafiles = MainController.getInstans();
+
+        //midlertidig til at reset login
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
 
         morgen = (Button) rod.findViewById(R.id.morgenmadKnap);
         morgen.setText("Morgenmad");
@@ -69,6 +77,11 @@ public class Kostplan_frag extends Fragment implements View.OnClickListener {
         }
 
         if( v == snack) {
+
+            //midlertidig til at reset login
+            sharedPreferences.edit().remove("UserID").commit();
+
+
             Intent i = new Intent(getActivity(), OpskriftListe.class);
             i.putExtra("type", snack.getText().toString());
             startActivity(i);

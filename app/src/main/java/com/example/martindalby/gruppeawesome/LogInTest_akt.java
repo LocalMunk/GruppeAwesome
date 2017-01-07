@@ -69,6 +69,7 @@ public class LogInTest_akt extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View v) {
         Intent i = new Intent(this, MainActivity.class);
+
         if (v == sub && bePeakedSubCode.getText().toString().equals("") == false) {
             sharedPreferences.edit().putString("UserID", bePeakedSubCode.getText().toString()).commit();
 
@@ -79,9 +80,13 @@ public class LogInTest_akt extends AppCompatActivity implements View.OnClickList
             finish();
 
         } else if (v == notsub) {
+            //genererer user id
             sharedPreferences.edit().putString("UserID", datafiles.generateUserKey()).commit();
             createdUserID = sharedPreferences.getString("UserID", "fail");
-            datafiles.pushUser(new Bruger(createdUserID, new ArrayList<UserWorkoutData>(), new ArrayList<String>()));
+
+            //opretter bruger først lokalt, derefter pusher til db
+            datafiles.bruger = new Bruger(createdUserID, new ArrayList<UserWorkoutData>(), new ArrayList<String>());
+            datafiles.pushUser(datafiles.bruger);
             datafiles.bruger.workouts = new ArrayList<UserWorkoutData>();
 
             //Sørger for at main act bliver øverst i backstack
