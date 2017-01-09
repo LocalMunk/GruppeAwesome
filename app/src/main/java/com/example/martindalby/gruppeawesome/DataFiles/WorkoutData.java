@@ -9,15 +9,19 @@ import java.util.ArrayList;
 
 
 public class WorkoutData {
-    private ArrayList<OvelseData> ovelser;
-    private String workoutname;
-    private int workoutid;
+    public ArrayList<OvelseData> ovelser;
+    public String workoutname;
+    public int workoutid;
 
 
     public WorkoutData(int workoutid, String workoutname, ArrayList<OvelseData> ovelser) {
         this.ovelser = ovelser;
         this.workoutid = workoutid;
         this.workoutname = workoutname;
+    }
+
+    public WorkoutData(){
+
     }
 
     public ArrayList<OvelseData> getOvelser() {

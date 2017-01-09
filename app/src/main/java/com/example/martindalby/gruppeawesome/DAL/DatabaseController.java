@@ -8,6 +8,7 @@ import com.example.martindalby.gruppeawesome.DataFiles.KostplanData;
 import com.example.martindalby.gruppeawesome.DataFiles.MainController;
 import com.example.martindalby.gruppeawesome.DataFiles.OpskriftData;
 import com.example.martindalby.gruppeawesome.DataFiles.OvelseData;
+import com.example.martindalby.gruppeawesome.DataFiles.WorkoutData;
 import com.example.martindalby.gruppeawesome.Opskrift;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
@@ -30,7 +31,9 @@ public class DatabaseController {
     public ArrayList<String> userID;
     public Bruger bruger;
     public OpskriftData opskriftD;
+    public OvelseData ovelseData;
     private Firebase mRef;
+    private String version;
 
 
     public DatabaseController() {
@@ -41,9 +44,10 @@ public class DatabaseController {
 
         morgenTest = new ArrayList<>();
 
-
+        version = "v0";
         bruger = new Bruger();
         opskriftD = new OpskriftData();
+        ovelseData = new OvelseData();
         mRef = new Firebase("https://boodybook-a85b7.firebaseio.com/");
 
 
@@ -59,12 +63,12 @@ public class DatabaseController {
 
         OvelseData ovelseData = new OvelseData(id, navn, done, sets);
         String j = i + "";
-        mRef.child("v0").child("Ovelser").child(j).setValue(ovelseData);
+        mRef.child(version).child("Ovelser").child(j).setValue(ovelseData);
 
     }
 
     public void PushBruger(Bruger bruger){
-        mRef.child("v0").child("brugere").child(bruger.id).setValue(bruger);
+        mRef.child(version).child("brugere").child(bruger.id).setValue(bruger);
     }
 
 
@@ -72,7 +76,7 @@ public class DatabaseController {
     public Bruger getUser(String UserID){
 
         System.out.println("inde i bruger metode.");
-        mRef.child("v0").child("brugere").child(UserID).addValueEventListener(new ValueEventListener() {
+        mRef.child(version).child("brugere").child(UserID).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 bruger.id = dataSnapshot.getValue(Bruger.class).id;
@@ -98,7 +102,7 @@ public class DatabaseController {
     public OpskriftData getOpskrift (String id) {
 
         //henter data fra db
-        mRef.child("v0").child("kostplan").child(id).addValueEventListener(new ValueEventListener() {
+        mRef.child(version).child("kostplan").child(id).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 //henter børn ned
@@ -118,6 +122,26 @@ public class DatabaseController {
             }
         });
         return opskriftD;
+    }
+
+    public OvelseData getOvelse(String id){
+        mRef.child(version).child("Ovelser").child(id).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                ovelseData.setId(dataSnapshot.getValue(OvelseData.class).getId());
+                ovelseData.setDone(dataSnapshot.getValue(OvelseData.class).isDone());
+                ovelseData.setNavn(dataSnapshot.getValue(OvelseData.class).getNavn());
+                ovelseData.setGraf(dataSnapshot.getValue(OvelseData.class).getGraf());
+
+                System.out.println("har hentet denne Øvelse" + ovelseData.getNavn());
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
+        return ovelseData;
     }
 
 }

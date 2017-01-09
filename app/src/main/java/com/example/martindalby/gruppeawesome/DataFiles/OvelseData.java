@@ -6,16 +6,19 @@ package com.example.martindalby.gruppeawesome.DataFiles;
 
 public class OvelseData {
 
-    private String navn;
-    private int done;
-    private Graf graf;
-    private int sets, id;
+    public String navn;
+    public int done;
+    public Graf graf;
+    public int sets, id;
 
     public OvelseData(int id, String navn, int done, int sets) {
         this.navn = navn;
         this.done = done;
         this.sets = sets;
         this.id = id;
+    }
+    public OvelseData(){
+
     }
 
     public String getNavn() {

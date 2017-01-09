@@ -45,6 +45,12 @@ public class OpretWorkout extends AppCompatActivity implements View.OnClickListe
 
         traeningsPlanData = datafiles.getTræningsplan();
 
+        WorkoutData wdata = new WorkoutData(0, datafiles.bruger.workouts.get(0).navn, new ArrayList<OvelseData>());
+
+        wdata.getOvelser().add(datafiles.databaseControl.getOvelse(datafiles.bruger.workouts.get(0).ovelseIDs.get(0)));
+
+        traeningsPlanData.getWorkouts().add(wdata);
+
         System.out.println("brugeren er " + datafiles.bruger.id);
         datafiles.getKostplanFromDB();
     }
