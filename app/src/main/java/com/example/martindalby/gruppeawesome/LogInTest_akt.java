@@ -32,8 +32,6 @@ public class LogInTest_akt extends AppCompatActivity implements View.OnClickList
 
 
         datafiles.UserID = sharedPreferences.getString("UserID", "FAIL");
-        datafiles.databaseControl.getUser(datafiles.UserID);
-        System.out.println(datafiles.bruger);
 
         System.out.println("Har været inde i login AKT");
 

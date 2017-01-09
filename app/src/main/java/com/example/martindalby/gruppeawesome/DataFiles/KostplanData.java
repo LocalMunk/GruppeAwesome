@@ -19,7 +19,7 @@ public class KostplanData {
         return retter.get(j);
     }
 
-    public void setOpskrift(int i, OpskriftData od){
+    public void setOpskrift(OpskriftData od){
         retter.add(od);
     }
 

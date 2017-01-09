@@ -62,4 +62,8 @@ public class OpskriftData {
         this.type = type;
 
     }
+
+    public String toString(){
+        return "navn" +  navn;
+    }
 }

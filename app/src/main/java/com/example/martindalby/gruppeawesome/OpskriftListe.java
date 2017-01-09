@@ -38,6 +38,9 @@ ArrayList<OpskriftData> opskrifter;
         System.out.println("TyperTe4xt fået fra intent: " + typeText);
         adapter = new KostPlanAdapter();
 
+
+        System.out.println("xaxaxaxaxaxaxaxaxa" + datafiles.bruger);
+
         if(typeText.equals("Morgenmad")) type = 0;
         else if(typeText.equals("Frokost")) type = 1;
         else if(typeText.equals("Aftensmad")) type = 2;

@@ -20,6 +20,6 @@ public class Bruger {
     public Bruger(){}
 
     public String toString(){
-        return "id: " + id + "Første Workout: " + workouts.get(0).navn;
+        return "id: " + id + "retids  " + RetIDs;
     }
 }

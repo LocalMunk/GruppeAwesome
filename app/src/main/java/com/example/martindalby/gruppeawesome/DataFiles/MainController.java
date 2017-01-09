@@ -1,7 +1,6 @@
 package com.example.martindalby.gruppeawesome.DataFiles;
 
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
+import android.os.AsyncTask;
 
 import com.example.martindalby.gruppeawesome.DAL.DatabaseController;
 
@@ -15,7 +14,7 @@ import java.util.UUID;
 
 public class MainController implements Serializable{
     public TraeningsPlanData Træningsplan;
-    public KostplanData Kostplan;
+    public KostplanData kostplan;
     private static MainController instans;
     public DatabaseController databaseControl;
     public String UserID;
@@ -23,14 +22,19 @@ public class MainController implements Serializable{
 
     private MainController(){
         Træningsplan = new TraeningsPlanData(new ArrayList<WorkoutData>());
-        Kostplan = new KostplanData(new ArrayList<OpskriftData>());
+        kostplan = new KostplanData(new ArrayList<OpskriftData>());
         databaseControl = new DatabaseController();
+        bruger = new Bruger("", new ArrayList<UserWorkoutData>(), new ArrayList<String>());
+        bruger.RetIDs = new ArrayList<String>();
     }
 
     public static MainController getInstans(){
         if(instans == null){
             instans = new MainController();
+
+            /*
             instans.testDataGenerator();
+            */
         }
             return instans;
     }
@@ -45,7 +49,7 @@ public class MainController implements Serializable{
     }
 
     public KostplanData getKostplan(){
-        return Kostplan;
+        return kostplan;
     }
 
 
@@ -57,7 +61,7 @@ public class MainController implements Serializable{
 /*
     public void pushKostplan(){
         int i = 0;
-        for(OpskriftData data: Kostplan.getRetter()){
+        for(OpskriftData data: kostplan.getRetter()){
             databaseControl.lavTestKostplan(data.navn, data.ingrediens, data.fremgangsmåde, data.imglink, data.id, data.type, i);
             i++;
         }
@@ -69,7 +73,7 @@ public class MainController implements Serializable{
         int i = 0;
         for(WorkoutData data: Træningsplan.getWorkouts()){
             for(OvelseData data2: data.getOvelser()){
-                databaseControl.PushOvelse(data2.getId(), data2.getNavn(), data2.isDone(), data2.getSets(), i);
+                databaseControl.pushOvelse(data2.getId(), data2.getNavn(), data2.isDone(), data2.getSets(), i);
                 i++;
             }
         }
@@ -80,9 +84,36 @@ public class MainController implements Serializable{
         databaseControl.PushBruger(user);
     }
 
-    public void getUserFromDatabase(String UserID){
-        bruger = databaseControl.getUser(UserID);
+    public void getUserFromDatabase(final String UserID){
+
+        new AsyncTask() {
+            @Override
+            protected Object doInBackground(Object... arg0) {
+                try {
+                    databaseControl.getUser(UserID);
+                    return "Blev hentet korrekt";
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    System.out.println("Blev ikke hentet korrekt: ");
+                    return "Blev ikke hentet korrekt: "+e;
+                }
+            }
+
+            @Override
+            protected void onPostExecute(Object resultat) {
+                System.out.println("HAr hentet denne bruger ting?" + bruger.RetIDs.get(0) + "-----------------------------------------------");
+
+            }
+        }.execute();
+
+
+
+
+
+
+
     }
+
 
     public String generateUserKey(){
         String out = "FU";
@@ -92,7 +123,7 @@ public class MainController implements Serializable{
         return out;
     }
 
-    public void testDataGenerator(){
+    /*public void testDataGenerator(){
         if(Træningsplan.getWorkouts().size() == 0) {
             ArrayList<OvelseData> z = new ArrayList<OvelseData>();
             z.add(new OvelseData(0, "Lunges", 0, 3));
@@ -107,12 +138,12 @@ public class MainController implements Serializable{
             Træningsplan.addWorkout(new WorkoutData(1, "Workout B", z));
             Træningsplan.addWorkout(new WorkoutData(2, "Workout C", z));
 
-            Kostplan.setOpskrift(0, new OpskriftData("Kylling", "1 stk. ost \n 2 æg \n 100g kylling \n \n 200g prot", "Lad en tykbundet gryde blive varm. Tilsæt ris, løg og hvidvin. Bring det i kog og kog det ved jævn varme i ca. 2 min. Tilsæt vand og bouillonterning og lad retten koge ved svag varme i ca. 20 min. - rør af og til. Tilsæt squash og æble og vend det godt sammen. Lad risottoen koge ved svag varme i yderligere ca. 5 min. - rør af og til.\n" +
+            kostplan.setOpskrift(0, new OpskriftData("Kylling", "1 stk. ost \n 2 æg \n 100g kylling \n \n 200g prot", "Lad en tykbundet gryde blive varm. Tilsæt ris, løg og hvidvin. Bring det i kog og kog det ved jævn varme i ca. 2 min. Tilsæt vand og bouillonterning og lad retten koge ved svag varme i ca. 20 min. - rør af og til. Tilsæt squash og æble og vend det godt sammen. Lad risottoen koge ved svag varme i yderligere ca. 5 min. - rør af og til.\n" +
                     "\n" +
                     "Tilsæt hytteost, jordskokker, persille, limesaft og salt. Varm risottoen igennem og smag til.\n" +
                     "\n" +
                     "Lad imens olien blive godt varm i en pande. Steg kylling og gulerødder i ca. 3 min. ved kraftig varme. Skru ned til jævn varme og steg i yderligere ca. 7 min. under omrøring. Anret kylling på risottoen sammen med serrano skinke. Pynt med persille.", "", "1", 0));
-            Kostplan.setOpskrift(0, new OpskriftData("Ostemad", "1 stk. ost \n" +
+            kostplan.setOpskrift(0, new OpskriftData("Ostemad", "1 stk. ost \n" +
                     " 2 æg \n" +
                     " 100g kylling \n" +
                     " \n" +
@@ -121,7 +152,7 @@ public class MainController implements Serializable{
                     "Tilsæt hytteost, jordskokker, persille, limesaft og salt. Varm risottoen igennem og smag til.\n" +
                     "\n" +
                     "Lad imens olien blive godt varm i en pande. Steg kylling og gulerødder i ca. 3 min. ved kraftig varme. Skru ned til jævn varme og steg i yderligere ca. 7 min. under omrøring. Anret kylling på risottoen sammen med serrano skinke. Pynt med persille.", "", "2", 0));
-            Kostplan.setOpskrift(1, new OpskriftData("Fisk", "1 stk. ost \n" +
+            kostplan.setOpskrift(1, new OpskriftData("Fisk", "1 stk. ost \n" +
                     " 2 æg \n" +
                     " 100g kylling \n" +
                     " \n" +
@@ -130,7 +161,7 @@ public class MainController implements Serializable{
                     "Tilsæt hytteost, jordskokker, persille, limesaft og salt. Varm risottoen igennem og smag til.\n" +
                     "\n" +
                     "Lad imens olien blive godt varm i en pande. Steg kylling og gulerødder i ca. 3 min. ved kraftig varme. Skru ned til jævn varme og steg i yderligere ca. 7 min. under omrøring. Anret kylling på risottoen sammen med serrano skinke. Pynt med persille.", "", "3", 1));
-            Kostplan.setOpskrift(1, new OpskriftData("Æg", "1 stk. ost \n" +
+            kostplan.setOpskrift(1, new OpskriftData("Æg", "1 stk. ost \n" +
                     " 2 æg \n" +
                     " 100g kylling \n" +
                     " \n" +
@@ -139,7 +170,7 @@ public class MainController implements Serializable{
                     "Tilsæt hytteost, jordskokker, persille, limesaft og salt. Varm risottoen igennem og smag til.\n" +
                     "\n" +
                     "Lad imens olien blive godt varm i en pande. Steg kylling og gulerødder i ca. 3 min. ved kraftig varme. Skru ned til jævn varme og steg i yderligere ca. 7 min. under omrøring. Anret kylling på risottoen sammen med serrano skinke. Pynt med persille.", "", "4", 1));
-            Kostplan.setOpskrift(2, new OpskriftData("Salat", "1 stk. ost \n" +
+            kostplan.setOpskrift(2, new OpskriftData("Salat", "1 stk. ost \n" +
                     " 2 æg \n" +
                     " 100g kylling \n" +
                     " \n" +
@@ -148,7 +179,7 @@ public class MainController implements Serializable{
                     "Tilsæt hytteost, jordskokker, persille, limesaft og salt. Varm risottoen igennem og smag til.\n" +
                     "\n" +
                     "Lad imens olien blive godt varm i en pande. Steg kylling og gulerødder i ca. 3 min. ved kraftig varme. Skru ned til jævn varme og steg i yderligere ca. 7 min. under omrøring. Anret kylling på risottoen sammen med serrano skinke. Pynt med persille.", "", "5", 2));
-            Kostplan.setOpskrift(2, new OpskriftData("God Gryde", "1 stk. ost \n" +
+            kostplan.setOpskrift(2, new OpskriftData("God Gryde", "1 stk. ost \n" +
                     " 2 æg \n" +
                     " 100g kylling \n" +
                     " \n" +
@@ -157,7 +188,7 @@ public class MainController implements Serializable{
                     "Tilsæt hytteost, jordskokker, persille, limesaft og salt. Varm risottoen igennem og smag til.\n" +
                     "\n" +
                     "Lad imens olien blive godt varm i en pande. Steg kylling og gulerødder i ca. 3 min. ved kraftig varme. Skru ned til jævn varme og steg i yderligere ca. 7 min. under omrøring. Anret kylling på risottoen sammen med serrano skinke. Pynt med persille.", "", "6", 2));
-            Kostplan.setOpskrift(3, new OpskriftData("Prot Mad", "1 stk. ost \n" +
+            kostplan.setOpskrift(3, new OpskriftData("Prot Mad", "1 stk. ost \n" +
                     " 2 æg \n" +
                     " 100g kylling \n" +
                     " \n" +
@@ -166,7 +197,7 @@ public class MainController implements Serializable{
                     "Tilsæt hytteost, jordskokker, persille, limesaft og salt. Varm risottoen igennem og smag til.\n" +
                     "\n" +
                     "Lad imens olien blive godt varm i en pande. Steg kylling og gulerødder i ca. 3 min. ved kraftig varme. Skru ned til jævn varme og steg i yderligere ca. 7 min. under omrøring. Anret kylling på risottoen sammen med serrano skinke. Pynt med persille.", "", "7",3));
-            Kostplan.setOpskrift(3, new OpskriftData("Sund Mad", "1 stk. ost \n" +
+            kostplan.setOpskrift(3, new OpskriftData("Sund Mad", "1 stk. ost \n" +
                     " 2 æg \n" +
                     " 100g kylling \n" +
                     " \n" +
@@ -175,7 +206,7 @@ public class MainController implements Serializable{
                     "Tilsæt hytteost, jordskokker, persille, limesaft og salt. Varm risottoen igennem og smag til.\n" +
                     "\n" +
                     "Lad imens olien blive godt varm i en pande. Steg kylling og gulerødder i ca. 3 min. ved kraftig varme. Skru ned til jævn varme og steg i yderligere ca. 7 min. under omrøring. Anret kylling på risottoen sammen med serrano skinke. Pynt med persille.", "", "8", 3));
-            Kostplan.setOpskrift(0, new OpskriftData("Appelsin Juice", "1 stk. ost \n" +
+            kostplan.setOpskrift(0, new OpskriftData("Appelsin Juice", "1 stk. ost \n" +
                     " 2 æg \n" +
                     " 100g kylling \n" +
                     " \n" +
@@ -184,7 +215,7 @@ public class MainController implements Serializable{
                     "Tilsæt hytteost, jordskokker, persille, limesaft og salt. Varm risottoen igennem og smag til.\n" +
                     "\n" +
                     "Lad imens olien blive godt varm i en pande. Steg kylling og gulerødder i ca. 3 min. ved kraftig varme. Skru ned til jævn varme og steg i yderligere ca. 7 min. under omrøring. Anret kylling på risottoen sammen med serrano skinke. Pynt med persille.", "", "9", 0));
-            Kostplan.setOpskrift(1, new OpskriftData("Burger", "1 stk. ost \n" +
+            kostplan.setOpskrift(1, new OpskriftData("Burger", "1 stk. ost \n" +
                     " 2 æg \n" +
                     " 100g kylling \n" +
                     " \n" +
@@ -193,7 +224,7 @@ public class MainController implements Serializable{
                     "Tilsæt hytteost, jordskokker, persille, limesaft og salt. Varm risottoen igennem og smag til.\n" +
                     "\n" +
                     "Lad imens olien blive godt varm i en pande. Steg kylling og gulerødder i ca. 3 min. ved kraftig varme. Skru ned til jævn varme og steg i yderligere ca. 7 min. under omrøring. Anret kylling på risottoen sammen med serrano skinke. Pynt med persille.", "", "10", 1));
-            Kostplan.setOpskrift(2, new OpskriftData("Gulerod", "1 stk. ost \n" +
+            kostplan.setOpskrift(2, new OpskriftData("Gulerod", "1 stk. ost \n" +
                     " 2 æg \n" +
                     " 100g kylling \n" +
                     " \n" +
@@ -202,7 +233,7 @@ public class MainController implements Serializable{
                     "Tilsæt hytteost, jordskokker, persille, limesaft og salt. Varm risottoen igennem og smag til.\n" +
                     "\n" +
                     "Lad imens olien blive godt varm i en pande. Steg kylling og gulerødder i ca. 3 min. ved kraftig varme. Skru ned til jævn varme og steg i yderligere ca. 7 min. under omrøring. Anret kylling på risottoen sammen med serrano skinke. Pynt med persille.", "", "11", 2));
-            Kostplan.setOpskrift(3, new OpskriftData("Peanut butter", "1 stk. ost \n" +
+            kostplan.setOpskrift(3, new OpskriftData("Peanut butter", "1 stk. ost \n" +
                     " 2 æg \n" +
                     " 100g kylling \n" +
                     " \n" +
@@ -212,6 +243,25 @@ public class MainController implements Serializable{
                     "\n" +
                     "Lad imens olien blive godt varm i en pande. Steg kylling og gulerødder i ca. 3 min. ved kraftig varme. Skru ned til jævn varme og steg i yderligere ca. 7 min. under omrøring. Anret kylling på risottoen sammen med serrano skinke. Pynt med persille.", "", "12", 3));
         }
+
+    }
+
+*/
+
+    public void getKostplanFromDB () {
+        try {
+            kostplan.getRetter().clear();
+            for (String id : bruger.RetIDs) {
+                if(id != null){
+                    kostplan.setOpskrift(databaseControl.getOpskrift(id));
+                }
+
+            }
+            System.out.println(" VI HAR HENTET DET HER!!: " + kostplan.getRetter());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
 
     }
 

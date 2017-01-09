@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
     private ViewPager viewPager;
     private ViewPagerAdapter adapter;
     private MainController datafiles;
+    private String currUser;
     public SharedPreferences sharedPreferences;
     //private ViewPager viewPagers;
 
@@ -43,8 +44,11 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
         //midlertidig brugt til id reset
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
+        //henter bruger info
+        currUser = sharedPreferences.getString("UserID", "fail");
         datafiles = MainController.getInstans();
-        datafiles.testDataGenerator();
+        datafiles.bruger = datafiles.databaseControl.getUser(currUser);
+
 
         toolbar = (Toolbar) findViewById(R.id.toolBar);
 
@@ -54,6 +58,7 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
         adapter = new ViewPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
         setSupportActionBar(toolbar);
+
 
         final TabLayout.Tab workout=tabLayout.newTab();
         final TabLayout.Tab kostplan=tabLayout.newTab();
@@ -72,7 +77,7 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
 
 
         //workout.setText("Workouts");
-        //kostplan.setText("Kostplan");
+        //kostplan.setText("kostplan");
 
 
         /*     LAVER EN TEST BRUGER TIL DATABASEN.
@@ -188,7 +193,7 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
            if (position == 0)
                return "Workout";
             else
-               return "Kostplan";
+               return "kostplan";
         }
 
         @Override
