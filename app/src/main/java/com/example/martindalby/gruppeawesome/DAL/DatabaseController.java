@@ -79,7 +79,11 @@ public class DatabaseController {
                 bruger.workouts = dataSnapshot.getValue(Bruger.class).workouts;
                 bruger.RetIDs = dataSnapshot.getValue(Bruger.class).RetIDs;
                 System.out.println("Jeg er inde og hente brugeren: " + bruger);
-                System.out.println("retid størrelse   " + bruger.RetIDs.size());
+                try {
+                    System.out.println("retid størrelse   " + bruger.RetIDs.size());
+                } catch (NullPointerException e) {
+                    e.printStackTrace();
+                }
             }
             @Override
             public void onCancelled(FirebaseError firebaseError) {
