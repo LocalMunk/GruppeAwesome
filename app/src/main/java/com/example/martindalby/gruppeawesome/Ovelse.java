@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -38,6 +39,7 @@ public class Ovelse extends AppCompatActivity implements View.OnClickListener {
     MainController datafiles;
     OvelseData ovelseData;
     EditText Reps, Weight;
+//    Toolbar toolbar;
 
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -81,6 +83,12 @@ public class Ovelse extends AppCompatActivity implements View.OnClickListener {
         ExerciseName = (TextView) findViewById(R.id.ExerciseName);
         ExerciseName.setTextSize(20);
         ExerciseName.setText(ovelseData.getNavn());
+
+
+      //  toolbar = (Toolbar) findViewById(R.id.toolBar);
+      //  toolbar.setTitle(ovelseData.getNavn());
+       // setSupportActionBar(toolbar);
+
 
         graph = (GraphView) findViewById(R.id.graph);
         LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[] {

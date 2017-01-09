@@ -7,9 +7,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.martindalby.gruppeawesome.DAL.DatabaseController;
 import com.example.martindalby.gruppeawesome.DataFiles.MainController;
 import com.example.martindalby.gruppeawesome.DataFiles.OvelseData;
+import com.example.martindalby.gruppeawesome.DataFiles.UserWorkoutData;
 import com.example.martindalby.gruppeawesome.DataFiles.WorkoutData;
+
+import java.util.ArrayList;
 
 /**
  * Created by Martin Dalby on 21-11-2016.
@@ -21,6 +25,7 @@ public class OpretOvelse extends AppCompatActivity implements View.OnClickListen
     Button done;
     MainController datafiles;
     WorkoutData workoutData;
+    DatabaseController DB;
 
 
     public void onCreate(Bundle savedInstanceState){
@@ -42,6 +47,9 @@ public class OpretOvelse extends AppCompatActivity implements View.OnClickListen
 
     public void onClick(View v){
         if(v == done){
+
+          //  datafiles.bruger.workouts.get(getIntent().getIntExtra("workout", 0)).ovelseIDs.add();
+
             OvelseData out = new OvelseData(0, navn.getText().toString(), 0, Integer.parseInt(sets.getText().toString()));
             workoutData.addOvelse(out);
             finish();

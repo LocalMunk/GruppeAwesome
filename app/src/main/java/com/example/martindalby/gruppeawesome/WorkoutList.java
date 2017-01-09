@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,6 +48,8 @@ public class WorkoutList extends AppCompatActivity implements AdapterView.OnItem
 
         toolbar = (Toolbar) findViewById(R.id.toolBar);
         toolbar.setTitle(workoutData.getWorkoutname());
+        setSupportActionBar(toolbar);
+
 
     }
 
@@ -58,6 +59,7 @@ public class WorkoutList extends AppCompatActivity implements AdapterView.OnItem
         i.putExtra("sets",setsArray);
         i.putExtra("pos", position);
         i.putExtra("workout", getIntent().getIntExtra("workout", 0));
+
         startActivity(i);
     }
 
@@ -121,7 +123,7 @@ public class WorkoutList extends AppCompatActivity implements AdapterView.OnItem
 
         @Override
         public View getView(int position, View view, ViewGroup parent) {
-            view = inflter.inflate(R.layout.workoutlist_list, null);
+            view = inflter.inflate(R.layout.ovelselist_element, null);
 
             TextView exerciseName = (TextView) view.findViewById(R.id.exercisename);
             exerciseName.setText(workoutData.getOvelser().get(position).getNavn());

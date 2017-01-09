@@ -114,7 +114,6 @@ public class MainController implements Serializable{
 
     }
 
-
     public String generateUserKey(){
         String out = "FU";
         String uuid = UUID.randomUUID().toString();

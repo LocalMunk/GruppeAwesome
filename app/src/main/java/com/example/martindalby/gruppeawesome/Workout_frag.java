@@ -2,31 +2,19 @@ package com.example.martindalby.gruppeawesome;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.BaseAdapter;
 
+import com.example.martindalby.gruppeawesome.DAL.DatabaseController;
 import com.example.martindalby.gruppeawesome.DataFiles.MainController;
 import com.example.martindalby.gruppeawesome.DataFiles.TraeningsPlanData;
-import com.jjoe64.graphview.GraphView;
-import com.jjoe64.graphview.ValueDependentColor;
-import com.jjoe64.graphview.series.BarGraphSeries;
-import com.jjoe64.graphview.series.DataPoint;
-import com.jjoe64.graphview.series.LineGraphSeries;
-import com.jjoe64.graphview.GridLabelRenderer;
-
-import org.w3c.dom.Text;
-
-import static android.R.attr.x;
 
 /**
  * Created by frederik on 07-11-2016.
@@ -39,6 +27,7 @@ public class Workout_frag extends Fragment implements AdapterView.OnItemClickLis
     TextView workoutgoal, talgoal;
     TextView antalworkouts, talantal;
     MainController datafiles;
+    DatabaseController db;
     TraeningsPlanData traeningsPlanData;
 
     @Override
@@ -119,7 +108,7 @@ public class Workout_frag extends Fragment implements AdapterView.OnItemClickLis
         }
         @Override
         public View getView(int position, View view, ViewGroup viewGroup) {
-            view = inflter.inflate(R.layout.workout_liste, null);
+            view = inflter.inflate(R.layout.workout_liste_frag, null);
 
 
 
