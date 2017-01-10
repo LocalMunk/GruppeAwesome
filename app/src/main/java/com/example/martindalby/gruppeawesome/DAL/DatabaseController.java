@@ -8,6 +8,7 @@ import com.example.martindalby.gruppeawesome.DataFiles.KostplanData;
 import com.example.martindalby.gruppeawesome.DataFiles.MainController;
 import com.example.martindalby.gruppeawesome.DataFiles.OpskriftData;
 import com.example.martindalby.gruppeawesome.DataFiles.OvelseData;
+import com.example.martindalby.gruppeawesome.DataFiles.UserWorkoutData;
 import com.example.martindalby.gruppeawesome.DataFiles.WorkoutData;
 import com.example.martindalby.gruppeawesome.Opskrift;
 import com.firebase.client.DataSnapshot;
@@ -34,13 +35,14 @@ public class DatabaseController {
     public OvelseData ovelseData;
     private Firebase mRef;
     private String version;
+    public MainController datafiles;
 
 
-    public DatabaseController() {
+    public DatabaseController(MainController main) {
 
         System.out.println("DATABASE BLIVER OPRETTET!!!!!!!!!!!!!!!!!");
 
-
+        datafiles = main;
 
         morgenTest = new ArrayList<>();
 
@@ -73,21 +75,27 @@ public class DatabaseController {
 
 
     //Henter specifik bruger
-    public Bruger getUser(String UserID){
+    public void getUser(String UserID){
 
         System.out.println("inde i bruger metode.");
         mRef.child(version).child("brugere").child(UserID).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                bruger.id = dataSnapshot.getValue(Bruger.class).id;
-                bruger.workouts = dataSnapshot.getValue(Bruger.class).workouts;
-                bruger.RetIDs = dataSnapshot.getValue(Bruger.class).RetIDs;
+                String id = dataSnapshot.getValue(Bruger.class).id;
+                ArrayList<UserWorkoutData> workouts = dataSnapshot.getValue(Bruger.class).workouts;
+                ArrayList<String> RetIDs = dataSnapshot.getValue(Bruger.class).RetIDs;
                 System.out.println("Jeg er inde og hente brugeren: " + bruger);
                 try {
                     System.out.println("retid størrelse   " + bruger.RetIDs.size());
                 } catch (NullPointerException e) {
                     e.printStackTrace();
                 }
+                Bruger user = new Bruger();
+                user.id = id;
+                user.workouts = workouts;
+                user.RetIDs = RetIDs;
+                datafiles.bruger = user;
+
             }
             @Override
             public void onCancelled(FirebaseError firebaseError) {
@@ -96,7 +104,7 @@ public class DatabaseController {
 
 
         });
-        return bruger;
+
     }
 
     public OpskriftData getOpskrift (final String id) {

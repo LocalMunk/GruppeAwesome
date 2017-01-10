@@ -23,7 +23,7 @@ public class MainController implements Serializable{
     private MainController(){
         Træningsplan = new TraeningsPlanData(new ArrayList<WorkoutData>());
         kostplan = new KostplanData(new ArrayList<OpskriftData>());
-        databaseControl = new DatabaseController();
+        databaseControl = new DatabaseController(this);
         bruger = new Bruger("", new ArrayList<UserWorkoutData>(), new ArrayList<String>());
         bruger.RetIDs = new ArrayList<String>();
     }
@@ -83,7 +83,7 @@ public class MainController implements Serializable{
     public void pushUser(Bruger user){
         databaseControl.PushBruger(user);
     }
-
+/*
     public void getUserFromDatabase(final String UserID){
 
         new AsyncTask() {
@@ -105,14 +105,19 @@ public class MainController implements Serializable{
 
             }
         }.execute();
+        }
+*/
 
 
-
-
-
-
-
+        public boolean getUserFromDB(String UserID){
+        databaseControl.getUser(UserID);
+        return false;
     }
+
+
+
+
+
 
     public String generateUserKey(){
         String out = "FU";

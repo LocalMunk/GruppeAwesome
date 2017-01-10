@@ -1,7 +1,9 @@
 package com.example.martindalby.gruppeawesome;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,6 +24,7 @@ public class LogInTest_akt extends AppCompatActivity implements View.OnClickList
     MainController datafiles;
     SharedPreferences sharedPreferences;
     String createdUserID;
+    Boolean userCheck;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +32,7 @@ public class LogInTest_akt extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_log_in_test);
         datafiles = MainController.getInstans();
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-
+        sharedPreferences.edit().remove("UserID").commit();
 
 
         datafiles.UserID = sharedPreferences.getString("UserID", "FAIL");
@@ -50,19 +53,24 @@ public class LogInTest_akt extends AppCompatActivity implements View.OnClickList
         notsub.setOnClickListener(this);
 
 
-        //hvad er det her? får dig forbi login hvism man er logget ind
+        //Får dig forbi login hvism man er logget ind
         if(sharedPreferences.getString("UserID", "delet me").equals("delet me")){
 
         }
         else{
+            System.out.println("Kommer forbi log in automatisk-----");
 
-            datafiles.bruger = datafiles.databaseControl.getUser(datafiles.UserID);
             Intent i = new Intent(this, MainActivity.class);
 
             //Sørger for at main act bliver øverst i backstack
             i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
+
+
+            datafiles.getUserFromDB(datafiles.UserID);
+
             startActivity(i);
+
         }
 
     }
@@ -77,7 +85,7 @@ public class LogInTest_akt extends AppCompatActivity implements View.OnClickList
 
 
             datafiles.UserID = bePeakedSubCode.getText().toString();
-            datafiles.bruger = datafiles.databaseControl.getUser(datafiles.UserID);
+            datafiles.databaseControl.getUser(datafiles.UserID);
 
             //Sørger for at main act bliver øverst i backstack
             i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -91,7 +99,7 @@ public class LogInTest_akt extends AppCompatActivity implements View.OnClickList
             createdUserID = sharedPreferences.getString("UserID", "fail");
 
             datafiles.UserID = createdUserID;
-            datafiles.bruger = datafiles.databaseControl.getUser(datafiles.UserID);
+            datafiles.databaseControl.getUser(datafiles.UserID);
 
             //opretter bruger først lokalt, derefter pusher til db
             datafiles.bruger = new Bruger(createdUserID, new ArrayList<UserWorkoutData>(), new ArrayList<String>());

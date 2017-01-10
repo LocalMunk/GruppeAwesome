@@ -69,7 +69,6 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
         final TabLayout.Tab kostplan=tabLayout.newTab();
 
 
-        datafiles.getKostplanFromDB();
 
 
 
