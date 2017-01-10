@@ -34,7 +34,6 @@ public class LogInTest_akt extends AppCompatActivity implements View.OnClickList
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
 
-
         datafiles.UserID = sharedPreferences.getString("UserID", "FAIL");
 
 
