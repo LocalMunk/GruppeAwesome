@@ -1,5 +1,6 @@
 package com.example.martindalby.gruppeawesome;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
@@ -9,11 +10,15 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
+
 import com.crashlytics.android.Crashlytics;
 import com.example.martindalby.gruppeawesome.DataFiles.Bruger;
 import com.example.martindalby.gruppeawesome.DataFiles.MainController;
@@ -232,8 +237,43 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
     public boolean onOptionsItemSelected(MenuItem item)
 
     {    if(item.getItemId() == R.id.action_plus){
-        Intent i = new Intent(this, OpretWorkout.class);
-        startActivity(i);
+        AlertDialog.Builder dialog = new AlertDialog.Builder(this, R.style.MyDialogTheme);
+
+        //LayoutInflater li = LayoutInflater.from(this);
+        //View dialogView = li.inflate(R.layout.opretworkoutdialog, null);
+
+        final EditText editText = new EditText(this);
+        //dialog.setView(dialogView);
+        dialog.setMessage("Hvad skal din nye workout hedde?");
+        dialog.setTitle("Opret workout");
+        dialog.setView(editText);
+        editText.setHint("Navn");
+
+        dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int whichButton) {
+                Editable workoutNavn = editText.getText();
+            }
+        });
+
+        dialog.setNegativeButton("Anullér", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int whichButton) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
+
+
+
+
+
+
+
+        //Intent i = new Intent(this, OpretWorkout.class);
+        //startActivity(i);
 
 
 
