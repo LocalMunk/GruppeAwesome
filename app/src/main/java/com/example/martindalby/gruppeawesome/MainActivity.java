@@ -23,6 +23,7 @@ import com.crashlytics.android.Crashlytics;
 import com.example.martindalby.gruppeawesome.DataFiles.Bruger;
 import com.example.martindalby.gruppeawesome.DataFiles.MainController;
 import com.example.martindalby.gruppeawesome.DataFiles.OvelseData;
+import com.example.martindalby.gruppeawesome.DataFiles.TraeningsPlanData;
 import com.example.martindalby.gruppeawesome.DataFiles.UserWorkoutData;
 import com.example.martindalby.gruppeawesome.DataFiles.WorkoutData;
 
@@ -38,6 +39,8 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
     private ViewPagerAdapter adapter;
     private MainController datafiles;
     private String currUser;
+    private TraeningsPlanData traeningsPlanData;
+    static int workoutNum = 0;
     public SharedPreferences sharedPreferences;
     //private ViewPager viewPagers;
 
@@ -261,6 +264,16 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
             @Override
             public void onClick(DialogInterface dialog, int whichButton) {
                 Editable workoutNavn = editText.getText();
+                traeningsPlanData.addWorkout(new WorkoutData(traeningsPlanData.getWorkouts().size(), workoutNavn.toString(), new ArrayList<OvelseData>()));
+                if (datafiles.bruger.workouts == null){
+                    datafiles.bruger.workouts.add(workoutNum, new UserWorkoutData(new ArrayList<String>(), workoutNavn.toString()));
+                    workoutNum++;
+                }
+                else{
+                    datafiles.bruger.workouts.add(datafiles.bruger.workouts.size(), new UserWorkoutData(new ArrayList<String>(), workoutNavn.toString()));
+                }
+                datafiles.pushUser(datafiles.bruger);
+                finish();
             }
         });
 
