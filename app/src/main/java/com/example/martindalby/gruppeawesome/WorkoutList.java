@@ -1,10 +1,13 @@
 package com.example.martindalby.gruppeawesome;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -82,8 +86,38 @@ public class WorkoutList extends AppCompatActivity implements AdapterView.OnItem
     public boolean onOptionsItemSelected(MenuItem item)
 
     {    if(item.getItemId() == R.id.ooknap){
-        Intent i = new Intent(this, OpretOvelse.class);
-        startActivity(i);
+
+        AlertDialog.Builder dialog = new AlertDialog.Builder(this, R.style.MyDialogTheme);
+
+        //LayoutInflater li = LayoutInflater.from(this);
+        //View dialogView = li.inflate(R.layout.opretworkoutdialog, null);
+
+        final EditText editText = new EditText(this);
+        //dialog.setView(dialogView);
+        dialog.setMessage("Hvad skal din øvelse hede?");
+        dialog.setTitle("Opret opretøvelse");
+        dialog.setView(editText);
+        editText.setHint("Navn");
+
+        dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int whichButton) {
+                Editable workoutNavn = editText.getText();
+            }
+        });
+
+        dialog.setNegativeButton("Anullér", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int whichButton) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
+
+      //  Intent i = new Intent(this, OpretOvelse.class);
+       // startActivity(i);
 
 
 
@@ -95,7 +129,7 @@ public class WorkoutList extends AppCompatActivity implements AdapterView.OnItem
         Context context;
         LayoutInflater inflter;
 
-        public WorkoutListAdapter(Context applicationContext) {
+            public WorkoutListAdapter(Context applicationContext) {
 
             this.context = applicationContext;
             //  this.listimg = ListImg;
