@@ -243,6 +243,8 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
     {    if(item.getItemId() == R.id.action_plus){
         AlertDialog.Builder dialog = new AlertDialog.Builder(this, R.style.MyDialogTheme);
 
+        datafiles.getKostplanFromDB();
+
         //LayoutInflater li = LayoutInflater.from(this);
         //View dialogView = li.inflate(R.layout.opretworkoutdialog, null);
 
@@ -287,7 +289,7 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
 
     public void DBTestData () {
 
-        //datafiles.getTræningsplan().
+        //datafiles.getTræningsPlan().
 
         //DBCon.getDBH().addOvelse();
     }

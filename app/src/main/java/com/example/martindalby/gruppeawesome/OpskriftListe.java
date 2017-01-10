@@ -38,7 +38,7 @@ ArrayList<OpskriftData> opskrifter;
         System.out.println("TyperTe4xt fået fra intent: " + typeText);
         adapter = new KostPlanAdapter();
 
-        datafiles.getKostplanFromDB();
+
 
         System.out.println("xaxaxaxaxaxaxaxaxa" + datafiles.bruger);
 

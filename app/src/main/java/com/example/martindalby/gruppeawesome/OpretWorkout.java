@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import com.example.martindalby.gruppeawesome.DataFiles.MainController;
 import com.example.martindalby.gruppeawesome.DataFiles.OvelseData;
@@ -37,13 +36,15 @@ public class OpretWorkout extends AppCompatActivity implements View.OnClickListe
         datafiles = MainController.getInstans();
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
+
+
         navn = (EditText) findViewById(R.id.workoutname);
         navn.setHint("Navn");
 
         done = (Button) findViewById(R.id.createworkoutdone);
         done.setOnClickListener(this);
 
-        traeningsPlanData = datafiles.getTræningsplan();
+        traeningsPlanData = datafiles.getTræningsPlan();
 
 
         System.out.println("brugeren er " + datafiles.bruger.id);

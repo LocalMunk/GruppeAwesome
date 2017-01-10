@@ -33,6 +33,7 @@ public class DatabaseController {
     public Bruger bruger;
     public OpskriftData opskriftD;
     public OvelseData ovelseData;
+    public ArrayList<OpskriftData> opskriftout;
     private Firebase mRef;
     private String version;
     public MainController datafiles;
@@ -45,7 +46,7 @@ public class DatabaseController {
         datafiles = main;
 
         morgenTest = new ArrayList<>();
-
+        opskriftout = new ArrayList<OpskriftData>();
         version = "v0";
         bruger = new Bruger();
         opskriftD = new OpskriftData();
@@ -84,9 +85,9 @@ public class DatabaseController {
                 String id = dataSnapshot.getValue(Bruger.class).id;
                 ArrayList<UserWorkoutData> workouts = dataSnapshot.getValue(Bruger.class).workouts;
                 ArrayList<String> RetIDs = dataSnapshot.getValue(Bruger.class).RetIDs;
-                System.out.println("Jeg er inde og hente brugeren: " + bruger);
+                System.out.println("Jeg er inde og hente brugeren: " + id);
                 try {
-                    System.out.println("retid størrelse   " + bruger.RetIDs.size());
+                    System.out.println("retid størrelse   " + RetIDs.size());
                 } catch (NullPointerException e) {
                     e.printStackTrace();
                 }
@@ -107,13 +108,19 @@ public class DatabaseController {
 
     }
 
-    public OpskriftData getOpskrift (final String id) {
+    public void getOpskrift (final ArrayList<String> ids) {
 
         //henter data fra db
         mRef.child(version).child("kostplan").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 //henter børn ned
+                for(String i : ids){
+                    if(i != null){
+                        opskriftout.add(dataSnapshot.child(i).getValue(OpskriftData.class));
+                    }
+                }
+                /*
                 opskriftD.setNavn(dataSnapshot.child(id).getValue(OpskriftData.class).getNavn());
                 opskriftD.setFremgangsmåde(dataSnapshot.child(id).getValue(OpskriftData.class).getFremgangsmåde());
                 opskriftD.setId(dataSnapshot.child(id).getValue(OpskriftData.class).getId());
@@ -121,6 +128,27 @@ public class DatabaseController {
                 opskriftD.setIngrediens(dataSnapshot.child((id)).getValue(OpskriftData.class).getIngrediens());
                 opskriftD.setType(dataSnapshot.child(id).getValue(OpskriftData.class).getType());
                 System.out.println("Henter denne ret: " + opskriftD.getNavn());
+                */
+                ArrayList<OpskriftData> out = new ArrayList<OpskriftData>();
+                for (OpskriftData data : opskriftout){
+                    OpskriftData newData = new OpskriftData();
+                    String id = data.getId();
+                    String navn = data.getNavn();
+                    int type = data.getType();
+                    String ingrediens = data.getIngrediens();
+                    String imgLink = data.getImglink();
+                    String frem =data.getFremgangsmåde();
+                    newData.setId(id);
+                    newData.setNavn(navn);
+                    newData.setFremgangsmåde(frem);
+                    newData.setImglink(imgLink);
+                    newData.setIngrediens(ingrediens);
+                    newData.setType(type);
+                    out.add(newData);
+                }
+                datafiles.kostplan.setRetter(out);
+
+                System.out.println("Vi har hentet de her retter:  " + out);
             }
 
             @Override
@@ -128,7 +156,7 @@ public class DatabaseController {
 
             }
         });
-        return opskriftD;
+
     }
 
     public OvelseData getOvelse(String id){

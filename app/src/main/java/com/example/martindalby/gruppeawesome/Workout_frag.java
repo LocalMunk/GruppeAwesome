@@ -37,7 +37,7 @@ public class Workout_frag extends Fragment implements AdapterView.OnItemClickLis
         wdata = new TestDataWorkout();
 
         datafiles = MainController.getInstans();
-        traeningsPlanData = datafiles.getTræningsplan();
+        traeningsPlanData = datafiles.getTræningsPlan();
         WorkoutAdapter adapter = new WorkoutAdapter(getActivity(), wdata.getWorkouts());
 
         datafiles.setTreTal(4.33, 3, 3);

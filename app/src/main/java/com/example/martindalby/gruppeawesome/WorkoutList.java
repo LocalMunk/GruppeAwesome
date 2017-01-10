@@ -37,7 +37,7 @@ public class WorkoutList extends AppCompatActivity implements AdapterView.OnItem
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workoutlist);
         datafiles = MainController.getInstans();
-        workoutData = datafiles.getTræningsplan().getWorkout(getIntent().getIntExtra("workout", 0));
+        workoutData = datafiles.getTræningsPlan().getWorkout(getIntent().getIntExtra("workout", 0));
         adapter = new WorkoutListAdapter(this);
         int i = getIntent().getIntExtra("workout", 0);
         listView = (ListView) findViewById(R.id.Ovelselistview);

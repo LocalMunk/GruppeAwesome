@@ -5,15 +5,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import com.example.martindalby.gruppeawesome.DAL.DatabaseController;
 import com.example.martindalby.gruppeawesome.DataFiles.MainController;
 import com.example.martindalby.gruppeawesome.DataFiles.OvelseData;
-import com.example.martindalby.gruppeawesome.DataFiles.UserWorkoutData;
 import com.example.martindalby.gruppeawesome.DataFiles.WorkoutData;
-
-import java.util.ArrayList;
 
 /**
  * Created by Martin Dalby on 21-11-2016.
@@ -42,7 +38,7 @@ public class OpretOvelse extends AppCompatActivity implements View.OnClickListen
         done = (Button) findViewById(R.id.opretovelsedone);
         done.setOnClickListener(this);
 
-        workoutData = datafiles.getTræningsplan().getWorkout(0);
+        workoutData = datafiles.getTræningsPlan().getWorkout(0);
     }
 
     public void onClick(View v){

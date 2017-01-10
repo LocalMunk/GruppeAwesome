@@ -28,4 +28,7 @@ public class KostplanData {
     }
 
 
+    public void setRetter(ArrayList<OpskriftData> retter) {
+        this.retter = retter;
+    }
 }
