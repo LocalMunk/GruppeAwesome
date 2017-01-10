@@ -2,6 +2,7 @@ package com.example.martindalby.gruppeawesome;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -26,6 +27,7 @@ public class Workout_frag extends Fragment implements AdapterView.OnItemClickLis
     TextView GnsWorkout, talgns;
     TextView workoutgoal, talgoal;
     TextView antalworkouts, talantal;
+    ListView workoutlist;
     MainController datafiles;
     DatabaseController db;
     TraeningsPlanData traeningsPlanData;
@@ -62,9 +64,10 @@ public class Workout_frag extends Fragment implements AdapterView.OnItemClickLis
         antalworkouts = (TextView) rod.findViewById(R.id.AntalWorkouts);
         antalworkouts.setText("Træninger denne uge");
 
-        ListView workoutlist = (ListView) rod.findViewById(R.id.workoutList);
+        workoutlist = (ListView) rod.findViewById(R.id.workoutList);
         workoutlist.setOnItemClickListener(this);
         workoutlist.setAdapter(adapter);
+
         return rod;
 
     }
@@ -78,6 +81,8 @@ public class Workout_frag extends Fragment implements AdapterView.OnItemClickLis
         startActivity(i);
 
     }
+
+
 
     public class WorkoutAdapter extends BaseAdapter {
         Context context;
