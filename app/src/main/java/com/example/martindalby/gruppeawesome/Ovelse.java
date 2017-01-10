@@ -43,7 +43,7 @@ public class Ovelse extends AppCompatActivity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ovelse);
         datafiles = MainController.getInstans();
-        ovelseData = datafiles.getTræningsPlan().getWorkout(getIntent().getIntExtra("workout", 0)).getOvelser().get(getIntent().getIntExtra("pos", 0));
+        ovelseData = datafiles.bruger.getTræningsPlan().getWorkout(getIntent().getIntExtra("workout", 0)).getOvelser().get(getIntent().getIntExtra("pos", 0));
         currentSet = 1;
         String[] suppdata = new String[ovelseData.getSets()];
         for(int i = 0; i < ovelseData.getSets(); i++){
@@ -120,7 +120,7 @@ public class Ovelse extends AppCompatActivity implements View.OnClickListener {
                 list.invalidateViews();
                 list.refreshDrawableState();
             }
-            else if(currentSet > support.maxSet && getIntent().getIntExtra("pos",0) < datafiles.getTræningsPlan().getWorkout(getIntent().getIntExtra("workout", 0)).getOvelser().size() -1) {
+            else if(currentSet > support.maxSet && getIntent().getIntExtra("pos",0) < datafiles.bruger.getTræningsPlan().getWorkout(getIntent().getIntExtra("workout", 0)).getOvelser().size() -1) {
                 Intent i = new Intent(this, Ovelse.class);
                 i.putExtra("pos", getIntent().getIntExtra("pos", 0) + 1);
                 i.putExtra("workout", getIntent().getIntExtra("workout", 0));

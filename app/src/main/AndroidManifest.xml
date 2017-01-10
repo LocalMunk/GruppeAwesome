@@ -20,9 +20,6 @@
         </activity>
         <activity android:name=".MainActivity"/>
         <activity android:name=".OpskriftListe" />
-        <activity android:name=".LoginAktivitet" />
-        <activity android:name=".OpretOvelse" />
-        <activity android:name=".OpretWorkout" />
         <activity android:name=".Opskrift" />
         <activity android:name=".Ovelse" />
         <activity android:name=".WorkoutList" />

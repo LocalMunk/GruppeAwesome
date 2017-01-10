@@ -37,7 +37,7 @@ public class OpskriftListe extends AppCompatActivity implements AdapterView.OnIt
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         datafiles = MainController.getInstans();
-        kostplanData = datafiles.getKostplan();
+        kostplanData = datafiles.bruger.getKostplan();
         typeText = getIntent().getStringExtra("type");
         System.out.println("TyperTe4xt fået fra intent: " + typeText);
         adapter = new KostPlanAdapter();

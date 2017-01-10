@@ -7,11 +7,49 @@ import java.util.ArrayList;
  */
 
 public class TraeningsPlanData {
-    ArrayList<WorkoutData> workouts;
-    double traeningsGennemsnit, traeningsMål, traeningerDenneUge;
+    public ArrayList<WorkoutData> workouts;
+    public double traeningsGennemsnit, traeningsMål, traeningerDenneUge;
 
     public TraeningsPlanData(ArrayList<WorkoutData> workouts){
         this.workouts = workouts;
+    }
+
+    public TraeningsPlanData(ArrayList<WorkoutData> workouts, double traeningsGennemsnit, double traeningsMål, double traeningerDenneUge) {
+        this.workouts = workouts;
+        this.traeningsGennemsnit = traeningsGennemsnit;
+        this.traeningsMål = traeningsMål;
+        this.traeningerDenneUge = traeningerDenneUge;
+    }
+
+    public TraeningsPlanData() {
+    }
+
+    public void setWorkouts(ArrayList<WorkoutData> workouts) {
+        this.workouts = workouts;
+    }
+
+    public double getTraeningsGennemsnit() {
+        return traeningsGennemsnit;
+    }
+
+    public void setTraeningsGennemsnit(double traeningsGennemsnit) {
+        this.traeningsGennemsnit = traeningsGennemsnit;
+    }
+
+    public double getTraeningsMål() {
+        return traeningsMål;
+    }
+
+    public void setTraeningsMål(double traeningsMål) {
+        this.traeningsMål = traeningsMål;
+    }
+
+    public double getTraeningerDenneUge() {
+        return traeningerDenneUge;
+    }
+
+    public void setTraeningerDenneUge(double traeningerDenneUge) {
+        this.traeningerDenneUge = traeningerDenneUge;
     }
 
     public ArrayList<WorkoutData> getWorkouts(){

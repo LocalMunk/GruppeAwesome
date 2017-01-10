@@ -1,9 +1,11 @@
 package com.example.martindalby.gruppeawesome.DAL;
 
 import com.example.martindalby.gruppeawesome.DataFiles.Bruger;
+import com.example.martindalby.gruppeawesome.DataFiles.KostplanData;
 import com.example.martindalby.gruppeawesome.DataFiles.MainController;
 import com.example.martindalby.gruppeawesome.DataFiles.OpskriftData;
 import com.example.martindalby.gruppeawesome.DataFiles.OvelseData;
+import com.example.martindalby.gruppeawesome.DataFiles.TraeningsPlanData;
 import com.example.martindalby.gruppeawesome.DataFiles.UserWorkoutData;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
@@ -40,7 +42,7 @@ public class DatabaseController {
         out = new ArrayList<OvelseData>();
         morgenTest = new ArrayList<>();
         opskriftout = new ArrayList<OpskriftData>();
-        version = "v0";
+        version = "Martins Test";
         bruger = new Bruger();
         opskriftD = new OpskriftData();
         ovelseData = new OvelseData();
@@ -77,23 +79,22 @@ public class DatabaseController {
         mRef.child(version).child("brugere").child(UserID).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                String id = dataSnapshot.getValue(Bruger.class).id;
-                ArrayList<UserWorkoutData> workouts = dataSnapshot.getValue(Bruger.class).workouts;
-                ArrayList<String> RetIDs = dataSnapshot.getValue(Bruger.class).RetIDs;
+                String id = dataSnapshot.getValue(Bruger.class).getId();
+                TraeningsPlanData traeningsPlanData = dataSnapshot.getValue(Bruger.class).getTræningsPlan();
+                KostplanData kostplanData = dataSnapshot.getValue(Bruger.class).getKostplan();
+
                 System.out.println("Jeg er inde og hente brugeren: " + id);
-                try {
-                    System.out.println("retid størrelse   " + RetIDs.size());
-                } catch (NullPointerException e) {
-                    e.printStackTrace();
-                }
+
                 Bruger user = new Bruger();
                 user.id = id;
-                user.workouts = workouts;
-                user.RetIDs = RetIDs;
+                user.træningsPlan = new TraeningsPlanData(traeningsPlanData.getWorkouts());
+                user.kostplan = new KostplanData(kostplanData.getRetter());
                 datafiles.bruger = user;
+
+                /*
                 datafiles.getKostplanFromDB();
                 datafiles.getTraeningsplanFromDB();
-
+                */
             }
             @Override
             public void onCancelled(FirebaseError firebaseError) {
@@ -144,7 +145,7 @@ public class DatabaseController {
                     newData.setType(type);
                     out.add(newData);
                 }
-                datafiles.kostplan.setRetter(out);
+                datafiles.bruger.kostplan.setRetter(out);
 
                 System.out.println("Vi har hentet de her retter:  " + out);
             }

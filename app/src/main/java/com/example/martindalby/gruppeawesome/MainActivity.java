@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
         currUser = sharedPreferences.getString("UserID", "fail");
         datafiles = MainController.getInstans();
 
-        traeningsPlanData = datafiles.getTræningsPlan();
+        traeningsPlanData = datafiles.bruger.getTræningsPlan();
 
         toolbar = (Toolbar) findViewById(R.id.toolBar);
 
@@ -264,12 +264,7 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
             public void onClick(DialogInterface dialog, int whichButton) {
                 Editable workoutNavn = editText.getText();
                 traeningsPlanData.addWorkout(new WorkoutData(traeningsPlanData.getWorkouts().size(), workoutNavn.toString(), new ArrayList<OvelseData>()));
-                if (datafiles.bruger.workouts.size() == 0){
-                    datafiles.bruger.workouts.add(0, new UserWorkoutData(new ArrayList<String>(), workoutNavn.toString()));
-                }
-                else{
-                    datafiles.bruger.workouts.add(new UserWorkoutData(new ArrayList<String>(), workoutNavn.toString()));
-                }
+                datafiles.pushUser(datafiles.bruger);
             }
         });
 
@@ -288,8 +283,7 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
 
 
 
-        //Intent i = new Intent(this, OpretWorkout.class);
-        //startActivity(i);
+
 
 
 

@@ -13,19 +13,15 @@ import java.util.UUID;
  */
 
 public class MainController implements Serializable{
-    public TraeningsPlanData træningsPlan;
-    public KostplanData kostplan;
+
     private static MainController instans;
     public DatabaseController databaseControl;
     public String UserID;
     public Bruger bruger;
 
     private MainController(){
-        træningsPlan = new TraeningsPlanData(new ArrayList<WorkoutData>());
-        kostplan = new KostplanData(new ArrayList<OpskriftData>());
         databaseControl = new DatabaseController(this);
         bruger = new Bruger("", new ArrayList<UserWorkoutData>(), new ArrayList<String>());
-        bruger.RetIDs = new ArrayList<String>();
     }
 
     public static MainController getInstans(){
@@ -39,25 +35,9 @@ public class MainController implements Serializable{
             return instans;
     }
 
-    public double[] getTreTal(){
-        double[] out = {træningsPlan.traeningsGennemsnit, træningsPlan.traeningsMål, træningsPlan.traeningerDenneUge};
-        return out;
-    }
-
-    public TraeningsPlanData getTræningsPlan(){
-        return træningsPlan;
-    }
-
-    public KostplanData getKostplan(){
-        return kostplan;
-    }
 
 
-    public void setTreTal(double a, double b, double c){
-        træningsPlan.traeningsGennemsnit = a;
-        træningsPlan.traeningsMål = b;
-        træningsPlan.traeningerDenneUge = c;
-    }
+
 /*
     public void pushKostplan(){
         int i = 0;
@@ -127,13 +107,13 @@ public class MainController implements Serializable{
     }
 
 
-
+    /*
     public void getKostplanFromDB () {
         try {
-            kostplan.getRetter().clear();
+            bruger.kostplan.getRetter().clear();
             databaseControl.getOpskrift(bruger.RetIDs);
 
-            System.out.println(" VI HAR HENTET DET HER!!: " + kostplan.getRetter());
+            System.out.println(" VI HAR HENTET DET HER!!: " + bruger.kostplan.getRetter());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -150,7 +130,7 @@ public class MainController implements Serializable{
                     data.setWorkoutid(i);
                     data.setWorkoutname(uwd.navn);
                     data.setOvelser(databaseControl.getWorkout(uwd.ovelseIDs));
-                    træningsPlan.addWorkout(data);
+                    bruger.træningsPlan.addWorkout(data);
                     i++;
                 }
                 else{
@@ -158,7 +138,7 @@ public class MainController implements Serializable{
                     data.setWorkoutid(i);
                     data.setWorkoutname(uwd.navn);
                     data.setOvelser(new ArrayList<OvelseData>());
-                    træningsPlan.addWorkout(data);
+                    bruger.træningsPlan.addWorkout(data);
                     i++;
                 }
             }
@@ -166,4 +146,5 @@ public class MainController implements Serializable{
             e.printStackTrace();
         }
     }
+    */
 }

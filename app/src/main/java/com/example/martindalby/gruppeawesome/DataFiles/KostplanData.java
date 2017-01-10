@@ -9,7 +9,10 @@ import java.util.ArrayList;
  */
 
 public class KostplanData {
-    ArrayList<OpskriftData> retter;
+    public ArrayList<OpskriftData> retter;
+
+    public KostplanData() {
+    }
 
     public KostplanData(ArrayList<OpskriftData> retter) {
         this.retter = retter;

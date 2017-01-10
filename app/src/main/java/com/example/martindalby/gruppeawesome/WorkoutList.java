@@ -21,6 +21,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.martindalby.gruppeawesome.DataFiles.MainController;
+import com.example.martindalby.gruppeawesome.DataFiles.OvelseData;
 import com.example.martindalby.gruppeawesome.DataFiles.WorkoutData;
 
 /**
@@ -41,7 +42,7 @@ public class WorkoutList extends AppCompatActivity implements AdapterView.OnItem
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workoutlist);
         datafiles = MainController.getInstans();
-        workoutData = datafiles.getTræningsPlan().getWorkout(getIntent().getIntExtra("workout", 0));
+        workoutData = datafiles.bruger.getTræningsPlan().getWorkout(getIntent().getIntExtra("workout", 0));
         adapter = new WorkoutListAdapter(this);
         int i = getIntent().getIntExtra("workout", 0);
         listView = (ListView) findViewById(R.id.Ovelselistview);
@@ -103,7 +104,16 @@ public class WorkoutList extends AppCompatActivity implements AdapterView.OnItem
 
             @Override
             public void onClick(DialogInterface dialog, int whichButton) {
-                Editable workoutNavn = editText.getText();
+                String workoutNavn = editText.getText().toString();
+                OvelseData data = new OvelseData(workoutData.getOvelser().size(), workoutNavn, 0, 3);
+
+                workoutData.getOvelser().add(data);
+
+                datafiles.pushUser(datafiles.bruger);
+                listView.invalidateViews();
+                listView.refreshDrawableState();
+
+
 
             }
         });
@@ -117,8 +127,7 @@ public class WorkoutList extends AppCompatActivity implements AdapterView.OnItem
 
         dialog.show();
 
-      //  Intent i = new Intent(this, OpretOvelse.class);
-       // startActivity(i);
+
 
 
 

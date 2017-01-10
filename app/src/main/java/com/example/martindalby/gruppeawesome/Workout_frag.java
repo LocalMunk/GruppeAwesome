@@ -39,12 +39,14 @@ public class Workout_frag extends Fragment implements AdapterView.OnItemClickLis
         wdata = new TestDataWorkout();
 
         datafiles = MainController.getInstans();
-        traeningsPlanData = datafiles.getTræningsPlan();
+        traeningsPlanData = datafiles.bruger.getTræningsPlan();
         WorkoutAdapter adapter = new WorkoutAdapter(getActivity(), wdata.getWorkouts());
 
-        datafiles.setTreTal(4.33, 3, 3);
 
-        double[] toptal = datafiles.getTreTal();
+
+        double[] toptal = {datafiles.bruger.træningsPlan.traeningerDenneUge,
+                datafiles.bruger.træningsPlan.getTraeningsGennemsnit(),
+                datafiles.bruger.træningsPlan.getTraeningsMål()};
 
         talgns = (TextView) rod.findViewById(R.id.TalGns);
         talgns.setText("" + toptal[0]);

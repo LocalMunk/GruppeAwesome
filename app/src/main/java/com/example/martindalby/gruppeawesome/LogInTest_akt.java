@@ -12,8 +12,13 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.martindalby.gruppeawesome.DataFiles.Bruger;
+import com.example.martindalby.gruppeawesome.DataFiles.KostplanData;
 import com.example.martindalby.gruppeawesome.DataFiles.MainController;
+import com.example.martindalby.gruppeawesome.DataFiles.OpskriftData;
+import com.example.martindalby.gruppeawesome.DataFiles.OvelseData;
+import com.example.martindalby.gruppeawesome.DataFiles.TraeningsPlanData;
 import com.example.martindalby.gruppeawesome.DataFiles.UserWorkoutData;
+import com.example.martindalby.gruppeawesome.DataFiles.WorkoutData;
 
 import java.util.ArrayList;
 
@@ -32,6 +37,7 @@ public class LogInTest_akt extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_log_in_test);
         datafiles = MainController.getInstans();
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        sharedPreferences.edit().remove("UserID").commit();
 
 
         datafiles.UserID = sharedPreferences.getString("UserID", "FAIL");
@@ -101,10 +107,9 @@ public class LogInTest_akt extends AppCompatActivity implements View.OnClickList
 
             datafiles.getUserFromDatabase(createdUserID);
 
+            System.out.println(datafiles.bruger);
             //opretter bruger først lokalt, derefter pusher til db
-            datafiles.bruger = new Bruger(createdUserID, new ArrayList<UserWorkoutData>(), new ArrayList<String>());
-            datafiles.pushUser(datafiles.bruger);
-            datafiles.bruger.workouts = new ArrayList<UserWorkoutData>();
+
 
             //Sørger for at main act bliver øverst i backstack
             i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

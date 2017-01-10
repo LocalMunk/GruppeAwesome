@@ -17,7 +17,13 @@ public class OvelseData {
         this.sets = sets;
         this.id = id;
     }
+
+    public int getDone() {
+        return done;
+    }
+
     public OvelseData(){
+
 
     }
 
