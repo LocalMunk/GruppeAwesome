@@ -32,7 +32,7 @@ public class LogInTest_akt extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_log_in_test);
         datafiles = MainController.getInstans();
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        sharedPreferences.edit().remove("UserID").commit();
+
 
 
         datafiles.UserID = sharedPreferences.getString("UserID", "FAIL");
