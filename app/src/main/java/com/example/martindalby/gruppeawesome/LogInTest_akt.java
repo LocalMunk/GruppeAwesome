@@ -31,7 +31,9 @@ public class LogInTest_akt extends AppCompatActivity implements View.OnClickList
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
 
+
         datafiles.UserID = sharedPreferences.getString("UserID", "FAIL");
+
 
         System.out.println("Har været inde i login AKT");
 
@@ -53,6 +55,8 @@ public class LogInTest_akt extends AppCompatActivity implements View.OnClickList
 
         }
         else{
+
+            datafiles.bruger = datafiles.databaseControl.getUser(datafiles.UserID);
             Intent i = new Intent(this, MainActivity.class);
 
             //Sørger for at main act bliver øverst i backstack
@@ -71,6 +75,10 @@ public class LogInTest_akt extends AppCompatActivity implements View.OnClickList
         if (v == sub && bePeakedSubCode.getText().toString().equals("") == false) {
             sharedPreferences.edit().putString("UserID", bePeakedSubCode.getText().toString()).commit();
 
+
+            datafiles.UserID = bePeakedSubCode.getText().toString();
+            datafiles.bruger = datafiles.databaseControl.getUser(datafiles.UserID);
+
             //Sørger for at main act bliver øverst i backstack
             i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
@@ -81,6 +89,9 @@ public class LogInTest_akt extends AppCompatActivity implements View.OnClickList
             //genererer user id
             sharedPreferences.edit().putString("UserID", datafiles.generateUserKey()).commit();
             createdUserID = sharedPreferences.getString("UserID", "fail");
+
+            datafiles.UserID = createdUserID;
+            datafiles.bruger = datafiles.databaseControl.getUser(datafiles.UserID);
 
             //opretter bruger først lokalt, derefter pusher til db
             datafiles.bruger = new Bruger(createdUserID, new ArrayList<UserWorkoutData>(), new ArrayList<String>());

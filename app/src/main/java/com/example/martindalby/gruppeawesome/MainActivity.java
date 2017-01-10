@@ -22,6 +22,7 @@ import android.widget.EditText;
 import com.crashlytics.android.Crashlytics;
 import com.example.martindalby.gruppeawesome.DataFiles.Bruger;
 import com.example.martindalby.gruppeawesome.DataFiles.MainController;
+import com.example.martindalby.gruppeawesome.DataFiles.OvelseData;
 import com.example.martindalby.gruppeawesome.DataFiles.UserWorkoutData;
 import com.example.martindalby.gruppeawesome.DataFiles.WorkoutData;
 
@@ -52,7 +53,6 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
         //henter bruger info
         currUser = sharedPreferences.getString("UserID", "fail");
         datafiles = MainController.getInstans();
-        datafiles.bruger = datafiles.databaseControl.getUser(currUser);
 
 
         toolbar = (Toolbar) findViewById(R.id.toolBar);
@@ -67,6 +67,11 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
 
         final TabLayout.Tab workout=tabLayout.newTab();
         final TabLayout.Tab kostplan=tabLayout.newTab();
+
+
+        datafiles.getKostplanFromDB();
+
+
 
         /*   Prøver at hente bruger ned fra databasen
         if(datafiles.bruger == null){

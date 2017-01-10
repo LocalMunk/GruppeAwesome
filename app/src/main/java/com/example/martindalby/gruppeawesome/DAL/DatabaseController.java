@@ -99,20 +99,19 @@ public class DatabaseController {
         return bruger;
     }
 
-    public OpskriftData getOpskrift (String id) {
+    public OpskriftData getOpskrift (final String id) {
 
         //henter data fra db
-        mRef.child(version).child("kostplan").child(id).addValueEventListener(new ValueEventListener() {
+        mRef.child(version).child("kostplan").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 //henter børn ned
-                opskriftD.setNavn(dataSnapshot.getValue(OpskriftData.class).getNavn());
-                opskriftD.setFremgangsmåde(dataSnapshot.getValue(OpskriftData.class).getFremgangsmåde());
-                opskriftD.setId(dataSnapshot.getValue(OpskriftData.class).getId());
-                opskriftD.setImglink(dataSnapshot.getValue(OpskriftData.class).getImglink());
-                opskriftD.setIngrediens(dataSnapshot.getValue(OpskriftData.class).getIngrediens());
-                opskriftD.setType(dataSnapshot.getValue(OpskriftData.class).getType());
-
+                opskriftD.setNavn(dataSnapshot.child(id).getValue(OpskriftData.class).getNavn());
+                opskriftD.setFremgangsmåde(dataSnapshot.child(id).getValue(OpskriftData.class).getFremgangsmåde());
+                opskriftD.setId(dataSnapshot.child(id).getValue(OpskriftData.class).getId());
+                opskriftD.setImglink(dataSnapshot.child(id).getValue(OpskriftData.class).getImglink());
+                opskriftD.setIngrediens(dataSnapshot.child((id)).getValue(OpskriftData.class).getIngrediens());
+                opskriftD.setType(dataSnapshot.child(id).getValue(OpskriftData.class).getType());
                 System.out.println("Henter denne ret: " + opskriftD.getNavn());
             }
 
