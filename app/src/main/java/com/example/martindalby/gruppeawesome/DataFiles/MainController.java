@@ -142,23 +142,6 @@ public class MainController implements Serializable{
 
     }
 
-    public void getTræningsplanFromDB () {
-        try {
-            int i = 0;
-            for (UserWorkoutData uwd : bruger.workouts) {
-
-                WorkoutData data = new WorkoutData();
-                data.setWorkoutid(i);
-                data.setWorkoutname(uwd.navn);
-                data.setOvelser(databaseControl.getWorkout(uwd.ovelseIDs));
-                træningsPlan.addWorkout(data);
-                i++;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
     public void getTraeningsplanFromDB() {
         try {
             int i = 0;
