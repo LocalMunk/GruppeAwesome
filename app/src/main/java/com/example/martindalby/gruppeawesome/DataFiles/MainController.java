@@ -1,5 +1,7 @@
 package com.example.martindalby.gruppeawesome.DataFiles;
 
+import android.os.AsyncTask;
+
 import com.example.martindalby.gruppeawesome.DAL.DatabaseController;
 
 import java.io.Serializable;
@@ -81,7 +83,7 @@ public class MainController implements Serializable{
     public void pushUser(Bruger user){
         databaseControl.PushBruger(user);
     }
-/*
+
     public void getUserFromDatabase(final String UserID){
 
         new AsyncTask() {
@@ -99,12 +101,12 @@ public class MainController implements Serializable{
 
             @Override
             protected void onPostExecute(Object resultat) {
-                System.out.println("HAr hentet denne bruger ting?" + bruger.RetIDs.get(0) + "-----------------------------------------------");
+
 
             }
         }.execute();
         }
-*/
+
 
 
         public boolean getUserFromDB(String UserID){

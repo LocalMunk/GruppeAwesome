@@ -101,6 +101,8 @@ public class DatabaseController {
                 user.workouts = workouts;
                 user.RetIDs = RetIDs;
                 datafiles.bruger = user;
+                datafiles.getKostplanFromDB();
+                datafiles.getTraeningsplanFromDatabase();
 
             }
             @Override

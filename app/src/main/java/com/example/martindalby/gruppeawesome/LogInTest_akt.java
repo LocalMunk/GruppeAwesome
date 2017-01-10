@@ -67,7 +67,7 @@ public class LogInTest_akt extends AppCompatActivity implements View.OnClickList
 
 
 
-            datafiles.getUserFromDB(datafiles.UserID);
+            datafiles.getUserFromDatabase(sharedPreferences.getString("UserID", "FAIL"));
 
             startActivity(i);
 
@@ -85,7 +85,8 @@ public class LogInTest_akt extends AppCompatActivity implements View.OnClickList
 
 
             datafiles.UserID = bePeakedSubCode.getText().toString();
-            datafiles.databaseControl.getUser(datafiles.UserID);
+            datafiles.getUserFromDatabase(bePeakedSubCode.getText().toString());
+
 
             //Sørger for at main act bliver øverst i backstack
             i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -99,7 +100,8 @@ public class LogInTest_akt extends AppCompatActivity implements View.OnClickList
             createdUserID = sharedPreferences.getString("UserID", "fail");
 
             datafiles.UserID = createdUserID;
-            datafiles.databaseControl.getUser(datafiles.UserID);
+
+            datafiles.getUserFromDatabase(createdUserID);
 
             //opretter bruger først lokalt, derefter pusher til db
             datafiles.bruger = new Bruger(createdUserID, new ArrayList<UserWorkoutData>(), new ArrayList<String>());
