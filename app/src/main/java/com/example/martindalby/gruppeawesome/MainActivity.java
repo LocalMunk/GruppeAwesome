@@ -264,12 +264,11 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
             public void onClick(DialogInterface dialog, int whichButton) {
                 Editable workoutNavn = editText.getText();
                 traeningsPlanData.addWorkout(new WorkoutData(traeningsPlanData.getWorkouts().size(), workoutNavn.toString(), new ArrayList<OvelseData>()));
-                if (datafiles.bruger.workouts == null){
-                    datafiles.bruger.workouts.add(workoutNum, new UserWorkoutData(new ArrayList<String>(), workoutNavn.toString()));
-                    workoutNum++;
+                if (datafiles.bruger.workouts.size() == 0){
+                    datafiles.bruger.workouts.add(0, new UserWorkoutData(new ArrayList<String>(), workoutNavn.toString()));
                 }
                 else{
-                    datafiles.bruger.workouts.add(datafiles.bruger.workouts.size(), new UserWorkoutData(new ArrayList<String>(), workoutNavn.toString()));
+                    datafiles.bruger.workouts.add(new UserWorkoutData(new ArrayList<String>(), workoutNavn.toString()));
                 }
             }
         });

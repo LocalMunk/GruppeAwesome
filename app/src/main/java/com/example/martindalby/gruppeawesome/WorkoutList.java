@@ -94,7 +94,7 @@ public class WorkoutList extends AppCompatActivity implements AdapterView.OnItem
 
         final EditText editText = new EditText(this);
         //dialog.setView(dialogView);
-        dialog.setMessage("Hvad skal din øvelse hede?");
+        dialog.setMessage("Hvad skal din øvelse hedde?");
         dialog.setTitle("Opret opretøvelse");
         dialog.setView(editText);
         editText.setHint("Navn");
@@ -104,6 +104,7 @@ public class WorkoutList extends AppCompatActivity implements AdapterView.OnItem
             @Override
             public void onClick(DialogInterface dialog, int whichButton) {
                 Editable workoutNavn = editText.getText();
+
             }
         });
 
