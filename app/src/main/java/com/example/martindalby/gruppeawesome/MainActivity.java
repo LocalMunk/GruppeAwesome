@@ -57,6 +57,7 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
         currUser = sharedPreferences.getString("UserID", "fail");
         datafiles = MainController.getInstans();
 
+        traeningsPlanData = datafiles.getTræningsPlan();
 
         toolbar = (Toolbar) findViewById(R.id.toolBar);
 
@@ -270,8 +271,6 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
                 else{
                     datafiles.bruger.workouts.add(datafiles.bruger.workouts.size(), new UserWorkoutData(new ArrayList<String>(), workoutNavn.toString()));
                 }
-                datafiles.pushUser(datafiles.bruger);
-                finish();
             }
         });
 
