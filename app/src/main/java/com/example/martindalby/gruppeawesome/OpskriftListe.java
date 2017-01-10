@@ -3,6 +3,7 @@ package com.example.martindalby.gruppeawesome;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -25,10 +26,13 @@ public class OpskriftListe extends AppCompatActivity implements AdapterView.OnIt
     private KostPlanAdapter adapter;
     private ListView listView;
     private String typeText, send1, send2, send3;
+    Toolbar toolbar;
     MainController datafiles;
     KostplanData kostplanData;
     private int type;
-ArrayList<OpskriftData> opskrifter;
+    ArrayList<OpskriftData> opskrifter;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +41,6 @@ ArrayList<OpskriftData> opskrifter;
         typeText = getIntent().getStringExtra("type");
         System.out.println("TyperTe4xt fået fra intent: " + typeText);
         adapter = new KostPlanAdapter();
-
 
 
         System.out.println("xaxaxaxaxaxaxaxaxa" + datafiles.bruger);

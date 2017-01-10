@@ -33,7 +33,7 @@ public class WorkoutList extends AppCompatActivity implements AdapterView.OnItem
     int[] setsArray;
     WorkoutListAdapter adapter;
     ListView listView;
-    Toolbar toolbar;
+    private Toolbar toolbar;
     MainController datafiles;
     WorkoutData workoutData;
 

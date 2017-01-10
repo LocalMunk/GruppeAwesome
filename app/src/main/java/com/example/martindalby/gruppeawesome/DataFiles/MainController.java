@@ -145,13 +145,22 @@ public class MainController implements Serializable{
         try {
             int i = 0;
             for (UserWorkoutData uwd : bruger.workouts) {
-
-                WorkoutData data = new WorkoutData();
-                data.setWorkoutid(i);
-                data.setWorkoutname(uwd.navn);
-                data.setOvelser(databaseControl.getWorkout(uwd.ovelseIDs));
-                træningsPlan.addWorkout(data);
-                i++;
+                if(uwd.ovelseIDs.size() != 0) {
+                    WorkoutData data = new WorkoutData();
+                    data.setWorkoutid(i);
+                    data.setWorkoutname(uwd.navn);
+                    data.setOvelser(databaseControl.getWorkout(uwd.ovelseIDs));
+                    træningsPlan.addWorkout(data);
+                    i++;
+                }
+                else{
+                    WorkoutData data = new WorkoutData();
+                    data.setWorkoutid(i);
+                    data.setWorkoutname(uwd.navn);
+                    data.setOvelser(new ArrayList<OvelseData>());
+                    træningsPlan.addWorkout(data);
+                    i++;
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();

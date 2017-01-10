@@ -6,78 +6,91 @@
     android:weightSum="1"
     android:background="@drawable/bg">
 
-    <android.support.design.widget.AppBarLayout
-        android:id="@+id/appBar"
-        android:layout_height="wrap_content"
+    <ScrollView
         android:layout_width="match_parent"
-        >
-    <include
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        layout="@layout/toolbar_layout"
-        />
-    </android.support.design.widget.AppBarLayout>
+        android:layout_height="match_parent">
 
-    <TextView
-        android:text="TextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/retNavn" />
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="238dp"
-        android:layout_marginLeft="9dp"
-        android:layout_marginRight="9dp"
-        app:srcCompat="@drawable/morgenmad"
-        android:id="@+id/retImg"
-        android:layout_weight="0.04" />
-
-    <RelativeLayout
-        android:background="@drawable/backgroud_border"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp" >
-
-        <Button
-            android:text="Button"
-            android:background="@color/colorPrimaryLight"
-            android:textColor="@color/indicate"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/alternativ"
-            android:layout_marginTop="15dp"
-            android:layout_marginRight="15dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+            android:orientation="vertical" >
 
-        <TextView
-            android:text="TextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginBottom="15dp"
-            android:textSize="17dp"
-            android:textColor="@color/indicate"
-            android:id="@+id/retIngrediens"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
-    </RelativeLayout>
+            <android.support.design.widget.AppBarLayout
+                android:id="@+id/appBar"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                >
+            <include
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                layout="@layout/toolbar_layout"
+                />
+            </android.support.design.widget.AppBarLayout>
 
-    <TextView
-        android:text="TextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:textSize="17dp"
-        android:textColor="@color/indicate"
-        android:id="@+id/fremMaa" />
+            <TextView
+                android:text="TextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/retNavn" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="238dp"
+                android:layout_marginLeft="9dp"
+                android:layout_marginRight="9dp"
+                app:srcCompat="@drawable/morgenmad"
+                android:id="@+id/retImg"
+                android:layout_weight="0.04" />
+
+            <RelativeLayout
+                android:background="@drawable/backgroud_border"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_weight="0.04">
+
+                <Button
+                    android:text="Button"
+                    android:background="@color/colorPrimaryLight"
+                    android:textColor="@color/indicate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/alternativ"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true" />
+
+                <TextView
+                    android:text="TextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:textSize="17dp"
+                    android:textColor="@color/indicate"
+                    android:id="@+id/retIngrediens"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true" />
+            </RelativeLayout>
+
+            <TextView
+                android:text="TextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:textSize="17dp"
+                android:textColor="@color/indicate"
+                android:id="@+id/fremMaa" />
+
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

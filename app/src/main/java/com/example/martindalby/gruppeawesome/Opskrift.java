@@ -34,13 +34,10 @@ public class Opskrift extends AppCompatActivity implements View.OnClickListener{
         overskrift = getIntent().getStringExtra("overskrift");
         beskrivelse = getIntent().getStringExtra("beskrivelse");
         ingred = getIntent().getStringExtra("ingrediens");
-
-        toolbar = (Toolbar) findViewById(R.id.toolBar);
-        toolbar.setTitle(typeText);
-
+        /*
         retNavn = (TextView) findViewById(R.id.retNavn);
         retNavn.setText(opskriftData.getNavn() + " Type: " + typeText);
-
+        */
         retBillede = (ImageView) findViewById(R.id.retImg);
         retBillede.setImageResource(R.drawable.morgenmad);
 
@@ -52,6 +49,9 @@ public class Opskrift extends AppCompatActivity implements View.OnClickListener{
 
         fremGang = (TextView) findViewById(R.id.fremMaa);
         fremGang.setText(opskriftData.getFremgangsmåde());
+
+        toolbar = (Toolbar) findViewById(R.id.toolBar);
+        toolbar.setTitle(opskriftData.getNavn());
 
         alternativ.setOnClickListener(this);
     }
