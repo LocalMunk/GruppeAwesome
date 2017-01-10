@@ -65,7 +65,6 @@ public class LogInTest_akt extends AppCompatActivity implements View.OnClickList
             i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
 
-
             datafiles.getUserFromDatabase(sharedPreferences.getString("UserID", "FAIL"));
 
             startActivity(i);

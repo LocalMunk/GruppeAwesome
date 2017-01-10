@@ -102,10 +102,9 @@ public class MainController implements Serializable{
             @Override
             protected void onPostExecute(Object resultat) {
 
-
             }
         }.execute();
-        }
+    }
 
 
 

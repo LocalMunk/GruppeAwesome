@@ -57,8 +57,6 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
         currUser = sharedPreferences.getString("UserID", "fail");
         datafiles = MainController.getInstans();
 
-        traeningsPlanData = datafiles.getTræningsPlan();
-
 
         toolbar = (Toolbar) findViewById(R.id.toolBar);
 
@@ -248,16 +246,20 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
     {    if(item.getItemId() == R.id.action_plus){
         AlertDialog.Builder dialog = new AlertDialog.Builder(this, R.style.MyDialogTheme);
 
+        datafiles.getKostplanFromDB();
+        datafiles.getTræningsplanFromDB();
+
         //LayoutInflater li = LayoutInflater.from(this);
         //View dialogView = li.inflate(R.layout.opretworkoutdialog, null);
 
         final EditText editText = new EditText(this);
+        //dialog.setView(dialogView);
         dialog.setMessage("Hvad skal din nye workout hedde?");
         dialog.setTitle("Opret workout");
         dialog.setView(editText);
         editText.setHint("Navn");
 
-        dialog.setPositiveButton("OK", new AlertDialog.OnClickListener() {
+        dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
 
             @Override
             public void onClick(DialogInterface dialog, int whichButton) {
@@ -270,11 +272,12 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
                 else{
                     datafiles.bruger.workouts.add(datafiles.bruger.workouts.size(), new UserWorkoutData(new ArrayList<String>(), workoutNavn.toString()));
                 }
+                datafiles.pushUser(datafiles.bruger);
                 finish();
             }
         });
 
-        dialog.setNegativeButton("Anullér", new AlertDialog.OnClickListener() {
+        dialog.setNegativeButton("Anullér", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int whichButton) {
                 dialog.dismiss();
