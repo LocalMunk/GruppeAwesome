@@ -1,26 +1,16 @@
 package com.example.martindalby.gruppeawesome.DAL;
 
-import android.content.Context;
-import android.util.Log;
-
 import com.example.martindalby.gruppeawesome.DataFiles.Bruger;
-import com.example.martindalby.gruppeawesome.DataFiles.KostplanData;
 import com.example.martindalby.gruppeawesome.DataFiles.MainController;
 import com.example.martindalby.gruppeawesome.DataFiles.OpskriftData;
 import com.example.martindalby.gruppeawesome.DataFiles.OvelseData;
 import com.example.martindalby.gruppeawesome.DataFiles.UserWorkoutData;
-import com.example.martindalby.gruppeawesome.DataFiles.WorkoutData;
-import com.example.martindalby.gruppeawesome.Opskrift;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
-import java.util.Map;
 
 /**
  * Created by Martin Dalby on 02-01-2017.
@@ -102,7 +92,7 @@ public class DatabaseController {
                 user.RetIDs = RetIDs;
                 datafiles.bruger = user;
                 datafiles.getKostplanFromDB();
-                datafiles.getTraeningsplanFromDatabase();
+                datafiles.getTraeningsplanFromDB();
 
             }
             @Override
