@@ -34,6 +34,8 @@ public class DatabaseController {
     public OpskriftData opskriftD;
     public OvelseData ovelseData;
     public ArrayList<OpskriftData> opskriftout;
+    public ArrayList<OvelseData> ovelseout;
+    public ArrayList<OvelseData> out;
     private Firebase mRef;
     private String version;
     public MainController datafiles;
@@ -45,12 +47,15 @@ public class DatabaseController {
 
         datafiles = main;
 
+        out = new ArrayList<OvelseData>();
         morgenTest = new ArrayList<>();
         opskriftout = new ArrayList<OpskriftData>();
         version = "v0";
         bruger = new Bruger();
         opskriftD = new OpskriftData();
         ovelseData = new OvelseData();
+
+        ovelseout = new ArrayList<OvelseData>();
         mRef = new Firebase("https://boodybook-a85b7.firebaseio.com/");
 
 
@@ -108,6 +113,7 @@ public class DatabaseController {
 
     }
 
+
     public void getOpskrift (final ArrayList<String> ids) {
 
         //henter data fra db
@@ -159,14 +165,31 @@ public class DatabaseController {
 
     }
 
-    public OvelseData getOvelse(String id){
-        mRef.child(version).child("Ovelser").child(id).addValueEventListener(new ValueEventListener() {
+    public ArrayList<OvelseData> getWorkout(final ArrayList<String> ids){
+        mRef.child(version).child("Ovelser").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                ovelseData.setId(dataSnapshot.getValue(OvelseData.class).getId());
-                ovelseData.setDone(dataSnapshot.getValue(OvelseData.class).isDone());
-                ovelseData.setNavn(dataSnapshot.getValue(OvelseData.class).getNavn());
-                ovelseData.setGraf(dataSnapshot.getValue(OvelseData.class).getGraf());
+                for(String id : ids){
+                    if(id != null){
+                        ovelseout.add(dataSnapshot.child(id).getValue(OvelseData.class));
+                    }
+                }
+
+
+                for ( OvelseData data : ovelseout) {
+                    OvelseData ovels = new OvelseData();
+                    String navn = data.getNavn();
+                    int done = data.isDone();
+                    int sets = data.getSets();
+                    int id = data.getId();
+
+                    ovels.setNavn(navn);
+                    ovels.setDone(done);
+                    ovels.setSets(sets);
+                    ovels.setId(id);
+
+                    out.add(ovels);
+                }
 
                 System.out.println("har hentet denne Øvelse" + ovelseData.getNavn());
             }
@@ -176,7 +199,7 @@ public class DatabaseController {
 
             }
         });
-        return ovelseData;
+        return out;
     }
 
 }

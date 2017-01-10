@@ -244,6 +244,7 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
         AlertDialog.Builder dialog = new AlertDialog.Builder(this, R.style.MyDialogTheme);
 
         datafiles.getKostplanFromDB();
+        datafiles.getTræningsplanFromDB();
 
         //LayoutInflater li = LayoutInflater.from(this);
         //View dialogView = li.inflate(R.layout.opretworkoutdialog, null);
