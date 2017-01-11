@@ -60,10 +60,10 @@ public class DatabaseController {
     }
 
     //pusher
-    public void pushOvelse(int id, String navn, int done, int sets, int i) {
+    public void pushOvelse(int id, String navn, int done, int sets) {
 
         OvelseData ovelseData = new OvelseData(id, navn, done, sets);
-        String j = i + "";
+        String j = id + "";
         mRef.child(version).child("Ovelser").child(j).setValue(ovelseData);
 
     }

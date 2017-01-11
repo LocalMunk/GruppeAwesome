@@ -14,6 +14,7 @@
         android:layout_height="70dp"
         android:background="@color/colorPrimaryBtn2"
         android:textColor="@color/indicate"
+        android:textAllCaps="false"
         android:id="@+id/morgenmadKnap"
         />
 
@@ -26,7 +27,8 @@
         android:layout_height="70dp"
         android:background="@color/colorPrimaryBtn2"
         android:textColor="@color/indicate"
-        android:id="@+id/frokostKnap" />
+        android:id="@+id/frokostKnap"
+        android:textAllCaps="false"/>
 
     <Button
         android:text="Button"
@@ -37,7 +39,8 @@
         android:layout_height="70dp"
         android:background="@color/colorPrimaryBtn2"
         android:textColor="@color/indicate"
-        android:id="@+id/aftensmadKnap" />
+        android:id="@+id/aftensmadKnap"
+        android:textAllCaps="false"/>
 
     <Button
         android:text="Button"
@@ -48,5 +51,6 @@
         android:background="@color/colorPrimaryBtn2"
         android:textColor="@color/indicate"
         android:layout_height="70dp"
-        android:id="@+id/snackKnap" />
+        android:id="@+id/snackKnap"
+        android:textAllCaps="false"/>
 </LinearLayout>
