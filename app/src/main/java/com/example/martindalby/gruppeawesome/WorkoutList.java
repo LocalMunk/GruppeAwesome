@@ -138,7 +138,7 @@ public class WorkoutList extends AppCompatActivity implements AdapterView.OnItem
             }
         });
 
-        dialog.show();
+                dialog.show();
 
 
 

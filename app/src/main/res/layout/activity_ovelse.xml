@@ -25,12 +25,13 @@
         android:text="Færdig"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
         android:id="@+id/doneButton"
         android:background="@color/colorPrimaryBtn2"
         android:textColor="@color/indicate"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp" />
 
     <ListView
         android:layout_width="match_parent"
@@ -65,5 +66,19 @@
         android:layout_above="@+id/doneButton"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:fabSize="mini"
+        app:srcCompat="@drawable/icaddwhite"
+        android:id="@+id/ovelsefloating"
+        android:layout_below="@+id/weight"
+        android:layout_alignRight="@+id/weight"
+        android:layout_alignEnd="@+id/weight"
+        app:elevation="18dp"
+        app:rippleColor="?attr/actionModeSplitBackground"
+        app:backgroundTint="@color/colorPrimaryDark" />
 
 </RelativeLayout>

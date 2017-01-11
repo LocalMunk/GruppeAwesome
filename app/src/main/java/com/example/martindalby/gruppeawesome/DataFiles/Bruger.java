@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * Created by Martin Dalby on 05-01-2017.
  */
 
-public class Bruger {
+public class    Bruger {
     public TraeningsPlanData træningsPlan;
     public KostplanData kostplan;
     public String id;

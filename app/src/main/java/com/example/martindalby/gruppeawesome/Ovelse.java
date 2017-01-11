@@ -1,9 +1,13 @@
 package com.example.martindalby.gruppeawesome;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -11,14 +15,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.view.View;
+import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.martindalby.gruppeawesome.DataFiles.MainController;
 import com.example.martindalby.gruppeawesome.DataFiles.OvelseData;
+import com.example.martindalby.gruppeawesome.DataFiles.WorkoutData;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
+
+import java.util.ArrayList;
 
 
 /**
@@ -34,13 +42,18 @@ public class Ovelse extends AppCompatActivity implements View.OnClickListener {
     TextView ExerciseName;
     OvelseAdapter listadapt;
     GraphView graph;
+    FloatingActionButton fb;
     MainController datafiles;
     OvelseData ovelseData;
     EditText Reps, Weight;
+    NumberPicker num_weight,num_reps;
+
 //    Toolbar toolbar;
 
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
+
+
         setContentView(R.layout.activity_ovelse);
         datafiles = MainController.getInstans();
         ovelseData = datafiles.bruger.getTræningsPlan().getWorkout(getIntent().getIntExtra("workout", 0)).getOvelser().get(getIntent().getIntExtra("pos", 0));
@@ -63,9 +76,13 @@ public class Ovelse extends AppCompatActivity implements View.OnClickListener {
         number.setValue(10);
         number.setOnClickListener(this);
         */
+        fb = (FloatingActionButton) findViewById(R.id.ovelsefloating);
+
+         fb.setOnClickListener(this);
 
         Reps = (EditText) findViewById(R.id.reps);
         Reps.setHint("Repetitioner");
+
 
         Weight = (EditText) findViewById(R.id.weight);
         Weight.setHint("Vægt");
@@ -81,6 +98,7 @@ public class Ovelse extends AppCompatActivity implements View.OnClickListener {
         ExerciseName = (TextView) findViewById(R.id.ExerciseName);
         ExerciseName.setTextSize(20);
         ExerciseName.setText(ovelseData.getNavn());
+
 
 
       //  toolbar = (Toolbar) findViewById(R.id.toolBar);
@@ -101,6 +119,7 @@ public class Ovelse extends AppCompatActivity implements View.OnClickListener {
 
     }
 
+
     public boolean checkInput(String reps, String Weight){
         if(reps.length() == 0 || Weight.length() == 0){
             Toast.makeText(Ovelse.this, "Udfyld repetitioner og vægt",
@@ -110,8 +129,67 @@ public class Ovelse extends AppCompatActivity implements View.OnClickListener {
         return true;
     }
 
+
+
+
     @Override
     public void onClick(View v) {
+
+    if(v==fb){
+
+        AlertDialog.Builder dialog = new AlertDialog.Builder(this, R.style.MyDialogTheme);
+
+        LayoutInflater inflater = getLayoutInflater();
+        View view = inflater.inflate(R.layout.activity_alertdialog_ovelsedata,null);
+
+        num_weight = (NumberPicker)view.findViewById(R.id.numweight);
+        num_reps = (NumberPicker )view.findViewById(R.id.numreps);
+        num_reps.setMinValue(1);
+        num_reps.setMaxValue(20);
+        num_weight.setMinValue(5);
+        num_weight.setMaxValue(100);
+
+        //LayoutInflater li = LayoutInflater.from(this);
+        //View dialogView = li.inflate(R.layout.opretworkoutdialog, null);
+
+
+
+        //dialog.setView(dialogView);
+        dialog.setMessage("Intast vægt og reps");
+        dialog.setTitle("Indtast øvelsesdata");
+
+
+
+
+        dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int whichButton) {
+
+
+                support.setData(currentSet-1,num_reps.getValue(),num_weight.getValue());
+                currentSet++;
+                list.invalidateViews();
+                list.refreshDrawableState();
+
+
+
+
+            }
+        });
+
+        dialog.setNegativeButton("Anullér", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int whichButton) {
+                dialog.dismiss();
+            }
+        });
+        dialog.setView(view);
+        dialog.show();
+
+    }
+
+
         if(v == videre){
             if(currentSet <= support.maxSet && checkInput(Reps.getText().toString() , Weight.getText().toString())) {
                 System.out.println("button pressed");
