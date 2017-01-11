@@ -76,7 +76,7 @@ public class OpskriftListe extends AppCompatActivity implements AdapterView.OnIt
 
         OpskriftVidere = opskrifter.get(position);
 
-        i.putExtra("ret", OpskriftVidere.getId());
+        i.putExtra("ret", OpskriftVidere.getNavn());
         startActivity(i);
     }
 

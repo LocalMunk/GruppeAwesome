@@ -29,7 +29,12 @@ public class Opskrift extends AppCompatActivity implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_opskrift);
         datafiles = MainController.getInstans();
-        opskriftData = datafiles.bruger.getKostplan().getOpskrift(getIntent().getIntExtra("ret", 0));
+
+        for (OpskriftData data : datafiles.bruger.getKostplan().getRetter()){
+            if(data.getNavn().equals(getIntent().getStringExtra(("ret")))){
+                opskriftData = data;
+            }
+        }
         typeText = getIntent().getStringExtra("type");
         overskrift = getIntent().getStringExtra("overskrift");
         beskrivelse = getIntent().getStringExtra("beskrivelse");

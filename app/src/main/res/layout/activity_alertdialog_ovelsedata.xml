@@ -1,17 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical" android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
 
     <LinearLayout
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"></LinearLayout>
+        android:layout_height="match_parent">
 
-    <TextView
-        android:text="TextView"
-        android:layout_width="172dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView5" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <TextView
+                android:layout_gravity="start"
+                android:textAlignment="center"
+                android:text="textReps"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/textReps" />
+
+            <TextView
+                android:layout_gravity="start"
+                android:textAlignment="center"
+                android:text="textWeight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textWeight" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            >
+
+            <NumberPicker
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:id="@+id/numweight" />
+
+            <NumberPicker
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:id="@+id/numreps" />
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+
 </LinearLayout>
