@@ -24,6 +24,8 @@ import com.example.martindalby.gruppeawesome.DataFiles.MainController;
 import com.example.martindalby.gruppeawesome.DataFiles.OvelseData;
 import com.example.martindalby.gruppeawesome.DataFiles.WorkoutData;
 
+import java.util.ArrayList;
+
 /**
  * Created by Martin Dalby on 17-11-2016.
  */
@@ -105,10 +107,21 @@ public class WorkoutList extends AppCompatActivity implements AdapterView.OnItem
             @Override
             public void onClick(DialogInterface dialog, int whichButton) {
                 String workoutNavn = editText.getText().toString();
-                OvelseData data = new OvelseData(workoutData.getOvelser().size(), workoutNavn, 0, 3);
-
-                workoutData.getOvelser().add(data);
-
+                OvelseData data;
+                try {
+                    data = new OvelseData(workoutData.getOvelser().size(), workoutNavn, 0, 3);
+                }
+                catch(Exception e){
+                    data = new OvelseData(0, workoutNavn, 0, 3);
+                }
+                try {
+                    workoutData.getOvelser().add(data);
+                }
+                catch(NullPointerException e){
+                    ArrayList<OvelseData> out = new ArrayList<OvelseData>();
+                    out.add(data);
+                    workoutData.setOvelser(out);
+                }
                 datafiles.pushUser(datafiles.bruger);
                 listView.invalidateViews();
                 listView.refreshDrawableState();
@@ -152,7 +165,12 @@ public class WorkoutList extends AppCompatActivity implements AdapterView.OnItem
         //Her afgøres længde på liste ud fra hvilken knap man trykker paa
         @Override
         public int getCount() {
-            return workoutData.getOvelser().size();
+            try {
+                return workoutData.getOvelser().size();
+            }
+            catch(Exception e){
+                return 0;
+            }
         }
 
         @Override
