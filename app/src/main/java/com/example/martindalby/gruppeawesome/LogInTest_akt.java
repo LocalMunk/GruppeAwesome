@@ -1,9 +1,12 @@
 package com.example.martindalby.gruppeawesome;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.os.Handler;
+import android.os.Message;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,6 +25,8 @@ import com.example.martindalby.gruppeawesome.DataFiles.WorkoutData;
 
 import java.util.ArrayList;
 
+import static android.R.attr.handle;
+
 public class LogInTest_akt extends AppCompatActivity implements View.OnClickListener {
 
     Button sub, notsub;
@@ -30,6 +35,8 @@ public class LogInTest_akt extends AppCompatActivity implements View.OnClickList
     SharedPreferences sharedPreferences;
     String createdUserID;
     Boolean userCheck;
+    ProgressDialog progressDoalog;
+    Handler handle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +80,14 @@ public class LogInTest_akt extends AppCompatActivity implements View.OnClickList
 
             datafiles.getUserFromDatabase(sharedPreferences.getString("UserID", "FAIL"));
 
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+
+                }
+            }, 2000);
+
             startActivity(i);
 
         }
@@ -86,37 +101,53 @@ public class LogInTest_akt extends AppCompatActivity implements View.OnClickList
 
         if (v == sub && bePeakedSubCode.getText().toString().equals("") == false) {
             sharedPreferences.edit().putString("UserID", bePeakedSubCode.getText().toString()).commit();
-
-
             datafiles.UserID = bePeakedSubCode.getText().toString();
             datafiles.getUserFromDatabase(bePeakedSubCode.getText().toString());
+
+            datafiles.sub = true;
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
 
 
             //Sørger for at main act bliver øverst i backstack
             i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
+            //ProgressDialog.show(this, "", "En ProgressDialog", true).setCancelable(true);
+
 
             startActivity(i);
             finish();
 
         } else if (v == notsub) {
+
+
             //genererer user id
             sharedPreferences.edit().putString("UserID", datafiles.generateUserKey()).commit();
+            //gemmer brugers ID lokalt
             createdUserID = sharedPreferences.getString("UserID", "fail");
-
             datafiles.UserID = createdUserID;
 
+            //Laver bruger med tom data
             ArrayList<WorkoutData> out = new ArrayList<WorkoutData>();
-
-
             datafiles.bruger = new Bruger(new TraeningsPlanData(out, 1.0, 1.0, 1.0),
             null, createdUserID);
-
             System.out.println(datafiles.bruger);
-
+            //lægger bruger om i DB
             datafiles.pushUser(datafiles.bruger);
 
             //Sørger for at main act bliver øverst i backstack
             i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
+            datafiles.sub = false;
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
 
             startActivity(i);
             finish();
@@ -124,6 +155,5 @@ public class LogInTest_akt extends AppCompatActivity implements View.OnClickList
 
 
     }
-
 }
 

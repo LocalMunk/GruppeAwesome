@@ -7,6 +7,7 @@ import com.example.martindalby.gruppeawesome.DataFiles.OpskriftData;
 import com.example.martindalby.gruppeawesome.DataFiles.OvelseData;
 import com.example.martindalby.gruppeawesome.DataFiles.TraeningsPlanData;
 import com.example.martindalby.gruppeawesome.DataFiles.UserWorkoutData;
+import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
@@ -73,7 +74,7 @@ public class DatabaseController {
 
 
     //Henter specifik bruger
-    public void getUser(String UserID){
+    public void getUser(String UserID) {
 
         System.out.println("inde i bruger metode.");
         mRef.child(version).child("brugere").child(UserID).addValueEventListener(new ValueEventListener() {
@@ -91,11 +92,10 @@ public class DatabaseController {
                 user.kostplan = new KostplanData(kostplanData.getRetter());
                 datafiles.bruger = user;
 
-                /*
-                datafiles.getKostplanFromDB();
-                datafiles.getTraeningsplanFromDB();
-                */
+                System.out.println("Har hentet bruger:" + datafiles.bruger);
+
             }
+
             @Override
             public void onCancelled(FirebaseError firebaseError) {
 
@@ -103,9 +103,7 @@ public class DatabaseController {
 
 
         });
-
     }
-
 
     public void getOpskrift (final ArrayList<String> ids) {
 

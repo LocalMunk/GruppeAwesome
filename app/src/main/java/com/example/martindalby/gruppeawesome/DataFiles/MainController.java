@@ -18,6 +18,7 @@ public class MainController implements Serializable{
     public DatabaseController databaseControl;
     public String UserID;
     public Bruger bruger;
+    public boolean sub;
 
     private MainController(){
         databaseControl = new DatabaseController(this);

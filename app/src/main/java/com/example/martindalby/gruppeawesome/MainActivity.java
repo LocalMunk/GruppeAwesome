@@ -216,8 +216,10 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
                 f = new Workout_frag();
             else if (position == 2)
                 f = new Workout_frag();
-            else
-                f = new Kostplan_frag();
+            else {
+                if (datafiles.sub) f = new Kostplan_frag();
+                else f = new KostplanNotSub_frag();
+            }
 
             Bundle b = new Bundle();
             b.putInt("position", position);
