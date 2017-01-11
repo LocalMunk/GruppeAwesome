@@ -2,7 +2,6 @@ package com.example.martindalby.gruppeawesome;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -34,7 +33,7 @@ public class Workout_frag extends Fragment implements AdapterView.OnItemClickLis
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rod = inflater.inflate(R.layout.workout_knapper, container, false);
+        View rod = inflater.inflate(R.layout.workout_list_frag, container, false);
         int[] i = {R.drawable.pizzalistepic, R.drawable.grafbb};
         wdata = new TestDataWorkout();
 
@@ -115,7 +114,7 @@ public class Workout_frag extends Fragment implements AdapterView.OnItemClickLis
         }
         @Override
         public View getView(int position, View view, ViewGroup viewGroup) {
-            view = inflter.inflate(R.layout.workout_liste_frag, null);
+            view = inflter.inflate(R.layout.workout_listeelement, null);
 
 
 

@@ -78,18 +78,11 @@ public class Ovelse extends AppCompatActivity implements View.OnClickListener {
         */
         fb = (FloatingActionButton) findViewById(R.id.ovelsefloating);
 
-         fb.setOnClickListener(this);
-
-        Reps = (EditText) findViewById(R.id.reps);
-        Reps.setHint("Repetitioner");
-
-
-        Weight = (EditText) findViewById(R.id.weight);
-        Weight.setHint("Vægt");
+        fb.setOnClickListener(this);
 
         videre = (Button) findViewById(R.id.doneButton);
         videre.setOnClickListener(this);
-        videre.setText("Videre");
+        videre.setText("Skip øvelse");
 
         list = (ListView) findViewById(R.id.list);
         listadapt = new OvelseAdapter(this);
@@ -152,29 +145,17 @@ public class Ovelse extends AppCompatActivity implements View.OnClickListener {
         //LayoutInflater li = LayoutInflater.from(this);
         //View dialogView = li.inflate(R.layout.opretworkoutdialog, null);
 
-
-
-        //dialog.setView(dialogView);
         dialog.setMessage("Intast vægt og reps");
         dialog.setTitle("Indtast øvelsesdata");
-
-
-
-
         dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
 
             @Override
             public void onClick(DialogInterface dialog, int whichButton) {
 
-
                 support.setData(currentSet-1,num_reps.getValue(),num_weight.getValue());
                 currentSet++;
                 list.invalidateViews();
                 list.refreshDrawableState();
-
-
-
-
             }
         });
 
@@ -188,8 +169,6 @@ public class Ovelse extends AppCompatActivity implements View.OnClickListener {
         dialog.show();
 
     }
-
-
         if(v == videre){
             if(currentSet <= support.maxSet && checkInput(Reps.getText().toString() , Weight.getText().toString())) {
                 System.out.println("button pressed");
@@ -209,8 +188,6 @@ public class Ovelse extends AppCompatActivity implements View.OnClickListener {
             else if(currentSet > support.maxSet){
                 finish();
             }
-
-
         }
     }
 
@@ -223,7 +200,6 @@ public class Ovelse extends AppCompatActivity implements View.OnClickListener {
             this.context = applicationContext;
             //  this.listimg = ListImg;
             inflter = (LayoutInflater.from(applicationContext));
-
 
         }
         //Her afgøres længde på liste ud fra hvilken knap man trykker paa
