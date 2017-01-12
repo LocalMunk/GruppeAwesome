@@ -79,11 +79,6 @@ public class Kostplan_frag extends Fragment implements View.OnClickListener {
         }
 
         if( v == snack) {
-
-            //midlertidig til at reset login
-            sharedPreferences.edit().remove("UserID").commit();
-
-
             Intent i = new Intent(getActivity(), OpskriftListe.class);
             i.putExtra("type", snack.getText().toString());
             startActivity(i);

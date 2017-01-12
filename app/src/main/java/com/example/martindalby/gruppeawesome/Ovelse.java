@@ -7,12 +7,10 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.view.View;
 import android.widget.NumberPicker;
@@ -21,12 +19,13 @@ import android.widget.Toast;
 
 import com.example.martindalby.gruppeawesome.DataFiles.MainController;
 import com.example.martindalby.gruppeawesome.DataFiles.OvelseData;
-import com.example.martindalby.gruppeawesome.DataFiles.WorkoutData;
+import com.example.martindalby.gruppeawesome.DataFiles.SetData;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
 import java.util.ArrayList;
+import java.util.Set;
 
 
 /**
@@ -35,7 +34,6 @@ import java.util.ArrayList;
 
 public class Ovelse extends AppCompatActivity implements View.OnClickListener {
 
-    OvelseSupport support;
     Button videre;
     int currentSet;
     ListView list;
@@ -45,7 +43,6 @@ public class Ovelse extends AppCompatActivity implements View.OnClickListener {
     FloatingActionButton fb;
     MainController datafiles;
     OvelseData ovelseData;
-    EditText Reps, Weight;
     NumberPicker num_weight,num_reps;
 
 //    Toolbar toolbar;
@@ -62,7 +59,6 @@ public class Ovelse extends AppCompatActivity implements View.OnClickListener {
         for(int i = 0; i < ovelseData.getSets(); i++){
             suppdata[i] = "Sæt " + (i+1) + ": ";
         }
-        support = new OvelseSupport(suppdata,ovelseData.getSets());
 
 /*
         weightPicker = (NumberPicker) findViewById(R.id.weightPicker);
@@ -82,7 +78,7 @@ public class Ovelse extends AppCompatActivity implements View.OnClickListener {
 
         videre = (Button) findViewById(R.id.doneButton);
         videre.setOnClickListener(this);
-        videre.setText("Skip øvelse");
+        videre.setText("Næste øvelse");
 
         list = (ListView) findViewById(R.id.list);
         listadapt = new OvelseAdapter(this);
@@ -101,11 +97,7 @@ public class Ovelse extends AppCompatActivity implements View.OnClickListener {
 
         graph = (GraphView) findViewById(R.id.graph);
         LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[] {
-                new DataPoint(0, 1),
-                new DataPoint(1, 5),
-                new DataPoint(2, 3),
-                new DataPoint(3, 2),
-                new DataPoint(4, 6)
+
         });
         graph.addSeries(series);
 
@@ -139,7 +131,7 @@ public class Ovelse extends AppCompatActivity implements View.OnClickListener {
         num_reps = (NumberPicker )view.findViewById(R.id.numreps);
         num_reps.setMinValue(1);
         num_reps.setMaxValue(20);
-        num_weight.setMinValue(5);
+        num_weight.setMinValue(0);
         num_weight.setMaxValue(100);
 
         //LayoutInflater li = LayoutInflater.from(this);
@@ -152,8 +144,10 @@ public class Ovelse extends AppCompatActivity implements View.OnClickListener {
             @Override
             public void onClick(DialogInterface dialog, int whichButton) {
 
-                support.setData(currentSet-1,num_reps.getValue(),num_weight.getValue());
+                ovelseData.getGraf().getSetDatas().add(new SetData(ovelseData.getGraf().getSetDatas().size(), (double)num_reps.getValue(), (double)num_weight.getValue()));
+                //support.setData(currentSet-1,num_reps.getValue(),num_weight.getValue());
                 currentSet++;
+
                 list.invalidateViews();
                 list.refreshDrawableState();
             }
@@ -170,14 +164,8 @@ public class Ovelse extends AppCompatActivity implements View.OnClickListener {
 
     }
         if(v == videre){
-            if(currentSet <= support.maxSet && checkInput(Reps.getText().toString() , Weight.getText().toString())) {
-                System.out.println("button pressed");
-                support.setData(currentSet - 1, Integer.parseInt(Reps.getText().toString()), Integer.parseInt(Weight.getText().toString()));
-                currentSet++;
-                list.invalidateViews();
-                list.refreshDrawableState();
-            }
-            else if(currentSet > support.maxSet && getIntent().getIntExtra("pos",0) < datafiles.bruger.getTræningsPlan().getWorkout(getIntent().getIntExtra("workout", 0)).getOvelser().size() -1) {
+
+            if(getIntent().getIntExtra("pos",0) < datafiles.bruger.getTræningsPlan().getWorkout(getIntent().getIntExtra("workout", 0)).getOvelser().size() -1) {
                 Intent i = new Intent(this, Ovelse.class);
                 i.putExtra("pos", getIntent().getIntExtra("pos", 0) + 1);
                 i.putExtra("workout", getIntent().getIntExtra("workout", 0));
@@ -185,7 +173,7 @@ public class Ovelse extends AppCompatActivity implements View.OnClickListener {
                 ovelseData.setDone(1);
                 finish();
             }
-            else if(currentSet > support.maxSet){
+            else if(currentSet > ovelseData.getSets()){
                 finish();
             }
         }
@@ -205,7 +193,7 @@ public class Ovelse extends AppCompatActivity implements View.OnClickListener {
         //Her afgøres længde på liste ud fra hvilken knap man trykker paa
         @Override
         public int getCount() {
-            return support.maxSet;
+            return getDataForListView().size();
         }
         @Override
         public Object getItem(int position) {return null;} //bruges ikke
@@ -217,10 +205,27 @@ public class Ovelse extends AppCompatActivity implements View.OnClickListener {
             view = inflter .inflate(R.layout.ovelse_list, null);
 
             TextView text = (TextView) view.findViewById(R.id.ovelselisttext);
-            text.setText(support.getData(position));
+            text.setText("Reps: " + (int)getDataForListView().get(position).getY() +
+                    " Vægt: " + (int)getDataForListView().get(position).getZ() +
+                    " 1RM: " + (int)datafiles.calculate1RM(getDataForListView().get(position).getY(),getDataForListView().get(position).getZ()));
             return view;
         }
 
+    }
+
+    public ArrayList<SetData> getDataForListView(){
+        if(ovelseData.getGraf().getSetDatas().size() <=10){
+            return ovelseData.getGraf().getSetDatas();
+        }
+        else{
+            ArrayList out = new ArrayList<SetData>();
+            for(int i = ovelseData.getGraf().getSetDatas().size() -10;
+                    i < ovelseData.getGraf().getSetDatas().size();
+                    i++){
+                out.add(ovelseData.getGraf().getSetDatas().get(i));
+            }
+            return  out;
+        }
     }
 }
 
