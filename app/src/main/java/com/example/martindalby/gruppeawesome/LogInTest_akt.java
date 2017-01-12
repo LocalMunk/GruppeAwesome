@@ -36,9 +36,6 @@ public class LogInTest_akt extends AppCompatActivity implements View.OnClickList
     MainController datafiles;
     SharedPreferences sharedPreferences;
     String createdUserID;
-    Boolean userCheck;
-    ProgressDialog progressDoalog;
-    Handler handle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
