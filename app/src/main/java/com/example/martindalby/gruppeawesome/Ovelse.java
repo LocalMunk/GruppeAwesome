@@ -95,6 +95,7 @@ public class Ovelse extends AppCompatActivity implements View.OnClickListener {
        // setSupportActionBar(toolbar);
 
 
+        //viser ikke alt data
         DataPoint[] toDraw = new DataPoint[ovelseData.getGraf().getSetDatas().size()];
         for (int i = 0; i < ovelseData.getGraf().getSetDatas().size(); i++){
             toDraw[i] = new DataPoint((double) i, datafiles.calculate1RM(ovelseData.getGraf().getSetDatas().get(i).y, ovelseData.getGraf().getSetDatas().get(i).z));
