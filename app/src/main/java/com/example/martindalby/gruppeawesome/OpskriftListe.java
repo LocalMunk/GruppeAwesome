@@ -21,8 +21,6 @@ import java.util.ArrayList;
 public class OpskriftListe extends AppCompatActivity implements AdapterView.OnItemClickListener{
 
     private OpskriftData OpskriftVidere;
-
-    private OpskriftSupport os = new OpskriftSupport();
     private KostPlanAdapter adapter;
     private ListView listView;
     private String typeText, send1, send2, send3;
