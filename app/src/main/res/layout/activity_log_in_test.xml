@@ -6,35 +6,35 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     android:background="@drawable/bg"
     tools:context="com.example.martindalby.gruppeawesome.LogInTest_akt">
 
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/loginbillede"
-        android:id="@+id/imageView"
-        android:textAlignment="center"/>
 
     <RelativeLayout
 
-        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-    <EditText
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:id="@+id/bepeakedsubcode"
-        android:textColorHint="@color/indicate"
-        android:layout_centerHorizontal="true" />
+        <ImageView
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/loginbillede"
+            android:id="@+id/imageView"
+            android:textAlignment="center"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+
+        <EditText
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:inputType="textPersonName"
+            android:ems="15"
+            android:id="@+id/bepeakedsubcode"
+            android:textColorHint="@color/indicate"
+            android:layout_below="@+id/imageView"
+            android:layout_centerHorizontal="true" />
 
         <Button
             android:text="Button"
