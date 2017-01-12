@@ -6,18 +6,18 @@ import java.util.ArrayList;
  * Created by Martin Dalby on 05-01-2017.
  */
 
-public class    Bruger {
+public class BrugerData {
     public TraeningsPlanData træningsPlan;
     public KostplanData kostplan;
     public String id;
 
-    public Bruger(TraeningsPlanData træningsPlan, KostplanData kostplan, String id) {
+    public BrugerData(TraeningsPlanData træningsPlan, KostplanData kostplan, String id) {
         this.træningsPlan = træningsPlan;
         this.kostplan = kostplan;
         this.id = id;
     }
 
-    public Bruger(String id, ArrayList<UserWorkoutData> workouts, ArrayList<String> RetIDs){
+    public BrugerData(String id, ArrayList<UserWorkoutData> workouts, ArrayList<String> RetIDs){
         this.id = id;
 
         træningsPlan = new TraeningsPlanData(new ArrayList<WorkoutData>());
@@ -41,7 +41,7 @@ public class    Bruger {
         this.id = id;
     }
 
-    public Bruger(){}
+    public BrugerData(){}
 
     public String toString(){
         return "id: " + id;

@@ -1,4 +1,4 @@
-package com.example.martindalby.gruppeawesome;
+package com.example.martindalby.gruppeawesome.Activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -15,10 +15,11 @@ import android.widget.TextView;
 import com.example.martindalby.gruppeawesome.DataFiles.KostplanData;
 import com.example.martindalby.gruppeawesome.DataFiles.MainController;
 import com.example.martindalby.gruppeawesome.DataFiles.OpskriftData;
+import com.example.martindalby.gruppeawesome.R;
 
 import java.util.ArrayList;
 
-public class OpskriftListe extends AppCompatActivity implements AdapterView.OnItemClickListener{
+public class OpskriftListe_act extends AppCompatActivity implements AdapterView.OnItemClickListener{
 
     private OpskriftData OpskriftVidere;
     private KostPlanAdapter adapter;
@@ -70,7 +71,7 @@ public class OpskriftListe extends AppCompatActivity implements AdapterView.OnIt
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Intent i = new Intent(this, Opskrift.class);
+        Intent i = new Intent(this, Opskrift_act.class);
 
         OpskriftVidere = opskrifter.get(position);
 

@@ -1,12 +1,8 @@
-package com.example.martindalby.gruppeawesome;
+package com.example.martindalby.gruppeawesome.Activities;
 
-import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.AsyncTask;
 import android.os.Handler;
-import android.os.Message;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,20 +11,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.martindalby.gruppeawesome.DataFiles.Bruger;
-import com.example.martindalby.gruppeawesome.DataFiles.KostplanData;
+import com.example.martindalby.gruppeawesome.DataFiles.BrugerData;
 import com.example.martindalby.gruppeawesome.DataFiles.MainController;
-import com.example.martindalby.gruppeawesome.DataFiles.OpskriftData;
-import com.example.martindalby.gruppeawesome.DataFiles.OvelseData;
 import com.example.martindalby.gruppeawesome.DataFiles.TraeningsPlanData;
-import com.example.martindalby.gruppeawesome.DataFiles.UserWorkoutData;
 import com.example.martindalby.gruppeawesome.DataFiles.WorkoutData;
+import com.example.martindalby.gruppeawesome.R;
 
 import java.util.ArrayList;
 
-import static android.R.attr.handle;
-
-public class LogInTest_akt extends AppCompatActivity implements View.OnClickListener {
+public class LogIn_act extends AppCompatActivity implements View.OnClickListener {
 
     Button sub;
     TextView notsub;
@@ -72,7 +63,7 @@ public class LogInTest_akt extends AppCompatActivity implements View.OnClickList
         else{
             System.out.println("Kommer forbi log in automatisk-----");
 
-            Intent i = new Intent(this, MainActivity.class);
+            Intent i = new Intent(this, Main_act.class);
 
             //Sørger for at main act bliver øverst i backstack
             i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -97,7 +88,7 @@ public class LogInTest_akt extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View v) {
-        Intent i = new Intent(this, MainActivity.class);
+        Intent i = new Intent(this, Main_act.class);
 
         if (v == sub && bePeakedSubCode.getText().toString().equals("") == false) {
             sharedPreferences.edit().putString("UserID", bePeakedSubCode.getText().toString()).commit();
@@ -132,7 +123,7 @@ public class LogInTest_akt extends AppCompatActivity implements View.OnClickList
 
             //Laver bruger med tom data
             ArrayList<WorkoutData> out = new ArrayList<WorkoutData>();
-            datafiles.bruger = new Bruger(new TraeningsPlanData(out, 1.0, 1.0, 1.0),
+            datafiles.bruger = new BrugerData(new TraeningsPlanData(out, 1.0, 1.0, 1.0),
             null, createdUserID);
             System.out.println(datafiles.bruger);
             //lægger bruger om i DB

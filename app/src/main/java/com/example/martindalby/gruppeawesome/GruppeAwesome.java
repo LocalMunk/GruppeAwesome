@@ -1,4 +1,4 @@
-package com.example.martindalby.gruppeawesome.DAL;
+package com.example.martindalby.gruppeawesome;
 
 import android.app.Application;
 

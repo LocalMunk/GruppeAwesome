@@ -1,4 +1,4 @@
-package com.example.martindalby.gruppeawesome;
+package com.example.martindalby.gruppeawesome.Fragments;
 
 import android.content.Context;
 import android.net.Uri;
@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.martindalby.gruppeawesome.DataFiles.MainController;
+import com.example.martindalby.gruppeawesome.R;
 
 
 public class KostplanNotSub_frag extends Fragment {

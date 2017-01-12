@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.martindalby.gruppeawesome.KostplanNotSub_frag">
+    tools:context="com.example.martindalby.gruppeawesome.Fragments.KostplanNotSub_frag">
 
     <TextView
         android:layout_width="match_parent"

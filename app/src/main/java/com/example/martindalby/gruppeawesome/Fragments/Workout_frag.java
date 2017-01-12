@@ -1,4 +1,4 @@
-package com.example.martindalby.gruppeawesome;
+package com.example.martindalby.gruppeawesome.Fragments;
 
 import android.content.Context;
 import android.content.Intent;
@@ -15,6 +15,8 @@ import android.widget.BaseAdapter;
 import com.example.martindalby.gruppeawesome.DAL.DatabaseController;
 import com.example.martindalby.gruppeawesome.DataFiles.MainController;
 import com.example.martindalby.gruppeawesome.DataFiles.TraeningsPlanData;
+import com.example.martindalby.gruppeawesome.R;
+import com.example.martindalby.gruppeawesome.Activities.WorkoutList_act;
 
 /**
  * Created by frederik on 07-11-2016.
@@ -22,7 +24,6 @@ import com.example.martindalby.gruppeawesome.DataFiles.TraeningsPlanData;
 
 public class Workout_frag extends Fragment implements AdapterView.OnItemClickListener {
 
-    private static TestDataWorkout wdata;
     TextView GnsWorkout, talgns;
     TextView workoutgoal, talgoal;
     TextView antalworkouts, talantal;
@@ -35,11 +36,10 @@ public class Workout_frag extends Fragment implements AdapterView.OnItemClickLis
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rod = inflater.inflate(R.layout.workout_list_frag, container, false);
         int[] i = {R.drawable.pizzalistepic, R.drawable.grafbb};
-        wdata = new TestDataWorkout();
 
         datafiles = MainController.getInstans();
         traeningsPlanData = datafiles.bruger.getTræningsPlan();
-        WorkoutAdapter adapter = new WorkoutAdapter(getActivity(), wdata.getWorkouts());
+        WorkoutAdapter adapter = new WorkoutAdapter(getActivity());
 
 
 
@@ -77,7 +77,7 @@ public class Workout_frag extends Fragment implements AdapterView.OnItemClickLis
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Intent i = new Intent(getActivity(), WorkoutList.class);
+        Intent i = new Intent(getActivity(), WorkoutList_act.class);
         i.putExtra("workout", position);
         startActivity(i);
 
@@ -87,15 +87,11 @@ public class Workout_frag extends Fragment implements AdapterView.OnItemClickLis
 
     public class WorkoutAdapter extends BaseAdapter {
         Context context;
-        int listimg[];
-        TestDataWorkout[] data;
         LayoutInflater inflter;
 
-        public WorkoutAdapter(Context applicationContext, TestDataWorkout[] datax) {
+        public WorkoutAdapter(Context applicationContext) {
 
             this.context = applicationContext;
-            this.data = data;
-            //  this.listimg = ListImg;
             inflter = (LayoutInflater.from(applicationContext));
 
         }

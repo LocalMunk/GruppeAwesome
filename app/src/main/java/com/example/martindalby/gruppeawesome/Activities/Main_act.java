@@ -1,7 +1,6 @@
-package com.example.martindalby.gruppeawesome;
+package com.example.martindalby.gruppeawesome.Activities;
 
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.design.widget.TabLayout;
@@ -18,23 +17,22 @@ import android.text.Editable;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.crashlytics.android.Crashlytics;
-import com.example.martindalby.gruppeawesome.DataFiles.Bruger;
-import com.example.martindalby.gruppeawesome.DataFiles.Graf;
 import com.example.martindalby.gruppeawesome.DataFiles.MainController;
 import com.example.martindalby.gruppeawesome.DataFiles.OvelseData;
-import com.example.martindalby.gruppeawesome.DataFiles.SetData;
 import com.example.martindalby.gruppeawesome.DataFiles.TraeningsPlanData;
-import com.example.martindalby.gruppeawesome.DataFiles.UserWorkoutData;
 import com.example.martindalby.gruppeawesome.DataFiles.WorkoutData;
+import com.example.martindalby.gruppeawesome.Fragments.KostplanNotSub_frag;
+import com.example.martindalby.gruppeawesome.Fragments.Kostplan_frag;
+import com.example.martindalby.gruppeawesome.R;
+import com.example.martindalby.gruppeawesome.Fragments.Workout_frag;
 
 import java.util.ArrayList;
 
 import io.fabric.sdk.android.Fabric;
 
-public class MainActivity extends AppCompatActivity /*implements View.OnClickListener*/ {
+public class Main_act extends AppCompatActivity /*implements View.OnClickListener*/ {
 
     private Toolbar toolbar;
     private TabLayout tabLayout;
@@ -116,7 +114,7 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
         retter.add("4");retter.add("5");retter.add("6");retter.add("7");
         retter.add("8");retter.add("9");retter.add("10");retter.add("11");
 
-        Bruger bob = new Bruger("Bob Nielsen testeren", wod, retter);
+        BrugerData bob = new BrugerData("Bob Nielsen testeren", wod, retter);
         datafiles.pushUser(bob);
         */
 

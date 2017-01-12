@@ -5,6 +5,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
+import com.example.martindalby.gruppeawesome.Fragments.Kostplan_frag;
+import com.example.martindalby.gruppeawesome.Fragments.Workout_frag;
+
 /**
  * Created by frederik on 16-11-2016.
  */
