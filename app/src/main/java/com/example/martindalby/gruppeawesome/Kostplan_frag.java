@@ -43,7 +43,7 @@ public class Kostplan_frag extends Fragment implements View.OnClickListener {
 
         frokost = (Button) rod.findViewById(R.id.frokostKnap);
         frokost.setText("Frokost");
-        frokost.setTextSize(21);
+        frokost.setTextSize(20);
 
         aften = (Button) rod.findViewById(R.id.aftensmadKnap);
         aften.setText("Aftensmad");
@@ -51,7 +51,7 @@ public class Kostplan_frag extends Fragment implements View.OnClickListener {
 
         snack = (Button) rod.findViewById(R.id.snackKnap);
         snack.setText("Snack");
-        snack.setTextSize(22);
+        snack.setTextSize(20);
 
         morgen.setOnClickListener(this);
         frokost.setOnClickListener(this);

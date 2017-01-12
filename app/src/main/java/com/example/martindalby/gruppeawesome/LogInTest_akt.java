@@ -56,6 +56,7 @@ public class LogInTest_akt extends AppCompatActivity implements View.OnClickList
 
         sub = (Button) findViewById(R.id.buttoncontinuesub);
         sub.setText("Log in");
+        sub.setTextSize(20);
 
         notsub = (TextView) findViewById(R.id.textnotsub);
         notsub.setText("Har du ikke et login?");
