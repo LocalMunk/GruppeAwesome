@@ -18,6 +18,7 @@ import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.martindalby.gruppeawesome.DataFiles.Graf;
 import com.example.martindalby.gruppeawesome.DataFiles.MainController;
 import com.example.martindalby.gruppeawesome.DataFiles.OvelseData;
 import com.example.martindalby.gruppeawesome.DataFiles.SetData;
@@ -91,15 +92,7 @@ public class Ovelse extends AppCompatActivity implements View.OnClickListener {
 
 
         //viser ikke alt data
-        DataPoint[] toDraw = new DataPoint[ovelseData.getGraf().getSetDatas().size()];
-        for (int i = 0; i < ovelseData.getGraf().getSetDatas().size(); i++){
-            toDraw[i] = new DataPoint((double) i, datafiles.calculate1RM(ovelseData.getGraf().getSetDatas().get(i).y, ovelseData.getGraf().getSetDatas().get(i).z));
-        }
-        graph = (GraphView) findViewById(R.id.graph);
-        LineGraphSeries<DataPoint> series = new LineGraphSeries<>(toDraw);
-        graph.addSeries(series);
-
-
+        updateGraph();
     }
 
 
@@ -110,6 +103,15 @@ public class Ovelse extends AppCompatActivity implements View.OnClickListener {
             return false;
         }
         return true;
+    }
+
+    public void onDestroy(){
+        super.onDestroy();
+        datafiles.bruger.getTræningsPlan().getWorkout(getIntent().getIntExtra("workout", 0)).getOvelser().remove(getIntent().getIntExtra("pos", 0));
+        datafiles.bruger.getTræningsPlan().getWorkout(getIntent().getIntExtra("workout", 0)).getOvelser().add(getIntent().getIntExtra("pos", 0), ovelseData);
+
+        datafiles.pushUser();
+
     }
 
 
@@ -141,13 +143,22 @@ public class Ovelse extends AppCompatActivity implements View.OnClickListener {
 
             @Override
             public void onClick(DialogInterface dialog, int whichButton) {
+                try {
+                    ovelseData.getGraf().getSetDatas().add(new SetData(ovelseData.getGraf().getSetDatas().size(),
+                            (double) num_reps.getValue(),
+                            (double) num_weight.getValue()));
+                }
+                catch(NullPointerException e){
+                    ovelseData.setGraf(new Graf());
+                    ovelseData.getGraf().setSetDatas(new ArrayList<SetData>());
+                    ovelseData.getGraf().getSetDatas().add(new SetData(ovelseData.getGraf().getSetDatas().size(), (double) num_reps.getValue(), (double) num_weight.getValue()));
 
-                ovelseData.getGraf().getSetDatas().add(new SetData(ovelseData.getGraf().getSetDatas().size(), (double)num_reps.getValue(), (double)num_weight.getValue()));
-                //support.setData(currentSet-1,num_reps.getValue(),num_weight.getValue());
-                currentSet++;
-
+                }
+                datafiles.pushUser();
                 list.invalidateViews();
                 list.refreshDrawableState();
+                System.out.println("LISTEN AF RESULTATER"  +datafiles.bruger.getTræningsPlan().getWorkouts().get(0).getOvelser().get(3).getGraf().getSetDatas());
+                updateGraph();
             }
         });
 
@@ -171,7 +182,7 @@ public class Ovelse extends AppCompatActivity implements View.OnClickListener {
                 ovelseData.setDone(1);
                 finish();
             }
-            else if(currentSet > ovelseData.getSets()){
+            else{
                 finish();
             }
         }
@@ -191,7 +202,12 @@ public class Ovelse extends AppCompatActivity implements View.OnClickListener {
         //Her afgøres længde på liste ud fra hvilken knap man trykker paa
         @Override
         public int getCount() {
-            return getDataForListView().size();
+            try {
+                return getDataForListView().size();
+            }
+            catch(NullPointerException e){
+                return 0;
+            }
         }
         @Override
         public Object getItem(int position) {return null;} //bruges ikke
@@ -212,6 +228,7 @@ public class Ovelse extends AppCompatActivity implements View.OnClickListener {
     }
 
     public ArrayList<SetData> getDataForListView(){
+        try{
         if(ovelseData.getGraf().getSetDatas().size() <=10){
             return ovelseData.getGraf().getSetDatas();
         }
@@ -223,6 +240,26 @@ public class Ovelse extends AppCompatActivity implements View.OnClickListener {
                 out.add(ovelseData.getGraf().getSetDatas().get(i));
             }
             return  out;
+        }
+        }catch(Exception e){
+            return null;
+        }
+
+    }
+
+    public void updateGraph(){
+        try {
+            DataPoint[] toDraw = new DataPoint[ovelseData.getGraf().getSetDatas().size()];
+            for (int i = 0; i < ovelseData.getGraf().getSetDatas().size(); i++) {
+                toDraw[i] = new DataPoint((double) i, datafiles.calculate1RM(ovelseData.getGraf().getSetDatas().get(i).y, ovelseData.getGraf().getSetDatas().get(i).z));
+            }
+            graph = (GraphView) findViewById(R.id.graph);
+            LineGraphSeries<DataPoint> series = new LineGraphSeries<>(toDraw);
+            graph.addSeries(series);
+            graph.getViewport().setMaxX((double) ovelseData.getGraf().getSetDatas().size());
+        }
+        catch(NullPointerException e){
+
         }
     }
 }

@@ -44,4 +44,8 @@ public class SetData{
 
     public double z;
 
+    public String toString(){
+        return "reps: " + y;
+    }
+
 }

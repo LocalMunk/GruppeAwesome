@@ -20,8 +20,10 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.martindalby.gruppeawesome.DataFiles.Graf;
 import com.example.martindalby.gruppeawesome.DataFiles.MainController;
 import com.example.martindalby.gruppeawesome.DataFiles.OvelseData;
+import com.example.martindalby.gruppeawesome.DataFiles.SetData;
 import com.example.martindalby.gruppeawesome.DataFiles.WorkoutData;
 
 import java.util.ArrayList;
@@ -114,6 +116,11 @@ public class WorkoutList extends AppCompatActivity implements AdapterView.OnItem
                 catch(Exception e){
                     data = new OvelseData(0, workoutNavn, 0, 3);
                 }
+
+                ArrayList ny = new ArrayList<SetData>();
+                data.setGraf(new Graf(ny));
+
+
                 try {
                     workoutData.getOvelser().add(data);
                 }

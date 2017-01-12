@@ -65,6 +65,8 @@ public class MainController implements Serializable{
         databaseControl.PushBruger(user);
     }
 
+    public void pushUser() {databaseControl.PushBruger(bruger); }
+
     public void getUserFromDatabase(final String UserID){
 
         new AsyncTask() {
