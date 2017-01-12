@@ -94,9 +94,10 @@ public class MainController implements Serializable{
         return false;
     }
 
-
-
-
+    public double calculate1RM(double weight, double reps){
+        double out = (weight*(36/(37*reps)));
+        return out;
+    }
 
 
     public String generateUserKey(){

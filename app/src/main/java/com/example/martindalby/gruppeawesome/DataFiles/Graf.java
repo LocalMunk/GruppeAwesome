@@ -1,10 +1,5 @@
 package com.example.martindalby.gruppeawesome.DataFiles;
 
-import android.provider.ContactsContract;
-
-import com.jjoe64.graphview.series.DataPointInterface;
-import com.jjoe64.graphview.series.LineGraphSeries;
-
 import java.util.ArrayList;
 
 /**
@@ -12,39 +7,22 @@ import java.util.ArrayList;
  */
 
 public class Graf {
-
-    ArrayList<DataPoint> dataPoints;
-
-    public Graf(ArrayList<DataPoint> dataPoints){
-        this.dataPoints = dataPoints;
+    public Graf() {
     }
 
-    public ArrayList<DataPoint> getDataPoints(){
-        return dataPoints;
+    ArrayList<SetData> setDatas;
+
+    public void setSetDatas(ArrayList<SetData> setDatas) {
+        this.setDatas = setDatas;
     }
 
-    public void addDataPoint(double weight, double reps, int date){
-        DataPoint z = new DataPoint(date, (int)(weight * (36/(37 - reps))));
-        if(dataPoints.size() >= 20) dataPoints.remove(0);
-        dataPoints.add(z);
+    public Graf(ArrayList<SetData> setDatas){
+        this.setDatas = setDatas;
     }
 
-    public class DataPoint{
-        int x, y;
-
-        public DataPoint(int x, int y){
-            this.x=x;this.y=y;
-        }
-        public void setDataPoint(int x, int y){
-            this.x=x;this.y=y;
-        }
-
-        public double getX() {
-            return x;
-        }
-
-        public double getY() {
-            return y;
-        }
+    public ArrayList<SetData> getSetDatas(){
+        return setDatas;
     }
+
+
 }

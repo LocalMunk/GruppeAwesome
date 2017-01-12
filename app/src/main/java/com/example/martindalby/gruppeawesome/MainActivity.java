@@ -21,8 +21,10 @@ import android.widget.EditText;
 
 import com.crashlytics.android.Crashlytics;
 import com.example.martindalby.gruppeawesome.DataFiles.Bruger;
+import com.example.martindalby.gruppeawesome.DataFiles.Graf;
 import com.example.martindalby.gruppeawesome.DataFiles.MainController;
 import com.example.martindalby.gruppeawesome.DataFiles.OvelseData;
+import com.example.martindalby.gruppeawesome.DataFiles.SetData;
 import com.example.martindalby.gruppeawesome.DataFiles.TraeningsPlanData;
 import com.example.martindalby.gruppeawesome.DataFiles.UserWorkoutData;
 import com.example.martindalby.gruppeawesome.DataFiles.WorkoutData;
@@ -68,6 +70,25 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
         viewPager.setAdapter(adapter);
         setSupportActionBar(toolbar);
 
+        ArrayList ny = new ArrayList<SetData>();
+        ny.add(new SetData(0, 10.0, 50.0));
+        ny.add(new SetData(1, 10.0, 60.0));
+        ny.add(new SetData(2, 10.0, 70.0));
+        ny.add(new SetData(3, 10.0, 80.0));
+        ny.add(new SetData(4, 10.0, 50.0));
+        ny.add(new SetData(5, 10.0, 60.0));
+        ny.add(new SetData(6, 10.0, 70.0));
+        ny.add(new SetData(7, 10.0, 80.0));
+        ny.add(new SetData(8, 10.0, 50.0));
+        ny.add(new SetData(9, 10.0, 60.0));
+        ny.add(new SetData(10, 10.0, 70.0));
+        ny.add(new SetData(11, 10.0, 80.0));
+
+
+        datafiles.bruger
+                .getTræningsPlan().getWorkouts().get(0).getOvelser().get(0).setGraf(new Graf(ny));
+
+        datafiles.pushUser(datafiles.bruger);
 
         final TabLayout.Tab workout=tabLayout.newTab();
         final TabLayout.Tab kostplan=tabLayout.newTab();
@@ -124,7 +145,7 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
 
 
         workout.setIcon(R.drawable.exerciseiconwhite);
-        kostplan.setIcon(R.drawable.foodicongrey);
+        kostplan.setIcon(R.drawable.foodicon_grey);
         //starter ikke med at sætte title til workouts??
         toolbar.setTitle("Workouts");
 
@@ -150,12 +171,12 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
                 switch (position) {
                     case 0:
                         workout.setIcon(R.drawable.exerciseiconwhite);
-                        kostplan.setIcon(R.drawable.foodicongrey);
+                        kostplan.setIcon(R.drawable.foodicon_grey);
                         toolbar.setTitle("Workouts");
                         break;
                     case 1:
                         workout.setIcon(R.drawable.exerciseicongrey);
-                        kostplan.setIcon(R.drawable.foodiconwhite);
+                        kostplan.setIcon(R.drawable.foodicon_white);
                         toolbar.setTitle("Kostplan");
                         break;
                 }

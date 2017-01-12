@@ -7,79 +7,71 @@
     android:background="@drawable/bg"
     android:selectAllOnFocus="true">
 
-    <com.jjoe64.graphview.GraphView
+    <LinearLayout
+        android:id="@+id/ll"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        app:srcCompat="@drawable/grafbb"
-        android:id="@+id/graph"></com.jjoe64.graphview.GraphView>
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:text="TextView"
+        <com.jjoe64.graphview.GraphView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            app:srcCompat="@drawable/grafbb"
+            android:id="@+id/graph"></com.jjoe64.graphview.GraphView>
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/ExerciseName"
+            android:layout_below="@+id/graph"/>
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:id="@+id/list"
+            android:layout_below="@+id/ExerciseName"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            />
+
+    </LinearLayout>
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/ExerciseName"
-        android:layout_below="@+id/graph"/>
-
-
-    <Button
-        android:text="Færdig"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/doneButton"
-        android:background="@color/colorPrimaryBtn2"
-        android:textColor="@color/indicate"
         android:layout_alignParentBottom="true"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
-        android:textAllCaps="false"/>
-
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:id="@+id/list"
-        android:layout_below="@+id/ExerciseName"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="15dp">
 
-    <EditText
-        android:layout_width="110dp"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="10"
-        android:id="@+id/weight"
-        android:layout_marginRight="38dp"
-        android:layout_marginEnd="38dp"
-        android:layout_alignBaseline="@+id/reps"
-        android:layout_alignBottom="@+id/reps"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        <Button
+            android:text="Færdig"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/doneButton"
+            android:background="@color/colorPrimaryBtn2"
+            android:textColor="@color/indicate"
+            android:textAllCaps="false"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
 
-    <EditText
-        android:layout_width="110dp"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="10"
-        android:layout_marginBottom="45dp"
-        android:id="@+id/reps"
-        android:layout_marginLeft="44dp"
-        android:layout_marginStart="44dp"
-        android:layout_above="@+id/doneButton"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        <android.support.design.widget.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            app:fabSize="mini"
+            app:srcCompat="@drawable/icaddwhite"
+            android:id="@+id/ovelsefloating"
+            app:elevation="18dp"
+            app:rippleColor="?attr/actionModeSplitBackground"
+            app:backgroundTint="@color/colorPrimaryDark"
+            android:layout_marginRight="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+    </RelativeLayout>
 
-    <android.support.design.widget.FloatingActionButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        app:fabSize="mini"
-        app:srcCompat="@drawable/icaddwhite"
-        android:id="@+id/ovelsefloating"
-        android:layout_below="@+id/weight"
-        android:layout_alignRight="@+id/weight"
-        android:layout_alignEnd="@+id/weight"
-        app:elevation="18dp"
-        app:rippleColor="?attr/actionModeSplitBackground"
-        app:backgroundTint="@color/colorPrimaryDark" />
 
 </RelativeLayout>
