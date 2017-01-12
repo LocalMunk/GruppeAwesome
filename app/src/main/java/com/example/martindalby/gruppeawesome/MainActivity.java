@@ -18,6 +18,7 @@ import android.text.Editable;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.crashlytics.android.Crashlytics;
 import com.example.martindalby.gruppeawesome.DataFiles.Bruger;
@@ -70,25 +71,6 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
         viewPager.setAdapter(adapter);
         setSupportActionBar(toolbar);
 
-        ArrayList ny = new ArrayList<SetData>();
-        ny.add(new SetData(0, 10.0, 50.0));
-        ny.add(new SetData(1, 10.0, 60.0));
-        ny.add(new SetData(2, 10.0, 70.0));
-        ny.add(new SetData(3, 10.0, 80.0));
-        ny.add(new SetData(4, 10.0, 50.0));
-        ny.add(new SetData(5, 10.0, 60.0));
-        ny.add(new SetData(6, 10.0, 70.0));
-        ny.add(new SetData(7, 10.0, 80.0));
-        ny.add(new SetData(8, 10.0, 50.0));
-        ny.add(new SetData(9, 10.0, 60.0));
-        ny.add(new SetData(10, 10.0, 70.0));
-        ny.add(new SetData(11, 10.0, 80.0));
-
-
-        datafiles.bruger
-                .getTræningsPlan().getWorkouts().get(0).getOvelser().get(0).setGraf(new Graf(ny));
-
-        datafiles.pushUser(datafiles.bruger);
 
         final TabLayout.Tab workout=tabLayout.newTab();
         final TabLayout.Tab kostplan=tabLayout.newTab();
@@ -139,16 +121,12 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
         */
 
 
-
-
-
-
-
         workout.setIcon(R.drawable.exerciseiconwhite);
         kostplan.setIcon(R.drawable.foodicon_grey);
-        //starter ikke med at sætte title til workouts??
-        toolbar.setTitle("Workouts");
 
+        //starter ikke med at sætte title til workouts??
+
+        toolbar.setTitle("Workouts");
         tabLayout.addTab(workout, 0);
         tabLayout.addTab(kostplan, 1);
 
@@ -162,9 +140,6 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
             }
-
-
-
 
             @Override
             public void onPageSelected(int position) {
@@ -194,11 +169,9 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
             }
-
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
             }
-
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
             }
@@ -237,6 +210,7 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
                 f = new Workout_frag();
             else if (position == 2)
                 f = new Workout_frag();
+            //tjekker om du er subscriber eller ej, derudfra bestemmer kostplanview
             else {
                 if (datafiles.sub) f = new Kostplan_frag();
                 else f = new KostplanNotSub_frag();
@@ -267,28 +241,32 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
     @Override
     public boolean onOptionsItemSelected(MenuItem item)
 
-    {    if(item.getItemId() == R.id.action_plus){
+    {
+        if(item.getItemId() == R.id.action_plus){
         AlertDialog.Builder dialog = new AlertDialog.Builder(this, R.style.MyDialogTheme);
 
 
-        //LayoutInflater li = LayoutInflater.from(this);
-        //View dialogView = li.inflate(R.layout.opretworkoutdialog, null);
-
         final EditText editText = new EditText(this);
-        //dialog.setView(dialogView);
-        dialog.setMessage("Hvad skal din nye workout hedde?");
-        dialog.setTitle("Opret workout");
-        dialog.setView(editText);
-        editText.setHint("Navn");
+            dialog.setMessage("Hvad skal din nye workout hedde?");
+            dialog.setTitle("Opret workout");
+            dialog.setView(editText);
+            editText.setHint("Navn");
+
 
         dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
 
             @Override
             public void onClick(DialogInterface dialog, int whichButton) {
                 Editable workoutNavn = editText.getText();
+
+                //Toast toast = Toast.makeText(getApplicationContext(), "Navn er for kort", Toast.LENGTH_LONG);
+                //toast.show();
+
                 traeningsPlanData.addWorkout(new WorkoutData(traeningsPlanData.getWorkouts().size(), workoutNavn.toString(), new ArrayList<OvelseData>()));
                 datafiles.pushUser(datafiles.bruger);
-            }
+
+                }
+
         });
 
         dialog.setNegativeButton("Anullér", new DialogInterface.OnClickListener() {
@@ -299,17 +277,6 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
         });
 
         dialog.show();
-
-
-
-
-
-
-
-
-
-
-
     }
         return true;
     }
