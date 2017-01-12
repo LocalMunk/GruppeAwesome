@@ -94,8 +94,10 @@ public class MainController implements Serializable{
         return false;
     }
 
-    public double calculate1RM(double weight, double reps){
-        double out = (weight*(36/(37*reps)));
+    public double calculate1RM(double reps, double weight){
+        double out = 37 * reps;
+        out = 36/out;
+        out = weight*out;
         return out;
     }
 

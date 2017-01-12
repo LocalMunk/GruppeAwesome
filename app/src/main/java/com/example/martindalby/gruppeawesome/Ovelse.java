@@ -95,10 +95,12 @@ public class Ovelse extends AppCompatActivity implements View.OnClickListener {
        // setSupportActionBar(toolbar);
 
 
+        DataPoint[] toDraw = new DataPoint[ovelseData.getGraf().getSetDatas().size()];
+        for (int i = 0; i < ovelseData.getGraf().getSetDatas().size(); i++){
+            toDraw[i] = new DataPoint((double) i, datafiles.calculate1RM(ovelseData.getGraf().getSetDatas().get(i).y, ovelseData.getGraf().getSetDatas().get(i).z));
+        }
         graph = (GraphView) findViewById(R.id.graph);
-        LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[] {
-
-        });
+        LineGraphSeries<DataPoint> series = new LineGraphSeries<>(toDraw);
         graph.addSeries(series);
 
 

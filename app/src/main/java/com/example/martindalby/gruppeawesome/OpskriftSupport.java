@@ -37,7 +37,7 @@ public class OpskriftSupport {
         if(str.equals("Snack")) {
             overskrift.setText(data.getSnack()[position].getOverskrift());
             beskrivelse.setText(data.getSnack()[position].getBeskrivelse());
-            icon.setImageResource(R.drawable.foodicongrey);
+            icon.setImageResource(R.drawable.foodicon_grey);
         }
     }
 
