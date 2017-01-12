@@ -83,13 +83,17 @@
             android:layout_above="@+id/AntalWorkouts"
             android:layout_alignRight="@+id/AntalWorkouts"
             />
+
+
     </RelativeLayout>
 
     <ListView
         android:id="@+id/workoutList"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="316dp"
+        android:layout_height="352dp"
        />
+
+
 
 
 </LinearLayout>
