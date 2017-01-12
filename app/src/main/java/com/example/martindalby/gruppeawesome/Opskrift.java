@@ -17,7 +17,7 @@ import com.example.martindalby.gruppeawesome.DataFiles.OpskriftData;
 
 public class Opskrift extends AppCompatActivity implements View.OnClickListener{
 
-    TextView retNavn, fremGang, ingrediensTV;
+    TextView fremGang, ingrediensTV;
     ImageView retBillede;
     Button alternativ;
     String typeText, overskrift, beskrivelse, ingred;
@@ -35,40 +35,28 @@ public class Opskrift extends AppCompatActivity implements View.OnClickListener{
                 opskriftData = data;
             }
         }
+
         typeText = getIntent().getStringExtra("type");
         overskrift = getIntent().getStringExtra("overskrift");
         beskrivelse = getIntent().getStringExtra("beskrivelse");
         ingred = getIntent().getStringExtra("ingrediens");
-        /*
-        retNavn = (TextView) findViewById(R.id.retNavn);
-        retNavn.setText(opskriftData.getNavn() + " Type: " + typeText);
-        */
+
         retBillede = (ImageView) findViewById(R.id.retImg);
         retBillede.setImageResource(R.drawable.morgenmad);
 
         ingrediensTV = (TextView) findViewById(R.id.retIngrediens);
         ingrediensTV.setText(opskriftData.getIngrediens());
 
-        alternativ = (Button) findViewById(R.id.alternativ);
-        alternativ.setText("Alternativ");
-
         fremGang = (TextView) findViewById(R.id.fremMaa);
         fremGang.setText(opskriftData.getFremgangsmåde());
 
         toolbar = (Toolbar) findViewById(R.id.toolBar);
         toolbar.setTitle(opskriftData.getNavn());
-
-        alternativ.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-        if (v == alternativ) {
-            //Intent i = new Intent(this, OpskriftListe.class);
-            //i.putExtra("type", typeText);
-            //startActivity(i);
-            finish();
-        }
+
     }
 }
 
