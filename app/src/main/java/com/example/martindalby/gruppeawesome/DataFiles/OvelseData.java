@@ -8,7 +8,7 @@ public class OvelseData {
 
     public String navn;
     public int done;
-    public Graf graf;
+    public GrafData graf;
     public int sets, id;
 
     public OvelseData(int id, String navn, int done, int sets) {
@@ -43,11 +43,11 @@ public class OvelseData {
         this.done = done;
     }
 
-    public Graf getGraf() {
+    public GrafData getGraf() {
         return graf;
     }
 
-    public void setGraf(Graf graf) {
+    public void setGraf(GrafData graf) {
         this.graf = graf;
     }
 

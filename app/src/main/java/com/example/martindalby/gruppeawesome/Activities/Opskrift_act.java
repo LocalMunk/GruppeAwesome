@@ -1,4 +1,4 @@
-package com.example.martindalby.gruppeawesome;
+package com.example.martindalby.gruppeawesome.Activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -10,12 +10,13 @@ import android.widget.TextView;
 
 import com.example.martindalby.gruppeawesome.DataFiles.MainController;
 import com.example.martindalby.gruppeawesome.DataFiles.OpskriftData;
+import com.example.martindalby.gruppeawesome.R;
 
 /**
  * Created by Martin Dalby on 07-11-2016.
  */
 
-public class Opskrift extends AppCompatActivity implements View.OnClickListener{
+public class Opskrift_act extends AppCompatActivity implements View.OnClickListener{
 
     TextView fremGang, ingrediensTV;
     ImageView retBillede;

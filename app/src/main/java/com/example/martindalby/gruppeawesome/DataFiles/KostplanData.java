@@ -1,7 +1,5 @@
 package com.example.martindalby.gruppeawesome.DataFiles;
 
-import com.example.martindalby.gruppeawesome.Opskrift;
-
 import java.util.ArrayList;
 
 /**

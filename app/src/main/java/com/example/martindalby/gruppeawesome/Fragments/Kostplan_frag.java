@@ -1,4 +1,4 @@
-package com.example.martindalby.gruppeawesome;
+package com.example.martindalby.gruppeawesome.Fragments;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -9,10 +9,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TableLayout;
-import android.widget.TextView;
 
+import com.example.martindalby.gruppeawesome.Activities.OpskriftListe_act;
 import com.example.martindalby.gruppeawesome.DataFiles.MainController;
+import com.example.martindalby.gruppeawesome.R;
 
 
 /**
@@ -65,25 +65,25 @@ public class Kostplan_frag extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
 
         if (v == morgen) {
-            Intent i = new Intent(getActivity(), OpskriftListe.class);
+            Intent i = new Intent(getActivity(), OpskriftListe_act.class);
             i.putExtra("type", morgen.getText().toString());
             startActivity(i);
         }
 
         if (v == frokost) {
-            Intent i = new Intent(getActivity(), OpskriftListe.class);
+            Intent i = new Intent(getActivity(), OpskriftListe_act.class);
             i.putExtra("type", frokost.getText().toString());
             startActivity(i);
         }
 
         if (v == aften) {
-            Intent i = new Intent(getActivity(), OpskriftListe.class);
+            Intent i = new Intent(getActivity(), OpskriftListe_act.class);
             i.putExtra("type", aften.getText().toString());
             startActivity(i);
         }
 
         if( v == snack) {
-            Intent i = new Intent(getActivity(), OpskriftListe.class);
+            Intent i = new Intent(getActivity(), OpskriftListe_act.class);
             i.putExtra("type", snack.getText().toString());
             startActivity(i);
         }

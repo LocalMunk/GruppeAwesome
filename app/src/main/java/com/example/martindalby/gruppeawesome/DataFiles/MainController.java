@@ -17,12 +17,12 @@ public class MainController implements Serializable{
     private static MainController instans;
     public DatabaseController databaseControl;
     public String UserID;
-    public Bruger bruger;
+    public BrugerData bruger;
     public boolean sub;
 
     private MainController(){
         databaseControl = new DatabaseController(this);
-        bruger = new Bruger("", new ArrayList<UserWorkoutData>(), new ArrayList<String>());
+        bruger = new BrugerData("", new ArrayList<UserWorkoutData>(), new ArrayList<String>());
     }
 
     public static MainController getInstans(){
@@ -61,7 +61,7 @@ public class MainController implements Serializable{
     }
 */
 
-    public void pushUser(Bruger user){
+    public void pushUser(BrugerData user){
         databaseControl.PushBruger(user);
     }
 

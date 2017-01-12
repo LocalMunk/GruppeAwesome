@@ -1,4 +1,4 @@
-package com.example.martindalby.gruppeawesome;
+package com.example.martindalby.gruppeawesome.Activities;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -18,23 +18,23 @@ import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.martindalby.gruppeawesome.DataFiles.Graf;
+import com.example.martindalby.gruppeawesome.DataFiles.GrafData;
 import com.example.martindalby.gruppeawesome.DataFiles.MainController;
 import com.example.martindalby.gruppeawesome.DataFiles.OvelseData;
 import com.example.martindalby.gruppeawesome.DataFiles.SetData;
+import com.example.martindalby.gruppeawesome.R;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
 import java.util.ArrayList;
-import java.util.Set;
 
 
 /**
  * Created by Martin Dalby on 14-11-2016.
  */
 
-public class Ovelse extends AppCompatActivity implements View.OnClickListener {
+public class Ovelse_act extends AppCompatActivity implements View.OnClickListener {
 
     Button videre;
     int currentSet;
@@ -98,7 +98,7 @@ public class Ovelse extends AppCompatActivity implements View.OnClickListener {
 
     public boolean checkInput(String reps, String Weight){
         if(reps.length() == 0 || Weight.length() == 0){
-            Toast.makeText(Ovelse.this, "Udfyld repetitioner og vægt",
+            Toast.makeText(Ovelse_act.this, "Udfyld repetitioner og vægt",
                     Toast.LENGTH_LONG).show();
             return false;
         }
@@ -149,7 +149,7 @@ public class Ovelse extends AppCompatActivity implements View.OnClickListener {
                             (double) num_weight.getValue()));
                 }
                 catch(NullPointerException e){
-                    ovelseData.setGraf(new Graf());
+                    ovelseData.setGraf(new GrafData());
                     ovelseData.getGraf().setSetDatas(new ArrayList<SetData>());
                     ovelseData.getGraf().getSetDatas().add(new SetData(ovelseData.getGraf().getSetDatas().size(), (double) num_reps.getValue(), (double) num_weight.getValue()));
 
@@ -175,7 +175,7 @@ public class Ovelse extends AppCompatActivity implements View.OnClickListener {
         if(v == videre){
 
             if(getIntent().getIntExtra("pos",0) < datafiles.bruger.getTræningsPlan().getWorkout(getIntent().getIntExtra("workout", 0)).getOvelser().size() -1) {
-                Intent i = new Intent(this, Ovelse.class);
+                Intent i = new Intent(this, Ovelse_act.class);
                 i.putExtra("pos", getIntent().getIntExtra("pos", 0) + 1);
                 i.putExtra("workout", getIntent().getIntExtra("workout", 0));
                 startActivity(i);
