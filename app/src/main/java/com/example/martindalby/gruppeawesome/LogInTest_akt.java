@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.martindalby.gruppeawesome.DataFiles.Bruger;
 import com.example.martindalby.gruppeawesome.DataFiles.KostplanData;
@@ -29,7 +30,8 @@ import static android.R.attr.handle;
 
 public class LogInTest_akt extends AppCompatActivity implements View.OnClickListener {
 
-    Button sub, notsub;
+    Button sub;
+    TextView notsub;
     EditText bePeakedSubCode;
     MainController datafiles;
     SharedPreferences sharedPreferences;
@@ -55,8 +57,8 @@ public class LogInTest_akt extends AppCompatActivity implements View.OnClickList
         sub = (Button) findViewById(R.id.buttoncontinuesub);
         sub.setText("Log in");
 
-        notsub = (Button) findViewById(R.id.buttonnotsubbed);
-        notsub.setText("Fortsæt uden log in");
+        notsub = (TextView) findViewById(R.id.textnotsub);
+        notsub.setText("Har du ikke et login?");
 
         bePeakedSubCode = (EditText) findViewById(R.id.bepeakedsubcode);
         bePeakedSubCode.setHint("Indtast aktiveringsnøgle");
