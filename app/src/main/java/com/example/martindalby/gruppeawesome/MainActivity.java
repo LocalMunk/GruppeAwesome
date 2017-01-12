@@ -145,7 +145,7 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
 
 
         workout.setIcon(R.drawable.exerciseiconwhite);
-        kostplan.setIcon(R.drawable.foodicongrey);
+        kostplan.setIcon(R.drawable.foodicon_grey);
         //starter ikke med at sætte title til workouts??
         toolbar.setTitle("Workouts");
 
@@ -171,12 +171,12 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
                 switch (position) {
                     case 0:
                         workout.setIcon(R.drawable.exerciseiconwhite);
-                        kostplan.setIcon(R.drawable.foodicongrey);
+                        kostplan.setIcon(R.drawable.foodicon_grey);
                         toolbar.setTitle("Workouts");
                         break;
                     case 1:
                         workout.setIcon(R.drawable.exerciseicongrey);
-                        kostplan.setIcon(R.drawable.foodiconwhite);
+                        kostplan.setIcon(R.drawable.foodicon_white);
                         toolbar.setTitle("Kostplan");
                         break;
                 }
