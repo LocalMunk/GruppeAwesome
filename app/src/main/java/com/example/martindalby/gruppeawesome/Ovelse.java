@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -37,15 +38,13 @@ public class Ovelse extends AppCompatActivity implements View.OnClickListener {
     Button videre;
     int currentSet;
     ListView list;
-    TextView ExerciseName;
     OvelseAdapter listadapt;
     GraphView graph;
     FloatingActionButton fb;
     MainController datafiles;
     OvelseData ovelseData;
     NumberPicker num_weight,num_reps;
-
-//    Toolbar toolbar;
+    Toolbar toolbar;
 
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -84,15 +83,11 @@ public class Ovelse extends AppCompatActivity implements View.OnClickListener {
         listadapt = new OvelseAdapter(this);
         list.setAdapter(listadapt);
 
-        ExerciseName = (TextView) findViewById(R.id.ExerciseName);
-        ExerciseName.setTextSize(20);
-        ExerciseName.setText(ovelseData.getNavn());
 
 
-
-      //  toolbar = (Toolbar) findViewById(R.id.toolBar);
-      //  toolbar.setTitle(ovelseData.getNavn());
-       // setSupportActionBar(toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar3);
+        toolbar.setTitle(ovelseData.getNavn());
+        setSupportActionBar(toolbar);
 
 
         //viser ikke alt data
