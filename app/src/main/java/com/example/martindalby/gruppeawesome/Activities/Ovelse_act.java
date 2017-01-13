@@ -115,6 +115,7 @@ public class Ovelse_act extends AppCompatActivity implements View.OnClickListene
 
     public void onDestroy(){
         super.onDestroy();
+        ovelseData.setDone(1);
         datafiles.bruger.getTræningsPlan().getWorkout(getIntent().getIntExtra("workout", 0)).getOvelser().remove(getIntent().getIntExtra("pos", 0));
         datafiles.bruger.getTræningsPlan().getWorkout(getIntent().getIntExtra("workout", 0)).getOvelser().add(getIntent().getIntExtra("pos", 0), ovelseData);
 
@@ -186,11 +187,9 @@ public class Ovelse_act extends AppCompatActivity implements View.OnClickListene
                 i.putExtra("pos", getIntent().getIntExtra("pos", 0) + 1);
                 i.putExtra("workout", getIntent().getIntExtra("workout", 0));
                 startActivity(i);
-                ovelseData.setDone(1);
                 finish();
             }
             else{
-                ovelseData.setDone(1);
                 finish();
             }
         }

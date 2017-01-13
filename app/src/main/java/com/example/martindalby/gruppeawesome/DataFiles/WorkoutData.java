@@ -63,4 +63,8 @@ public class WorkoutData {
         this.lastDate = lastDate;
     }
 
+    public String toString(){
+        return this.getWorkoutname();
+    }
+
 }

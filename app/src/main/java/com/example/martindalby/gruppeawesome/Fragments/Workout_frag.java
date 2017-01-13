@@ -26,6 +26,7 @@ import com.example.martindalby.gruppeawesome.R;
 import com.example.martindalby.gruppeawesome.Activities.WorkoutList_act;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by frederik on 07-11-2016.
@@ -49,6 +50,8 @@ public class Workout_frag extends Fragment implements AdapterView.OnItemClickLis
 
         datafiles = MainController.getInstans();
         traeningsPlanData = datafiles.bruger.getTræningsPlan();
+
+        traeningsPlanData.setWorkouts(datafiles.sortByDate(traeningsPlanData.getWorkouts()));
         WorkoutAdapter adapter = new WorkoutAdapter(getActivity());
 
 

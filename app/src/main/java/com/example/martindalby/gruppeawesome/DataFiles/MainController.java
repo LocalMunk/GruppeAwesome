@@ -6,6 +6,7 @@ import com.example.martindalby.gruppeawesome.DAL.DatabaseController;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.UUID;
 
 /**
@@ -109,6 +110,29 @@ public class MainController implements Serializable{
         String uuid = UUID.randomUUID().toString();
         out = out + uuid;
         System.out.println("SE HER     " + out);
+        return out;
+    }
+
+    public ArrayList<WorkoutData> sortByDate(ArrayList<WorkoutData> in){
+        ArrayList out = new ArrayList<WorkoutData>();
+        System.out.println("Indholdet af in i starten   " + in);
+        WorkoutData ny = new WorkoutData();
+        ny.setLastDate(Calendar.getInstance().getTime());
+        int j = in.size();
+        for(int i = 0; i < j; i++) {
+            for (WorkoutData data : in) {
+                if (data.getLastDate().before(ny.getLastDate())) {
+                    ny = data;
+                }
+            }
+            in.remove(ny);
+            System.out.println("Dette er i IN: " + in);
+            out.add(ny);
+            System.out.println("Dette er i out: " + out);
+            ny = new WorkoutData();
+            ny.setLastDate(Calendar.getInstance().getTime());
+        }
+        System.out.println("indholdet af out til sidst   " + out);
         return out;
     }
 

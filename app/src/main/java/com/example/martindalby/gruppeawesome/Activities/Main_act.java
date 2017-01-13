@@ -262,7 +262,7 @@ public class Main_act extends AppCompatActivity /*implements View.OnClickListene
                 //Toast toast = Toast.makeText(getApplicationContext(), "Navn er for kort", Toast.LENGTH_LONG);
                 //toast.show();
 
-                traeningsPlanData.addWorkout(new WorkoutData(traeningsPlanData.getWorkouts().size(), workoutNavn.toString(), new ArrayList<OvelseData>(), null));
+                traeningsPlanData.addWorkout(new WorkoutData(traeningsPlanData.getWorkouts().size(), workoutNavn.toString(), new ArrayList<OvelseData>(), Calendar.getInstance().getTime()));
                 datafiles.pushUser(datafiles.bruger);
 
                 }
