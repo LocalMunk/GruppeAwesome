@@ -58,7 +58,6 @@ public class Main_act extends AppCompatActivity /*implements View.OnClickListene
         //henter bruger info
         currUser = sharedPreferences.getString("UserID", "fail");
         datafiles = MainController.getInstans();
-        datafiles.getUserFromDatabase(sharedPreferences.getString("UserID", "fail"));
         traeningsPlanData = datafiles.bruger.getTræningsPlan();
 
         toolbar = (Toolbar) findViewById(R.id.toolBar);
