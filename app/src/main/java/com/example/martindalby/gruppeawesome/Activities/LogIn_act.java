@@ -54,7 +54,7 @@ public class LogIn_act extends AppCompatActivity implements View.OnClickListener
 
 
         //til reset pf
-        //sharedPreferences.edit().putString("UserID", "delet me").commit();
+        sharedPreferences.edit().putString("UserID", "delet me").commit();
 
         sub = (Button) findViewById(R.id.buttoncontinuesub);
         sub.setText("Log ind");

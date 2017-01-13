@@ -212,8 +212,8 @@ public class Main_act extends AppCompatActivity /*implements View.OnClickListene
                 f = new Workout_frag();
             //tjekker om du er subscriber eller ej, derudfra bestemmer kostplanview
             else {
-                if (datafiles.sub) f = new Kostplan_frag();
-                else f = new KostplanNotSub_frag();
+                if (datafiles.bruger.getId().substring(0, 2).equals("FU")) f = new KostplanNotSub_frag();
+                else f = new Kostplan_frag();
             }
 
             Bundle b = new Bundle();
