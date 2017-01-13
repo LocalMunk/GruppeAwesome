@@ -87,7 +87,12 @@ public class DatabaseController {
                 BrugerData user = new BrugerData();
                 user.id = id;
                 user.træningsPlan = new TraeningsPlanData(traeningsPlanData.getWorkouts());
-                user.kostplan = new KostplanData(kostplanData.getRetter());
+                try {
+                    user.kostplan = new KostplanData(kostplanData.getRetter());
+                }
+                catch(NullPointerException e){
+                    user.kostplan = null;
+                }
                 datafiles.bruger = user;
 
                 System.out.println("Har hentet bruger:" + datafiles.bruger);

@@ -12,12 +12,19 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.martindalby.gruppeawesome.DataFiles.BrugerData;
+import com.example.martindalby.gruppeawesome.DataFiles.KostplanData;
 import com.example.martindalby.gruppeawesome.DataFiles.MainController;
 import com.example.martindalby.gruppeawesome.DataFiles.TraeningsPlanData;
 import com.example.martindalby.gruppeawesome.DataFiles.WorkoutData;
 import com.example.martindalby.gruppeawesome.R;
+import com.firebase.client.DataSnapshot;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
 
 import java.util.ArrayList;
+
+import static android.R.attr.version;
 
 public class LogIn_act extends AppCompatActivity implements View.OnClickListener {
 
@@ -27,14 +34,14 @@ public class LogIn_act extends AppCompatActivity implements View.OnClickListener
     MainController datafiles;
     SharedPreferences sharedPreferences;
     String createdUserID;
-
+    Firebase mRef;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in_test);
         datafiles = MainController.getInstans();
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        sharedPreferences.edit().remove("UserID").commit();
+        mRef = new Firebase("https://boodybook-a85b7.firebaseio.com/");
 
 
         datafiles.UserID = sharedPreferences.getString("UserID", "FAIL");
@@ -68,18 +75,8 @@ public class LogIn_act extends AppCompatActivity implements View.OnClickListener
             //Sørger for at main act bliver øverst i backstack
             i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
-
-            datafiles.getUserFromDatabase(sharedPreferences.getString("UserID", "FAIL"));
-
-            Handler handler = new Handler();
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-
-                }
-            }, 2000);
-
-            startActivity(i);
+            getUser(sharedPreferences.getString("UserID", "delet me"), i);
+            finish();
 
         }
 
@@ -95,21 +92,13 @@ public class LogIn_act extends AppCompatActivity implements View.OnClickListener
             datafiles.UserID = bePeakedSubCode.getText().toString();
             datafiles.getUserFromDatabase(bePeakedSubCode.getText().toString());
 
-            datafiles.sub = true;
-            try {
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-
-
             //Sørger for at main act bliver øverst i backstack
             i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
             //ProgressDialog.show(this, "", "En ProgressDialog", true).setCancelable(true);
 
 
-            startActivity(i);
+            getUser(bePeakedSubCode.getText().toString(), i);
             finish();
 
         } else if (v == notsub) {
@@ -146,5 +135,42 @@ public class LogIn_act extends AppCompatActivity implements View.OnClickListener
 
 
     }
+    public void getUser(String UserID, final Intent i) {
+
+        System.out.println("inde i bruger metode.");
+        mRef.child("Martins Test").child("brugere").child(UserID).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String id = dataSnapshot.getValue(BrugerData.class).getId();
+                TraeningsPlanData traeningsPlanData = dataSnapshot.getValue(BrugerData.class).getTræningsPlan();
+                KostplanData kostplanData = dataSnapshot.getValue(BrugerData.class).getKostplan();
+
+                System.out.println("Jeg er inde og hente brugeren: " + id);
+
+                BrugerData user = new BrugerData();
+                user.id = id;
+                user.træningsPlan = new TraeningsPlanData(traeningsPlanData.getWorkouts());
+                try {
+                    user.kostplan = new KostplanData(kostplanData.getRetter());
+                }
+                catch(NullPointerException e){
+                    user.kostplan = null;
+                }
+                datafiles.bruger = user;
+                startActivity(i);
+                System.out.println("Har hentet bruger:" + datafiles.bruger);
+
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+
+
+        });
+    }
+
+
 }
 

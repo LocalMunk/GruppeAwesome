@@ -15,8 +15,11 @@ import android.widget.BaseAdapter;
 import com.example.martindalby.gruppeawesome.DAL.DatabaseController;
 import com.example.martindalby.gruppeawesome.DataFiles.MainController;
 import com.example.martindalby.gruppeawesome.DataFiles.TraeningsPlanData;
+import com.example.martindalby.gruppeawesome.DataFiles.WorkoutData;
 import com.example.martindalby.gruppeawesome.R;
 import com.example.martindalby.gruppeawesome.Activities.WorkoutList_act;
+
+import java.util.ArrayList;
 
 /**
  * Created by frederik on 07-11-2016.
@@ -98,7 +101,13 @@ public class Workout_frag extends Fragment implements AdapterView.OnItemClickLis
 
         @Override
         public int getCount() {
-            return traeningsPlanData.getWorkouts().size();
+            try {
+                return traeningsPlanData.getWorkouts().size();
+            }
+            catch(NullPointerException e){
+                traeningsPlanData.setWorkouts(new ArrayList<WorkoutData>());
+                return traeningsPlanData.getWorkouts().size();
+            }
         }
         @Override
         public Object getItem(int position) {
