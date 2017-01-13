@@ -54,14 +54,14 @@ public class LogIn_act extends AppCompatActivity implements View.OnClickListener
 
 
         //til reset pf
-        sharedPreferences.edit().putString("UserID", "delet me").commit();
+        //sharedPreferences.edit().putString("UserID", "delet me").commit();
 
         sub = (Button) findViewById(R.id.buttoncontinuesub);
-        sub.setText("Log in");
+        sub.setText("Log ind");
         sub.setTextSize(20);
 
         notsub = (TextView) findViewById(R.id.textnotsub);
-        notsub.setText("Har du ikke et login?");
+        notsub.setText("Har du ikke et log ind?");
 
         bePeakedSubCode = (EditText) findViewById(R.id.bepeakedsubcode);
         bePeakedSubCode.setHint("Indtast aktiveringsnøgle");
@@ -124,7 +124,7 @@ public class LogIn_act extends AppCompatActivity implements View.OnClickListener
         Intent i = new Intent(this, Main_act.class);
 
         if (v == sub && bePeakedSubCode.getText().toString().equals("") == false) {
-
+            pd.show();
             sharedPreferences.edit().putString("UserID", bePeakedSubCode.getText().toString()).commit();
             datafiles.UserID = bePeakedSubCode.getText().toString();
             datafiles.getUserFromDatabase(bePeakedSubCode.getText().toString());
@@ -168,7 +168,6 @@ public class LogIn_act extends AppCompatActivity implements View.OnClickListener
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String id;
 
-                pd.show();
 
                 try {
                     id = dataSnapshot.getValue(BrugerData.class).getId();
