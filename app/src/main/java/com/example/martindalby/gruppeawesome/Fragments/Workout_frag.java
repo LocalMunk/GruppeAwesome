@@ -128,8 +128,13 @@ public class Workout_frag extends Fragment implements AdapterView.OnItemClickLis
                 workoutoverskrift.setText(traeningsPlanData.getWorkout(position).getWorkoutname());
 
                 TextView workoutbeskrivelser = (TextView) view.findViewById(R.id.WorkoutBeskrivelse);
-                workoutbeskrivelser.setText("sup");
-
+                try {
+                    workoutbeskrivelser.setText(traeningsPlanData.getWorkout(position).getLastDate().toString().substring(0, 10));
+                }
+                catch(NullPointerException e){
+                    e.printStackTrace();
+                    workoutbeskrivelser.setText("Aldrig udført");
+                }
                 System.out.println(workoutoverskrift.getId());
 
 

@@ -27,6 +27,7 @@ import com.example.martindalby.gruppeawesome.DataFiles.WorkoutData;
 import com.example.martindalby.gruppeawesome.R;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 /**
  * Created by Martin Dalby on 17-11-2016.
@@ -60,6 +61,11 @@ public class WorkoutList_act extends AppCompatActivity implements AdapterView.On
         setSupportActionBar(toolbar);
 
 
+    }
+
+    public void onDestroy(){
+        super.onDestroy();
+        finishWorkout();
     }
 
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -204,7 +210,24 @@ public class WorkoutList_act extends AppCompatActivity implements AdapterView.On
             else{
                 img.setImageResource(R.drawable.fluebenhvid);
             }
+
+
             return view;
+        }
+    }
+
+    public void finishWorkout(){
+        int i = 0;
+        for (OvelseData data : workoutData.getOvelser()){
+            if (data.isDone() == 1){
+                i++;
+            }
+        }
+        if(i == workoutData.getOvelser().size()) {
+            workoutData.setLastDate(Calendar.getInstance().getTime());
+            for (OvelseData data : workoutData.getOvelser()){
+                data.setDone(0);
+            }
         }
     }
 }

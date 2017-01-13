@@ -182,6 +182,7 @@ public class Ovelse_act extends AppCompatActivity implements View.OnClickListene
                 finish();
             }
             else{
+                ovelseData.setDone(1);
                 finish();
             }
         }
@@ -217,10 +218,12 @@ public class Ovelse_act extends AppCompatActivity implements View.OnClickListene
         public View getView(int position, View view, ViewGroup parent) {
             view = inflter .inflate(R.layout.ovelse_list, null);
 
-            TextView text = (TextView) view.findViewById(R.id.ovelselisttext);
-            text.setText("Reps: " + (int)getDataForListView().get(position).getY() +
-                    " Vægt: " + (int)getDataForListView().get(position).getZ() +
-                    " 1RM: " + (int)datafiles.calculate1RM(getDataForListView().get(position).getY(),getDataForListView().get(position).getZ()));
+            TextView listreps = (TextView) view.findViewById(R.id.listReps);
+            TextView listweight = (TextView) view.findViewById(R.id.listWeight);
+            TextView listRM = (TextView) view.findViewById(R.id.listRM);
+            listreps.setText(Integer.toString((int) getDataForListView().get(position).getY()));
+            listweight.setText(Integer.toString((int)getDataForListView().get(position).getZ()));
+            listRM.setText(Integer.toString((int)datafiles.calculate1RM(getDataForListView().get(position).getY(),getDataForListView().get(position).getZ())));
             return view;
         }
 
