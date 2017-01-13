@@ -256,10 +256,21 @@ public class Ovelse_act extends AppCompatActivity implements View.OnClickListene
             LineGraphSeries<DataPoint> series = new LineGraphSeries<>(toDraw);
             graph.addSeries(series);
             graph.getViewport().setMaxX((double) ovelseData.getGraf().getSetDatas().size());
+            graph.getViewport().setMaxYAxisSize(størst1RM());
         }
         catch(NullPointerException e){
-
+            e.printStackTrace();
         }
+    }
+
+    public double størst1RM () {
+        double num = 0;
+
+        for (SetData data : ovelseData.getGraf().getSetDatas())
+            if (datafiles.calculate1RM(data.getY(), data.getZ()) > num) {
+                num = datafiles.calculate1RM(data.getY(), data.getZ());
+            }
+        return num;
     }
 }
 
