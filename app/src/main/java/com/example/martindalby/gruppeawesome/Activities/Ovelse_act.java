@@ -46,6 +46,7 @@ public class Ovelse_act extends AppCompatActivity implements View.OnClickListene
     OvelseData ovelseData;
     NumberPicker num_weight,num_reps;
     Toolbar toolbar;
+    TextView RepstextView, WeighttextView, RMtextView;
 
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -84,7 +85,14 @@ public class Ovelse_act extends AppCompatActivity implements View.OnClickListene
         listadapt = new OvelseAdapter(this);
         list.setAdapter(listadapt);
 
+        RepstextView = (TextView) findViewById(R.id.RepstextView);
+        RepstextView.setText("Reps");
 
+        WeighttextView = (TextView) findViewById(R.id.WeighttextView);
+        WeighttextView.setText("Vægt");
+
+        RMtextView = (TextView) findViewById(R.id.RMtextView);
+        RMtextView.setText("1RM");
 
         toolbar = (Toolbar) findViewById(R.id.toolbar3);
         toolbar.setTitle(ovelseData.getNavn());
