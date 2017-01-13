@@ -83,12 +83,14 @@ public class Workout_frag extends Fragment implements AdapterView.OnItemClickLis
                             //Toast toast = Toast.makeText(getApplicationContext(), "Navn er for kort", Toast.LENGTH_LONG);
                             //toast.show();
 
-                            traeningsPlanData.addWorkout(new WorkoutData(traeningsPlanData.getWorkouts().size(), workoutNavn.toString(), new ArrayList<OvelseData>()));
+                            traeningsPlanData.addWorkout(new WorkoutData(traeningsPlanData.getWorkouts().size(), workoutNavn.toString(), new ArrayList<OvelseData>(),null));
                             datafiles.pushUser(datafiles.bruger);
 
                         }
 
                     });
+
+                    //banan
 
                     dialog.setNegativeButton("Anullér", new DialogInterface.OnClickListener() {
                         @Override
