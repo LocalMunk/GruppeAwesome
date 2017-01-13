@@ -1,5 +1,6 @@
 package com.example.martindalby.gruppeawesome.Activities;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Handler;
@@ -35,19 +36,16 @@ public class LogIn_act extends AppCompatActivity implements View.OnClickListener
     SharedPreferences sharedPreferences;
     String createdUserID;
     Firebase mRef;
+    ProgressDialog pd;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in_test);
+
         datafiles = MainController.getInstans();
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         mRef = new Firebase("https://boodybook-a85b7.firebaseio.com/");
-
-
         datafiles.UserID = sharedPreferences.getString("UserID", "FAIL");
-
-
-        System.out.println("Har været inde i login AKT");
 
         sub = (Button) findViewById(R.id.buttoncontinuesub);
         sub.setText("Log in");
@@ -62,12 +60,17 @@ public class LogIn_act extends AppCompatActivity implements View.OnClickListener
         sub.setOnClickListener(this);
         notsub.setOnClickListener(this);
 
+        pd = new ProgressDialog(this);
+        pd.setIndeterminate(true);
+        pd.setMessage("Loading...");
+        pd.setCancelable(false);
 
         //Får dig forbi login hvism man er logget ind
         if(sharedPreferences.getString("UserID", "delet me").equals("delet me")){
 
         }
         else{
+            pd.show();
             System.out.println("Kommer forbi log in automatisk-----");
 
             Intent i = new Intent(this, Main_act.class);
@@ -90,6 +93,7 @@ public class LogIn_act extends AppCompatActivity implements View.OnClickListener
     public void onClick(View v) {
         Intent i = new Intent(this, Main_act.class);
 
+        pd.show();
         if (v == sub && bePeakedSubCode.getText().toString().equals("") == false) {
             sharedPreferences.edit().putString("UserID", bePeakedSubCode.getText().toString()).commit();
             datafiles.UserID = bePeakedSubCode.getText().toString();
@@ -97,15 +101,10 @@ public class LogIn_act extends AppCompatActivity implements View.OnClickListener
 
             //Sørger for at main act bliver øverst i backstack
             i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-
-            //ProgressDialog.show(this, "", "En ProgressDialog", true).setCancelable(true);
-
-
             getUser(bePeakedSubCode.getText().toString(), i);
+        }
 
-        } else if (v == notsub) {
-
-
+        else if (v == notsub) {
             //genererer user id
             sharedPreferences.edit().putString("UserID", datafiles.generateUserKey()).commit();
             //gemmer brugers ID lokalt
@@ -129,8 +128,6 @@ public class LogIn_act extends AppCompatActivity implements View.OnClickListener
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-
-
             startActivity(i);
             finish();
         }
@@ -166,6 +163,7 @@ public class LogIn_act extends AppCompatActivity implements View.OnClickListener
                     user.kostplan = null;
                 }
                 datafiles.bruger = user;
+                pd.dismiss();
                 startActivity(i);
                 finish();
                 System.out.println("Har hentet bruger:" + datafiles.bruger);
