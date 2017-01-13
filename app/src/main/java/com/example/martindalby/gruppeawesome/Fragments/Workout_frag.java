@@ -1,19 +1,25 @@
 package com.example.martindalby.gruppeawesome.Fragments;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
+import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.BaseAdapter;
 
 import com.example.martindalby.gruppeawesome.DAL.DatabaseController;
 import com.example.martindalby.gruppeawesome.DataFiles.MainController;
+import com.example.martindalby.gruppeawesome.DataFiles.OvelseData;
 import com.example.martindalby.gruppeawesome.DataFiles.TraeningsPlanData;
 import com.example.martindalby.gruppeawesome.DataFiles.WorkoutData;
 import com.example.martindalby.gruppeawesome.R;
@@ -25,7 +31,7 @@ import java.util.ArrayList;
  * Created by frederik on 07-11-2016.
  */
 
-public class Workout_frag extends Fragment implements AdapterView.OnItemClickListener {
+public class Workout_frag extends Fragment implements AdapterView.OnItemClickListener   {
 
     TextView GnsWorkout, talgns;
     TextView workoutgoal, talgoal;
@@ -34,6 +40,7 @@ public class Workout_frag extends Fragment implements AdapterView.OnItemClickLis
     MainController datafiles;
     DatabaseController db;
     TraeningsPlanData traeningsPlanData;
+    FloatingActionButton fb;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -49,6 +56,54 @@ public class Workout_frag extends Fragment implements AdapterView.OnItemClickLis
         double[] toptal = {datafiles.bruger.træningsPlan.traeningerDenneUge,
                 datafiles.bruger.træningsPlan.getTraeningsGennemsnit(),
                 datafiles.bruger.træningsPlan.getTraeningsMål()};
+
+        fb=(FloatingActionButton)rod.findViewById(R.id.opretworkout);
+        //OnClick for floating actionbutton
+        fb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(v == fb){
+
+                    AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity(), R.style.MyDialogTheme);
+
+
+                    final EditText editText = new EditText(getActivity());
+                    dialog.setMessage("Hvad skal din nye workout hedde?");
+                    dialog.setTitle("Opret workout");
+                    dialog.setView(editText);
+                    editText.setHint("Navn");
+
+
+                    dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+
+                        @Override
+                        public void onClick(DialogInterface dialog, int whichButton) {
+                            Editable workoutNavn = editText.getText();
+
+                            //Toast toast = Toast.makeText(getApplicationContext(), "Navn er for kort", Toast.LENGTH_LONG);
+                            //toast.show();
+
+                            traeningsPlanData.addWorkout(new WorkoutData(traeningsPlanData.getWorkouts().size(), workoutNavn.toString(), new ArrayList<OvelseData>()));
+                            datafiles.pushUser(datafiles.bruger);
+
+                        }
+
+                    });
+
+                    dialog.setNegativeButton("Anullér", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int whichButton) {
+                            dialog.dismiss();
+                        }
+                    });
+
+                    dialog.show();
+
+                }
+
+
+            }
+        });
 
         talgns = (TextView) rod.findViewById(R.id.TalGns);
         talgns.setText("" + toptal[0]);
@@ -75,6 +130,7 @@ public class Workout_frag extends Fragment implements AdapterView.OnItemClickLis
         return rod;
 
     }
+
 
 
 
