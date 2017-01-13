@@ -5,21 +5,23 @@
 
     <TextView
         android:text="TextView"
-        android:layout_width="50pt"
+        android:layout_width="100pt"
         android:layout_height="wrap_content"
         android:id="@+id/listReps"
         android:layout_weight="0.09" />
 
     <TextView
         android:text="TextView"
-        android:layout_width="50pt"
+        android:layout_marginLeft="50dp"
+        android:layout_width="100pt"
         android:layout_height="wrap_content"
         android:id="@+id/listWeight"
         android:layout_weight="0.09" />
 
     <TextView
         android:text="TextView"
-        android:layout_width="50pt"
+        android:layout_marginLeft="40dp"
+        android:layout_width="100pt"
         android:layout_height="wrap_content"
         android:id="@+id/listRM"
         android:layout_weight="0.09" />
