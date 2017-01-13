@@ -5,24 +5,28 @@
 
     <TextView
         android:text="TextView"
-        android:layout_width="100pt"
+        android:layout_width="30dp"
         android:layout_height="wrap_content"
         android:id="@+id/listReps"
-        android:layout_weight="0.09" />
+        android:gravity='center'
+        android:layout_weight="0.09"
+        android:textSize="20dp"/>
 
     <TextView
         android:text="TextView"
-        android:layout_marginLeft="50dp"
-        android:layout_width="100pt"
+        android:layout_width="30dp"
         android:layout_height="wrap_content"
         android:id="@+id/listWeight"
-        android:layout_weight="0.09" />
+        android:gravity='center'
+        android:layout_weight="0.09"
+        android:textSize="20dp"/>
 
     <TextView
         android:text="TextView"
-        android:layout_marginLeft="40dp"
-        android:layout_width="100pt"
+        android:layout_width="30dp"
         android:layout_height="wrap_content"
         android:id="@+id/listRM"
-        android:layout_weight="0.09" />
+        android:gravity='center'
+        android:layout_weight="0.09"
+        android:textSize="20dp"/>
 </LinearLayout>
