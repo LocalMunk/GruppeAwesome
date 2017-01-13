@@ -135,7 +135,7 @@ public class Workout_frag extends Fragment implements AdapterView.OnItemClickLis
 
 
 
-
+//banan
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Intent i = new Intent(getActivity(), WorkoutList_act.class);
