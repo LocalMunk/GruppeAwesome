@@ -28,6 +28,7 @@ import com.example.martindalby.gruppeawesome.R;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Created by Martin Dalby on 17-11-2016.
@@ -217,17 +218,22 @@ public class WorkoutList_act extends AppCompatActivity implements AdapterView.On
     }
 
     public void finishWorkout(){
-        int i = 0;
-        for (OvelseData data : workoutData.getOvelser()){
-            if (data.isDone() == 1){
-                i++;
+        try {
+            int i = 0;
+            for (OvelseData data : workoutData.getOvelser()) {
+                if (data.isDone() == 1) {
+                    i++;
+                }
+            }
+            if (i == workoutData.getOvelser().size()) {
+                workoutData.setLastDate(Calendar.getInstance().getTime());
+                for (OvelseData data : workoutData.getOvelser()) {
+                    data.setDone(0);
+                }
             }
         }
-        if(i == workoutData.getOvelser().size()) {
-            workoutData.setLastDate(Calendar.getInstance().getTime());
-            for (OvelseData data : workoutData.getOvelser()){
-                data.setDone(0);
-            }
+        catch(NullPointerException e){
+            e.printStackTrace();
         }
     }
 }
