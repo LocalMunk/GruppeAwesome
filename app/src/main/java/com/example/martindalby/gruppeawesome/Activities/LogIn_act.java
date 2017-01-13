@@ -74,9 +74,12 @@ public class LogIn_act extends AppCompatActivity implements View.OnClickListener
 
             //Sørger for at main act bliver øverst i backstack
             i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-
-            getUser(sharedPreferences.getString("UserID", "delet me"), i);
-
+            try {
+                getUser(sharedPreferences.getString("UserID", "delet me"), i);
+            }
+            catch(NullPointerException e){
+                e.printStackTrace();
+            }
 
         }
 
@@ -134,13 +137,20 @@ public class LogIn_act extends AppCompatActivity implements View.OnClickListener
 
 
     }
-    public void getUser(String UserID, final Intent i) {
+    public void getUser(String UserID, final Intent i) throws NullPointerException{
 
         System.out.println("inde i bruger metode.");
         mRef.child("Martins Test").child("brugere").child(UserID).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                String id = dataSnapshot.getValue(BrugerData.class).getId();
+                String id;
+                try {
+                    id = dataSnapshot.getValue(BrugerData.class).getId();
+                }
+                catch(Exception e){
+                    e.printStackTrace();
+                    return;
+                }
                 TraeningsPlanData traeningsPlanData = dataSnapshot.getValue(BrugerData.class).getTræningsPlan();
                 KostplanData kostplanData = dataSnapshot.getValue(BrugerData.class).getKostplan();
 
