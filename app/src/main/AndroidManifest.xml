@@ -5,24 +5,24 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name=".DAL.GruppeAwesome"
+        android:name=".GruppeAwesome"
         android:allowBackup="true"
         android:icon="@mipmap/bb"
         android:label="BodyBook"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LogInTest_akt">
+        <activity android:name=".Activities.LogIn_act">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"/>
-        <activity android:name=".OpskriftListe" />
-        <activity android:name=".Opskrift" />
-        <activity android:name=".Ovelse" />
-        <activity android:name=".WorkoutList" />
+        <activity android:name=".Activities.Main_act"/>
+        <activity android:name=".Activities.OpskriftListe_act" />
+        <activity android:name=".Activities.Opskrift_act" />
+        <activity android:name=".Activities.Ovelse_act" />
+        <activity android:name=".Activities.WorkoutList_act" />
         <!--
  ATTENTION: This was auto-generated to add Google Play services to your project for
      App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information.

@@ -6,8 +6,8 @@ import java.util.ArrayList;
  * Created by Martin Dalby on 18-11-2016.
  */
 
-public class Graf {
-    public Graf() {
+public class GrafData {
+    public GrafData() {
     }
 
     ArrayList<SetData> setDatas;
@@ -16,7 +16,7 @@ public class Graf {
         this.setDatas = setDatas;
     }
 
-    public Graf(ArrayList<SetData> setDatas){
+    public GrafData(ArrayList<SetData> setDatas){
         this.setDatas = setDatas;
     }
 

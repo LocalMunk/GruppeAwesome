@@ -1,13 +1,11 @@
 package com.example.martindalby.gruppeawesome.DAL;
 
-import com.example.martindalby.gruppeawesome.DataFiles.Bruger;
+import com.example.martindalby.gruppeawesome.DataFiles.BrugerData;
 import com.example.martindalby.gruppeawesome.DataFiles.KostplanData;
 import com.example.martindalby.gruppeawesome.DataFiles.MainController;
 import com.example.martindalby.gruppeawesome.DataFiles.OpskriftData;
 import com.example.martindalby.gruppeawesome.DataFiles.OvelseData;
 import com.example.martindalby.gruppeawesome.DataFiles.TraeningsPlanData;
-import com.example.martindalby.gruppeawesome.DataFiles.UserWorkoutData;
-import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
@@ -23,7 +21,7 @@ public class DatabaseController {
 
     public ArrayList<String> morgenTest;
     public ArrayList<String> userID;
-    public Bruger bruger;
+    public BrugerData bruger;
     public OpskriftData opskriftD;
     public OvelseData ovelseData;
     public ArrayList<OpskriftData> opskriftout;
@@ -44,7 +42,7 @@ public class DatabaseController {
         morgenTest = new ArrayList<>();
         opskriftout = new ArrayList<OpskriftData>();
         version = "Martins Test";
-        bruger = new Bruger();
+        bruger = new BrugerData();
         opskriftD = new OpskriftData();
         ovelseData = new OvelseData();
 
@@ -68,7 +66,7 @@ public class DatabaseController {
 
     }
 
-    public void PushBruger(Bruger bruger){
+    public void PushBruger(BrugerData bruger){
         mRef.child(version).child("brugere").child(bruger.id).setValue(bruger);
     }
 
@@ -80,13 +78,13 @@ public class DatabaseController {
         mRef.child(version).child("brugere").child(UserID).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                String id = dataSnapshot.getValue(Bruger.class).getId();
-                TraeningsPlanData traeningsPlanData = dataSnapshot.getValue(Bruger.class).getTræningsPlan();
-                KostplanData kostplanData = dataSnapshot.getValue(Bruger.class).getKostplan();
+                String id = dataSnapshot.getValue(BrugerData.class).getId();
+                TraeningsPlanData traeningsPlanData = dataSnapshot.getValue(BrugerData.class).getTræningsPlan();
+                KostplanData kostplanData = dataSnapshot.getValue(BrugerData.class).getKostplan();
 
                 System.out.println("Jeg er inde og hente brugeren: " + id);
 
-                Bruger user = new Bruger();
+                BrugerData user = new BrugerData();
                 user.id = id;
                 user.træningsPlan = new TraeningsPlanData(traeningsPlanData.getWorkouts());
                 user.kostplan = new KostplanData(kostplanData.getRetter());

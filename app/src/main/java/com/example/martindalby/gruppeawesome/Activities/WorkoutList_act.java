@@ -1,4 +1,4 @@
-package com.example.martindalby.gruppeawesome;
+package com.example.martindalby.gruppeawesome.Activities;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -20,11 +19,12 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.example.martindalby.gruppeawesome.DataFiles.Graf;
+import com.example.martindalby.gruppeawesome.DataFiles.GrafData;
 import com.example.martindalby.gruppeawesome.DataFiles.MainController;
 import com.example.martindalby.gruppeawesome.DataFiles.OvelseData;
 import com.example.martindalby.gruppeawesome.DataFiles.SetData;
 import com.example.martindalby.gruppeawesome.DataFiles.WorkoutData;
+import com.example.martindalby.gruppeawesome.R;
 
 import java.util.ArrayList;
 
@@ -32,7 +32,7 @@ import java.util.ArrayList;
  * Created by Martin Dalby on 17-11-2016.
  */
 
-public class WorkoutList extends AppCompatActivity implements AdapterView.OnItemClickListener {
+public class WorkoutList_act extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
     String[] ovelser;
     int[] setsArray;
@@ -63,7 +63,7 @@ public class WorkoutList extends AppCompatActivity implements AdapterView.OnItem
     }
 
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Intent i = new Intent(this, Ovelse.class);
+        Intent i = new Intent(this, Ovelse_act.class);
         i.putExtra("titles",ovelser);
         i.putExtra("sets",setsArray);
         i.putExtra("pos", position);
@@ -118,7 +118,7 @@ public class WorkoutList extends AppCompatActivity implements AdapterView.OnItem
                 }
 
                 ArrayList ny = new ArrayList<SetData>();
-                data.setGraf(new Graf(ny));
+                data.setGraf(new GrafData(ny));
 
 
                 try {
