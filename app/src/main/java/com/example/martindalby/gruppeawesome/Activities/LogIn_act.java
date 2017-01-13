@@ -76,7 +76,7 @@ public class LogIn_act extends AppCompatActivity implements View.OnClickListener
             i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
             getUser(sharedPreferences.getString("UserID", "delet me"), i);
-            finish();
+
 
         }
 
@@ -99,7 +99,6 @@ public class LogIn_act extends AppCompatActivity implements View.OnClickListener
 
 
             getUser(bePeakedSubCode.getText().toString(), i);
-            finish();
 
         } else if (v == notsub) {
 
@@ -158,6 +157,7 @@ public class LogIn_act extends AppCompatActivity implements View.OnClickListener
                 }
                 datafiles.bruger = user;
                 startActivity(i);
+                finish();
                 System.out.println("Har hentet bruger:" + datafiles.bruger);
 
             }

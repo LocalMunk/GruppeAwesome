@@ -157,7 +157,6 @@ public class Ovelse_act extends AppCompatActivity implements View.OnClickListene
                 datafiles.pushUser();
                 list.invalidateViews();
                 list.refreshDrawableState();
-                System.out.println("LISTEN AF RESULTATER"  +datafiles.bruger.getTræningsPlan().getWorkouts().get(0).getOvelser().get(3).getGraf().getSetDatas());
                 updateGraph();
             }
         });

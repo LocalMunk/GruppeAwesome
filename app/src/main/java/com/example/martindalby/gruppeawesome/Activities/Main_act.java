@@ -54,10 +54,11 @@ public class Main_act extends AppCompatActivity /*implements View.OnClickListene
         //midlertidig brugt til id reset
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
+
         //henter bruger info
         currUser = sharedPreferences.getString("UserID", "fail");
         datafiles = MainController.getInstans();
-
+        datafiles.getUserFromDatabase(sharedPreferences.getString("UserID", "fail"));
         traeningsPlanData = datafiles.bruger.getTræningsPlan();
 
         toolbar = (Toolbar) findViewById(R.id.toolBar);
