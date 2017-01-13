@@ -182,6 +182,7 @@ public class Ovelse_act extends AppCompatActivity implements View.OnClickListene
                 finish();
             }
             else{
+                ovelseData.setDone(1);
                 finish();
             }
         }

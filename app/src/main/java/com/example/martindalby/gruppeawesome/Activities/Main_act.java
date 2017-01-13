@@ -29,6 +29,8 @@ import com.example.martindalby.gruppeawesome.R;
 import com.example.martindalby.gruppeawesome.Fragments.Workout_frag;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 import io.fabric.sdk.android.Fabric;
 
@@ -260,7 +262,7 @@ public class Main_act extends AppCompatActivity /*implements View.OnClickListene
                 //Toast toast = Toast.makeText(getApplicationContext(), "Navn er for kort", Toast.LENGTH_LONG);
                 //toast.show();
 
-                traeningsPlanData.addWorkout(new WorkoutData(traeningsPlanData.getWorkouts().size(), workoutNavn.toString(), new ArrayList<OvelseData>()));
+                traeningsPlanData.addWorkout(new WorkoutData(traeningsPlanData.getWorkouts().size(), workoutNavn.toString(), new ArrayList<OvelseData>(), null));
                 datafiles.pushUser(datafiles.bruger);
 
                 }

@@ -15,6 +15,8 @@ import android.widget.TextView;
 import com.example.martindalby.gruppeawesome.DataFiles.BrugerData;
 import com.example.martindalby.gruppeawesome.DataFiles.KostplanData;
 import com.example.martindalby.gruppeawesome.DataFiles.MainController;
+import com.example.martindalby.gruppeawesome.DataFiles.OpskriftData;
+import com.example.martindalby.gruppeawesome.DataFiles.OvelseData;
 import com.example.martindalby.gruppeawesome.DataFiles.TraeningsPlanData;
 import com.example.martindalby.gruppeawesome.DataFiles.WorkoutData;
 import com.example.martindalby.gruppeawesome.R;
@@ -24,6 +26,8 @@ import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 import static android.R.attr.version;
 
@@ -42,10 +46,12 @@ public class LogIn_act extends AppCompatActivity implements View.OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in_test);
 
+
         datafiles = MainController.getInstans();
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         mRef = new Firebase("https://boodybook-a85b7.firebaseio.com/");
         datafiles.UserID = sharedPreferences.getString("UserID", "FAIL");
+
 
         //til reset pf
         sharedPreferences.edit().putString("UserID", "delet me").commit();
@@ -67,6 +73,28 @@ public class LogIn_act extends AppCompatActivity implements View.OnClickListener
         pd.setIndeterminate(true);
         pd.setMessage("Loading...");
         pd.setCancelable(false);
+
+
+        /* TILFØJER TEST BOB TILDATABASEN
+        datafiles.bruger = new BrugerData();
+        datafiles.bruger.setId("bob");
+        datafiles.bruger.setKostplan(new KostplanData());
+        datafiles.bruger.setTræningsPlan(new TraeningsPlanData());
+
+        ArrayList work = new ArrayList<WorkoutData>();
+        work.add(new WorkoutData(0, "Ost", new ArrayList< OvelseData>(), null));
+
+        datafiles.bruger.getTræningsPlan().setWorkouts(work);
+
+        datafiles.bruger.getTræningsPlan().getWorkouts().get(0).setOvelser(new ArrayList<OvelseData>());
+
+        ArrayList rets = new ArrayList<OpskriftData>();
+        rets.add(new OpskriftData("Ost", "1 ost \n 1 bajer", "spis osten og drik bajeren", "img",  "0", 0));
+        rets.add(new OpskriftData("Bacon", "1 Bacon \n 1 bajer", "spis bacon og drik bajeren", "img",  "1", 0));
+
+        datafiles.bruger.getKostplan().setRetter(rets);
+
+        datafiles.pushUser();       */
 
         //Får dig forbi login hvism man er logget ind
         if(sharedPreferences.getString("UserID", "delet me").equals("delet me")){
