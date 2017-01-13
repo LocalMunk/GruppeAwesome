@@ -29,6 +29,33 @@
             app:srcCompat="@drawable/grafbb"
             android:id="@+id/graph"></com.jjoe64.graphview.GraphView>
 
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="32dp">
+
+            <TextView
+                android:layout_width="50pt"
+                android:layout_height="wrap_content"
+                android:id="@+id/RepstextView"
+                android:layout_weight="1"
+                android:text="TextView" />
+
+            <TextView
+                android:layout_width="50pt"
+                android:layout_height="wrap_content"
+                android:id="@+id/WeighttextView"
+                android:layout_weight="1"
+                android:text="TextView" />
+
+            <TextView
+                android:layout_width="50pt"
+                android:layout_height="wrap_content"
+                android:id="@+id/RMtextView"
+                android:text="TextView"/>
+
+        </LinearLayout>
+
         <ListView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
