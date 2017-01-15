@@ -163,7 +163,7 @@ public class LogIn_act extends AppCompatActivity implements View.OnClickListener
     public void getUser(String UserID, final Intent i) throws NullPointerException{
 
         System.out.println("inde i bruger metode.");
-        mRef.child("Martins Test").child("brugere").child(UserID).addValueEventListener(new ValueEventListener() {
+        mRef.child("Martins Test").child("brugere").child(UserID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String id;

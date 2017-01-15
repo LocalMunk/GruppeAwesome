@@ -26,6 +26,7 @@ import com.example.martindalby.gruppeawesome.R;
 import com.example.martindalby.gruppeawesome.Activities.WorkoutList_act;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -86,7 +87,7 @@ public class Workout_frag extends Fragment implements AdapterView.OnItemClickLis
                             //Toast toast = Toast.makeText(getApplicationContext(), "Navn er for kort", Toast.LENGTH_LONG);
                             //toast.show();
 
-                            traeningsPlanData.addWorkout(new WorkoutData(traeningsPlanData.getWorkouts().size(), workoutNavn.toString(), new ArrayList<OvelseData>(),null));
+                            traeningsPlanData.addWorkout(new WorkoutData(traeningsPlanData.getWorkouts().size(), workoutNavn.toString(), new ArrayList<OvelseData>(), Calendar.getInstance().getTime()));
                             datafiles.pushUser(datafiles.bruger);
 
                         }

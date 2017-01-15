@@ -53,6 +53,7 @@ public class Main_act extends AppCompatActivity /*implements View.OnClickListene
         Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_main2);
 
+
         //midlertidig brugt til id reset
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
@@ -61,6 +62,8 @@ public class Main_act extends AppCompatActivity /*implements View.OnClickListene
         currUser = sharedPreferences.getString("UserID", "fail");
         datafiles = MainController.getInstans();
         traeningsPlanData = datafiles.bruger.getTræningsPlan();
+
+        datafiles.getUserFromDatabase(currUser);
 
         toolbar = (Toolbar) findViewById(R.id.toolBar);
 

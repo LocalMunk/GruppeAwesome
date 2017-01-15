@@ -78,22 +78,7 @@ public class DatabaseController {
         mRef.child(version).child("brugere").child(UserID).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                String id = dataSnapshot.getValue(BrugerData.class).getId();
-                TraeningsPlanData traeningsPlanData = dataSnapshot.getValue(BrugerData.class).getTræningsPlan();
-                KostplanData kostplanData = dataSnapshot.getValue(BrugerData.class).getKostplan();
-
-                System.out.println("Jeg er inde og hente brugeren: " + id);
-
-                BrugerData user = new BrugerData();
-                user.id = id;
-                user.træningsPlan = new TraeningsPlanData(traeningsPlanData.getWorkouts());
-                try {
-                    user.kostplan = new KostplanData(kostplanData.getRetter());
-                }
-                catch(NullPointerException e){
-                    user.kostplan = null;
-                }
-                datafiles.bruger = user;
+                datafiles.bruger = dataSnapshot.getValue(BrugerData.class);
 
                 System.out.println("Har hentet bruger:" + datafiles.bruger);
 
