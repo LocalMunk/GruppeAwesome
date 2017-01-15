@@ -233,7 +233,7 @@ public class Main_act extends AppCompatActivity /*implements View.OnClickListene
         }
     }
 
-
+/*            har fjernet top plusset så der ikke er 2 // Martin
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
@@ -290,6 +290,6 @@ public class Main_act extends AppCompatActivity /*implements View.OnClickListene
 
         //DBCon.getDBH().addOvelse();
     }
-
+    */
 
 }
