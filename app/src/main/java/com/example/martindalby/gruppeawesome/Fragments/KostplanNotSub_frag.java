@@ -33,7 +33,7 @@ public class KostplanNotSub_frag extends Fragment implements View.OnClickListene
 
     @Override
     public void onClick(View v) {
-        Uri uri = Uri.parse("http://www.bepeaked.com/");
+        Uri uri = Uri.parse("http:www.bepeaked.com/videre/");
         Intent i = new Intent(Intent.ACTION_VIEW, uri);
         startActivity(i);
     }
