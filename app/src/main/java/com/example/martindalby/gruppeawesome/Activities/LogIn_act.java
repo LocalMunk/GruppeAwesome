@@ -1,6 +1,7 @@
 package com.example.martindalby.gruppeawesome.Activities;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Handler;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.martindalby.gruppeawesome.DataFiles.BrugerData;
 import com.example.martindalby.gruppeawesome.DataFiles.KostplanData;
@@ -41,16 +43,17 @@ public class LogIn_act extends AppCompatActivity implements View.OnClickListener
     String createdUserID;
     Firebase mRef;
     ProgressDialog pd;
+    Context con;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in_test);
 
-
         datafiles = MainController.getInstans();
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         mRef = new Firebase("https://boodybook-a85b7.firebaseio.com/");
         datafiles.UserID = sharedPreferences.getString("UserID", "FAIL");
+        con = this;
 
 
         //til reset pf
@@ -158,6 +161,11 @@ public class LogIn_act extends AppCompatActivity implements View.OnClickListener
             finish();
         }
 
+        //login findes ikke
+        else {
+            System.out.println("findes ikke leleelelelele");
+        }
+
 
     }
     public void getUser(String UserID, final Intent i) throws NullPointerException{
@@ -175,6 +183,8 @@ public class LogIn_act extends AppCompatActivity implements View.OnClickListener
                 catch(Exception e){
                     e.printStackTrace();
                     pd.dismiss();
+                    Toast toast = Toast.makeText(con, "Nøgle findes ikke", Toast.LENGTH_SHORT);
+                    toast.show();
                     return;
                 }
                 TraeningsPlanData traeningsPlanData = dataSnapshot.getValue(BrugerData.class).getTræningsPlan();
