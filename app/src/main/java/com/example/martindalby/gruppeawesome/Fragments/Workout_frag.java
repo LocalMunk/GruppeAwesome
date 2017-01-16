@@ -90,6 +90,7 @@ public class Workout_frag extends Fragment implements AdapterView.OnItemClickLis
                             Editable workoutNavn = editText.getText();
 
                             traeningsPlanData.addWorkout(new WorkoutData(traeningsPlanData.getWorkouts().size(), workoutNavn.toString(), new ArrayList<OvelseData>(), Calendar.getInstance().getTime()));
+                            datafiles.bruger.setTræningsPlan(traeningsPlanData);
                             datafiles.pushUser(datafiles.bruger);
                             workoutlist.invalidateViews();
                             workoutlist.refreshDrawableState();

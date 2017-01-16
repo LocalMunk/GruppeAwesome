@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -37,7 +38,7 @@ import java.util.Date;
  * Created by Martin Dalby on 17-11-2016.
  */
 
-public class WorkoutList_act extends AppCompatActivity implements AdapterView.OnItemClickListener{
+public class WorkoutList_act extends AppCompatActivity implements AdapterView.OnItemClickListener, View.OnClickListener{
 
     String[] ovelser;
     int[] setsArray;
@@ -48,19 +49,25 @@ public class WorkoutList_act extends AppCompatActivity implements AdapterView.On
     WorkoutData workoutData;
     SharedPreferences sharedPreferences;
     public static final int REQUEST_CODE = 1;
+    Button doneButton;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workoutlist);
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         datafiles = MainController.getInstans();
-        workoutData = datafiles.bruger.getTræningsPlan().getWorkout(getIntent().getIntExtra("workout", 0));
-        adapter = new WorkoutListAdapter(this);
         int i = getIntent().getIntExtra("workout", 0);
+        workoutData = datafiles.bruger.getTræningsPlan().getWorkout(i);
+        adapter = new WorkoutListAdapter(this);
+
         listView = (ListView) findViewById(R.id.Ovelselistview);
         listView.setOnItemClickListener(this);
         listView.setAdapter(adapter);
         System.out.println("1 check");
+
+        doneButton = (Button) findViewById(R.id.doneworkout);
+        doneButton.setOnClickListener(this);
+        doneButton.setText("Drik Bajer - Tryk her");
 
 
         toolbar = (Toolbar) findViewById(R.id.toolBar);
@@ -74,6 +81,17 @@ public class WorkoutList_act extends AppCompatActivity implements AdapterView.On
         super.onDestroy();
         finishWorkout();
         datafiles.pushUser(datafiles.bruger);
+    }
+
+    @Override
+    public void onClick(View v) {
+        if(v == doneButton){
+            workoutData.setLastDate(Calendar.getInstance().getTime());
+            for (OvelseData data : workoutData.getOvelser()) {
+                data.setDone(0);
+            }
+            finish();
+        }
     }
 
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -149,6 +167,8 @@ public class WorkoutList_act extends AppCompatActivity implements AdapterView.On
                 }
                 listView.invalidateViews();
                 listView.refreshDrawableState();
+                datafiles.bruger.getTræningsPlan().getWorkouts().set(getIntent().getIntExtra("workout", 0), workoutData);
+                datafiles.pushUser(datafiles.bruger);
 
 
 
