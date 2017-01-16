@@ -4,18 +4,36 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg"
     >
-<RelativeLayout
+
+    <RelativeLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    >
 
     <TextView
-        android:text="Du er ikke Peaked, sub pls"
+        android:text="Du har desværre ikke adgang til denne funktionalitet"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textView"
-        android:textSize="40dp" />
+        android:textSize="20dp"
+        android:layout_margin="40dp"
+        android:layout_centerHorizontal="true"/>
 
-</RelativeLayout>
+    </RelativeLayout>
+
+    <Button
+        android:text="Få kostplan"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_margin="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/textView"
+        android:layout_alignStart="@+id/textView"
+        android:background="@color/colorPrimaryBtn2"
+        android:textSize="20dp"
+        android:textColor="@color/indicate"
+        android:textAllCaps="false"
+        android:id="@+id/faaKostplan" />
 
 
 </LinearLayout>

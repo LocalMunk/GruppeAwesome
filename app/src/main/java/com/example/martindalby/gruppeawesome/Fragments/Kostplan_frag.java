@@ -29,8 +29,7 @@ public class Kostplan_frag extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-           View rod = inflater.inflate(R.layout.kostplan_maaltider, container, false);
-
+        View rod = inflater.inflate(R.layout.kostplan_maaltider, container, false);
 
         datafiles = MainController.getInstans();
 
