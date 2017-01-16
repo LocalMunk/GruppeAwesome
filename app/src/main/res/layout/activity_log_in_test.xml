@@ -17,20 +17,22 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:layout_width="300dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="44dp"
+            android:layout_marginRight="44dp"
+            android:layout_marginTop="0dp"
             app:srcCompat="@drawable/loginbillede"
             android:id="@+id/imageView"
             android:textAlignment="center"
-            android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true" />
 
         <EditText
-            android:layout_width="250dp"
+            android:layout_width="220dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="4dp"
             android:inputType="textPersonName"
-            android:ems="15"
+            android:ems="10"
             android:id="@+id/bepeakedsubcode"
             android:textColorHint="@color/indicate"
             android:layout_below="@+id/imageView"

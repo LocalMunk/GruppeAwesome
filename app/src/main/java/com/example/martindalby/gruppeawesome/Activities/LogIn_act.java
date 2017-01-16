@@ -61,13 +61,14 @@ public class LogIn_act extends AppCompatActivity implements View.OnClickListener
 
         sub = (Button) findViewById(R.id.buttoncontinuesub);
         sub.setText("Log ind");
-        sub.setTextSize(20);
+        sub.setTextSize(15);
 
         notsub = (TextView) findViewById(R.id.textnotsub);
         notsub.setText("Har du ikke et log ind?");
 
         bePeakedSubCode = (EditText) findViewById(R.id.bepeakedsubcode);
-        bePeakedSubCode.setHint("Indtast aktiveringsnøgle");
+        bePeakedSubCode.setHint("Aktiveringsnøgle");
+        bePeakedSubCode.setTextSize(15);
 
         sub.setOnClickListener(this);
         notsub.setOnClickListener(this);
@@ -176,14 +177,13 @@ public class LogIn_act extends AppCompatActivity implements View.OnClickListener
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String id;
 
-
                 try {
                     id = dataSnapshot.getValue(BrugerData.class).getId();
                 }
                 catch(Exception e){
                     e.printStackTrace();
                     pd.dismiss();
-                    Toast toast = Toast.makeText(con, "Nøgle findes ikke", Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(con, "Aktiveringsnøgle findes ikke", Toast.LENGTH_SHORT);
                     toast.show();
                     return;
                 }
