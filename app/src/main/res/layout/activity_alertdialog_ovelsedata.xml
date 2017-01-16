@@ -21,13 +21,13 @@
             >
 
             <TextView
-                android:text="Reps"
+                android:text="Vægt"
                 android:layout_width="120dp"
                 android:layout_height="match_parent"
                 android:id="@+id/textReps" />
 
             <TextView
-                android:text="Weight"
+                android:text="Reps"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/textWeight" />

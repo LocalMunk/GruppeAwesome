@@ -93,7 +93,7 @@ public class Ovelse_act extends AppCompatActivity implements View.OnClickListene
         updateGraph();
     }
 
-
+    //skulle måske gerne bruges??
     public boolean checkInput(String reps, String Weight){
         if(reps.length() == 0 || Weight.length() == 0){
             Toast.makeText(Ovelse_act.this, "Udfyld repetitioner og vægt",
@@ -136,7 +136,7 @@ public class Ovelse_act extends AppCompatActivity implements View.OnClickListene
         //LayoutInflater li = LayoutInflater.from(this);
         //View dialogView = li.inflate(R.layout.opretworkoutdialog, null);
 
-        dialog.setMessage("Intast vægt og reps");
+        //dialog.setMessage("Intast vægt og reps");
         dialog.setTitle("Indtast øvelsesdata");
         dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
 
