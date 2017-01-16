@@ -48,6 +48,7 @@ public class Ovelse_act extends AppCompatActivity implements View.OnClickListene
     Toolbar toolbar;
     TextView RepstextView, WeighttextView, RMtextView;
 
+
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
 
@@ -61,18 +62,7 @@ public class Ovelse_act extends AppCompatActivity implements View.OnClickListene
             suppdata[i] = "Sæt " + (i+1) + ": ";
         }
 
-/*
-        weightPicker = (NumberPicker) findViewById(R.id.weightPicker);
-        weightPicker.setMinValue(50);
-        weightPicker.setMaxValue(400);
-        weightPicker.setValue(100);
 
-        number = (NumberPicker) findViewById(R.id.repsPicker);
-        number.setMinValue(1);
-        number.setMaxValue(30);
-        number.setValue(10);
-        number.setOnClickListener(this);
-        */
         fb = (FloatingActionButton) findViewById(R.id.ovelsefloating);
 
         fb.setOnClickListener(this);
@@ -115,10 +105,10 @@ public class Ovelse_act extends AppCompatActivity implements View.OnClickListene
 
     public void onDestroy(){
         super.onDestroy();
-        ovelseData.setDone(1);
+
         datafiles.bruger.getTræningsPlan().getWorkout(getIntent().getIntExtra("workout", 0)).getOvelser().remove(getIntent().getIntExtra("pos", 0));
         datafiles.bruger.getTræningsPlan().getWorkout(getIntent().getIntExtra("workout", 0)).getOvelser().add(getIntent().getIntExtra("pos", 0), ovelseData);
-
+        setResult(RESULT_OK);
         datafiles.pushUser();
 
     }
@@ -152,6 +142,7 @@ public class Ovelse_act extends AppCompatActivity implements View.OnClickListene
 
             @Override
             public void onClick(DialogInterface dialog, int whichButton) {
+                ovelseData.setDone(1);
                 try {
                     ovelseData.getGraf().getSetDatas().add(new SetData(ovelseData.getGraf().getSetDatas().size(),
                             (double) num_reps.getValue(),

@@ -3,7 +3,10 @@ package com.example.martindalby.gruppeawesome.Activities;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.preference.PreferenceManager.OnActivityResultListener;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -34,7 +37,7 @@ import java.util.Date;
  * Created by Martin Dalby on 17-11-2016.
  */
 
-public class WorkoutList_act extends AppCompatActivity implements AdapterView.OnItemClickListener {
+public class WorkoutList_act extends AppCompatActivity implements AdapterView.OnItemClickListener{
 
     String[] ovelser;
     int[] setsArray;
@@ -43,10 +46,13 @@ public class WorkoutList_act extends AppCompatActivity implements AdapterView.On
     private Toolbar toolbar;
     MainController datafiles;
     WorkoutData workoutData;
+    SharedPreferences sharedPreferences;
+    public static final int REQUEST_CODE = 1;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workoutlist);
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         datafiles = MainController.getInstans();
         workoutData = datafiles.bruger.getTræningsPlan().getWorkout(getIntent().getIntExtra("workout", 0));
         adapter = new WorkoutListAdapter(this);
@@ -67,6 +73,7 @@ public class WorkoutList_act extends AppCompatActivity implements AdapterView.On
     public void onDestroy(){
         super.onDestroy();
         finishWorkout();
+        datafiles.pushUser(datafiles.bruger);
     }
 
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -76,12 +83,16 @@ public class WorkoutList_act extends AppCompatActivity implements AdapterView.On
         i.putExtra("pos", position);
         i.putExtra("workout", getIntent().getIntExtra("workout", 0));
 
-        startActivity(i);
+        startActivityForResult(i, 1);
     }
 
-
-
-
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        System.out.println("inde i onActivityResult");
+        System.out.println(workoutData.getOvelser());
+        adapter.notifyDataSetChanged();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -136,7 +147,6 @@ public class WorkoutList_act extends AppCompatActivity implements AdapterView.On
                     out.add(data);
                     workoutData.setOvelser(out);
                 }
-                datafiles.pushUser(datafiles.bruger);
                 listView.invalidateViews();
                 listView.refreshDrawableState();
 
