@@ -51,8 +51,13 @@ public class Workout_frag extends Fragment implements AdapterView.OnItemClickLis
 
         datafiles = MainController.getInstans();
         traeningsPlanData = datafiles.bruger.getTræningsPlan();
+        try {
+            traeningsPlanData.setWorkouts(datafiles.sortByDate(traeningsPlanData.getWorkouts()));
+        } catch (NullPointerException e) {
+            //Fejlen er forventet når en ny bruger oprettes
+            e.printStackTrace();
+        }
 
-        traeningsPlanData.setWorkouts(datafiles.sortByDate(traeningsPlanData.getWorkouts()));
         WorkoutAdapter adapter = new WorkoutAdapter(getActivity());
 
 
@@ -84,12 +89,10 @@ public class Workout_frag extends Fragment implements AdapterView.OnItemClickLis
                         public void onClick(DialogInterface dialog, int whichButton) {
                             Editable workoutNavn = editText.getText();
 
-                            //Toast toast = Toast.makeText(getApplicationContext(), "Navn er for kort", Toast.LENGTH_LONG);
-                            //toast.show();
-
                             traeningsPlanData.addWorkout(new WorkoutData(traeningsPlanData.getWorkouts().size(), workoutNavn.toString(), new ArrayList<OvelseData>(), Calendar.getInstance().getTime()));
                             datafiles.pushUser(datafiles.bruger);
-
+                            workoutlist.invalidateViews();
+                            workoutlist.refreshDrawableState();
                         }
 
                     });

@@ -4,7 +4,9 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg"
     >
-
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <TextView
         android:text="Du er ikke Peaked, sub pls"
@@ -12,4 +14,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/textView"
         android:textSize="40dp" />
+
+</RelativeLayout>
+
+
 </LinearLayout>
