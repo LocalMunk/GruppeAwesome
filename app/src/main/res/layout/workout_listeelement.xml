@@ -19,7 +19,6 @@
             android:layout_height="wrap_content"
             android:id="@+id/WorkoutOverskrift"
             android:layout_marginTop="10dp"
-            android:textColor="@color/whiteDark"
              />
 
     <TextView
@@ -30,7 +29,6 @@
             android:id="@+id/WorkoutBeskrivelse"
             android:layout_marginLeft="34dp"
             android:layout_marginStart="34dp"
-            android:textColor="@color/whiteDark"
              />
 
 

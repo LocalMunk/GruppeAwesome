@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -30,6 +31,7 @@ public class OpskriftListe_act extends AppCompatActivity implements AdapterView.
     KostplanData kostplanData;
     private int type;
     ArrayList<OpskriftData> opskrifter;
+    LinearLayout layout;
 
 
     @Override
@@ -41,6 +43,23 @@ public class OpskriftListe_act extends AppCompatActivity implements AdapterView.
         System.out.println("TyperTe4xt fået fra intent: " + typeText);
         adapter = new KostPlanAdapter();
 
+        layout = new LinearLayout(this);
+        layout.setOrientation(LinearLayout.VERTICAL);
+
+        toolbar = new Toolbar(this);
+        toolbar.setTitleTextColor(getResources().getColor(R.color.indicate));
+        toolbar.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+        switch (type){
+            case 0: toolbar.setTitle("Morgenmad");
+                break;
+            case 1: toolbar.setTitle("Frokost");
+                break;
+            case 2: toolbar.setTitle("Aftensmad");
+                break;
+            case 3: toolbar.setTitle("Snack");
+        }
+
+        layout.addView(toolbar);
 
         System.out.println("xaxaxaxaxaxaxaxaxa" + datafiles.bruger);
 
@@ -63,8 +82,10 @@ public class OpskriftListe_act extends AppCompatActivity implements AdapterView.
         listView = new ListView(this);
         listView.setOnItemClickListener(this);
         listView.setAdapter(adapter);
-        listView.setBackgroundResource(R.drawable.bg);
-        setContentView(listView);
+        layout.setBackgroundResource(R.drawable.bg);
+        layout.addView(listView);
+
+        setContentView(layout);
     }
 
 
