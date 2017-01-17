@@ -79,27 +79,6 @@ public class LogIn_act extends AppCompatActivity implements View.OnClickListener
         pd.setCancelable(false);
 
 
-        /* TILFØJER TEST BOB TILDATABASEN
-        datafiles.bruger = new BrugerData();
-        datafiles.bruger.setId("bob");
-        datafiles.bruger.setKostplan(new KostplanData());
-        datafiles.bruger.setTræningsPlan(new TraeningsPlanData());
-
-        ArrayList work = new ArrayList<WorkoutData>();
-        work.add(new WorkoutData(0, "Ost", new ArrayList< OvelseData>(), null));
-
-        datafiles.bruger.getTræningsPlan().setWorkouts(work);
-
-        datafiles.bruger.getTræningsPlan().getWorkouts().get(0).setOvelser(new ArrayList<OvelseData>());
-
-        ArrayList rets = new ArrayList<OpskriftData>();
-        rets.add(new OpskriftData("Ost", "1 ost \n 1 bajer", "spis osten og drik bajeren", "img",  "0", 0));
-        rets.add(new OpskriftData("Bacon", "1 Bacon \n 1 bajer", "spis bacon og drik bajeren", "img",  "1", 0));
-
-        datafiles.bruger.getKostplan().setRetter(rets);
-
-        datafiles.pushUser();       */
-
         //Får dig forbi login hvism man er logget ind
         if(sharedPreferences.getString("UserID", "delet me").equals("delet me")){
 
@@ -131,7 +110,6 @@ public class LogIn_act extends AppCompatActivity implements View.OnClickListener
             pd.show();
             sharedPreferences.edit().putString("UserID", bePeakedSubCode.getText().toString()).commit();
             datafiles.UserID = bePeakedSubCode.getText().toString();
-            datafiles.getUserFromDatabase(bePeakedSubCode.getText().toString());
 
             //Sørger for at main act bliver øverst i backstack
             i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

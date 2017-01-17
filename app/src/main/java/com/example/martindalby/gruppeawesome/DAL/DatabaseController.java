@@ -49,21 +49,6 @@ public class DatabaseController {
         ovelseout = new ArrayList<OvelseData>();
         mRef = new Firebase("https://boodybook-a85b7.firebaseio.com/");
 
-
-        //push hele test kostplan op i firebase
-       // pushKostPlan(kostPlanDt);
-
-
-
-    }
-
-    //pusher
-    public void pushOvelse(int id, String navn, int done, int sets) {
-
-        OvelseData ovelseData = new OvelseData(id, navn, done, sets);
-        String j = id + "";
-        mRef.child(version).child("Ovelser").child(j).setValue(ovelseData);
-
     }
 
     public void PushBruger(BrugerData bruger){
@@ -79,106 +64,13 @@ public class DatabaseController {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 datafiles.bruger = dataSnapshot.getValue(BrugerData.class);
-
                 System.out.println("Har hentet bruger:" + datafiles.bruger);
 
             }
 
             @Override
             public void onCancelled(FirebaseError firebaseError) {
-
-            }
-
-
-        });
-    }
-
-    public void getOpskrift (final ArrayList<String> ids) {
-
-        //henter data fra db
-        mRef.child(version).child("kostplan").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                //henter børn ned
-                for(String i : ids){
-                    if(i != null){
-                        opskriftout.add(dataSnapshot.child(i).getValue(OpskriftData.class));
-                    }
-                }
-                /*
-                opskriftD.setNavn(dataSnapshot.child(id).getValue(OpskriftData.class).getNavn());
-                opskriftD.setFremgangsmåde(dataSnapshot.child(id).getValue(OpskriftData.class).getFremgangsmåde());
-                opskriftD.setId(dataSnapshot.child(id).getValue(OpskriftData.class).getId());
-                opskriftD.setImglink(dataSnapshot.child(id).getValue(OpskriftData.class).getImglink());
-                opskriftD.setIngrediens(dataSnapshot.child((id)).getValue(OpskriftData.class).getIngrediens());
-                opskriftD.setType(dataSnapshot.child(id).getValue(OpskriftData.class).getType());
-                System.out.println("Henter denne ret: " + opskriftD.getNavn());
-                */
-                ArrayList<OpskriftData> out = new ArrayList<OpskriftData>();
-                for (OpskriftData data : opskriftout){
-                    OpskriftData newData = new OpskriftData();
-                    String id = data.getId();
-                    String navn = data.getNavn();
-                    int type = data.getType();
-                    String ingrediens = data.getIngrediens();
-                    String imgLink = data.getImglink();
-                    String frem =data.getFremgangsmåde();
-                    newData.setId(id);
-                    newData.setNavn(navn);
-                    newData.setFremgangsmåde(frem);
-                    newData.setImglink(imgLink);
-                    newData.setIngrediens(ingrediens);
-                    newData.setType(type);
-                    out.add(newData);
-                }
-                datafiles.bruger.kostplan.setRetter(out);
-
-                System.out.println("Vi har hentet de her retter:  " + out);
-            }
-
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-
             }
         });
-
     }
-
-    public ArrayList<OvelseData> getWorkout(final ArrayList<String> ids){
-        mRef.child(version).child("Ovelser").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for(String id : ids){
-                    if(id != null){
-                        ovelseout.add(dataSnapshot.child(id).getValue(OvelseData.class));
-                    }
-                }
-
-
-                for ( OvelseData data : ovelseout) {
-                    OvelseData ovels = new OvelseData();
-                    String navn = data.getNavn();
-                    int done = data.isDone();
-                    int sets = data.getSets();
-                    int id = data.getId();
-
-                    ovels.setNavn(navn);
-                    ovels.setDone(done);
-                    ovels.setSets(sets);
-                    ovels.setId(id);
-
-                    out.add(ovels);
-                }
-
-                System.out.println("har hentet denne Øvelse" + ovelseData.getNavn());
-            }
-
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-
-            }
-        });
-        return out;
-    }
-
 }

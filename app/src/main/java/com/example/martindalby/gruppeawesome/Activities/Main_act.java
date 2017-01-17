@@ -78,52 +78,6 @@ public class Main_act extends AppCompatActivity /*implements View.OnClickListene
         final TabLayout.Tab workout=tabLayout.newTab();
         final TabLayout.Tab kostplan=tabLayout.newTab();
 
-
-
-
-
-        /*   Prøver at hente bruger ned fra databasen
-        if(datafiles.bruger == null){
-            datafiles.getUserFromDatabase(sharedPreferences.getString("UserID", "FAIL"));
-            System.out.println("jeg kan sku ikke helt hente brugeren til dig");
-        }
-        else{
-            System.out.println("Den er helt gal bro");
-        }
-
-        datafiles.bruger.id = sharedPreferences.getString("UserID", "FAIL");
-        */
-
-
-        //workout.setText("Workouts");
-        //kostplan.setText("kostplan");
-
-
-        /*     LAVER EN TEST BRUGER TIL DATABASEN.
-        ArrayList<String> ovelseids = new ArrayList<String>();
-        ArrayList<String> ovelseids2 = new ArrayList<String>();
-        ArrayList<String> ovelseids3 = new ArrayList<String>();
-        ovelseids.add("0"); ovelseids.add("1"); ovelseids.add("2"); ovelseids.add("3");
-        ovelseids2.add("4");ovelseids2.add("5");ovelseids2.add("6");
-        ovelseids3.add("7");ovelseids3.add("8");ovelseids3.add("9");
-
-        UserWorkoutData wod1 = new UserWorkoutData(ovelseids, "Workout A");
-        UserWorkoutData wod2 = new UserWorkoutData(ovelseids2, "Workout B");
-        UserWorkoutData wod3 = new UserWorkoutData(ovelseids3, "Workout C");
-
-        ArrayList<UserWorkoutData> wod = new ArrayList<UserWorkoutData>();
-        wod.add(wod1);wod.add(wod2);wod.add(wod3);
-
-        ArrayList<String> retter = new ArrayList<String>();
-        retter.add("0");retter.add("1");retter.add("2");retter.add("3");
-        retter.add("4");retter.add("5");retter.add("6");retter.add("7");
-        retter.add("8");retter.add("9");retter.add("10");retter.add("11");
-
-        BrugerData bob = new BrugerData("Bob Nielsen testeren", wod, retter);
-        datafiles.pushUser(bob);
-        */
-
-
         workout.setIcon(R.drawable.exerciseiconwhite);
         kostplan.setIcon(R.drawable.foodicon_grey);
 
@@ -232,64 +186,5 @@ public class Main_act extends AppCompatActivity /*implements View.OnClickListene
             return 2;
         }
     }
-
-/*            har fjernet top plusset så der ikke er 2 // Martin
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-
-        getMenuInflater().inflate(R.menu.menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item)
-
-    {
-        if(item.getItemId() == R.id.action_plus){
-        AlertDialog.Builder dialog = new AlertDialog.Builder(this, R.style.MyDialogTheme);
-
-
-        final EditText editText = new EditText(this);
-            dialog.setMessage("Hvad skal din nye workout hedde?");
-            dialog.setTitle("Opret workout");
-            dialog.setView(editText);
-            editText.setHint("Navn");
-
-
-        dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-
-            @Override
-            public void onClick(DialogInterface dialog, int whichButton) {
-                Editable workoutNavn = editText.getText();
-
-                //Toast toast = Toast.makeText(getApplicationContext(), "Navn er for kort", Toast.LENGTH_LONG);
-                //toast.show();
-
-                traeningsPlanData.addWorkout(new WorkoutData(traeningsPlanData.getWorkouts().size(), workoutNavn.toString(), new ArrayList<OvelseData>(), Calendar.getInstance().getTime()));
-                datafiles.pushUser(datafiles.bruger);
-
-                }
-
-        });
-
-        dialog.setNegativeButton("Anullér", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int whichButton) {
-                dialog.dismiss();
-            }
-        });
-
-        dialog.show();
-    }
-        return true;
-    }
-
-    public void DBTestData () {
-
-        //datafiles.getTræningsPlan().
-
-        //DBCon.getDBH().addOvelse();
-    }
-    */
 
 }

@@ -16,11 +16,10 @@ import com.example.martindalby.gruppeawesome.R;
  * Created by Martin Dalby on 07-11-2016.
  */
 
-public class Opskrift_act extends AppCompatActivity implements View.OnClickListener{
+public class Opskrift_act extends AppCompatActivity{
 
     TextView fremGang, ingrediensTV;
     ImageView retBillede;
-    Button alternativ;
     String typeText, overskrift, beskrivelse, ingred;
     Toolbar toolbar;
     MainController datafiles;
@@ -53,11 +52,6 @@ public class Opskrift_act extends AppCompatActivity implements View.OnClickListe
 
         toolbar = (Toolbar) findViewById(R.id.toolBar);
         toolbar.setTitle(opskriftData.getNavn());
-    }
-
-    @Override
-    public void onClick(View v) {
-
     }
 }
 

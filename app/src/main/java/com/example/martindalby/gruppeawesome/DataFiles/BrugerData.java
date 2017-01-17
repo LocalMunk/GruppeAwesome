@@ -17,14 +17,6 @@ public class BrugerData {
         this.id = id;
     }
 
-    public BrugerData(String id, ArrayList<UserWorkoutData> workouts, ArrayList<String> RetIDs){
-        this.id = id;
-
-        træningsPlan = new TraeningsPlanData(new ArrayList<WorkoutData>());
-        kostplan = new KostplanData(new ArrayList<OpskriftData>());
-
-    }
-
     public void setTræningsPlan(TraeningsPlanData træningsPlan) {
         this.træningsPlan = træningsPlan;
     }

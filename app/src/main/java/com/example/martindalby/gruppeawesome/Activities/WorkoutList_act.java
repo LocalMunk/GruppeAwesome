@@ -48,7 +48,6 @@ public class WorkoutList_act extends AppCompatActivity implements AdapterView.On
     MainController datafiles;
     WorkoutData workoutData;
     SharedPreferences sharedPreferences;
-    public static final int REQUEST_CODE = 1;
     Button doneButton;
 
     public void onCreate(Bundle savedInstanceState) {
@@ -67,7 +66,7 @@ public class WorkoutList_act extends AppCompatActivity implements AdapterView.On
 
         doneButton = (Button) findViewById(R.id.doneworkout);
         doneButton.setOnClickListener(this);
-        doneButton.setText("Drik Bajer - Tryk her");
+        doneButton.setText("Færdiggør workout");
 
 
         toolbar = (Toolbar) findViewById(R.id.toolBar);

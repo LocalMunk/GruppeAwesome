@@ -23,7 +23,7 @@ public class MainController implements Serializable{
 
     private MainController(){
         databaseControl = new DatabaseController(this);
-        bruger = new BrugerData("", new ArrayList<UserWorkoutData>(), new ArrayList<String>());
+        bruger = new BrugerData(new TraeningsPlanData(), new KostplanData(), "");
     }
 
     public static MainController getInstans(){
@@ -38,30 +38,6 @@ public class MainController implements Serializable{
     }
 
 
-
-
-/*
-    public void pushKostplan(){
-        int i = 0;
-        for(OpskriftData data: kostplan.getRetter()){
-            databaseControl.lavTestKostplan(data.navn, data.ingrediens, data.fremgangsmåde, data.imglink, data.id, data.type, i);
-            i++;
-        }
-
-
-    }
-
-    public void pushOvelser(){
-        int i = 0;
-        for(WorkoutData data: træningsPlan.getWorkouts()){
-            for(OvelseData data2: data.getOvelser()){
-                databaseControl.pushOvelse(data2.getId(), data2.getNavn(), data2.isDone(), data2.getSets(), i);
-                i++;
-            }
-        }
-    }
-*/
-
     public void pushUser(BrugerData user){
         databaseControl.PushBruger(user);
     }
@@ -69,32 +45,7 @@ public class MainController implements Serializable{
     public void pushUser() {databaseControl.PushBruger(bruger); }
 
     public void getUserFromDatabase(final String UserID){
-
-        new AsyncTask() {
-            @Override
-            protected Object doInBackground(Object... arg0) {
-                try {
-                    databaseControl.getUser(UserID);
-                    return "Blev hentet korrekt";
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    System.out.println("Blev ikke hentet korrekt: ");
-                    return "Blev ikke hentet korrekt: "+e;
-                }
-            }
-
-            @Override
-            protected void onPostExecute(Object resultat) {
-
-            }
-        }.execute();
-    }
-
-
-
-        public boolean getUserFromDB(String UserID){
         databaseControl.getUser(UserID);
-        return false;
     }
 
     public double calculate1RM(double reps, double weight){
@@ -135,46 +86,4 @@ public class MainController implements Serializable{
         System.out.println("indholdet af out til sidst   " + out);
         return out;
     }
-
-
-    /*
-    public void getKostplanFromDB () {
-        try {
-            bruger.kostplan.getRetter().clear();
-            databaseControl.getOpskrift(bruger.RetIDs);
-
-            System.out.println(" VI HAR HENTET DET HER!!: " + bruger.kostplan.getRetter());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-
-    }
-
-    public void getTraeningsplanFromDB() {
-        try {
-            int i = 0;
-            for (UserWorkoutData uwd : bruger.workouts) {
-                if(uwd.ovelseIDs.size() != 0) {
-                    WorkoutData data = new WorkoutData();
-                    data.setWorkoutid(i);
-                    data.setWorkoutname(uwd.navn);
-                    data.setOvelser(databaseControl.getWorkout(uwd.ovelseIDs));
-                    bruger.træningsPlan.addWorkout(data);
-                    i++;
-                }
-                else{
-                    WorkoutData data = new WorkoutData();
-                    data.setWorkoutid(i);
-                    data.setWorkoutname(uwd.navn);
-                    data.setOvelser(new ArrayList<OvelseData>());
-                    bruger.træningsPlan.addWorkout(data);
-                    i++;
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-    */
 }
