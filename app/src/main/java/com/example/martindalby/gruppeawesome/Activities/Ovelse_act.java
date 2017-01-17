@@ -35,7 +35,7 @@ import java.util.ArrayList;
  * Created by Martin Dalby on 14-11-2016.
  */
 
-public class Ovelse_act extends AppCompatActivity implements View.OnClickListener {
+public class Ovelse_act extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemLongClickListener {
 
     Button videre;
     int currentSet;
@@ -76,7 +76,7 @@ public class Ovelse_act extends AppCompatActivity implements View.OnClickListene
         list = (ListView) findViewById(R.id.list);
         listadapt = new OvelseAdapter(this);
         list.setAdapter(listadapt);
-        //list.setOnItemLongClickListener(this);
+        list.setOnItemLongClickListener(this);
 
         RepstextView = (TextView) findViewById(R.id.RepstextView);
         RepstextView.setText("Reps");
@@ -182,9 +182,9 @@ public class Ovelse_act extends AppCompatActivity implements View.OnClickListene
             }
         }
     }
-/*
+
     @Override
-    public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+    public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
 
         AlertDialog.Builder dialog = new AlertDialog.Builder(this, R.style.MyDialogTheme);
 
@@ -205,15 +205,12 @@ public class Ovelse_act extends AppCompatActivity implements View.OnClickListene
             @Override
             public void onClick(DialogInterface dialog, int whichButton) {
                 try {
-                    ovelseData.getGraf().getSetDatas().add(new SetData(ovelseData.getGraf().getSetDatas().size(),
-                            (double) num_reps.getValue(),
-                            (double) num_weight.getValue()));
+                    ovelseData.getGraf().getSetDatas().set(ovelseData.getGraf().getSetDatas().size() - (position+1), new SetData(ovelseData.getGraf().getSetDatas().size() - (position+1), (double) num_reps.getValue(), (double) num_weight.getValue()));
                 }
                 catch(NullPointerException e){
-                    ovelseData.setGraf(new GrafData());
-                    ovelseData.getGraf().setSetDatas(new ArrayList<SetData>());
-                    ovelseData.getGraf().getSetDatas().add(new SetData(ovelseData.getGraf().getSetDatas().size(), (double) num_reps.getValue(), (double) num_weight.getValue()));
-
+                    //ovelseData.setGraf(new GrafData());
+                    //ovelseData.getGraf().setSetDatas(new ArrayList<SetData>());
+                    ovelseData.getGraf().getSetDatas().set(ovelseData.getGraf().getSetDatas().size() - (position+1), new SetData(ovelseData.getGraf().getSetDatas().size() - (position+1), (double) num_reps.getValue(), (double) num_weight.getValue()));
                 }
                 datafiles.pushUser();
                 list.invalidateViews();
@@ -222,16 +219,19 @@ public class Ovelse_act extends AppCompatActivity implements View.OnClickListene
             }
         });
 
-        dialog.setNegativeButton("Anullér", new DialogInterface.OnClickListener() {
+        dialog.setNegativeButton("Slet", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int whichButton) {
-                dialog.dismiss();
+                ovelseData.getGraf().getSetDatas().remove(ovelseData.getGraf().getSetDatas().size() - (position+1));
+                list.invalidateViews();
+                list.refreshDrawableState();
+                updateGraph();
             }
         });
         dialog.setView(view);
         dialog.show();
         return true;
-    } */
+    }
 
     public class OvelseAdapter extends BaseAdapter {
         Context context;
@@ -302,6 +302,7 @@ public class Ovelse_act extends AppCompatActivity implements View.OnClickListene
                 toDraw[i] = new DataPoint((double) i, datafiles.calculate1RM(ovelseData.getGraf().getSetDatas().get(i).y, ovelseData.getGraf().getSetDatas().get(i).z));
             }
             graph = (GraphView) findViewById(R.id.graph);
+            graph.removeAllSeries();
             LineGraphSeries<DataPoint> series = new LineGraphSeries<>(toDraw);
             graph.addSeries(series);
             graph.getViewport().setMaxX((double) ovelseData.getGraf().getSetDatas().size());
