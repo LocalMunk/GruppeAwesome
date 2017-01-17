@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -111,11 +112,7 @@ public class Ovelse_act extends AppCompatActivity implements View.OnClickListene
         datafiles.bruger.getTræningsPlan().getWorkout(getIntent().getIntExtra("workout", 0)).getOvelser().add(getIntent().getIntExtra("pos", 0), ovelseData);
         setResult(RESULT_OK);
         datafiles.pushUser();
-
     }
-
-
-
 
     @Override
     public void onClick(View v) {
@@ -133,9 +130,6 @@ public class Ovelse_act extends AppCompatActivity implements View.OnClickListene
         num_reps.setMaxValue(20);
         num_weight.setMinValue(0);
         num_weight.setMaxValue(100);
-
-        //LayoutInflater li = LayoutInflater.from(this);
-        //View dialogView = li.inflate(R.layout.opretworkoutdialog, null);
 
         //dialog.setMessage("Intast vægt og reps");
         dialog.setTitle("Indtast øvelsesdata");

@@ -10,6 +10,7 @@ import android.preference.PreferenceManager.OnActivityResultListener;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -38,7 +39,7 @@ import java.util.Date;
  * Created by Martin Dalby on 17-11-2016.
  */
 
-public class WorkoutList_act extends AppCompatActivity implements AdapterView.OnItemClickListener, View.OnClickListener, AdapterView.OnLongClickListener{
+public class WorkoutList_act extends AppCompatActivity implements AdapterView.OnItemClickListener, View.OnClickListener, AdapterView.OnItemLongClickListener{
 
     String[] ovelser;
     int[] setsArray;
@@ -61,6 +62,7 @@ public class WorkoutList_act extends AppCompatActivity implements AdapterView.On
 
         listView = (ListView) findViewById(R.id.Ovelselistview);
         listView.setOnItemClickListener(this);
+        listView.setOnItemLongClickListener(this);
         listView.setAdapter(adapter);
         System.out.println("1 check");
 
@@ -179,15 +181,55 @@ public class WorkoutList_act extends AppCompatActivity implements AdapterView.On
     }
 
     @Override
-    public boolean onLongClick(View v) {
-        return false;
+    public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
+        AlertDialog.Builder dialog = new AlertDialog.Builder(this, R.style.MyDialogTheme);
+
+        final EditText editText = new EditText(this);
+        dialog.setMessage("Vil du redigere eller slette denne øvelse?");
+        dialog.setTitle("Redigér/slet");
+        dialog.setView(editText);
+        editText.setHint("Skriv det nye navn her:");
+
+
+        dialog.setPositiveButton("Redigér", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int whichButton) {
+                Editable ovelseNavn = editText.getText();
+                workoutData.getOvelser().get(position).setNavn(ovelseNavn.toString());
+                datafiles.bruger.getTræningsPlan().getWorkout(position).getOvelser().set(position,workoutData.getOvelser().get(position));
+                datafiles.pushUser(datafiles.bruger);
+                adapter.notifyDataSetChanged();
+                listView.invalidateViews();
+                listView.refreshDrawableState();
+            }
+
+        });
+
+        dialog.setNegativeButton("Slet", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int whichButton) {
+               workoutData.getOvelser().remove(position);
+                datafiles.bruger.getTræningsPlan().getWorkout(position).getOvelser().remove(position);
+                datafiles.pushUser(datafiles.bruger);
+                listView.invalidateViews();
+                listView.refreshDrawableState();
+                adapter.notifyDataSetChanged();
+            }
+        });
+
+        adapter.notifyDataSetChanged();
+
+        dialog.show();
+        return true;
     }
+
 
     public class WorkoutListAdapter extends BaseAdapter {
         Context context;
         LayoutInflater inflter;
 
-            public WorkoutListAdapter(Context applicationContext) {
+        public WorkoutListAdapter(Context applicationContext) {
 
             this.context = applicationContext;
             //  this.listimg = ListImg;
@@ -200,8 +242,7 @@ public class WorkoutList_act extends AppCompatActivity implements AdapterView.On
         public int getCount() {
             try {
                 return workoutData.getOvelser().size();
-            }
-            catch(Exception e){
+            } catch (Exception e) {
                 return 0;
             }
         }
@@ -224,14 +265,14 @@ public class WorkoutList_act extends AppCompatActivity implements AdapterView.On
             exerciseName.setText(workoutData.getOvelser().get(position).getNavn());
 
             ImageView img = (ImageView) view.findViewById(R.id.ovelsebutton);
-            if(workoutData.getOvelser().get(position).isDone() != 1){
+            if (workoutData.getOvelser().get(position).isDone() != 1) {
                 img.setImageResource(R.drawable.fluebengraa);
-            }
-            else{
+            } else {
                 img.setImageResource(R.drawable.fluebenhvid);
             }
             return view;
         }
+
     }
 
     public void finishWorkout(){

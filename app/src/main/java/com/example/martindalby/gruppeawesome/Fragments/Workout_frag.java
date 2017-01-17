@@ -153,14 +153,13 @@ public class Workout_frag extends Fragment implements AdapterView.OnItemClickLis
 
     @Override
     public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
-        System.out.print("LongClick");
         AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity(), R.style.MyDialogTheme);
 
         final EditText editText = new EditText(getActivity());
         dialog.setMessage("Vil du redigere eller slette denne workout?");
         dialog.setTitle("Redigér/slet");
         dialog.setView(editText);
-        editText.setHint("" + datafiles.bruger.getTræningsPlan().getWorkouts().get(position));
+        editText.setHint("Skriv det nye navn her:");
 
 
         dialog.setPositiveButton("Redigér", new DialogInterface.OnClickListener() {
