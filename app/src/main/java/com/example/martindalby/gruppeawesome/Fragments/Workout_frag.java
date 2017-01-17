@@ -33,7 +33,7 @@ import java.util.Date;
  * Created by frederik on 07-11-2016.
  */
 
-public class Workout_frag extends Fragment implements AdapterView.OnItemClickListener   {
+public class Workout_frag extends Fragment implements AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener {
 
     TextView GnsWorkout, talgns;
     TextView workoutgoal, talgoal;
@@ -43,6 +43,7 @@ public class Workout_frag extends Fragment implements AdapterView.OnItemClickLis
     DatabaseController db;
     TraeningsPlanData traeningsPlanData;
     FloatingActionButton fb;
+    WorkoutAdapter adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -58,7 +59,7 @@ public class Workout_frag extends Fragment implements AdapterView.OnItemClickLis
             e.printStackTrace();
         }
 
-        WorkoutAdapter adapter = new WorkoutAdapter(getActivity());
+        adapter = new WorkoutAdapter(getActivity());
 
 
 
@@ -98,8 +99,6 @@ public class Workout_frag extends Fragment implements AdapterView.OnItemClickLis
 
                     });
 
-                    //banan
-
                     dialog.setNegativeButton("Anullér", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int whichButton) {
@@ -135,15 +134,12 @@ public class Workout_frag extends Fragment implements AdapterView.OnItemClickLis
 
         workoutlist = (ListView) rod.findViewById(R.id.workoutList);
         workoutlist.setOnItemClickListener(this);
+        workoutlist.setOnItemLongClickListener(this);
         workoutlist.setAdapter(adapter);
 
         return rod;
-
     }
 
-
-
-//banan
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Intent i = new Intent(getActivity(), WorkoutList_act.class);
@@ -152,7 +148,50 @@ public class Workout_frag extends Fragment implements AdapterView.OnItemClickLis
 
     }
 
-    
+    @Override
+    public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
+        System.out.print("LongClick");
+        AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity(), R.style.MyDialogTheme);
+
+        final EditText editText = new EditText(getActivity());
+        dialog.setMessage("Vil du redigere eller slette denne workout?");
+        dialog.setTitle("Redigér/slet");
+        dialog.setView(editText);
+        editText.setHint("" + datafiles.bruger.getTræningsPlan().getWorkouts().get(position));
+
+
+        dialog.setPositiveButton("Redigér", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int whichButton) {
+                Editable workoutNavn = editText.getText();
+                traeningsPlanData.getWorkouts().get(position).setWorkoutname(workoutNavn.toString());
+                datafiles.bruger.getTræningsPlan().getWorkouts().set(position, traeningsPlanData.getWorkout(position));
+                datafiles.pushUser(datafiles.bruger);
+                workoutlist.invalidateViews();
+                workoutlist.refreshDrawableState();
+            }
+
+        });
+
+                dialog.setNegativeButton("Slet", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int whichButton) {
+                traeningsPlanData.getWorkouts().remove(position);
+                datafiles.bruger.getTræningsPlan().getWorkouts().remove(position);
+                datafiles.pushUser(datafiles.bruger);
+                workoutlist.invalidateViews();
+                workoutlist.refreshDrawableState();
+                adapter.notifyDataSetChanged();
+            }
+        });
+
+        adapter.notifyDataSetChanged();
+        workoutlist.invalidateViews();
+        workoutlist.refreshDrawableState();
+        dialog.show();
+    return true;
+    }
 
 
     public class WorkoutAdapter extends BaseAdapter {
@@ -187,9 +226,6 @@ public class Workout_frag extends Fragment implements AdapterView.OnItemClickLis
         @Override
         public View getView(int position, View view, ViewGroup viewGroup) {
             view = inflter.inflate(R.layout.workout_listeelement, null);
-
-
-
 
                 TextView workoutoverskrift = (TextView) view.findViewById(R.id.WorkoutOverskrift);
                 workoutoverskrift.setText(traeningsPlanData.getWorkout(position).getWorkoutname());

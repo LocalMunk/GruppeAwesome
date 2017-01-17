@@ -67,6 +67,7 @@ public class Ovelse_act extends AppCompatActivity implements View.OnClickListene
 
         fb.setOnClickListener(this);
 
+
         videre = (Button) findViewById(R.id.doneButton);
         videre.setOnClickListener(this);
         videre.setText("Næste øvelse");

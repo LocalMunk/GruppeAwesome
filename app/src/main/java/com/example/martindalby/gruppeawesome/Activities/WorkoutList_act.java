@@ -38,7 +38,7 @@ import java.util.Date;
  * Created by Martin Dalby on 17-11-2016.
  */
 
-public class WorkoutList_act extends AppCompatActivity implements AdapterView.OnItemClickListener, View.OnClickListener{
+public class WorkoutList_act extends AppCompatActivity implements AdapterView.OnItemClickListener, View.OnClickListener, AdapterView.OnLongClickListener{
 
     String[] ovelser;
     int[] setsArray;
@@ -72,8 +72,6 @@ public class WorkoutList_act extends AppCompatActivity implements AdapterView.On
         toolbar = (Toolbar) findViewById(R.id.toolBar);
         toolbar.setTitle(workoutData.getWorkoutname());
         setSupportActionBar(toolbar);
-
-
     }
 
     public void onDestroy(){
@@ -114,12 +112,9 @@ public class WorkoutList_act extends AppCompatActivity implements AdapterView.On
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
-
         getMenuInflater().inflate(R.menu.workoutlistmenu, menu);
 
         return true;
-
-
     }
 
     @Override
@@ -168,9 +163,6 @@ public class WorkoutList_act extends AppCompatActivity implements AdapterView.On
                 listView.refreshDrawableState();
                 datafiles.bruger.getTræningsPlan().getWorkouts().set(getIntent().getIntExtra("workout", 0), workoutData);
                 datafiles.pushUser(datafiles.bruger);
-
-
-
             }
         });
 
@@ -182,13 +174,13 @@ public class WorkoutList_act extends AppCompatActivity implements AdapterView.On
         });
 
                 dialog.show();
-
-
-
-
-
     }
         return true;
+    }
+
+    @Override
+    public boolean onLongClick(View v) {
+        return false;
     }
 
     public class WorkoutListAdapter extends BaseAdapter {
@@ -201,8 +193,6 @@ public class WorkoutList_act extends AppCompatActivity implements AdapterView.On
             //  this.listimg = ListImg;
             inflter = (LayoutInflater.from(applicationContext));
             System.out.println("check 2");
-
-
         }
 
         //Her afgøres længde på liste ud fra hvilken knap man trykker paa
@@ -240,8 +230,6 @@ public class WorkoutList_act extends AppCompatActivity implements AdapterView.On
             else{
                 img.setImageResource(R.drawable.fluebenhvid);
             }
-
-
             return view;
         }
     }
@@ -249,7 +237,7 @@ public class WorkoutList_act extends AppCompatActivity implements AdapterView.On
     public void finishWorkout(){
         try {
             int i = 0;
-            for (OvelseData data : workoutData.getOvelser()) {
+                for (OvelseData data : workoutData.getOvelser()) {
                 if (data.isDone() == 1) {
                     i++;
                 }

@@ -23,6 +23,7 @@
     </android.support.design.widget.AppBarLayout>
 
     <ListView
+        android:longClickable="true"
         android:layout_width="match_parent"
         android:layout_height="447dp"
         android:id="@+id/Ovelselistview"
