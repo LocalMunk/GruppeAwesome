@@ -220,9 +220,10 @@ public class Ovelse_act extends AppCompatActivity implements View.OnClickListene
             TextView listreps = (TextView) view.findViewById(R.id.listReps);
             TextView listweight = (TextView) view.findViewById(R.id.listWeight);
             TextView listRM = (TextView) view.findViewById(R.id.listRM);
-            listreps.setText(Integer.toString((int) getDataForListView().get(position).getY()));
-            listweight.setText(Integer.toString((int)getDataForListView().get(position).getZ()));
-            listRM.setText(Integer.toString((int)datafiles.calculate1RM(getDataForListView().get(position).getY(),getDataForListView().get(position).getZ())));
+            listreps.setText(Integer.toString((int) getDataForListView().get(getDataForListView().size()-(position+1)).getY()));
+            listweight.setText(Integer.toString((int)getDataForListView().get(getDataForListView().size()-(position+1)).getZ()));
+            listRM.setText(Integer.toString((int)datafiles.calculate1RM(getDataForListView().get(getDataForListView().size()-(position+1)).getY(),
+                    getDataForListView().get(getDataForListView().size()-(position+1)).getZ())));
             return view;
         }
 

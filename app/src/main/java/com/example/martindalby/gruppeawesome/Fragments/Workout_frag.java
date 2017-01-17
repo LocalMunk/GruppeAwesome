@@ -115,19 +115,22 @@ public class Workout_frag extends Fragment implements AdapterView.OnItemClickLis
         });
 
         talgns = (TextView) rod.findViewById(R.id.TalGns);
-        talgns.setText("" + toptal[0]);
+        //talgns.setText("" + toptal[0]);
+        talgns.setText("" + traeningsPlanData.getTraeningsGennemsnit());
 
         GnsWorkout = (TextView) rod.findViewById(R.id.GnsWorkout);
         GnsWorkout.setText("Gns. per uge");
 
         talgoal = (TextView) rod.findViewById(R.id.TalGoal);
-        talgoal.setText("" + (int) toptal[1]);
+        //talgoal.setText("" + (int) toptal[1]);
+        talgoal.setText("" + traeningsPlanData.getTraeningsMål());
 
         workoutgoal = (TextView) rod.findViewById(R.id.WorkoutGoal);
         workoutgoal.setText("Træningsmål denne uge");
 
         talantal = (TextView) rod.findViewById(R.id.TalAntal);
-        talantal.setText("" + (int) toptal[2]);
+        //talantal.setText("" + (int) toptal[2]);
+        talantal.setText("" + traeningsPlanData.getTraeningerDenneUge());
 
         antalworkouts = (TextView) rod.findViewById(R.id.AntalWorkouts);
         antalworkouts.setText("Træninger denne uge");
