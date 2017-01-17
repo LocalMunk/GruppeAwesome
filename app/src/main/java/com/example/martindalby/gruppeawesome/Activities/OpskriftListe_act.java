@@ -49,15 +49,7 @@ public class OpskriftListe_act extends AppCompatActivity implements AdapterView.
         toolbar = new Toolbar(this);
         toolbar.setTitleTextColor(getResources().getColor(R.color.indicate));
         toolbar.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-        switch (type){
-            case 0: toolbar.setTitle("Morgenmad");
-                break;
-            case 1: toolbar.setTitle("Frokost");
-                break;
-            case 2: toolbar.setTitle("Aftensmad");
-                break;
-            case 3: toolbar.setTitle("Snack");
-        }
+
 
         layout.addView(toolbar);
 
@@ -67,6 +59,16 @@ public class OpskriftListe_act extends AppCompatActivity implements AdapterView.
         else if(typeText.equals("Frokost")) type = 1;
         else if(typeText.equals("Aftensmad")) type = 2;
         else if(typeText.equals("Snack")) type = 3;
+
+        switch (type){
+            case 0: toolbar.setTitle(typeText);
+                break;
+            case 1: toolbar.setTitle(typeText);
+                break;
+            case 2: toolbar.setTitle(typeText);
+                break;
+            case 3: toolbar.setTitle(typeText);
+        }
 
         opskrifter = new ArrayList<OpskriftData>();
          for( OpskriftData data:kostplanData.getRetter()){
