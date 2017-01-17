@@ -76,6 +76,7 @@ public class Ovelse_act extends AppCompatActivity implements View.OnClickListene
         list = (ListView) findViewById(R.id.list);
         listadapt = new OvelseAdapter(this);
         list.setAdapter(listadapt);
+        //list.setOnItemLongClickListener(this);
 
         RepstextView = (TextView) findViewById(R.id.RepstextView);
         RepstextView.setText("Reps");
@@ -88,6 +89,7 @@ public class Ovelse_act extends AppCompatActivity implements View.OnClickListene
 
         toolbar = (Toolbar) findViewById(R.id.toolbar3);
         toolbar.setTitle(ovelseData.getNavn());
+        toolbar.setTitleTextColor(getResources().getColor(R.color.indicate));
         setSupportActionBar(toolbar);
 
 
@@ -180,6 +182,56 @@ public class Ovelse_act extends AppCompatActivity implements View.OnClickListene
             }
         }
     }
+/*
+    @Override
+    public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+
+        AlertDialog.Builder dialog = new AlertDialog.Builder(this, R.style.MyDialogTheme);
+
+        LayoutInflater inflater = getLayoutInflater();
+        view = inflater.inflate(R.layout.activity_alertdialog_ovelsedata,null);
+
+        num_weight = (NumberPicker)view.findViewById(R.id.numweight);
+        num_reps = (NumberPicker )view.findViewById(R.id.numreps);
+        num_reps.setMinValue(1);
+        num_reps.setMaxValue(20);
+        num_weight.setMinValue(0);
+        num_weight.setMaxValue(100);
+
+        dialog.setMessage("Vil du redigere eller slette dette sæt");
+        dialog.setTitle("Redigér/slet sæt");
+        dialog.setPositiveButton("Redigér", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int whichButton) {
+                try {
+                    ovelseData.getGraf().getSetDatas().add(new SetData(ovelseData.getGraf().getSetDatas().size(),
+                            (double) num_reps.getValue(),
+                            (double) num_weight.getValue()));
+                }
+                catch(NullPointerException e){
+                    ovelseData.setGraf(new GrafData());
+                    ovelseData.getGraf().setSetDatas(new ArrayList<SetData>());
+                    ovelseData.getGraf().getSetDatas().add(new SetData(ovelseData.getGraf().getSetDatas().size(), (double) num_reps.getValue(), (double) num_weight.getValue()));
+
+                }
+                datafiles.pushUser();
+                list.invalidateViews();
+                list.refreshDrawableState();
+                updateGraph();
+            }
+        });
+
+        dialog.setNegativeButton("Anullér", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int whichButton) {
+                dialog.dismiss();
+            }
+        });
+        dialog.setView(view);
+        dialog.show();
+        return true;
+    } */
 
     public class OvelseAdapter extends BaseAdapter {
         Context context;

@@ -209,8 +209,13 @@ public class WorkoutList_act extends AppCompatActivity implements AdapterView.On
         dialog.setNegativeButton("Slet", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int whichButton) {
-               workoutData.getOvelser().remove(position);
+                workoutData.getOvelser().remove(position);
+                try{
                 datafiles.bruger.getTræningsPlan().getWorkout(position).getOvelser().remove(position);
+                }
+                catch (IndexOutOfBoundsException e){
+                    e.printStackTrace();
+                }
                 datafiles.pushUser(datafiles.bruger);
                 listView.invalidateViews();
                 listView.refreshDrawableState();
