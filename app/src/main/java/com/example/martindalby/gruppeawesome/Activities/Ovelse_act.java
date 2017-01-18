@@ -92,7 +92,7 @@ public class Ovelse_act extends AppCompatActivity implements View.OnClickListene
         toolbar.setTitleTextColor(getResources().getColor(R.color.indicate));
         setSupportActionBar(toolbar);
 
-
+        graph = (GraphView) findViewById(R.id.graph);
         //viser ikke alt data
         updateGraph();
     }
@@ -301,12 +301,14 @@ public class Ovelse_act extends AppCompatActivity implements View.OnClickListene
             for (int i = 0; i < ovelseData.getGraf().getSetDatas().size(); i++) {
                 toDraw[i] = new DataPoint((double) i, datafiles.calculate1RM(ovelseData.getGraf().getSetDatas().get(i).y, ovelseData.getGraf().getSetDatas().get(i).z));
             }
-            graph = (GraphView) findViewById(R.id.graph);
+
             graph.removeAllSeries();
             LineGraphSeries<DataPoint> series = new LineGraphSeries<>(toDraw);
             graph.addSeries(series);
-            graph.getViewport().setMaxX((double) ovelseData.getGraf().getSetDatas().size());
-            graph.getViewport().setMaxYAxisSize(størst1RM());
+            graph.onDataChanged(false,false);
+//            graph.getViewport().setMaxX(ovelseData.getGraf().getSetDatas().size() + 100);
+
+//            graph.getViewport().setMaxYAxisSize(størst1RM());
         }
         catch(NullPointerException e){
             e.printStackTrace();
