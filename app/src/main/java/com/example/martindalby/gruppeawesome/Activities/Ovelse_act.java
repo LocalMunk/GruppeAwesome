@@ -48,6 +48,7 @@ public class Ovelse_act extends AppCompatActivity implements View.OnClickListene
     NumberPicker num_weight,num_reps;
     Toolbar toolbar;
     TextView RepstextView, WeighttextView, RMtextView;
+    LineGraphSeries<DataPoint> series;
 
 
     public void onCreate(Bundle savedInstanceState){
@@ -93,8 +94,9 @@ public class Ovelse_act extends AppCompatActivity implements View.OnClickListene
         setSupportActionBar(toolbar);
 
         graph = (GraphView) findViewById(R.id.graph);
+        graph.getViewport().setXAxisBoundsManual(true);
         //viser ikke alt data
-        updateGraph();
+        drawGraph();
     }
 
     //skulle måske gerne bruges??
@@ -154,7 +156,7 @@ public class Ovelse_act extends AppCompatActivity implements View.OnClickListene
                 datafiles.pushUser();
                 list.invalidateViews();
                 list.refreshDrawableState();
-                updateGraph();
+                drawGraph();
             }
         });
 
@@ -215,7 +217,7 @@ public class Ovelse_act extends AppCompatActivity implements View.OnClickListene
                 datafiles.pushUser();
                 list.invalidateViews();
                 list.refreshDrawableState();
-                updateGraph();
+                drawGraph(ovelseData.getGraf().getSetDatas().size(), datafiles.calculate1RM((double) num_reps.getValue(), (double) num_weight.getValue()));
             }
         });
 
@@ -225,7 +227,7 @@ public class Ovelse_act extends AppCompatActivity implements View.OnClickListene
                 ovelseData.getGraf().getSetDatas().remove(ovelseData.getGraf().getSetDatas().size() - (position+1));
                 list.invalidateViews();
                 list.refreshDrawableState();
-                updateGraph();
+                drawGraph();
             }
         });
         dialog.setView(view);
@@ -295,20 +297,48 @@ public class Ovelse_act extends AppCompatActivity implements View.OnClickListene
 
     }
 
-    public void updateGraph(){
+    public void drawGraph(double a, double b){
         try {
             DataPoint[] toDraw = new DataPoint[ovelseData.getGraf().getSetDatas().size()];
             for (int i = 0; i < ovelseData.getGraf().getSetDatas().size(); i++) {
                 toDraw[i] = new DataPoint((double) i, datafiles.calculate1RM(ovelseData.getGraf().getSetDatas().get(i).y, ovelseData.getGraf().getSetDatas().get(i).z));
             }
-
             graph.removeAllSeries();
-            LineGraphSeries<DataPoint> series = new LineGraphSeries<>(toDraw);
+            series = new LineGraphSeries<>(toDraw);
             graph.addSeries(series);
-            graph.onDataChanged(false,false);
-//            graph.getViewport().setMaxX(ovelseData.getGraf().getSetDatas().size() + 100);
 
-//            graph.getViewport().setMaxYAxisSize(størst1RM());
+            series.appendData(new DataPoint(a,b) ,true, (int) a);
+
+            graph.addSeries(series);
+
+
+            graph.getViewport().setXAxisBoundsManual(true);
+            graph.getViewport().setMinX(0);
+            graph.getViewport().setMaxX(15);
+
+            graph.getViewport().setMaxY(størst1RM());
+        }
+        catch(NullPointerException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void drawGraph(){
+        try {
+            DataPoint[] toDraw = new DataPoint[ovelseData.getGraf().getSetDatas().size()];
+            for (int i = 0; i < ovelseData.getGraf().getSetDatas().size(); i++) {
+                toDraw[i] = new DataPoint((double) i, datafiles.calculate1RM(ovelseData.getGraf().getSetDatas().get(i).y, ovelseData.getGraf().getSetDatas().get(i).z));
+            }
+            graph.removeAllSeries();
+            series = new LineGraphSeries<>(toDraw);
+            graph.addSeries(series);
+
+
+            graph.addSeries(series);
+            graph.getViewport().setMinX(0);
+            graph.getViewport().setMaxX(toDraw.length);
+
+            graph.getViewport().setMaxYAxisSize(størst1RM());
         }
         catch(NullPointerException e){
             e.printStackTrace();
