@@ -76,6 +76,7 @@ public class LogIn_act extends AppCompatActivity implements View.OnClickListener
         pd = new ProgressDialog(this);
         pd.setIndeterminate(true);
         pd.setMessage("Loading...");
+        pd.setProgressStyle(android.R.style.Animation_Dialog);
         pd.setCancelable(false);
 
 

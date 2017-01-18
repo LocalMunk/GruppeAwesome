@@ -16,23 +16,25 @@
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="170dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="20dp"
             android:weightSum="3"
-            android:gravity='center'
             >
 
-            <LinearLayout
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_weight="1">
+                >
 
                     <TextView
-                        android:text="0"
+                        android:text="0.0"
                         android:textSize="40dp"
-                        android:layout_marginLeft="40dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
                         android:id="@+id/TalGoal"
 
                     />
@@ -42,25 +44,27 @@
                     android:textSize="15dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:layout_below="@+id/TalGoal"
                     android:id="@+id/WorkoutGoal"
-                    android:gravity='center'
                     />
 
-            </LinearLayout>
+            </RelativeLayout>
 
-            <LinearLayout
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_weight="1">
 
                 <TextView
-                    android:text="0"
+                    android:text="0.0"
                     android:textSize="40dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
                     android:id="@+id/TalGns"
-                    android:gravity='center'
                     />
 
                 <TextView
@@ -68,30 +72,29 @@
                     android:textSize="15dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="25dp"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
                     android:id="@+id/GnsWorkout"
-                    android:gravity='center'
+                    android:layout_below="@+id/TalGns"
                     />
 
 
+            </RelativeLayout>
 
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_weight="1">
 
 
                 <TextView
-                    android:text="0"
+                    android:id="@+id/TalAntal"
+                    android:text="0.0"
                     android:textSize="40dp"
                     android:layout_width="wrap_content"
-
                     android:layout_height="wrap_content"
-                    android:id="@+id/TalAntal"
-                    android:gravity='center'
+                    android:layout_centerHorizontal="true"
                     />
 
                 <TextView
@@ -99,13 +102,13 @@
                     android:textSize="15dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:layout_below="@+id/TalAntal"
                     android:id="@+id/AntalWorkouts"
-                    android:gravity='center'
                     />
 
-
-
-            </LinearLayout>
+            </RelativeLayout>
 
 
         </LinearLayout>
