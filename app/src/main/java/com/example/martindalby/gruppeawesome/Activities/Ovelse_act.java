@@ -95,6 +95,7 @@ public class Ovelse_act extends AppCompatActivity implements View.OnClickListene
 
         graph = (GraphView) findViewById(R.id.graph);
         graph.getViewport().setXAxisBoundsManual(true);
+        graph.getViewport().setYAxisBoundsManual(true);
         //viser ikke alt data
         drawGraph();
     }
@@ -308,12 +309,11 @@ public class Ovelse_act extends AppCompatActivity implements View.OnClickListene
             series = new LineGraphSeries<>(toDraw);
             graph.addSeries(series);
 
-
-            graph.addSeries(series);
             graph.getViewport().setMinX(0);
             graph.getViewport().setMaxX(toDraw.length);
 
-            graph.getViewport().setMaxYAxisSize(størst1RM());
+            graph.getViewport().setMinY(0);
+            graph.getViewport().setMaxY(størst1RM() * 1.2);
         }
         catch(NullPointerException e){
             e.printStackTrace();
