@@ -280,7 +280,7 @@ public class WorkoutList_act extends AppCompatActivity implements AdapterView.On
 
             ImageView img = (ImageView) view.findViewById(R.id.ovelsebutton);
             if (workoutData.getOvelser().get(position).isDone() != 1) {
-                img.setImageResource(R.drawable.fluebengraa);
+                img.setImageResource(R.drawable.tomtflueben);
             } else {
                 img.setImageResource(R.drawable.fluebenhvid);
             }
