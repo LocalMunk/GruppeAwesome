@@ -217,7 +217,7 @@ public class Ovelse_act extends AppCompatActivity implements View.OnClickListene
                 datafiles.pushUser();
                 list.invalidateViews();
                 list.refreshDrawableState();
-                drawGraph(ovelseData.getGraf().getSetDatas().size(), datafiles.calculate1RM((double) num_reps.getValue(), (double) num_weight.getValue()));
+                drawGraph();
             }
         });
 
@@ -297,31 +297,6 @@ public class Ovelse_act extends AppCompatActivity implements View.OnClickListene
 
     }
 
-    public void drawGraph(double a, double b){
-        try {
-            DataPoint[] toDraw = new DataPoint[ovelseData.getGraf().getSetDatas().size()];
-            for (int i = 0; i < ovelseData.getGraf().getSetDatas().size(); i++) {
-                toDraw[i] = new DataPoint((double) i, datafiles.calculate1RM(ovelseData.getGraf().getSetDatas().get(i).y, ovelseData.getGraf().getSetDatas().get(i).z));
-            }
-            graph.removeAllSeries();
-            series = new LineGraphSeries<>(toDraw);
-            graph.addSeries(series);
-
-            series.appendData(new DataPoint(a,b) ,true, (int) a);
-
-            graph.addSeries(series);
-
-
-            graph.getViewport().setXAxisBoundsManual(true);
-            graph.getViewport().setMinX(0);
-            graph.getViewport().setMaxX(15);
-
-            graph.getViewport().setMaxY(størst1RM());
-        }
-        catch(NullPointerException e){
-            e.printStackTrace();
-        }
-    }
 
     public void drawGraph(){
         try {
