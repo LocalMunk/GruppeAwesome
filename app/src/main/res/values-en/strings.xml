@@ -4,64 +4,64 @@
 
     Login act
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="logintext">Log ind</string>
-    <string name="ikkelogintext">Har du ikke et log ind?</string>
-    <string name="aktiveringsnøgle">Aktiveringsnøgle</string>
+    <string name="logintext">Login</string>
+    <string name="ikkelogintext">No login?</string>
+    <string name="aktiveringsnøgle">Activation key</string>
 
     main act
     <string name="maintabworkout">Workouts</string>
-    <string name="maintabkostplan">Kostplan</string>
+    <string name="maintabkostplan">Diet plan</string>
 
     workout frag
-    <string name="newworkoutname">Hvad skal din nye workout hedde?</string>
-    <string name="addworkout">Opret workout</string>
-    <string name="newWorkoutHint">Navn</string>
+    <string name="newworkoutname">What do you want to call your new workout?</string>
+    <string name="addworkout">Create workout</string>
+    <string name="newWorkoutHint">Name</string>
     <string name="newWorkoutAccept">OK</string>
-    <string name="newWorkoutNotAccept">Annullér</string>
-    <string name="goalThisWeek">Træningsmål\n denne uge</string>
-    <string name="averagePerWeek">Gns. per uge</string>
-    <string name="workoutsThisWeek">Træninger \n denne uge</string>
-    <string name="editOrDeleteWorkout">Vil du redigere eller slette denne workout?</string>
-    <string name="EditDeleteWorkout">Redigér/slet</string>
-    <string name="EditWorkoutHint">Skriv det nye navn her</string>
+    <string name="newWorkoutNotAccept">Cancel</string>
+    <string name="goalThisWeek">Workoutgoal\n this week</string>
+    <string name="averagePerWeek">Avg. per week</string>
+    <string name="workoutsThisWeek">Workouts \n this week</string>
+    <string name="editOrDeleteWorkout">Do you want to edit or delete this workout?</string>
+    <string name="EditDeleteWorkout">Edit/delete</string>
+    <string name="EditWorkoutHint">Type in the new name here</string>
     <string name="EditWorkoutOKText">Ok</string>
-    <string name="EditWorkoutDeleteText">Slet</string>
+    <string name="EditWorkoutDeleteText">Delete</string>
 
     kostplan frag sub
-    <string name="WorkoutNeverCompletedText">Aldrig udført</string>
-    <string name="FoodBreakfastText">Morgenmad</string>
-    <string name="FoodLunchText">Frokost</string>
-    <string name="FoodDinnerText">Aftensmad</string>
+    <string name="WorkoutNeverCompletedText">Never done</string>
+    <string name="FoodBreakfastText">Breakfast</string>
+    <string name="FoodLunchText">Lunch</string>
+    <string name="FoodDinnerText">Dinner</string>
 
     kostplan frag ikkesub
-    <string name="getKostplanButton">Få kostplan</string>
-    <string name="cantAccessText">Du har desværre ikke adgang til denne funktionalitet</string>
+    <string name="getKostplanButton">Get diet plan</string>
+    <string name="cantAccessText">You don't have acces to this functionality</string>
 
     workout-list akt
-    <string name="finishWorkoutText">Færdiggør workout</string>
-    <string name="newOvelseNameLong">Hvad skal din øvelse hedde?</string>
-    <string name="newOvelseName">Opret øvelse</string>
-    <string name="AddOvelseHint">Navn</string>
+    <string name="finishWorkoutText">Finish workout</string>
+    <string name="newOvelseNameLong">What do you want to call your new exercise?</string>
+    <string name="newOvelseName">Create exercise</string>
+    <string name="AddOvelseHint">Name</string>
     <string name="NewOvelseOKtext">OK</string>
-    <string name="NewOvelseNotOk">Annullér</string>
-    <string name="EditOrDeleteOvelseLong">Vil du redigere eller slette denne øvelse?</string>
-    <string name="EditorDelete">Redigér/slet</string>
-    <string name="NewOvelseHint">Skriv det nye navn her</string>
+    <string name="NewOvelseNotOk">Cancel</string>
+    <string name="EditOrDeleteOvelseLong">Do you want to edit or delete this exercise?</string>
+    <string name="EditorDelete">Edit/delete</string>
+    <string name="NewOvelseHint">Type in the new name here</string>
     <string name="EditOvelseButtonText">Ok</string>
-    <string name="DeleteOvelseButtonText">Slet</string>
+    <string name="DeleteOvelseButtonText">Delete</string>
 
     Ovelse akt
-    <string name="NextOvelseText">Næste øvelse</string>
+    <string name="NextOvelseText">Next exercise</string>
     <string name="repetitionsText">Reps</string>
-    <string name="WeightText">Vægt</string>
-    <string name="OvelseToastText">Udfyld repetitioner og vægt</string>
-    <string name="addSetDataText">Indtast øvelsesdata</string>
+    <string name="WeightText">Weight</string>
+    <string name="OvelseToastText">Fill in reps and weight</string>
+    <string name="addSetDataText">Fill in exercise data</string>
     <string name="addSetDataOKButton">OK</string>
-    <string name="addSetDataNotOKButton">Annullér</string>
-    <string name="EditorDeleteSetLong">Vil du redigere eller slette dette sæt</string>
-    <string name="EditOrDeleteSet">Redigér/slet sæt</string>
+    <string name="addSetDataNotOKButton">Cancel</string>
+    <string name="EditorDeleteSetLong">Do you want to edit or delete this set?</string>
+    <string name="EditOrDeleteSet">Edit/delete set</string>
     <string name="EditSetPositiveButton">Ok</string>
-    <string name="EditSetNegativeButton">Slet</string>
+    <string name="EditSetNegativeButton">Delete</string>
 
 
 </resources>
