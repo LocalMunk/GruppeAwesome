@@ -83,6 +83,7 @@ public class WorkoutList_act extends AppCompatActivity implements AdapterView.On
     public void onDestroy(){
         super.onDestroy();
         finishWorkout();
+        setResult(RESULT_OK);
         datafiles.pushUser(datafiles.bruger);
     }
 
@@ -116,7 +117,6 @@ public class WorkoutList_act extends AppCompatActivity implements AdapterView.On
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         System.out.println("inde i onActivityResult");
-        System.out.println(workoutData.getOvelser());
         adapter.notifyDataSetChanged();
     }
 

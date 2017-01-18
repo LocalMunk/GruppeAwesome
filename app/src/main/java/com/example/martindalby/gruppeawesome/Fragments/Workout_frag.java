@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.BaseAdapter;
+import android.preference.PreferenceManager;
 
 import com.example.martindalby.gruppeawesome.DataFiles.BrugerData;
 import com.example.martindalby.gruppeawesome.Database.DatabaseController;
@@ -33,6 +34,7 @@ import com.firebase.client.ValueEventListener;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import static android.R.attr.data;
 import static android.R.attr.version;
 
 /**
@@ -60,6 +62,8 @@ public class Workout_frag extends Fragment implements AdapterView.OnItemClickLis
         traeningsPlanData = datafiles.bruger.getTræningsPlan();
         try {
             traeningsPlanData.setWorkouts(datafiles.sortByDate(traeningsPlanData.getWorkouts()));
+            datafiles.bruger.setTræningsPlan(traeningsPlanData);
+            datafiles.pushUser();
         } catch (NullPointerException e) {
             //Fejlen er forventet når en ny bruger oprettes
             e.printStackTrace();
@@ -153,9 +157,11 @@ public class Workout_frag extends Fragment implements AdapterView.OnItemClickLis
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Intent i = new Intent(getActivity(), WorkoutList_act.class);
         i.putExtra("workout", position);
-        startActivity(i);
+        startActivityForResult(i, 1);
 
     }
+
+
 
     @Override
     public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {

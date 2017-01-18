@@ -1,6 +1,7 @@
 package com.example.martindalby.gruppeawesome.Activities;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.design.widget.TabLayout;
@@ -42,7 +43,6 @@ public class Main_act extends AppCompatActivity /*implements View.OnClickListene
     private ViewPagerAdapter adapter;
     private MainController datafiles;
     private String currUser;
-    private TraeningsPlanData traeningsPlanData;
     static int workoutNum = 0;
     public SharedPreferences sharedPreferences;
     //private ViewPager viewPagers;
@@ -61,7 +61,6 @@ public class Main_act extends AppCompatActivity /*implements View.OnClickListene
         //henter bruger info
         currUser = sharedPreferences.getString("UserID", "fail");
         datafiles = MainController.getInstans();
-        traeningsPlanData = datafiles.bruger.getTræningsPlan();
 
         datafiles.getUserFromDatabase(currUser);
 
@@ -133,6 +132,16 @@ public class Main_act extends AppCompatActivity /*implements View.OnClickListene
             public void onTabReselected(TabLayout.Tab tab) {
             }
         });
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        System.out.println("inde i onActivityResult i workout frag");
+        System.out.println(datafiles.bruger.getTræningsPlan().getWorkouts());
+        adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        viewPager.setAdapter(adapter);
 
     }
 
