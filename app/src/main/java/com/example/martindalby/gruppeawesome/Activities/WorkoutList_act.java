@@ -188,7 +188,7 @@ public class WorkoutList_act extends AppCompatActivity implements AdapterView.On
         dialog.setMessage("Vil du redigere eller slette denne øvelse?");
         dialog.setTitle("Redigér/slet");
         dialog.setView(editText);
-        editText.setHint("Skriv det nye navn her:");
+        editText.setHint("Skriv det nye navn her");
 
 
         dialog.setPositiveButton("Redigér", new DialogInterface.OnClickListener() {

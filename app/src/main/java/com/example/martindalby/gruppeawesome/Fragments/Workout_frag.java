@@ -159,7 +159,7 @@ public class Workout_frag extends Fragment implements AdapterView.OnItemClickLis
         dialog.setMessage("Vil du redigere eller slette denne workout?");
         dialog.setTitle("Redigér/slet");
         dialog.setView(editText);
-        editText.setHint("Skriv det nye navn her:");
+        editText.setHint("Skriv det nye navn her");
 
 
         dialog.setPositiveButton("Redigér", new DialogInterface.OnClickListener() {
@@ -245,8 +245,5 @@ public class Workout_frag extends Fragment implements AdapterView.OnItemClickLis
 
             return view;
         }
-
-
-
     }
 }
