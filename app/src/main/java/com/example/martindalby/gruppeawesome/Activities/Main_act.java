@@ -141,6 +141,7 @@ public class Main_act extends AppCompatActivity /*implements View.OnClickListene
         System.out.println("inde i onActivityResult i workout frag");
         System.out.println(datafiles.bruger.getTræningsPlan().getWorkouts());
         adapter = new ViewPagerAdapter(getSupportFragmentManager());
+
         viewPager.setAdapter(adapter);
 
     }
