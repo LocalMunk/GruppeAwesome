@@ -88,13 +88,13 @@ public class Workout_frag extends Fragment implements AdapterView.OnItemClickLis
 
 
                     final EditText editText = new EditText(getActivity());
-                    dialog.setMessage("Hvad skal din nye workout hedde?");
-                    dialog.setTitle("Opret workout");
+                    dialog.setMessage(R.string.newworkoutname);
+                    dialog.setTitle(R.string.addworkout);
                     dialog.setView(editText);
-                    editText.setHint("Navn");
+                    editText.setHint(R.string.newWorkoutHint);
 
 
-                    dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    dialog.setPositiveButton(R.string.newWorkoutAccept, new DialogInterface.OnClickListener() {
 
                         @Override
                         public void onClick(DialogInterface dialog, int whichButton) {
@@ -109,7 +109,7 @@ public class Workout_frag extends Fragment implements AdapterView.OnItemClickLis
 
                     });
 
-                    dialog.setNegativeButton("Annullér", new DialogInterface.OnClickListener() {
+                    dialog.setNegativeButton(R.string.newWorkoutNotAccept, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int whichButton) {
                             dialog.dismiss();
@@ -129,21 +129,21 @@ public class Workout_frag extends Fragment implements AdapterView.OnItemClickLis
         talgns.setText("" + traeningsPlanData.getTraeningsGennemsnit());
 
         GnsWorkout = (TextView) rod.findViewById(R.id.GnsWorkout);
-        GnsWorkout.setText("Gns. per uge");
+        GnsWorkout.setText(R.string.averagePerWeek);
 
         talgoal = (TextView) rod.findViewById(R.id.TalGoal);
         //talgoal.setText("" + (int) toptal[1]);
         talgoal.setText("" + traeningsPlanData.getTraeningsMål());
 
         workoutgoal = (TextView) rod.findViewById(R.id.WorkoutGoal);
-        workoutgoal.setText("Træningsmål\n denne uge");
+        workoutgoal.setText(R.string.goalThisWeek);
 
         talantal = (TextView) rod.findViewById(R.id.TalAntal);
         //talantal.setText("" + (int) toptal[2]);
         talantal.setText("" + traeningsPlanData.getTraeningerDenneUge());
 
         antalworkouts = (TextView) rod.findViewById(R.id.AntalWorkouts);
-        antalworkouts.setText("Træninger \n denne uge");
+        antalworkouts.setText(R.string.workoutsThisWeek);
 
         workoutlist = (ListView) rod.findViewById(R.id.workoutList);
         workoutlist.setOnItemClickListener(this);
@@ -168,13 +168,13 @@ public class Workout_frag extends Fragment implements AdapterView.OnItemClickLis
         AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity(), R.style.MyDialogTheme);
 
         final EditText editText = new EditText(getActivity());
-        dialog.setMessage("Vil du redigere eller slette denne workout?");
-        dialog.setTitle("Redigér/slet");
+        dialog.setMessage(R.string.editOrDeleteWorkout);
+        dialog.setTitle(R.string.EditDeleteWorkout);
         dialog.setView(editText);
-        editText.setHint("Skriv det nye navn her");
+        editText.setHint(R.string.EditWorkoutHint);
 
 
-        dialog.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+        dialog.setPositiveButton(R.string.EditWorkoutOKText, new DialogInterface.OnClickListener() {
 
             @Override
             public void onClick(DialogInterface dialog, int whichButton) {
@@ -188,7 +188,7 @@ public class Workout_frag extends Fragment implements AdapterView.OnItemClickLis
 
         });
 
-                dialog.setNegativeButton("Slet", new DialogInterface.OnClickListener() {
+                dialog.setNegativeButton(R.string.EditWorkoutDeleteText, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int whichButton) {
                 traeningsPlanData.getWorkouts().remove(position);
@@ -250,7 +250,7 @@ public class Workout_frag extends Fragment implements AdapterView.OnItemClickLis
                 }
                 catch(NullPointerException e){
                     e.printStackTrace();
-                    workoutbeskrivelser.setText("Aldrig udført");
+                    workoutbeskrivelser.setText(R.string.WorkoutNeverCompletedText);
                 }
                 System.out.println(workoutoverskrift.getId());
 

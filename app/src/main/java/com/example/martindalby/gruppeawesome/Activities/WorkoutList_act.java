@@ -72,7 +72,7 @@ public class WorkoutList_act extends AppCompatActivity implements AdapterView.On
 
         doneButton = (Button) findViewById(R.id.doneworkout);
         doneButton.setOnClickListener(this);
-        doneButton.setText("Færdiggør workout");
+        doneButton.setText(R.string.finishWorkoutText);
 
 
         toolbar = (Toolbar) findViewById(R.id.toolBar);
@@ -140,12 +140,12 @@ public class WorkoutList_act extends AppCompatActivity implements AdapterView.On
 
         final EditText editText = new EditText(this);
         //dialog.setView(dialogView);
-        dialog.setMessage("Hvad skal din øvelse hedde?");
-        dialog.setTitle("Opret øvelse");
+        dialog.setMessage(R.string.newOvelseNameLong);
+        dialog.setTitle(R.string.newOvelseName);
         dialog.setView(editText);
-        editText.setHint("Navn");
+        editText.setHint(R.string.AddOvelseHint);
 
-        dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+        dialog.setPositiveButton(R.string.NewOvelseOKtext, new DialogInterface.OnClickListener() {
 
             @Override
             public void onClick(DialogInterface dialog, int whichButton) {
@@ -177,7 +177,7 @@ public class WorkoutList_act extends AppCompatActivity implements AdapterView.On
             }
         });
 
-        dialog.setNegativeButton("Annullér", new DialogInterface.OnClickListener() {
+        dialog.setNegativeButton(R.string.NewOvelseNotOk, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int whichButton) {
                 dialog.dismiss();
@@ -194,13 +194,13 @@ public class WorkoutList_act extends AppCompatActivity implements AdapterView.On
         AlertDialog.Builder dialog = new AlertDialog.Builder(this, R.style.MyDialogTheme);
 
         final EditText editText = new EditText(this);
-        dialog.setMessage("Vil du redigere eller slette denne øvelse?");
-        dialog.setTitle("Redigér/slet");
+        dialog.setMessage(R.string.EditOrDeleteOvelseLong);
+        dialog.setTitle(R.string.EditorDelete);
         dialog.setView(editText);
-        editText.setHint("Skriv det nye navn her");
+        editText.setHint(R.string.NewOvelseHint);
 
 
-        dialog.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+        dialog.setPositiveButton(R.string.EditOvelseButtonText, new DialogInterface.OnClickListener() {
 
             @Override
             public void onClick(DialogInterface dialog, int whichButton) {
@@ -215,7 +215,7 @@ public class WorkoutList_act extends AppCompatActivity implements AdapterView.On
 
         });
 
-        dialog.setNegativeButton("Slet", new DialogInterface.OnClickListener() {
+        dialog.setNegativeButton(R.string.DeleteOvelseButtonText, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int whichButton) {
                 workoutData.getOvelser().remove(position);

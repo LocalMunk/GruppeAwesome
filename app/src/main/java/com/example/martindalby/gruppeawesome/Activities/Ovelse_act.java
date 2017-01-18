@@ -59,10 +59,7 @@ public class Ovelse_act extends AppCompatActivity implements View.OnClickListene
         datafiles = MainController.getInstans();
         ovelseData = datafiles.bruger.getTræningsPlan().getWorkout(getIntent().getIntExtra("workout", 0)).getOvelser().get(getIntent().getIntExtra("pos", 0));
         currentSet = 1;
-        String[] suppdata = new String[ovelseData.getSets()];
-        for(int i = 0; i < ovelseData.getSets(); i++){
-            suppdata[i] = "Sæt " + (i+1) + ": ";
-        }
+
 
 
         fb = (FloatingActionButton) findViewById(R.id.ovelsefloating);
@@ -72,7 +69,7 @@ public class Ovelse_act extends AppCompatActivity implements View.OnClickListene
 
         videre = (Button) findViewById(R.id.doneButton);
         videre.setOnClickListener(this);
-        videre.setText("Næste øvelse");
+        videre.setText(R.string.NextOvelseText);
 
         list = (ListView) findViewById(R.id.list);
         listadapt = new OvelseAdapter(this);
@@ -80,10 +77,10 @@ public class Ovelse_act extends AppCompatActivity implements View.OnClickListene
         list.setOnItemLongClickListener(this);
 
         RepstextView = (TextView) findViewById(R.id.RepstextView);
-        RepstextView.setText("Reps");
+        RepstextView.setText(R.string.repetitionsText);
 
         WeighttextView = (TextView) findViewById(R.id.WeighttextView);
-        WeighttextView.setText("Vægt");
+        WeighttextView.setText(R.string.WeightText);
 
         RMtextView = (TextView) findViewById(R.id.RMtextView);
         RMtextView.setText("1RM");
@@ -103,7 +100,7 @@ public class Ovelse_act extends AppCompatActivity implements View.OnClickListene
     //skulle måske gerne bruges??
     public boolean checkInput(String reps, String Weight){
         if(reps.length() == 0 || Weight.length() == 0){
-            Toast.makeText(Ovelse_act.this, "Udfyld repetitioner og vægt",
+            Toast.makeText(Ovelse_act.this, R.string.OvelseToastText,
                     Toast.LENGTH_LONG).show();
             return false;
         }
@@ -137,8 +134,8 @@ public class Ovelse_act extends AppCompatActivity implements View.OnClickListene
         num_weight.setMaxValue(100);
 
         //dialog.setMessage("Intast vægt og reps");
-        dialog.setTitle("Indtast øvelsesdata");
-        dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+        dialog.setTitle(R.string.addSetDataText);
+        dialog.setPositiveButton(R.string.addSetDataOKButton, new DialogInterface.OnClickListener() {
 
             @Override
             public void onClick(DialogInterface dialog, int whichButton) {
@@ -161,7 +158,7 @@ public class Ovelse_act extends AppCompatActivity implements View.OnClickListene
             }
         });
 
-        dialog.setNegativeButton("Annullér", new DialogInterface.OnClickListener() {
+        dialog.setNegativeButton(R.string.addSetDataNotOKButton, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int whichButton) {
                 dialog.dismiss();
@@ -201,9 +198,9 @@ public class Ovelse_act extends AppCompatActivity implements View.OnClickListene
         num_weight.setMinValue(0);
         num_weight.setMaxValue(100);
 
-        dialog.setMessage("Vil du redigere eller slette dette sæt");
-        dialog.setTitle("Redigér/slet sæt");
-        dialog.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+        dialog.setMessage(R.string.EditorDeleteSetLong);
+        dialog.setTitle(R.string.EditOrDeleteSet);
+        dialog.setPositiveButton(R.string.EditSetPositiveButton, new DialogInterface.OnClickListener() {
 
             @Override
             public void onClick(DialogInterface dialog, int whichButton) {
@@ -222,7 +219,7 @@ public class Ovelse_act extends AppCompatActivity implements View.OnClickListene
             }
         });
 
-        dialog.setNegativeButton("Slet", new DialogInterface.OnClickListener() {
+        dialog.setNegativeButton(R.string.EditSetNegativeButton, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int whichButton) {
                 ovelseData.getGraf().getSetDatas().remove(ovelseData.getGraf().getSetDatas().size() - (position+1));

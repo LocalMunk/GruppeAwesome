@@ -60,14 +60,14 @@ public class LogIn_act extends AppCompatActivity implements View.OnClickListener
         sharedPreferences.edit().putString("UserID", "delet me").commit();
 
         sub = (Button) findViewById(R.id.buttoncontinuesub);
-        sub.setText("Log ind");
+        sub.setText(R.string.logintext);
         sub.setTextSize(15);
 
         notsub = (TextView) findViewById(R.id.textnotsub);
-        notsub.setText("Har du ikke et log ind?");
+        notsub.setText(R.string.ikkelogintext);
 
         bePeakedSubCode = (EditText) findViewById(R.id.bepeakedsubcode);
-        bePeakedSubCode.setHint("Aktiveringsnøgle");
+        bePeakedSubCode.setHint(R.string.aktiveringsnøgle);
         bePeakedSubCode.setTextSize(15);
 
         sub.setOnClickListener(this);
@@ -151,7 +151,7 @@ public class LogIn_act extends AppCompatActivity implements View.OnClickListener
     public void getUser(String UserID, final Intent i) throws NullPointerException{
 
         System.out.println("inde i bruger metode.");
-        mRef.child("Martins Test").child("brugere").child(UserID).addListenerForSingleValueEvent(new ValueEventListener() {
+        mRef.child(datafiles.databaseControl.getVersion()).child("brugere").child(UserID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String id;

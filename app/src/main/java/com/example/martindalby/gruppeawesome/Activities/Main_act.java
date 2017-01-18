@@ -82,7 +82,7 @@ public class Main_act extends AppCompatActivity /*implements View.OnClickListene
 
         //starter ikke med at sætte title til workouts??
 
-        toolbar.setTitle("Workouts");
+        toolbar.setTitle(R.string.maintabworkout);
         tabLayout.addTab(workout, 0);
         tabLayout.addTab(kostplan, 1);
 
@@ -103,12 +103,12 @@ public class Main_act extends AppCompatActivity /*implements View.OnClickListene
                     case 0:
                         workout.setIcon(R.drawable.exerciseiconwhite);
                         kostplan.setIcon(R.drawable.foodicon_grey);
-                        toolbar.setTitle("Workouts");
+                        toolbar.setTitle(R.string.maintabworkout);
                         break;
                     case 1:
                         workout.setIcon(R.drawable.exerciseicongrey);
                         kostplan.setIcon(R.drawable.foodicon_white);
-                        toolbar.setTitle("Kostplan");
+                        toolbar.setTitle(R.string.maintabkostplan);
                         break;
                 }
 
