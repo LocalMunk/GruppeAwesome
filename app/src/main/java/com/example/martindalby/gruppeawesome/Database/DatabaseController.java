@@ -1,11 +1,9 @@
-package com.example.martindalby.gruppeawesome.DAL;
+package com.example.martindalby.gruppeawesome.Database;
 
 import com.example.martindalby.gruppeawesome.DataFiles.BrugerData;
-import com.example.martindalby.gruppeawesome.DataFiles.KostplanData;
 import com.example.martindalby.gruppeawesome.DataFiles.MainController;
 import com.example.martindalby.gruppeawesome.DataFiles.OpskriftData;
 import com.example.martindalby.gruppeawesome.DataFiles.OvelseData;
-import com.example.martindalby.gruppeawesome.DataFiles.TraeningsPlanData;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;

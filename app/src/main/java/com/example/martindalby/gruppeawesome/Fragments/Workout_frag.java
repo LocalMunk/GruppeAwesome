@@ -17,7 +17,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.BaseAdapter;
 
-import com.example.martindalby.gruppeawesome.DAL.DatabaseController;
+import com.example.martindalby.gruppeawesome.Database.DatabaseController;
 import com.example.martindalby.gruppeawesome.DataFiles.MainController;
 import com.example.martindalby.gruppeawesome.DataFiles.OvelseData;
 import com.example.martindalby.gruppeawesome.DataFiles.TraeningsPlanData;
@@ -27,7 +27,6 @@ import com.example.martindalby.gruppeawesome.Activities.WorkoutList_act;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 
 /**
  * Created by frederik on 07-11-2016.

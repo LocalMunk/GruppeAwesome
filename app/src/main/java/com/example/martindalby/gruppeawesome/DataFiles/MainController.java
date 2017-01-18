@@ -1,8 +1,6 @@
 package com.example.martindalby.gruppeawesome.DataFiles;
 
-import android.os.AsyncTask;
-
-import com.example.martindalby.gruppeawesome.DAL.DatabaseController;
+import com.example.martindalby.gruppeawesome.Database.DatabaseController;
 
 import java.io.Serializable;
 import java.util.ArrayList;

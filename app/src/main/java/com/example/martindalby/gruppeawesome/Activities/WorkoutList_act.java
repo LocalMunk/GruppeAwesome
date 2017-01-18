@@ -30,6 +30,7 @@ import com.example.martindalby.gruppeawesome.DataFiles.OvelseData;
 import com.example.martindalby.gruppeawesome.DataFiles.SetData;
 import com.example.martindalby.gruppeawesome.DataFiles.WorkoutData;
 import com.example.martindalby.gruppeawesome.R;
+import com.firebase.client.Firebase;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -50,6 +51,7 @@ public class WorkoutList_act extends AppCompatActivity implements AdapterView.On
     WorkoutData workoutData;
     SharedPreferences sharedPreferences;
     Button doneButton;
+    Firebase mRef;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -304,4 +306,6 @@ public class WorkoutList_act extends AppCompatActivity implements AdapterView.On
             e.printStackTrace();
         }
     }
+
+
 }
