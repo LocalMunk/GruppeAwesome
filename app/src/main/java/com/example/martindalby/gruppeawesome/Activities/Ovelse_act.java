@@ -158,7 +158,7 @@ public class Ovelse_act extends AppCompatActivity implements View.OnClickListene
             }
         });
 
-        dialog.setNegativeButton("Anullér", new DialogInterface.OnClickListener() {
+        dialog.setNegativeButton("Annullér", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int whichButton) {
                 dialog.dismiss();
@@ -200,7 +200,7 @@ public class Ovelse_act extends AppCompatActivity implements View.OnClickListene
 
         dialog.setMessage("Vil du redigere eller slette dette sæt");
         dialog.setTitle("Redigér/slet sæt");
-        dialog.setPositiveButton("Redigér", new DialogInterface.OnClickListener() {
+        dialog.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
 
             @Override
             public void onClick(DialogInterface dialog, int whichButton) {

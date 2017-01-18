@@ -85,10 +85,15 @@ public class WorkoutList_act extends AppCompatActivity implements AdapterView.On
     @Override
     public void onClick(View v) {
         if(v == doneButton){
-            workoutData.setLastDate(Calendar.getInstance().getTime());
-            for (OvelseData data : workoutData.getOvelser()) {
-                data.setDone(0);
+            try {
+                workoutData.setLastDate(Calendar.getInstance().getTime());
+                for (OvelseData data : workoutData.getOvelser()) {
+                    data.setDone(0);
+                }
             }
+            catch(NullPointerException e){  //Denne exception sørger for at man ikke crasher hvis man prøvet
+                                            // at trykke færdiggør på en tom workout, der er ingen grund til at printe
+            }                               // StackTrace her eftersom at fejlen er forventet og årsagen er kendt
             finish();
         }
     }
@@ -132,7 +137,7 @@ public class WorkoutList_act extends AppCompatActivity implements AdapterView.On
         final EditText editText = new EditText(this);
         //dialog.setView(dialogView);
         dialog.setMessage("Hvad skal din øvelse hedde?");
-        dialog.setTitle("Opret opretøvelse");
+        dialog.setTitle("Opret øvelse");
         dialog.setView(editText);
         editText.setHint("Navn");
 
@@ -168,7 +173,7 @@ public class WorkoutList_act extends AppCompatActivity implements AdapterView.On
             }
         });
 
-        dialog.setNegativeButton("Anullér", new DialogInterface.OnClickListener() {
+        dialog.setNegativeButton("Annullér", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int whichButton) {
                 dialog.dismiss();
@@ -191,13 +196,13 @@ public class WorkoutList_act extends AppCompatActivity implements AdapterView.On
         editText.setHint("Skriv det nye navn her");
 
 
-        dialog.setPositiveButton("Redigér", new DialogInterface.OnClickListener() {
+        dialog.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
 
             @Override
             public void onClick(DialogInterface dialog, int whichButton) {
                 Editable ovelseNavn = editText.getText();
                 workoutData.getOvelser().get(position).setNavn(ovelseNavn.toString());
-                datafiles.bruger.getTræningsPlan().getWorkout(position).getOvelser().set(position,workoutData.getOvelser().get(position));
+                datafiles.bruger.getTræningsPlan().getWorkout(getIntent().getIntExtra("workout", 0)).getOvelser().set(position,workoutData.getOvelser().get(position));
                 datafiles.pushUser(datafiles.bruger);
                 adapter.notifyDataSetChanged();
                 listView.invalidateViews();

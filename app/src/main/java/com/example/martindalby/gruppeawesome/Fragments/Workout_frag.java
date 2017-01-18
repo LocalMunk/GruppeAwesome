@@ -99,7 +99,7 @@ public class Workout_frag extends Fragment implements AdapterView.OnItemClickLis
 
                     });
 
-                    dialog.setNegativeButton("Anullér", new DialogInterface.OnClickListener() {
+                    dialog.setNegativeButton("Annullér", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int whichButton) {
                             dialog.dismiss();
@@ -162,7 +162,7 @@ public class Workout_frag extends Fragment implements AdapterView.OnItemClickLis
         editText.setHint("Skriv det nye navn her");
 
 
-        dialog.setPositiveButton("Redigér", new DialogInterface.OnClickListener() {
+        dialog.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
 
             @Override
             public void onClick(DialogInterface dialog, int whichButton) {
