@@ -17,6 +17,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.BaseAdapter;
 
+import com.example.martindalby.gruppeawesome.DataFiles.BrugerData;
 import com.example.martindalby.gruppeawesome.Database.DatabaseController;
 import com.example.martindalby.gruppeawesome.DataFiles.MainController;
 import com.example.martindalby.gruppeawesome.DataFiles.OvelseData;
@@ -24,9 +25,15 @@ import com.example.martindalby.gruppeawesome.DataFiles.TraeningsPlanData;
 import com.example.martindalby.gruppeawesome.DataFiles.WorkoutData;
 import com.example.martindalby.gruppeawesome.R;
 import com.example.martindalby.gruppeawesome.Activities.WorkoutList_act;
+import com.firebase.client.DataSnapshot;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+
+import static android.R.attr.version;
 
 /**
  * Created by frederik on 07-11-2016.
@@ -125,14 +132,14 @@ public class Workout_frag extends Fragment implements AdapterView.OnItemClickLis
         talgoal.setText("" + traeningsPlanData.getTraeningsMål());
 
         workoutgoal = (TextView) rod.findViewById(R.id.WorkoutGoal);
-        workoutgoal.setText("Træningsmål denne uge");
+        workoutgoal.setText("Træningsmål\n denne uge");
 
         talantal = (TextView) rod.findViewById(R.id.TalAntal);
         //talantal.setText("" + (int) toptal[2]);
         talantal.setText("" + traeningsPlanData.getTraeningerDenneUge());
 
         antalworkouts = (TextView) rod.findViewById(R.id.AntalWorkouts);
-        antalworkouts.setText("Træninger denne uge");
+        antalworkouts.setText("Træninger \n denne uge");
 
         workoutlist = (ListView) rod.findViewById(R.id.workoutList);
         workoutlist.setOnItemClickListener(this);

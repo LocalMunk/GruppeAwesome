@@ -53,6 +53,9 @@ public class DatabaseController {
         mRef.child(version).child("brugere").child(bruger.id).setValue(bruger);
     }
 
+    public String getVersion() {
+        return version;
+    }
 
     //Henter specifik bruger
     public void getUser(String UserID) {
