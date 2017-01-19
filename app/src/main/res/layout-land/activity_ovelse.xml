@@ -127,7 +127,7 @@
         app:srcCompat="@drawable/icaddwhite"
         android:id="@+id/ovelsefloating"
         app:rippleColor="?attr/actionModeSplitBackground"
-        app:backgroundTint="@color/colorPrimaryDark" />
+        app:backgroundTint="@color/colorPrimary" />
 
 
 
