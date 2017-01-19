@@ -32,6 +32,7 @@
     <string name="FoodBreakfastText">Breakfast</string>
     <string name="FoodLunchText">Lunch</string>
     <string name="FoodDinnerText">Dinner</string>
+    <string name="FoodSnackText">Snack</string>
 
     kostplan frag ikkesub
     <string name="getKostplanButton">Get diet plan</string>

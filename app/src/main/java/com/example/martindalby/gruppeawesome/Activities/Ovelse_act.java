@@ -47,7 +47,7 @@ public class Ovelse_act extends AppCompatActivity implements View.OnClickListene
     OvelseData ovelseData;
     NumberPicker num_weight,num_reps;
     Toolbar toolbar;
-    TextView RepstextView, WeighttextView, RMtextView;
+    TextView RepstextView, WeighttextView, RMtextView, textReps, textWeight;
     LineGraphSeries<DataPoint> series;
 
 
@@ -84,6 +84,8 @@ public class Ovelse_act extends AppCompatActivity implements View.OnClickListene
 
         RMtextView = (TextView) findViewById(R.id.RMtextView);
         RMtextView.setText("1RM");
+
+
 
         toolbar = (Toolbar) findViewById(R.id.toolbar3);
         toolbar.setTitle(ovelseData.getNavn());
@@ -126,6 +128,10 @@ public class Ovelse_act extends AppCompatActivity implements View.OnClickListene
         LayoutInflater inflater = getLayoutInflater();
         View view = inflater.inflate(R.layout.alertdialog_ovelsedata,null);
 
+        textReps = (TextView)view.findViewById(R.id.textReps);
+        textReps.setText(R.string.repetitionsText);
+        textWeight = (TextView)view.findViewById(R.id.textWeight);
+        textWeight.setText(R.string.WeightText);
         num_weight = (NumberPicker)view.findViewById(R.id.numweight);
         num_reps = (NumberPicker )view.findViewById(R.id.numreps);
         num_reps.setMinValue(1);
@@ -192,6 +198,10 @@ public class Ovelse_act extends AppCompatActivity implements View.OnClickListene
         LayoutInflater inflater = getLayoutInflater();
         view = inflater.inflate(R.layout.alertdialog_ovelsedata,null);
 
+        textReps = (TextView)view.findViewById(R.id.textReps);
+        textReps.setText(R.string.repetitionsText);
+        textWeight = (TextView)view.findViewById(R.id.textWeight);
+        textWeight.setText(R.string.WeightText);
         num_weight = (NumberPicker)view.findViewById(R.id.numweight);
         num_reps = (NumberPicker )view.findViewById(R.id.numreps);
         num_reps.setMinValue(1);
