@@ -116,7 +116,7 @@ public class OpskriftListe_act extends AppCompatActivity implements AdapterView.
 
         @Override
         public View getView(int position, View view, ViewGroup parent) {
-            view = getLayoutInflater().inflate(R.layout.activity_opskrift_liste, null);
+            view = getLayoutInflater().inflate(R.layout.listelement_opskrift, null);
 
 
             TextView overskrift = (TextView) view.findViewById(R.id.overskriftTV);

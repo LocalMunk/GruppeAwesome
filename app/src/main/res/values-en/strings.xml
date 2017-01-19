@@ -35,7 +35,7 @@
 
     kostplan frag ikkesub
     <string name="getKostplanButton">Get diet plan</string>
-    <string name="cantAccessText">You don't have acces to this functionality</string>
+    <string name="cantAccessText">You don\'t have acces to this functionality</string>
 
     workout-list akt
     <string name="finishWorkoutText">Finish workout</string>

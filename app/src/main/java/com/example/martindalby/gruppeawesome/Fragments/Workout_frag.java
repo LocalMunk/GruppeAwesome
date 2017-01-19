@@ -16,26 +16,17 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.BaseAdapter;
-import android.preference.PreferenceManager;
 
-import com.example.martindalby.gruppeawesome.DataFiles.BrugerData;
 import com.example.martindalby.gruppeawesome.Database.DatabaseController;
 import com.example.martindalby.gruppeawesome.DataFiles.MainController;
 import com.example.martindalby.gruppeawesome.DataFiles.OvelseData;
 import com.example.martindalby.gruppeawesome.DataFiles.TraeningsPlanData;
 import com.example.martindalby.gruppeawesome.DataFiles.WorkoutData;
 import com.example.martindalby.gruppeawesome.R;
-import com.example.martindalby.gruppeawesome.Activities.WorkoutList_act;
-import com.firebase.client.DataSnapshot;
-import com.firebase.client.Firebase;
-import com.firebase.client.FirebaseError;
-import com.firebase.client.ValueEventListener;
+import com.example.martindalby.gruppeawesome.Activities.OvelseList_act;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-
-import static android.R.attr.data;
-import static android.R.attr.version;
 
 /**
  * Created by frederik on 07-11-2016.
@@ -55,7 +46,7 @@ public class Workout_frag extends Fragment implements AdapterView.OnItemClickLis
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rod = inflater.inflate(R.layout.workout_list_frag, container, false);
+        View rod = inflater.inflate(R.layout.fragment_workout_list, container, false);
         int[] i = {R.drawable.pizzalistepic, R.drawable.grafbb};
 
         datafiles = MainController.getInstans();
@@ -155,7 +146,7 @@ public class Workout_frag extends Fragment implements AdapterView.OnItemClickLis
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Intent i = new Intent(getActivity(), WorkoutList_act.class);
+        Intent i = new Intent(getActivity(), OvelseList_act.class);
         i.putExtra("workout", position);
         startActivityForResult(i, 1);
 
@@ -239,7 +230,7 @@ public class Workout_frag extends Fragment implements AdapterView.OnItemClickLis
         }
         @Override
         public View getView(int position, View view, ViewGroup viewGroup) {
-            view = inflter.inflate(R.layout.workout_listeelement, null);
+            view = inflter.inflate(R.layout.listelement_workout, null);
 
                 TextView workoutoverskrift = (TextView) view.findViewById(R.id.WorkoutOverskrift);
                 workoutoverskrift.setText(traeningsPlanData.getWorkout(position).getWorkoutname());

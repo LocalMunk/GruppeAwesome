@@ -124,7 +124,7 @@ public class Ovelse_act extends AppCompatActivity implements View.OnClickListene
         AlertDialog.Builder dialog = new AlertDialog.Builder(this, R.style.MyDialogTheme);
 
         LayoutInflater inflater = getLayoutInflater();
-        View view = inflater.inflate(R.layout.activity_alertdialog_ovelsedata,null);
+        View view = inflater.inflate(R.layout.alertdialog_ovelsedata,null);
 
         num_weight = (NumberPicker)view.findViewById(R.id.numweight);
         num_reps = (NumberPicker )view.findViewById(R.id.numreps);
@@ -189,7 +189,7 @@ public class Ovelse_act extends AppCompatActivity implements View.OnClickListene
         AlertDialog.Builder dialog = new AlertDialog.Builder(this, R.style.MyDialogTheme);
 
         LayoutInflater inflater = getLayoutInflater();
-        view = inflater.inflate(R.layout.activity_alertdialog_ovelsedata,null);
+        view = inflater.inflate(R.layout.alertdialog_ovelsedata,null);
 
         num_weight = (NumberPicker)view.findViewById(R.id.numweight);
         num_reps = (NumberPicker )view.findViewById(R.id.numreps);
@@ -261,7 +261,7 @@ public class Ovelse_act extends AppCompatActivity implements View.OnClickListene
 
         @Override
         public View getView(int position, View view, ViewGroup parent) {
-            view = inflter .inflate(R.layout.ovelse_list, null);
+            view = inflter .inflate(R.layout.listelement_setdata, null);
 
             TextView listreps = (TextView) view.findViewById(R.id.listReps);
             TextView listweight = (TextView) view.findViewById(R.id.listWeight);

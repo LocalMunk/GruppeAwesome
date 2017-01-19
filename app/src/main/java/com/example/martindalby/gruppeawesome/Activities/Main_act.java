@@ -1,6 +1,5 @@
 package com.example.martindalby.gruppeawesome.Activities;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
@@ -10,28 +9,17 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.text.Editable;
-import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.EditText;
 
 import com.crashlytics.android.Crashlytics;
 import com.example.martindalby.gruppeawesome.DataFiles.MainController;
-import com.example.martindalby.gruppeawesome.DataFiles.OvelseData;
-import com.example.martindalby.gruppeawesome.DataFiles.TraeningsPlanData;
-import com.example.martindalby.gruppeawesome.DataFiles.WorkoutData;
 import com.example.martindalby.gruppeawesome.Fragments.KostplanNotSub_frag;
 import com.example.martindalby.gruppeawesome.Fragments.Kostplan_frag;
 import com.example.martindalby.gruppeawesome.R;
 import com.example.martindalby.gruppeawesome.Fragments.Workout_frag;
-
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 
 import io.fabric.sdk.android.Fabric;
 
@@ -51,7 +39,7 @@ public class Main_act extends AppCompatActivity /*implements View.OnClickListene
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Fabric.with(this, new Crashlytics());
-        setContentView(R.layout.activity_main2);
+        setContentView(R.layout.activity_main);
 
 
         //midlertidig brugt til id reset

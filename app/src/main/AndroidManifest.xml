@@ -22,7 +22,7 @@
         <activity android:name=".Activities.OpskriftListe_act" />
         <activity android:name=".Activities.Opskrift_act" />
         <activity android:name=".Activities.Ovelse_act" />
-        <activity android:name=".Activities.WorkoutList_act" />
+        <activity android:name=".Activities.OvelseList_act" />
         <!--
  ATTENTION: This was auto-generated to add Google Play services to your project for
      App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information.

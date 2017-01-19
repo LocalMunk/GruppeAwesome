@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.preference.PreferenceManager.OnActivityResultListener;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -30,20 +29,15 @@ import com.example.martindalby.gruppeawesome.DataFiles.OvelseData;
 import com.example.martindalby.gruppeawesome.DataFiles.SetData;
 import com.example.martindalby.gruppeawesome.DataFiles.WorkoutData;
 import com.example.martindalby.gruppeawesome.R;
-import com.firebase.client.DataSnapshot;
-import com.firebase.client.Firebase;
-import com.firebase.client.FirebaseError;
-import com.firebase.client.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 
 /**
  * Created by Martin Dalby on 17-11-2016.
  */
 
-public class WorkoutList_act extends AppCompatActivity implements AdapterView.OnItemClickListener, View.OnClickListener, AdapterView.OnItemLongClickListener{
+public class OvelseList_act extends AppCompatActivity implements AdapterView.OnItemClickListener, View.OnClickListener, AdapterView.OnItemLongClickListener{
 
     String[] ovelser;
     int[] setsArray;
@@ -57,7 +51,7 @@ public class WorkoutList_act extends AppCompatActivity implements AdapterView.On
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_workoutlist);
+        setContentView(R.layout.activity_ovelselist);
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         datafiles = MainController.getInstans();
         int i = getIntent().getIntExtra("workout", 0);
@@ -273,7 +267,7 @@ public class WorkoutList_act extends AppCompatActivity implements AdapterView.On
 
         @Override
         public View getView(int position, View view, ViewGroup parent) {
-            view = inflter.inflate(R.layout.ovelselist_element, null);
+            view = inflter.inflate(R.layout.listelement_ovelse, null);
 
             TextView exerciseName = (TextView) view.findViewById(R.id.exercisename);
             exerciseName.setText(workoutData.getOvelser().get(position).getNavn());
