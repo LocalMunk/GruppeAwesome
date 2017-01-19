@@ -130,6 +130,7 @@
         app:srcCompat="@drawable/icaddwhite"
         android:foregroundGravity="right"
         android:id="@+id/opretworkout"
+        android:background="@color/colorPrimaryDark"
         app:backgroundTint="?attr/actionModeSplitBackground" />
 
 

@@ -65,25 +65,25 @@ public class Kostplan_frag extends Fragment implements View.OnClickListener {
 
         if (v == morgen) {
             Intent i = new Intent(getActivity(), OpskriftListe_act.class);
-            i.putExtra("type", morgen.getText().toString());
+            i.putExtra("type", 0);
             startActivity(i);
         }
 
         if (v == frokost) {
             Intent i = new Intent(getActivity(), OpskriftListe_act.class);
-            i.putExtra("type", frokost.getText().toString());
+            i.putExtra("type", 1);
             startActivity(i);
         }
 
         if (v == aften) {
             Intent i = new Intent(getActivity(), OpskriftListe_act.class);
-            i.putExtra("type", aften.getText().toString());
+            i.putExtra("type", 2);
             startActivity(i);
         }
 
         if( v == snack) {
             Intent i = new Intent(getActivity(), OpskriftListe_act.class);
-            i.putExtra("type", snack.getText().toString());
+            i.putExtra("type", 3);
             startActivity(i);
         }
 

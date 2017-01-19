@@ -33,7 +33,7 @@
         android:text="Button"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/colorPrimaryBtn2"
+        android:background="@color/colorPrimaryDark"
         android:id="@+id/doneworkout"
         android:textColor="@color/indicate"
         android:textAllCaps="false"/>

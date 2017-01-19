@@ -29,7 +29,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignLeft="@+id/ikkeadgang"
         android:layout_alignStart="@+id/ikkeadgang"
-        android:background="@color/colorPrimaryBtn2"
+        android:background="@color/colorPrimaryDark"
         android:textSize="20dp"
         android:textColor="@color/indicate"
         android:textAllCaps="false"

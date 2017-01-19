@@ -39,7 +39,7 @@ public class OpskriftListe_act extends AppCompatActivity implements AdapterView.
         super.onCreate(savedInstanceState);
         datafiles = MainController.getInstans();
         kostplanData = datafiles.bruger.getKostplan();
-        typeText = getIntent().getStringExtra("type");
+        type = getIntent().getIntExtra("type", 0);
         System.out.println("TyperTe4xt fået fra intent: " + typeText);
         adapter = new KostPlanAdapter();
 
@@ -55,10 +55,10 @@ public class OpskriftListe_act extends AppCompatActivity implements AdapterView.
 
         System.out.println("xaxaxaxaxaxaxaxaxa" + datafiles.bruger);
 
-        if(typeText.equals(R.id.morgenmadKnap)) type = 0;
-        else if(typeText.equals(R.id.frokostKnap)) type = 1;
-        else if(typeText.equals(R.id.aftensmadKnap)) type = 2;
-        else if(typeText.equals(R.id.snackKnap)) type = 3;
+        if(type == 0) typeText = getResources().getString(R.string.FoodBreakfastText);
+        else if(type == 1) typeText = getResources().getString(R.string.FoodLunchText);
+        else if(type == 2) typeText = getResources().getString(R.string.FoodDinnerText);
+        else if(type == 3) typeText = getResources().getString(R.string.FoodSnackText);
 
         switch (type){
             case 0: toolbar.setTitle(typeText);
