@@ -16,6 +16,7 @@ import android.view.MenuItem;
 
 import com.crashlytics.android.Crashlytics;
 import com.example.martindalby.gruppeawesome.DataFiles.MainController;
+import com.example.martindalby.gruppeawesome.DataFiles.OpskriftData;
 import com.example.martindalby.gruppeawesome.Fragments.KostplanNotSub_frag;
 import com.example.martindalby.gruppeawesome.Fragments.Kostplan_frag;
 import com.example.martindalby.gruppeawesome.R;
@@ -60,7 +61,6 @@ public class Main_act extends AppCompatActivity /*implements View.OnClickListene
         adapter = new ViewPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
         setSupportActionBar(toolbar);
-
 
         final TabLayout.Tab workout=tabLayout.newTab();
         final TabLayout.Tab kostplan=tabLayout.newTab();

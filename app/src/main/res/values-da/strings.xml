@@ -27,9 +27,10 @@
     <string name="EditWorkoutHint">Skriv det nye navn her</string>
     <string name="EditWorkoutOKText">Ok</string>
     <string name="EditWorkoutDeleteText">Slet</string>
-    <string name="WorkoutNeverCompletedText">Aldrig udført</string>
+
 
     kostplan frag sub
+    <string name="WorkoutNeverCompletedText">Aldrig udført</string>
     <string name="FoodBreakfastText">Morgenmad</string>
     <string name="FoodLunchText">Frokost</string>
     <string name="FoodDinnerText">Aftensmad</string>

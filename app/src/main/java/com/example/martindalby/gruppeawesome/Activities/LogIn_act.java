@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.example.martindalby.gruppeawesome.DataFiles.BrugerData;
 import com.example.martindalby.gruppeawesome.DataFiles.KostplanData;
 import com.example.martindalby.gruppeawesome.DataFiles.MainController;
+import com.example.martindalby.gruppeawesome.DataFiles.OpskriftData;
 import com.example.martindalby.gruppeawesome.DataFiles.TraeningsPlanData;
 import com.example.martindalby.gruppeawesome.DataFiles.WorkoutData;
 import com.example.martindalby.gruppeawesome.R;
@@ -61,6 +62,7 @@ public class LogIn_act extends AppCompatActivity implements View.OnClickListener
 
         bePeakedSubCode = (EditText) findViewById(R.id.bepeakedsubcode);
         bePeakedSubCode.setHint(R.string.aktiveringsnøgle);
+        bePeakedSubCode.setText("eksempel");
         bePeakedSubCode.setTextSize(15);
 
         sub.setOnClickListener(this);
@@ -71,6 +73,8 @@ public class LogIn_act extends AppCompatActivity implements View.OnClickListener
         pd.setMessage("Loading...");
         pd.setProgressStyle(android.R.style.Animation_Dialog);
         pd.setCancelable(false);
+
+
 
 
         //Får dig forbi login hvism man er logget ind
