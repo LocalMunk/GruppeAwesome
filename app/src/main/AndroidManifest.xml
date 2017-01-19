@@ -8,7 +8,7 @@
         android:name=".GruppeAwesome"
         android:allowBackup="true"
         android:icon="@mipmap/bb"
-        android:label="BodyBook"
+        android:label="g42 BodyBook"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Activities.LogIn_act">
