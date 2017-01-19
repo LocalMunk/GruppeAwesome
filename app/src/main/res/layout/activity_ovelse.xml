@@ -90,7 +90,7 @@
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/doneButton"
-                android:background="@color/colorPrimaryDark"
+                android:background="@color/colorPrimary"
                 android:textColor="@color/indicate"
                 android:textAllCaps="false"
                 android:layout_centerHorizontal="true" />
@@ -105,9 +105,10 @@
         android:layout_gravity="right|bottom"
         app:useCompatPadding="true"
         app:srcCompat="@drawable/icaddwhite"
+        android:foregroundGravity="right"
         android:id="@+id/ovelsefloating"
         app:rippleColor="?attr/actionModeSplitBackground"
-        app:backgroundTint="@color/colorPrimaryDark" />
+        app:backgroundTint="@color/colorPrimary" />
 
 
 
