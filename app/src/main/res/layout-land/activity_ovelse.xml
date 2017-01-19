@@ -129,6 +129,4 @@
         app:rippleColor="?attr/actionModeSplitBackground"
         app:backgroundTint="@color/colorPrimary" />
 
-
-
 </FrameLayout>
