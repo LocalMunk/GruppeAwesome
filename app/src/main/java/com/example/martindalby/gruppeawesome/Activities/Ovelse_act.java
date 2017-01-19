@@ -112,7 +112,7 @@ public class Ovelse_act extends AppCompatActivity implements View.OnClickListene
 
         datafiles.bruger.getTræningsPlan().getWorkout(getIntent().getIntExtra("workout", 0)).getOvelser().remove(getIntent().getIntExtra("pos", 0));
         datafiles.bruger.getTræningsPlan().getWorkout(getIntent().getIntExtra("workout", 0)).getOvelser().add(getIntent().getIntExtra("pos", 0), ovelseData);
-        setResult(RESULT_OK);
+
         datafiles.pushUser();
     }
 
@@ -178,6 +178,7 @@ public class Ovelse_act extends AppCompatActivity implements View.OnClickListene
                 finish();
             }
             else{
+                setResult(RESULT_OK);
                 finish();
             }
         }
